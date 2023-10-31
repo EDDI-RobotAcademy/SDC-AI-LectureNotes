@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include "fource.h"
+#include "fourth.h"
 
 int fourth_function(void) {
-	printf("7");
+	int num = 7;
+	printf("¼ıÀÚ = %d\n", num);
 }

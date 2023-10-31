@@ -1,7 +1,7 @@
 #include <stdio.h>
 // 아래의 second_function() 을 사용하기 위해 헤더 파일을 include 하였습니다.
 #include "second.h"
-#include "fource.h"
+#include "fourth.h"
 
 int main(void) {
 	// printf는 말 그대로 소괄호 내부에 있는 문자열을 출력합니다.
