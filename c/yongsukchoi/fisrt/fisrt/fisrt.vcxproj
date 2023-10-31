@@ -132,7 +132,7 @@
     <ClCompile Include="second.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="fource.h" />
+    <ClInclude Include="fourth.h" />
     <ClInclude Include="second.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
