@@ -13,5 +13,7 @@ int main(void) {
 	// 사용할 때는 함수의 이름을 작성하고 소괄호를 열고 닫아야 합니다.
 	second_function();
 
+	// fourth_function에서 숫자 7을 출력하도록 만들어봅시다!
+
 	return 0;
 }
