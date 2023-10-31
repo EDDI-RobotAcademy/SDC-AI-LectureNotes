@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="first.c" />
     <ClCompile Include="second.c" />
+    <ClCompile Include="third.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="second.h" />
+    <ClInclude Include="third.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
