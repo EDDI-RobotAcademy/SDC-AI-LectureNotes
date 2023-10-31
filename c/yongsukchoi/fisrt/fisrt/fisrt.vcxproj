@@ -128,9 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="first.c" />
+    <ClCompile Include="fource.c" />
     <ClCompile Include="second.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fource.h" />
     <ClInclude Include="second.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
