@@ -1,0 +1,1 @@
+int fourth_function(void);
