@@ -15,28 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="first.c">
+    <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="second.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="four.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="third.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="second.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="four.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="third.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
