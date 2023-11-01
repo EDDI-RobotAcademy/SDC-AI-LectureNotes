@@ -2,6 +2,7 @@
 // 아래의 second_function() 을 사용하기 위해 헤더 파일을 include 하였습니다.
 #include "second.h"
 #include "third.h"
+#include "fourth.h"
 
 int main(void)
 {
@@ -19,6 +20,7 @@ int main(void)
 	printf("return_value = %d\n", return_value);
 
 	// Quiz. fourth_function에서 숫자 7을 출력하도록 만들어봅시다!
+	fourth_function();
 
 	return 0;
 }

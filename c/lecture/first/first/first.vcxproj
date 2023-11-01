@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="first.c" />
+    <ClCompile Include="fourth.c" />
     <ClCompile Include="second.c" />
     <ClCompile Include="third.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fourth.h" />
     <ClInclude Include="second.h" />
     <ClInclude Include="third.h" />
   </ItemGroup>
