@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "print_random.h"
+#include "random_generator.h"
 
 void print_random_number(const int count)
 {
@@ -19,4 +20,5 @@ void print_random_number(const int count)
 		// x % (MAX - MIN + 1) + MIN
 		printf("%3d", generate_random(min, max));
 	}
+	printf("\n");
 }
