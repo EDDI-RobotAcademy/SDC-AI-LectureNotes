@@ -31,6 +31,12 @@
     <Filter Include="헤더 파일\game\dice">
       <UniqueIdentifier>{c48e6510-e971-4837-8fcb-d57d7303d7c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\game\player">
+      <UniqueIdentifier>{adf984e2-57be-414f-a7af-a57b6561bcc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\player">
+      <UniqueIdentifier>{abe12e24-98e6-49a5-bf24-e897ad2debc5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -51,6 +57,9 @@
     <ClCompile Include="dice_game.c">
       <Filter>소스 파일\game\dice</Filter>
     </ClCompile>
+    <ClCompile Include="player.c">
+      <Filter>소스 파일\game\player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="print_even.h">
@@ -67,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="dice_game.h">
       <Filter>헤더 파일\game\dice</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>헤더 파일\game\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
