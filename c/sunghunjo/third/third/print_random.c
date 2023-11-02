@@ -20,4 +20,7 @@ void print_random_number(const int count)
 		// x % (MAX - MIN +1) + MIN
 		printf("%3d", generate_random(min, max));
 	}
+
+	printf("\n");
+
 }

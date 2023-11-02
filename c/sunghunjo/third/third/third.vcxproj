@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="diec_game.c" />
     <ClCompile Include="random_generator.c" />
     <ClCompile Include="print_even.c" />
     <ClCompile Include="main.c" />
@@ -134,6 +135,7 @@
     <ClCompile Include="print_random.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="diec_game.h" />
     <ClInclude Include="print_even.h" />
     <ClInclude Include="print_even_advanced.h" />
     <ClInclude Include="print_random.h" />
