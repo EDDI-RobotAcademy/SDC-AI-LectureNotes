@@ -131,11 +131,14 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="print_even_advanced.c" />
     <ClCompile Include="print_random.c" />
+    <ClCompile Include="random_generator.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="print_even.h" />
     <ClInclude Include="print_even_advanced.h" />
     <ClInclude Include="print_random.h" />
+    <ClInclude Include="random_generator.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
