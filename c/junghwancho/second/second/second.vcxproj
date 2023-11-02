@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{797164c2-51e9-497a-bd82-feb6faa4d1ef}</ProjectGuid>
-    <RootNamespace>First</RootNamespace>
+    <ProjectGuid>{3fc51de1-14ed-466b-8ae9-838d6c7b6b9d}</ProjectGuid>
+    <RootNamespace>second</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,11 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="first.c" />
-    <ClCompile Include="second.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="second.h" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
