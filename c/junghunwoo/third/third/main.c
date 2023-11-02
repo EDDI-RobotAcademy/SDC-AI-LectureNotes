@@ -50,7 +50,7 @@ int main(void)
 		print_dice_number();
 	}
 
-	set_player_name("¾È³ç");
+	set_player_name("Hello");
 	print_player_name();
 
 	return 0;
