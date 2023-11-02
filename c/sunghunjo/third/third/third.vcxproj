@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="random_generator.c" />
     <ClCompile Include="print_even.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="print_even_advanced.c" />
@@ -136,6 +137,7 @@
     <ClInclude Include="print_even.h" />
     <ClInclude Include="print_even_advanced.h" />
     <ClInclude Include="print_random.h" />
+    <ClInclude Include="random_generator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
