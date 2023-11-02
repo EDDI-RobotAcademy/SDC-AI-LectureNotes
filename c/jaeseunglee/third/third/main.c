@@ -34,9 +34,11 @@ int main(void)
 
 	printf("\n");
 
-	dice_fight(generate_random(0, 255), generate_random(0, 255));
+	/*dice_fight(generate_random(0, 255), generate_random(0, 255));
 
-	printf("\n\n\n");
+	printf("\n\n\n");*/
+
+
 
 	// while 문은 for문과 마찬가지로 반복문
 	// 보편적으로 for는 약간 복잡한 구조에서 많이 사용
@@ -66,9 +68,18 @@ int main(void)
 
 	printf("\n");
 	
-	set_player_name("안녕");
+	set_player_name("Hello");
 	print_player_name();
-	
+	printf("\n");
+
+	set_player1("Hello");
+	set_player2("World");
+	dice_fight(player1,player2);
+
+
+	printf("\n\n\n\n\n\n\n");
+	printf("asdfasdfasdf %s", set_name("aaaa"));
+
 
 	return 0;
 

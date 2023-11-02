@@ -60,9 +60,6 @@
     <ClCompile Include="dice_game.c">
       <Filter>소스 파일\game\dice</Filter>
     </ClCompile>
-    <ClCompile Include="dice_tournament.c">
-      <Filter>소스 파일\game\dice</Filter>
-    </ClCompile>
     <ClCompile Include="player.c">
       <Filter>소스 파일\game\player</Filter>
     </ClCompile>
@@ -87,9 +84,6 @@
       <Filter>헤더 파일\game\dice</Filter>
     </ClInclude>
     <ClInclude Include="dice_game.h">
-      <Filter>헤더 파일\game\dice</Filter>
-    </ClInclude>
-    <ClInclude Include="dice_tournament.h">
       <Filter>헤더 파일\game\dice</Filter>
     </ClInclude>
     <ClInclude Include="player.h">

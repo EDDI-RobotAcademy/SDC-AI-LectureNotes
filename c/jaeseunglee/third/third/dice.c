@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "random_generator.h"
 #include "dice.h"
+#include "player.h"
 
 int roll_the_dice()
 {
@@ -19,33 +20,57 @@ int roll_the_dice()
 //	return dice_number;
 //}
 
-void dice_fight(int player1, int player2)
+//void dice_fight(int player1, int player2)
+//{
+//	
+//	if (player1 == player2)
+//	{
+//		printf("자기 자신과 싸웁니다!\n");
+//	}
+//	else
+//	{
+//		printf("참가번호 %d, 참가번호 %d의 싸움이 시작됩니다!\n", player1, player2);
+//
+//		int dice_player1 = roll_the_dice();
+//		int dice_player2 = roll_the_dice();
+//
+//		printf("참가번호 %d의 주사위 숫자는 %d!\n참가번호 %d의 주사위 숫자는 %d!\n", player1, dice_player1, player2, dice_player2);
+//
+//		if (dice_player1 > dice_player2)
+//		{
+//			printf("참가번호 %d의 승리입니다!\n축하합니다!\n", player1);
+//		}
+//		else if(dice_player1 < dice_player2)
+//		{
+//			printf("참가번호 %d의 승리입니다!\n축하합니다!\n", player2);
+//		}
+//		else
+//		{
+//			printf("무승부입니다!\n한 치 앞도 내다볼 수 없군요! \n");
+//		}
+//	} 
+//}
+
+void dice_fight(char player1[], char player2[])
 {
-	
-	if (player1 == player2)
+	printf("%s, %s의 싸움이 시작됩니다!\n", player1, player2);
+
+	int dice_player1 = roll_the_dice();
+	int dice_player2 = roll_the_dice();
+
+	printf("%s의 주사위 숫자는 %d!\n%s의 주사위 숫자는 %d!\n", player1, dice_player1, player2, dice_player2);
+
+	if (dice_player1 > dice_player2)
 	{
-		printf("자기 자신과 싸웁니다!\n");
+		printf("%s의 승리입니다!\n축하합니다!\n", player1);
+	}
+	else if (dice_player1 < dice_player2)
+	{
+		printf("%s의 승리입니다!\n축하합니다!\n", player2);
 	}
 	else
 	{
-		printf("참가번호 %d, 참가번호 %d의 싸움이 시작됩니다!\n", player1, player2);
-
-		int dice_player1 = roll_the_dice();
-		int dice_player2 = roll_the_dice();
-
-		printf("참가번호 %d의 주사위 숫자는 %d!\n참가번호 %d의 주사위 숫자는 %d!\n", player1, dice_player1, player2, dice_player2);
-
-		if (dice_player1 > dice_player2)
-		{
-			printf("참가번호 %d의 승리입니다!\n축하합니다!\n", player1);
-		}
-		else if(dice_player1 < dice_player2)
-		{
-			printf("참가번호 %d의 승리입니다!\n축하합니다!\n", player2);
-		}
-		else
-		{
-			printf("무승부입니다!\n한 치 앞도 내다볼 수 없군요! \n");
-		}
-	} 
+		printf("무승부입니다!\n한 치 앞도 내다볼 수 없군요! \n");
+	}
+	
 }
