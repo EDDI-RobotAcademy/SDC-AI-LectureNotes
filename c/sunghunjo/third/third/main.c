@@ -3,6 +3,7 @@
 #include "print_even_advanced.h"
 #include "print_random.h"
 #include "diec_game.h"
+#include "player.h"
 
 #define LOOP_MAX		5
 
@@ -49,6 +50,9 @@ int main (void)
 		roll_dice();
 		print_dice_number();
 	}
+
+	set_player_name("hello");
+	print_player_name();
 
 	return 0;
 }
