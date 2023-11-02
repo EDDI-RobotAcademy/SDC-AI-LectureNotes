@@ -6,13 +6,17 @@
 
 int main(void)
 {
-	int number_of_player = 0;
-	
-	while (number_of_player++ < NUMBER_OF_PLAYER_MAX)
-	{
-		set_player_name("¹ÚÀåÈÆ");
-		print_player_name();
-		roll_dice();
-		printf("%d¹ø ÇÃ·¹ÀÌ¾î´Ô ¼ıÀÚ = %d\n", number_of_player, dice_number);
-	}
+	int player_count = 0;
+
+	set_player_name("hello");
+	print_player_name();
+	roll_dice();
+	print_dice_number();
+
+	set_player_name("goodbye");
+	print_player_name();
+	roll_dice();
+	print_dice_number();
+
+	return 0;
 }
