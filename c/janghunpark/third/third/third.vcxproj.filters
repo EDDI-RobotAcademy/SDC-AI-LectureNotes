@@ -14,28 +14,22 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="소스 파일\utility">
-      <UniqueIdentifier>{733e3eda-af3a-49b8-8a5f-0406bf01b70e}</UniqueIdentifier>
+      <UniqueIdentifier>{ff3030c7-9a12-476b-ba79-74a87862be18}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\utility">
-      <UniqueIdentifier>{8538a09b-e072-49d8-93f6-001f1d3c0db8}</UniqueIdentifier>
+      <UniqueIdentifier>{47eb469b-a294-41ac-b596-28bf963bc800}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\game">
-      <UniqueIdentifier>{d10067db-ba50-4223-b6ad-85c7c7ae94e8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\game">
-      <UniqueIdentifier>{cb759525-19f1-4ccb-968b-f6c4027e2a81}</UniqueIdentifier>
+      <UniqueIdentifier>{e1928878-4bb0-4ad5-a6b9-1fc105ca3c15}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\game\dice">
-      <UniqueIdentifier>{b559cc44-ce23-45ee-b6e0-f939e01efe12}</UniqueIdentifier>
+      <UniqueIdentifier>{a5161c6e-1bcf-40c5-a8bf-87b94eee15b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game">
+      <UniqueIdentifier>{83576d89-c47e-4950-83ce-329caf2dcfd5}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\game\dice">
-      <UniqueIdentifier>{6e50d57d-8f8a-462b-b070-da2cab9295f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\game\player">
-      <UniqueIdentifier>{c04e1fd7-ff16-4556-84c5-c5808cb28248}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\game\player">
-      <UniqueIdentifier>{467f87ad-0052-43c1-b879-21330fa75e98}</UniqueIdentifier>
+      <UniqueIdentifier>{c48e6510-e971-4837-8fcb-d57d7303d7c0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,9 +51,6 @@
     <ClCompile Include="dice_game.c">
       <Filter>소스 파일\game\dice</Filter>
     </ClCompile>
-    <ClCompile Include="player.c">
-      <Filter>소스 파일\game\player</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="print_even.h">
@@ -76,9 +67,6 @@
     </ClInclude>
     <ClInclude Include="dice_game.h">
       <Filter>헤더 파일\game\dice</Filter>
-    </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>헤더 파일\game\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

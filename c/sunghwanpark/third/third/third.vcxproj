@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{1763e42c-2d53-4e5b-b915-6c68413b6926}</ProjectGuid>
+    <ProjectGuid>{5ee42d92-f1c0-4384-9430-3e5b5b462ad5}</ProjectGuid>
     <RootNamespace>third</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -128,20 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dice_game.c" />
-    <ClCompile Include="player.c" />
     <ClCompile Include="print_even.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="print_even_advanced.c" />
     <ClCompile Include="print_random.c" />
+    <ClCompile Include="random_dice.c" />
     <ClCompile Include="random_generator.c" />
+    <ClCompile Include="random_generator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dice_game.h" />
-    <ClInclude Include="player.h" />
     <ClInclude Include="print_even.h" />
     <ClInclude Include="print_even_advanced.h" />
     <ClInclude Include="print_random.h" />
-    <ClInclude Include="random_generator.h" />
+    <ClInclude Include="random_dice.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
