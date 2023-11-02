@@ -35,7 +35,7 @@ int main(void)
 	printf("플레이어1 이름--> %s\n", name2);
 	roll_dice();
 	player2_dice_number = dice_number;
-	printf("--2번 주사위 값%d---\n", player1_dice_number);
+	printf("--2번 주사위 값%d---\n", player2_dice_number);
 	print_dice_number();
 	
 	printf("두 명의 주사위의 값은 ? %s :%d %s: %d\n", name1,player1_dice_number, name2,  player2_dice_number);
