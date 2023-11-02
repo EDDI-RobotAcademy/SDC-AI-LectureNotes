@@ -14,5 +14,5 @@ void roll_dice(void)
 
 void print_dice_number(void)
 {
-	printf("굴려서 나온 주사위 숫자: %d\n", dice_number);
+	printf("굴려서 나온 주사위 숫자= %d\n", dice_number);
 }

@@ -16,7 +16,7 @@ int main(void)
 
 
 	// 사용자1 정의
-	set_player_name("김영희");
+	set_player_name("영희");
 	strcpy(player1, player_name);
 	print_player_name();
 
@@ -27,7 +27,7 @@ int main(void)
 	print_dice_number();
 	
 	// 사용자2 정의
-	set_player_name("김철수");
+	set_player_name("철수");
 	strcpy(player2, player_name);
 	print_player_name();
 
@@ -39,16 +39,16 @@ int main(void)
 
 	if (dice1 > dice2)
 	{
-		printf("이긴 사람은:%s", player1);
+		printf("이긴 사람:%s", player1);
 	} 
 	
 	else if (dice2 > dice1)
 	{
-		printf("이긴 사람은:%s", player2);
+		printf("이긴 사람:%s", player2);
 	}
 	else
 	{
-		printf("무승부입니다.");
+		printf("무승부");
 	}
 	
 
