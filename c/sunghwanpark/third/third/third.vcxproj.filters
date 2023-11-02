@@ -14,28 +14,22 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="소스 파일\utility">
-      <UniqueIdentifier>{733e3eda-af3a-49b8-8a5f-0406bf01b70e}</UniqueIdentifier>
+      <UniqueIdentifier>{87bb4874-22fc-4837-b433-c9b16fd43a5b}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\utility">
-      <UniqueIdentifier>{8538a09b-e072-49d8-93f6-001f1d3c0db8}</UniqueIdentifier>
+      <UniqueIdentifier>{63215a11-7247-4034-8196-c1ea46055d84}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\game">
-      <UniqueIdentifier>{d10067db-ba50-4223-b6ad-85c7c7ae94e8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\game">
-      <UniqueIdentifier>{cb759525-19f1-4ccb-968b-f6c4027e2a81}</UniqueIdentifier>
+      <UniqueIdentifier>{f93c5efc-537b-4072-a861-6e319e25151b}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\game\dice">
-      <UniqueIdentifier>{b559cc44-ce23-45ee-b6e0-f939e01efe12}</UniqueIdentifier>
+      <UniqueIdentifier>{70d0b165-ed42-48b6-9df0-924ab004f78e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game">
+      <UniqueIdentifier>{ec814789-d4be-4e7a-bac2-83e263693dd5}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\game\dice">
-      <UniqueIdentifier>{6e50d57d-8f8a-462b-b070-da2cab9295f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\game\player">
-      <UniqueIdentifier>{c04e1fd7-ff16-4556-84c5-c5808cb28248}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\game\player">
-      <UniqueIdentifier>{467f87ad-0052-43c1-b879-21330fa75e98}</UniqueIdentifier>
+      <UniqueIdentifier>{70e02e5e-d74c-4d4c-b65c-0329dfefb022}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,14 +45,17 @@
     <ClCompile Include="print_random.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="random_generator.h">
+      <Filter>헤더 파일\utility</Filter>
+    </ClCompile>
     <ClCompile Include="random_generator.c">
       <Filter>소스 파일\utility</Filter>
     </ClCompile>
+    <ClCompile Include="random_dice.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="dice_game.c">
       <Filter>소스 파일\game\dice</Filter>
-    </ClCompile>
-    <ClCompile Include="player.c">
-      <Filter>소스 파일\game\player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,14 +68,11 @@
     <ClInclude Include="print_random.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="random_generator.h">
-      <Filter>헤더 파일\utility</Filter>
+    <ClInclude Include="random_dice.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="dice_game.h">
       <Filter>헤더 파일\game\dice</Filter>
-    </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>헤더 파일\game\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
