@@ -5,7 +5,9 @@
 #define MAX			6
 #define MIN			1
 
-extern int dice_number = 0;
+int dice_number = 0;
+// 실제 헤더 파일에 있는 extern int dice_number를 통해
+// 이 dice_game.c 에 있는 dice_number 변수를 사용하겠음을 의미합니다.
 
 void roll_dice(void)
 {
