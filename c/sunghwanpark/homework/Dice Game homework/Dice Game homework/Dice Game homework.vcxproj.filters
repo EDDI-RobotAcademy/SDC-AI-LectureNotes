@@ -18,12 +18,24 @@
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="players.c">
+    <ClCompile Include="player.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="dice.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="random.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="players.h">
+    <ClInclude Include="player.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="dice.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

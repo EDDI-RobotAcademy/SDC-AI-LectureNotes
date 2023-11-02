@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7b6c3d54-2733-46de-9968-1c7a33ba2dfb}</ProjectGuid>
-    <RootNamespace>Day3Homework</RootNamespace>
+    <ProjectGuid>{79635ba0-b7d8-4ba7-aa05-b22d8f990030}</ProjectGuid>
+    <RootNamespace>DiceGamehomework</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -44,6 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -127,11 +128,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dice.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="players.c" />
+    <ClCompile Include="player.c" />
+    <ClCompile Include="random.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="players.h" />
+    <ClInclude Include="dice.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="random.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
