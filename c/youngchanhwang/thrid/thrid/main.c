@@ -4,6 +4,7 @@
 #include "print_random.h"
 #include "dice.h"
 #include "dice_game.h"
+#include "player.h"
 
 #define LOOP_MAX			5
 
@@ -52,6 +53,10 @@ int main(void)
 		print_dice_number();
 		printf("%d\n", dice_number);
 	}
+
+
+	set_player_name("¾È³ç");
+	print_player_name();
 
 
 	return 0;
