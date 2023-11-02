@@ -83,5 +83,8 @@
     <ClInclude Include="player.h">
       <Filter>헤더 파일\game\player</Filter>
     </ClInclude>
+    <ClInclude Include="dice_fight.h">
+      <Filter>헤더 파일\game\dice</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{0b89fcd0-fe65-4869-827b-bccbb9dfdc20}</ProjectGuid>
-    <RootNamespace>third</RootNamespace>
+    <ProjectGuid>{cbeef874-566e-4678-b5b8-b897fc4139d4}</ProjectGuid>
+    <RootNamespace>My3rdday</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,21 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dice_fight.c" />
-    <ClCompile Include="dice_game.c" />
-    <ClCompile Include="player.c" />
-    <ClCompile Include="print_even.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="print_even_advanced.c" />
-    <ClCompile Include="print_random.c" />
-    <ClCompile Include="random.generator.c" />
+    <ClCompile Include="player.c" />
+    <ClCompile Include="random_gnerator.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dice_game.h" />
     <ClInclude Include="dice_fight.h" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="print_even.h" />
-    <ClInclude Include="print_even_advanced.h" />
-    <ClInclude Include="print_random.h" />
     <ClInclude Include="random_generator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,6 +5,7 @@
 #include "random_generator.h"
 #include "dice_game.h"
 #include "player.h"
+#include "dice_fight.h"
 
 #define LOOP_MAX		5
 
@@ -55,6 +56,16 @@ int main(void)
 
 	set_player_name("hello");
 	print_player_name();
+
+	set_player1("X");
+	set_player2("Y");
+
+	dice_fight(char player1[], char player2[])
+
+
+
+
+
 
 	return 0;
 
