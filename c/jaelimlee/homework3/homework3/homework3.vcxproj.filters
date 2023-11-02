@@ -45,7 +45,7 @@
     <ClCompile Include="dice_game.c">
       <Filter>소스 파일\game\dice</Filter>
     </ClCompile>
-    <ClCompile Include="player1.c">
+    <ClCompile Include="player.c">
       <Filter>소스 파일\game\player</Filter>
     </ClCompile>
     <ClCompile Include="random_generator.c">
@@ -56,7 +56,7 @@
     <ClInclude Include="dice_game.h">
       <Filter>헤더 파일\game\dice</Filter>
     </ClInclude>
-    <ClInclude Include="player1.h">
+    <ClInclude Include="player.h">
       <Filter>헤더 파일\game\player</Filter>
     </ClInclude>
     <ClInclude Include="random_generator.h">

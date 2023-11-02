@@ -2,5 +2,5 @@
 
 extern char player_name[PLAYER_NAME_MAX];
 
-void set_player_name1(char name[]);
-void print_player_name1(void);
+void set_player_name(char name[]);
+void print_player_name(void);
