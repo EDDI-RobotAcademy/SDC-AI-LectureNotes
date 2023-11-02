@@ -1,0 +1,79 @@
+00007FF791FD18C0  push        rbp  
+00007FF791FD18C2  push        rdi  
+00007FF791FD18C3  sub         rsp,128h  
+00007FF791FD18CA  lea         rbp,[rsp+20h]  
+
+00007FF791FD18CF  lea         rcx,[__0F908B1D_main@c (07FF791FE1008h)]  
+00007FF791FD18D6  call        __CheckForDebuggerJustMyCode (07FF791FD1370h)  
+
+
+0X000000F72F7CFC18 -> rbp = 00000
+0X000000F72F7CFC10 -> rdi = 00000
+0X000000F72F7CFC08 -> 0X000000F72F7CFC08 - 0X128 = 0X000000F72F7CFAE0
+=> 296바이트의 stack 공간으로 할당
+0X000000F72F7CFAE0 -> rbp에 [rsp + 20h]를 저장 => rbp = 0X000000F72F7CFB00
+=> 32바이트의 stack공간 지역변수로 할당
+
+이후 두개는 무시해도됨
+
+----------------------------------------------------------------------------------------
+
+int return_value;
+const int input_parameter = 3;
+00007FF791FD18DB  mov         dword ptr [input_parameter],3  
+	return_value = for_assembly_function_test(input_parameter);
+00007FF791FD18E2  mov         ecx,dword ptr [input_parameter]  
+00007FF791FD18E5  call        for_assembly_function_test (07FF791FD11CCh)  
+
+&input_parameter 은 0x000000F72F7CFB24 이고 안에는 734가 들어가있음 
+주소값은 아까 정해둔 296바이트의 공간안에 있다.
+mov를 통해 input_parameter에 3이 들어가는걸 확인을 할수가 있었다.
+이때 RSP와 RBP의 변동은 없다.
+ecx 레지스터 숫자 3저장
+후에 call을통해 sp는 0X000000F72F7CFAE0 에서 0X000000F72F7CFAD8로 변경
+복귀주소는 0X000000F72F7CFAE0에 입력
+
+----------------------------------------------------------------------------------------
+
+00007FF791FD1880  mov         dword ptr [rsp+8],ecx  
+00007FF791FD1884  push        rbp  
+00007FF791FD1885  push        rdi
+
+mov에서 sp+8이므로 sp는 0X000000F72F7CFAE0에서 number를 입력한다.
+push sp 는 0X000000F72F7CFAD8 에서 RBP(2)의 값은 0X000000F72F7CFB00이고
+push sp 는 0X000000F72F7CFAD0 에서 RDI = 0000이다.
+
+----------------------------------------------------------------------------------------
+
+00007FF791FD1886  sub         rsp,0E8h  
+00007FF791FD188D  lea         rbp,[rsp+20h]  
+00007FF791FD1892  lea         rcx,[__0F908B1D_main@c (07FF791FE1008h)]  
+00007FF791FD1899  call        __CheckForDebuggerJustMyCode (07FF791FD1370h)  
+
+sub sp 0X000000F72F7CFAC8이고 여기서 0X0E8을 감소시켜 0X000000F72F7CF9E0가 된다.
+lea sp 0X000000F72F7CF9E0이고 여기서 rbp는 0X000000F72F7CFA00가 된다.
+후에 밑에 2개는 무시한다.
+
+----------------------------------------------------------------------------------------
+
+	return number * 2;
+00007FF791FD189E  mov         eax,dword ptr [number]  
+00007FF791FD18A4  shl         eax,1  
+}
+00007FF791FD18A6  lea         rsp,[rbp+0C8h]  
+00007FF791FD18AD  pop         rdi  
+00007FF791FD18AE  pop         rbp  
+00007FF791FD18AF  ret  
+
+mov 를 통해 파라메터인 eax에 3(number)을 입력해주고
+shl 을 통해 파라메터eax의 값을 *2를 해줘서 결과적으로 6이된다.
+lea 를 통해 RSP는 RBP의 갑인 0X000000F72F7CFA00에 C8을 더해 0X000000F72F7CFAC8가 된다.
+pop 을 통해 RDI는 0이고 RSP는 0X000000F72F7CFAD0이다
+pop 을 통해 RBP는  0X000000F72F7CFB00가 되고 RSP는 0X000000F72F7CFAD8
+
+----------------------------------------------------------------------------------------
+
+00007FF791FD18EA  mov         dword ptr [return_value],eax  
+
+call을 통해 복귀하고 이때 RSP는 0X000000F72F7CFAE0이다.
+mov를 통해 파라메터인 eax의 값을 return_value에 넣어준다
