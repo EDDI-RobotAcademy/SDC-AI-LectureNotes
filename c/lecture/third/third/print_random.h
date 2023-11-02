@@ -1,1 +1,1 @@
-void print_random_number(int count);
+void print_random_number(const int count);
