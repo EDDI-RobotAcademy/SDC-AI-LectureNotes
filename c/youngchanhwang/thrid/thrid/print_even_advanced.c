@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "print_even.h"
+#include "print_even_advanced.h"
 
 // EVEN_DECISION이 매크로 함수가 된 것입니다.
 // EVEN_DECISION(TARGET_NUMBER) 에서 TARGET_NUMBER 는 실제 함수처럼 입력이 되었습니다.

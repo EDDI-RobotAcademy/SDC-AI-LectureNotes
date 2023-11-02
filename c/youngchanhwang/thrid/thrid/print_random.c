@@ -22,4 +22,6 @@ void print_random_number(const int count)
 		// %3d => 3칸의 자리를 확보하기 위해 /안하면 숫자를 다 붙어있음
 		printf("%3d", generate_random(min, max));
 	}
+	printf("\n");
+
 }
