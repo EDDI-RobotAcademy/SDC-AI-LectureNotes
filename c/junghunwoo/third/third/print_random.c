@@ -18,7 +18,8 @@ void print_random_number(const int count)
 	for (loop = 0; loop < count; loop++)
 	{
 		// x % (MAX - MIN + 1) + MIN
-		printf("%3d", generate_random(10, 20));
+		printf("%3d", generate_random(min, max));
 	}
 
+	printf("\n");
 }

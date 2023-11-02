@@ -1,1 +1,1 @@
-int generate_random(const int, const int);
+int generate_random(int, int);
