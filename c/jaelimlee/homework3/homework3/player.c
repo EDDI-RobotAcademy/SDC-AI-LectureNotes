@@ -1,11 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <string.h>
-#include "player1.h"
+#include "player.h"
 
 
 char player_name[PLAYER_NAME_MAX];
 
-void set_player_name1(char name[])
+void set_player_name(char name[])
 {
 	const int player_name_length = strlen(name);
 
@@ -13,8 +13,8 @@ void set_player_name1(char name[])
 
 }
 
-void print_player_name1(void)
+void print_player_name(void)
 {
 	// %s는 문자열을 출력할 때 사용(문장 출력)
-	printf("사용자 이름은 %s\n", player_name);
+	printf("사용자 이름은: %s\n", player_name);
 }
