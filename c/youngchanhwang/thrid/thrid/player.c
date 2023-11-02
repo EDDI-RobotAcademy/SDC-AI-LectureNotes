@@ -5,7 +5,12 @@
 
 #include "player.h"
 
-
+// 배열을 만드는 방법
+// -> 변수 만드는 방법과 유사함
+// 1. 데이터 타입을 적습니다.
+// 2. 배열의 이름을 적습니다.
+// 3. 대괄호를 열고 배열의 개수를 적습니다.  ex) [PLAYER_NAME_MAX]
+// 4. 필요하다면 초기화를 하는데 우선은 배제합니다.
 char player_name[PLAYER_NAME_MAX];
 
 void set_player_name(char name[])
