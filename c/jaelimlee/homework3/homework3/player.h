@@ -1,4 +1,4 @@
-#define PLAYER_NAME_MAX		30
+#define PLAYER_NAME_MAX		32
 
 extern char player_name[PLAYER_NAME_MAX];
 
