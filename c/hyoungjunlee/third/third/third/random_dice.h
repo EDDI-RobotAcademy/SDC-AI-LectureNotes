@@ -1,0 +1,1 @@
+void random_dice(const int count);
