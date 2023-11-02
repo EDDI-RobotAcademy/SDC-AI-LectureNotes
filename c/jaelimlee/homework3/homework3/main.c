@@ -7,9 +7,11 @@
 
 int main(void)
 {
+	int dice1; 
+	int dice2;
 
-	char player1[PLAYER_NAME_MAX]; // 사용자1 
-	char player2[PLAYER_NAME_MAX]; // 사용자2
+	char player1;
+	char player2;
 
 	int dice1; // 사용자 1의 주사위
 	int dice2; // 사용자 2의 주사위
@@ -25,11 +27,7 @@ int main(void)
 	roll_dice();
 	dice1 = dice_number;
 	print_dice_number();
-
-	// 사용자2 정의
-	set_player_name("철수");
-	strcpy(player2, player_name);
-	print_player_name();
+	
 
 	// 사용자2 주사위
 	roll_dice();
@@ -39,9 +37,9 @@ int main(void)
 
 	if (dice1 > dice2)
 	{
-		printf("이긴 사람:%s", player1);
-	}
-
+		printf("이긴 사람은:%d", player1);
+	} 
+	
 	else if (dice2 > dice1)
 	{
 		printf("이긴 사람:%s", player2);
