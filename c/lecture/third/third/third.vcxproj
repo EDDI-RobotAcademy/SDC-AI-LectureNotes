@@ -129,9 +129,13 @@
   <ItemGroup>
     <ClCompile Include="print_even.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="print_even_advanced.c" />
+    <ClCompile Include="print_random.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="print_even.h" />
+    <ClInclude Include="print_even_advanced.h" />
+    <ClInclude Include="print_random.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
