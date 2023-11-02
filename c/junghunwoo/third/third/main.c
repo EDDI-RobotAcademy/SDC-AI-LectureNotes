@@ -16,6 +16,11 @@ int main(void)
 	const int dice_count = 3;
 	int loop_count = 0;
 
+	char player1_name;
+	char player2_name;
+	int player1_score = 0;
+	int player2_score = 0;
+
 	//시작과 끝의 짝수 값을 출력하는 함수
 	print_even_number_from_start_to_end(start, end);
 
@@ -52,6 +57,30 @@ int main(void)
 
 	set_player_name("Hello");
 	print_player_name();
+
+	set_player_name("alpha");
+	player1_name = player_name;
+	print_player_name();
+	set_player_name("beta");
+	player2_name = player_name;
+	print_player_name();
+
+	roll_dice();
+	player1_score = dice_number;
+
+	roll_dice();
+	player2_score = dice_number;
+
+
+	if (player1_score < player2_score)
+	{
+		printf("%d는 %d %d는 %d으로 %d가 이겼습니다.", player1_name, player1_score, player2_name, player2_score, player2_name);
+	}
+	else
+	{
+		printf("%s는 %d %s는 %d으로 %s가 이겼습니다.", player1_name, player1_score, player2_name, player2_score, player2_name);
+	}
+
 
 	return 0;
 }

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dice_game", "dice_game\dice_game.vcxproj", "{5B001A19-0A63-4861-B3B4-5C6B11C289B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B001A19-0A63-4861-B3B4-5C6B11C289B4}.Debug|x64.ActiveCfg = Debug|x64
+		{5B001A19-0A63-4861-B3B4-5C6B11C289B4}.Debug|x64.Build.0 = Debug|x64
+		{5B001A19-0A63-4861-B3B4-5C6B11C289B4}.Debug|x86.ActiveCfg = Debug|Win32
+		{5B001A19-0A63-4861-B3B4-5C6B11C289B4}.Debug|x86.Build.0 = Debug|Win32
+		{5B001A19-0A63-4861-B3B4-5C6B11C289B4}.Release|x64.ActiveCfg = Release|x64
+		{5B001A19-0A63-4861-B3B4-5C6B11C289B4}.Release|x64.Build.0 = Release|x64
+		{5B001A19-0A63-4861-B3B4-5C6B11C289B4}.Release|x86.ActiveCfg = Release|Win32
+		{5B001A19-0A63-4861-B3B4-5C6B11C289B4}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {965427FE-6E5B-4131-8242-FD173F9CA523}
+	EndGlobalSection
+EndGlobal
