@@ -25,6 +25,18 @@
     <Filter Include="소스 파일\game">
       <UniqueIdentifier>{32a1502b-21b2-4f58-a82b-4cf52d8077dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\game\dice">
+      <UniqueIdentifier>{46d69719-0d3d-438d-a95b-b2cf6f978bf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game\player">
+      <UniqueIdentifier>{824d3be4-d067-4ccc-acfc-49b70893200a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\dice">
+      <UniqueIdentifier>{1eeca42b-98bf-4419-b8fe-75c474b462b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\player">
+      <UniqueIdentifier>{30ead88a-fd63-4312-94e3-178925f926ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -43,13 +55,16 @@
       <Filter>소스 파일\utility</Filter>
     </ClCompile>
     <ClCompile Include="dice.c">
-      <Filter>소스 파일\game</Filter>
-    </ClCompile>
-    <ClCompile Include="dice_tournament.c">
-      <Filter>소스 파일\game</Filter>
+      <Filter>소스 파일\game\dice</Filter>
     </ClCompile>
     <ClCompile Include="dice_game.c">
-      <Filter>소스 파일\game</Filter>
+      <Filter>소스 파일\game\dice</Filter>
+    </ClCompile>
+    <ClCompile Include="dice_tournament.c">
+      <Filter>소스 파일\game\dice</Filter>
+    </ClCompile>
+    <ClCompile Include="player.c">
+      <Filter>소스 파일\game\player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,13 +84,16 @@
       <Filter>헤더 파일\utility</Filter>
     </ClInclude>
     <ClInclude Include="dice.h">
-      <Filter>헤더 파일\game</Filter>
-    </ClInclude>
-    <ClInclude Include="dice_tournament.h">
-      <Filter>헤더 파일\game</Filter>
+      <Filter>헤더 파일\game\dice</Filter>
     </ClInclude>
     <ClInclude Include="dice_game.h">
-      <Filter>헤더 파일\game</Filter>
+      <Filter>헤더 파일\game\dice</Filter>
+    </ClInclude>
+    <ClInclude Include="dice_tournament.h">
+      <Filter>헤더 파일\game\dice</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>헤더 파일\game\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
