@@ -21,9 +21,21 @@
     <ClCompile Include="print_even.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="print_even_advanced.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="print_random.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="print_even.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="print_even_advanced.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="print_random.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
