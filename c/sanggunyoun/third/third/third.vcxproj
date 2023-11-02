@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{1763e42c-2d53-4e5b-b915-6c68413b6926}</ProjectGuid>
+    <ProjectGuid>{b587f4d9-2218-4e8e-99de-49a1941ed51a}</ProjectGuid>
     <RootNamespace>third</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -127,15 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="dice_game.c" />
     <ClCompile Include="print_even.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="print_even_advanced.c" />
-    <ClCompile Include="print_random.c" />
+    <ClCompile Include="print_randon.c" />
     <ClCompile Include="random_generator.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dice_game.h" />
     <ClInclude Include="print_even.h" />
     <ClInclude Include="print_even_advanced.h" />
     <ClInclude Include="print_random.h" />
