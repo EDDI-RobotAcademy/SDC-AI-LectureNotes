@@ -3,7 +3,15 @@
 #include "player.h"
 
 // 데이터 타입 char (1byte) <- 문자 저장 가능
+// 배열을 만드는 방법
+// -> 변수 만드는 방법과 유사함
+// 1. 데이터 타입을 적는다.
+// 2. 배열의 이름을 적는다.
+// 3. 대괄호를 열고 배열의 개수를 적는다. ex) [PLAYER_NAME_MAX]
+// 4. 필요하다면 초기화를 하는데 우선은 배제한다.
 char player_name[PLAYER_NAME_MAX];
+char player1[PLAYER_NAME_MAX];
+char player2[PLAYER_NAME_MAX];
 
 void set_player_name(char name[])
 {
@@ -16,6 +24,18 @@ void set_player_name(char name[])
 
 	strncpy(player_name, name, player_name_length + 1);
 
+}
+
+void set_player1(char name[])
+{
+	const int player1_length = strlen(name);
+	strncpy(player1, name, player1_length + 1);
+}
+
+void set_player2(char name[])
+{
+	const int player2_length = strlen(name);
+	strncpy(player2, name, player2_length + 1);
 }
 
 void print_player_name(void)

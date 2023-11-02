@@ -60,6 +60,9 @@
     <ClCompile Include="player.c">
       <Filter>소스 파일\game\player</Filter>
     </ClCompile>
+    <ClCompile Include="dice_fight.c">
+      <Filter>소스 파일\game\dice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="print_even.h">

@@ -52,10 +52,10 @@ int main(void)
 
 		printf("³­ ±×³É Âî±Û·¡: %d\n", dice_number);
 	}
-	printf("\n");
 
-	set_player_name("¾È³ç");
+	set_player_name("hello");
 	print_player_name();
 
 	return 0;
+
 }
