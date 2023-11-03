@@ -37,6 +37,12 @@
     <Filter Include="헤더 파일\game\player">
       <UniqueIdentifier>{b8a848c7-3cb9-4e62-8058-7ef8474c0361}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\game\winner">
+      <UniqueIdentifier>{2cfdb323-b096-41ae-b81b-d0f9f3e7b39f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\winner">
+      <UniqueIdentifier>{aa7701ae-ef43-44c2-8468-52bde601116a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -51,6 +57,9 @@
     <ClCompile Include="random_generator.c">
       <Filter>소스 파일\utility</Filter>
     </ClCompile>
+    <ClCompile Include="win.c">
+      <Filter>소스 파일\game\winner</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="player.h">
@@ -62,5 +71,10 @@
     <ClInclude Include="random_generator.h">
       <Filter>헤더 파일\utility</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="win.h">
+      <Filter>헤더 파일\game\winner</Filter>
+    </None>
   </ItemGroup>
 </Project>
