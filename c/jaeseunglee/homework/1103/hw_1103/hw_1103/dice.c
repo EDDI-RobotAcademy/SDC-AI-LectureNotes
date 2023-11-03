@@ -2,6 +2,7 @@
 
 #include "random_generator.h"
 #include <stdio.h>
+#include "dice.h"
 
 int player_each_dice_number[MAX_PLAYER_NUMBER];
 int* player1_dice;
@@ -17,6 +18,7 @@ void roll_dice(int index)
 	player_each_dice_number[index] = generate_random(min, max);
 
 	print_dice_number(index);
+	check_even(player_each_dice_number[index], index);
 }
 
 void check_even(int number, int index)
@@ -34,6 +36,7 @@ void check_even(int number, int index)
 
 void roll_twice(int index)
 {
+	printf("\n");
 	int twice = generate_random(min, max);
 	if (twice == 2)
 	{
@@ -54,6 +57,8 @@ void roll_twice(int index)
 	{
 		printf("≤Œ¿‘¥œ¥Ÿ\n");
 	}
+
+	printf("\n");
 }
 
 void attack(int index)

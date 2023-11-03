@@ -15,8 +15,8 @@ char* player2;
 void set_player_info(char* name)
 {
 	int input_player_name_length = strlen(name);
-	strncpy(player[current_player_set_index++], name, input_player_name_length + 1);
-
+	strncpy(player[current_player_set_index], name, input_player_name_length + 1);
+	print_player_info(current_player_set_index++);
 }
 
 void print_player_info(int index)
@@ -26,7 +26,7 @@ void print_player_info(int index)
 
 }
 
-char* get_player_info(int index)
+char* get_player_info_from_index(int index)
 {
 	return player[index];
 }

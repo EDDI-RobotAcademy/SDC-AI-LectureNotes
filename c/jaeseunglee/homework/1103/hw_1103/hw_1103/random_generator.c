@@ -5,6 +5,7 @@
 
 void random_config(void)
 {
+	// NULL은 stdio.h에 정의되어있음
 	srand(time(NULL));
 }
 
