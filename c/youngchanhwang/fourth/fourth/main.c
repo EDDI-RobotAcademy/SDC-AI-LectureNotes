@@ -80,6 +80,7 @@ int main(void)
 	while (loop_count++ < FOR_TEST_DYNAMIC_ARRAY_COUNT)
 	{
 		put_one_integer_data(loop_count * 2);
+
 	}
 	print_integer_dynamic_array();
 
