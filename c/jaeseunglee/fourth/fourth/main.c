@@ -2,7 +2,7 @@
 #include "player.h"
 #include "dice_game.h"
 #include "win.h"
-
+#include "malloc.h"
  /*사용자 2명을 만들어서 각 사용자들의 이름을 지정하도록 구성합니다.
  각각의 사용자 2명의 주사위를 굴립니다.
  주사위를 굴려서 숫자가 큰 사람이 이겼다고 출력하도록 만들어봅시다.*/
@@ -14,9 +14,22 @@
 // 에자일(Agile) 방식을 사용하면 그때그때 만들 수 있음
 // [ 단 XP => eXtreme Programming 기법이 필요함 => 함수 포인터임]
 
+#define FOR_TEST_MALLOC_INTEGER 5
 
 int main(void)
 {
+	// 복습 할 때 test_array가 결국 
+	// malloc()을 통해 할당받은 메모리 공간임을 상기 할 것
+	int test_array[3] = { 1,2,3 };
+	int* test_pointer = test_array;
+	int i;
+	for (i=0;i<3;i++)
+	{
+		printf("포인터를 배열처럼 사용 할 수 있음 : %d\n", test_pointer[i]);
+	}
+	
+
+	int loop_count=0;
 	// Agile 방식을 따를 때 가장 중요한 것
 	// 세부 사항을 먼저 만들려고 하면 X
 	// 최상위 아젠다를 먼저 만들어야함
@@ -43,5 +56,17 @@ int main(void)
 	// 3. 승자를 체크합니다
 	check_winner(0,1);
 
+	// malloc test
+	// => 실제로 숫자 값(상수)를 직접 넣는 것은 권장되지 않음
+	create_int_dynamic_array(FOR_TEST_MALLOC_INTEGER);
+
+	while (loop_count++ < FOR_TEST_MALLOC_INTEGER)
+	{
+		put_one_integer_data(loop_count * 2);
+	}
+
+	print_integer_dynamic_array();
+	
+	
 	return 0;
 }

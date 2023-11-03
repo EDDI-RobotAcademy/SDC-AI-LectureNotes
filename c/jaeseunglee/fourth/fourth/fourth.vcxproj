@@ -130,12 +130,14 @@
   <ItemGroup>
     <ClCompile Include="dice_game.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="malloc.c" />
     <ClCompile Include="player.c" />
     <ClCompile Include="random_generator.c" />
     <ClCompile Include="win.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dice_game.h" />
+    <ClInclude Include="malloc.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="random_generator.h" />
     <ClInclude Include="win.h" />
