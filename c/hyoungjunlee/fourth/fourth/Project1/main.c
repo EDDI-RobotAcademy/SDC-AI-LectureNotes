@@ -3,6 +3,9 @@
 #include "dice_game.h"
 #include "random_generator.h"
 #include "win.h"
+#include "malloc_test.h"
+
+#define FOR_TEST_DYNAMIC_ARRAY_COUNT	5
 
 //Domain(주제) 분리하기
 //일단 현재 상황에서 필요하다 생각되는 것들을 나열함
@@ -27,9 +30,21 @@ int main(void)
 	// 
 	//현재 관점에서 최상위 아젠다는
 	// 1. 플레이어의 이름을 설정합니다
+
+	int  loop_count = 0;
 	set_player_info("first_player");
 	set_player_info("second_player");
 
+	int i;
+
+	//복습할 때 test_array가 결국 malloc을 통해 할당받은 메모리 공간이라는 것을 상기하세요
+	int test_array[3] = { 99,9,3 };
+	int* test_pointer = test_array;
+	for (i = 0; i < 3; i++)
+	{
+		//test_array[i] = i;
+		printf("포인터를 배열처럼 사용할 수 있음 %d\n", test_pointer[i]);
+	}
 	print_player_info(0);
 	print_player_info(1);
 	//2.각 플레이어들이 주사위를 굴립니다
@@ -43,5 +58,24 @@ int main(void)
 	//3. 굴린 주사위의 눈금을 보고 승자를 판정합니다.
 	check_winner(0,1);
 
+	//malloc test
+	// => 실제로 숫자값(상수)를 직접 때려 넣는 것은
+	// 별로 좋지 않습니다(예제라서 그냥 갑니다
+	create_int_dynamic_array(FOR_TEST_DYNAMIC_ARRAY_COUNT);
+
+	while (loop_count++< FOR_TEST_DYNAMIC_ARRAY_COUNT)
+	{
+		put_one_integer_data(loop_count * 2);
+	}
+
+	print_integer_dynamic_array();
+
+	/* 지역 변수는 특정 영역 '{'으로 끝나는 공간 내부에서만 사용할 수 있기 때문
+	   다르게 표현하자면 Stack에서만 사용할 수 있기 때문입니다
+	 */
+	/*test_local_variable();
+	printf("test_variable = %d\n", test_variable);*/
+
+	
 	return 0;
 }

@@ -37,6 +37,12 @@
     <Filter Include="헤더 파일\winner">
       <UniqueIdentifier>{ebb97724-3eba-48c8-8878-552444339b27}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\malloc_test">
+      <UniqueIdentifier>{9f15f9c3-fcb9-4b5b-a852-740b60eb421d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\malloc_test">
+      <UniqueIdentifier>{c635feea-b5c8-438a-8172-b77d420f454d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -51,8 +57,11 @@
     <ClCompile Include="random_generator.c">
       <Filter>소스 파일\utility</Filter>
     </ClCompile>
+    <ClCompile Include="malloc_test.c">
+      <Filter>소스 파일\malloc_test</Filter>
+    </ClCompile>
     <ClCompile Include="win.c">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\winner</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="win.h">
       <Filter>헤더 파일\winner</Filter>
+    </ClInclude>
+    <ClInclude Include="malloc_test.h">
+      <Filter>헤더 파일\malloc_test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

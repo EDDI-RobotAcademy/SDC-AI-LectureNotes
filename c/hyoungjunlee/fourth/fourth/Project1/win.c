@@ -5,14 +5,14 @@ void check_winner(const int index1, const int index2)
 {
 	if (player_each_dice_number[index1] > player_each_dice_number[index2])
 	{
-		printf("player ¹øÈ£ %d = %s ´ÔÀÌ ½Â¸® ÇÏ¼Ì½À´Ï´Ù!", index1,player[index1]);
+		printf("player ¹øÈ£ %d = %s ´ÔÀÌ ½Â¸® ÇÏ¼Ì½À´Ï´Ù!\n", index1,player[index1]);
 	}
 	else if (player_each_dice_number[index1] < player_each_dice_number[index2])
 	{
-		printf("player ¹øÈ£ %d = %s ´ÔÀÌ ½Â¸® ÇÏ¼Ì½À´Ï´Ù!", index2, player[index2]);
+		printf("player ¹øÈ£ %d = %s ´ÔÀÌ ½Â¸® ÇÏ¼Ì½À´Ï´Ù!\n", index2, player[index2]);
 	}
 	else
 	{
-		printf("¹«½ÂºÎÀÔ´Ï´Ù");
+		printf("¹«½ÂºÎÀÔ´Ï´Ù\n");
 	}
 }
