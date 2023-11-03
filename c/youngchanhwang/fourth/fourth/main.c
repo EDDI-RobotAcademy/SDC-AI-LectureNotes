@@ -23,7 +23,7 @@
 #include "win.h"
 #include "malloc_test.h"
 
-#define FOR_TEST_DYNAMIC_ARRAY_COUNT	5
+#define FOR_TEST_DYNAMIC_ARRAY_COUNT	8
 
 int main(void)
 {
@@ -38,6 +38,19 @@ int main(void)
 	//					그러나 프로그래밍에는 정답이 없음 (소설 쓰라는 이유)
 	
 	int loop_count = 0;
+	int i;
+
+	// 복습 할 때 test_array 가 결국 
+	// malloc()을 통해 할당 받은(Heap) 메모리 공간이라는 것을 상기하세요.
+	int test_array[3] = { 1,2,3 };
+	int* test_pointer = test_array;
+
+	char person_name[32] = "안녕하세요";
+
+	for (i = 0; i < 3; i++)
+	{
+		printf("포인터를 배열 처럼 사용 할 수 있음: %d\n", test_pointer[i]);
+	}
 
 	// 1. 플레이어 이름을 설정합니다.
 	set_player_info("first_player");
@@ -69,6 +82,14 @@ int main(void)
 		put_one_integer_data(loop_count * 2);
 	}
 	print_integer_dynamic_array();
+
+	/* 지역 변수는 특정영역 '{' 으로 시작해서 '}' 으로 끝나는 공간 내부에서만 사용할 수 있기때문
+	   다르게 표현하자면 Stack 에서만 사용 할 수 있기 때문입니다. */
+
+	create_char_dynamic_array(person_name);
+	set_name_to_char_dynamic_array(person_name);
+	print_char_dynamic_array();
+
 
 	return 0;
 }
