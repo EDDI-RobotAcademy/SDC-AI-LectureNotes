@@ -128,6 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="first.c" />
+    <ClCompile Include="fourth.c" />
+    <ClCompile Include="third.c" />
+    <ClCompile Include="second.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fourth.h" />
+    <ClInclude Include="third.h" />
+    <ClInclude Include="second.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
