@@ -76,6 +76,8 @@ int main(void)
 	set_player2("World");
 	dice_fight(player1,player2);
 
+	
+
 
 	printf("\n\n\n\n\n\n\n");
 	printf("asdfasdfasdf %s", set_name("aaaa"));
