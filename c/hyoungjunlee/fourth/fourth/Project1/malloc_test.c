@@ -1,5 +1,8 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
+#include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 #include "malloc_test.h"
 
 
@@ -12,6 +15,8 @@
 
 int* integer_dynamic_array;
 int  current_integer_dynamic_array_index;
+char* char_dynamic_array;
+int current_char_dynamic_array_index;
 
 void test_local_variable(void)
 {
@@ -65,8 +70,15 @@ void print_integer_dynamic_array(void)
 	printf("\n");
 }
 
-void create_char_dynamic_array()
+void create_char_dynamic_array(char *name)
 {
-
+	char_dynamic_array = (char*)malloc(sizeof(char) * strlen(name)+1);
 }
-
+void set_name_to_char_dynamic_array(char* name)
+{
+	strncpy(char_dynamic_array, name, strlen(name) + 1);
+}
+void print_char_dynamic_array(void)
+{
+	printf("char_dynamic_array = %s\n", char_dynamic_array);
+}
