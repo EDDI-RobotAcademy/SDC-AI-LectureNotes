@@ -33,9 +33,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dice_game.c">
-      <Filter>소스 파일\dice</Filter>
-    </ClCompile>
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -48,6 +45,9 @@
     <ClCompile Include="player.c">
       <Filter>소스 파일\player</Filter>
     </ClCompile>
+    <ClCompile Include="dice_game.c">
+      <Filter>소스 파일\dice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dice_game.h">
@@ -56,7 +56,7 @@
     <ClInclude Include="player.h">
       <Filter>헤더 파일\player</Filter>
     </ClInclude>
-    <ClInclude Include="random_geberator.h">
+    <ClInclude Include="random_generator.h">
       <Filter>헤더 파일\utility.h</Filter>
     </ClInclude>
     <ClInclude Include="print_random.h">

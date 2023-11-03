@@ -137,7 +137,7 @@
     <ClInclude Include="dice_game.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="print_random.h" />
-    <ClInclude Include="random_geberator.h" />
+    <ClInclude Include="random_generator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

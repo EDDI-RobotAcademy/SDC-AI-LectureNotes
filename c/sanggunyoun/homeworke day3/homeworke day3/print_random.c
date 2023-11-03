@@ -12,11 +12,5 @@ void print_random_number(const int count)
 
 
 
-	printf("10~20사이의 랜덤 번호 출력: \n");
-	for (loop = 0; loop < count; loop++)
-	{
-		
-		printf("%3d", generate_random(min, max));
-	}
-	printf("\n");
+	
 }
