@@ -43,6 +43,12 @@
     <Filter Include="소스 파일\utility">
       <UniqueIdentifier>{545f4b15-b507-4c3e-8261-e74211eaee81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\mallocr_test">
+      <UniqueIdentifier>{32888c75-b4ec-46b9-ac34-913b7c6704d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\mallocr_test">
+      <UniqueIdentifier>{03f77aa8-f3e9-43a3-bb4f-93ef5c628e70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -60,6 +66,9 @@
     <ClCompile Include="win.c">
       <Filter>소스 파일\game\winner</Filter>
     </ClCompile>
+    <ClCompile Include="malloc_test.c">
+      <Filter>소스 파일\mallocr_test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="player.h">
@@ -73,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="win.h">
       <Filter>헤더 파일\game\winner</Filter>
+    </ClInclude>
+    <ClInclude Include="malloc_test.h">
+      <Filter>헤더 파일\mallocr_test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

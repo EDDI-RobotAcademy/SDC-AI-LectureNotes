@@ -18,6 +18,9 @@
 #include "dice_game.h"
 #include "random_generator.h"
 #include "win.h"
+#include "malloc_test.h"
+
+#define FOR_TEST_DYNAMIC_ARRAY_COUNT			8
 
 int main(void)
 {
@@ -31,6 +34,8 @@ int main(void)
 	//					그러다 보니 x^2을 적분 했을 때 1/3 x^3 이 나와야 한다라는 명확한 답을 원함
 	//					그러나 프로그래밍에는 정답이 없음 (소설 쓰라는 이유)
 	// 1. 플레이어 이름을 성정합니다.
+	int loop_count = 0;
+
 	set_player_info("first_player");
 	set_player_info("second_player");
 
@@ -49,6 +54,18 @@ int main(void)
 
 	// 3. 굴린 주사위의 눈금을 보고 승자를 판정합니다.
 	check_winner(0, 1);
+
+	//malloc test
+	// => 실제로 숫자 값(상수)를 직접 때려 넣는 것은
+	//    별로 좋지 않습니다(예제라 그냥 갑니다.)
+	creat_int_dynamic_array(FOR_TEST_DYNAMIC_ARRAY_COUNT);
+
+	while (loop_count++ < FOR_TEST_DYNAMIC_ARRAY_COUNT)
+	{
+		put_one_integer_data(loop_count * 2);
+	}
+
+	print_integer_dynamic_array();
 
 	return 0;
 }
