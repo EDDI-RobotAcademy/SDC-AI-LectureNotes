@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dice_fight.c" />
     <ClCompile Include="dice_game.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="malloc.c" />
@@ -136,6 +137,7 @@
     <ClCompile Include="win.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dice_fight.h" />
     <ClInclude Include="dice_game.h" />
     <ClInclude Include="malloc.h" />
     <ClInclude Include="player.h" />

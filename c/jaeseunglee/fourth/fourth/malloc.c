@@ -1,6 +1,8 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "malloc.h"
 #include <stdlib.h>
-
+#include <string.h>
 #include <stdio.h>
 
 
@@ -11,6 +13,9 @@
 // int와 int *가 존재한다면 두개는 서로 다른 '데이터 타입'이다
 int* integer_dynamic_array;
 int current_integer_dynamic_array_index;
+
+char* char_dynamic_array;
+int current_char_dynamic_array_index;
 
 
 void create_int_dynamic_array(int count)
@@ -63,8 +68,27 @@ void print_integer_dynamic_array()
 	printf("\n");
 }
 
-void create_char_dynamic_array()
+void create_char_dynamic_array(char* name)
 {
-
+	// malloc 앞 부분에 (char*) 혹은 (int*)형태로 붙는 것을
+	// 강제 캐스팅이라고 함
+	// 실제 malloc의 리턴 타입은 void* 이기 때문에 변경해주어야 한다.
+	// void* -> 자바의 obj와 같이 아무거나 받을 수 있는 상태
+	// 가독성 이슈가 있기에 권장되지는 않음
+	char_dynamic_array = (char*)malloc(sizeof(char) * (strlen(name) + 1));
 }
 
+void set_name_to_char_dynamic_array(char* name)
+{
+	strncpy(char_dynamic_array, name, strlen(name) + 1);
+}
+
+void print_char_dynamic_array()
+{
+	printf("char_dynamic_array = %s\n", char_dynamic_array);
+}
+
+char* return_string(char* name)
+{
+	return name;
+}

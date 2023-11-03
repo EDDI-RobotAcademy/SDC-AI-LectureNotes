@@ -22,14 +22,18 @@ int main(void)
 	// malloc()을 통해 할당받은 메모리 공간임을 상기 할 것
 	int test_array[3] = { 1,2,3 };
 	int* test_pointer = test_array;
+
+	char person_name[32] = "안녕하세요";
+
 	int i;
 	for (i=0;i<3;i++)
 	{
 		printf("포인터를 배열처럼 사용 할 수 있음 : %d\n", test_pointer[i]);
 	}
 	
-
+	printf(return_string("123123123"));
 	int loop_count=0;
+
 	// Agile 방식을 따를 때 가장 중요한 것
 	// 세부 사항을 먼저 만들려고 하면 X
 	// 최상위 아젠다를 먼저 만들어야함
@@ -67,6 +71,9 @@ int main(void)
 
 	print_integer_dynamic_array();
 	
+	create_char_dynamic_array(person_name);
+	set_name_to_char_dynamic_array(person_name);
+	print_char_dynamic_array();
 	
 	return 0;
 }

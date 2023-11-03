@@ -69,6 +69,9 @@
     <ClCompile Include="malloc.c">
       <Filter>소스 파일\malloc_test</Filter>
     </ClCompile>
+    <ClCompile Include="dice_fight.c">
+      <Filter>소스 파일\game\dice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="player.h">
@@ -85,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="malloc.h">
       <Filter>헤더 파일\malloc_test</Filter>
+    </ClInclude>
+    <ClInclude Include="dice_fight.h">
+      <Filter>헤더 파일\game\dice</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
