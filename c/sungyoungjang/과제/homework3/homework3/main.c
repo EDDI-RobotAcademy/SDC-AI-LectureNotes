@@ -12,8 +12,8 @@ int dice() {
 int main() {
 	srand(time(NULL));
 
-	char player1[32] = "유비";
-	char player2[32] = "조조";
+	char player1 = "유비";
+	char player2 = "조조";
 
 	int player1dice = dice();
 	printf("유비의 주사위는 %d\n", player1dice);
@@ -26,6 +26,10 @@ int main() {
 	}
 	if (player1dice > player2dice) {
 		printf("유비의 승리\n");
+
+	}
+	if (player1dice == player2dice) {
+		printf("무승부입니다.");
 
 	}
 }
