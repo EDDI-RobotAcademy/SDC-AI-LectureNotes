@@ -16,7 +16,7 @@
 // 주사위
 
 #include "player.h"
-//#include "dice.h"
+#include "dice_game.h"
 //#include "winner.h"
 
 int main(void)
@@ -38,8 +38,14 @@ int main(void)
 	print_player_info(1);
 
 	// 2. 각 플레이어들이 주사위를 굴림
-	//roll_dice(first_player);
+	//roll_dice(first_player)
 	//roll_dice(second_player);
+	random_config();
+	roll_dice(0);
+	roll_dice(1);
+
+	print_dice_number(0);
+	print_dice_number(1);
 
 	// 3. 굴린 주사위의 눈금을 보고 승자를 판정
 	//check_winner();
