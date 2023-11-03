@@ -5,7 +5,7 @@
    주사위를 굴려서 숫자가 큰 사람이 이겼다고 출력하도록 만들기
 */
 
-// Domin (주제) 분리하기
+// Domain (주제) 분리하기
 // 일단 현재 상황에서 필요하다 생각되는 것들을 나열함
 // 진행하면서 이런 것들이 더 필요할 것 같은데? 하면 추가
 // 즉 폭포수 설계(Waterfall)로 가면 미리 와꾸 다 만들어놔야 하는데 비해
@@ -19,6 +19,9 @@
 #include "dice_game.h"
 #include "random_generator.h"
 #include "win.h"
+#include "malloc_test.h"
+
+#define FOR_TEST_DYNAMIC_ARRAY_COUNT		8
 
 int main(void)
 {
@@ -32,6 +35,7 @@ int main(void)
 	//				그러다 보니 X^2을 적분했을 때 1/3 x^3이 나와야 한다라는 명확한 답을 원함
 	//				그러나 프로그래밍에는 정답이 없음
 	// 1. 플레이어 이름 설정
+	int loop_count = 0;
 	set_player_info("first_player");
 	set_player_info("second_player");
 
@@ -50,6 +54,17 @@ int main(void)
 
 	// 3. 굴린 주사위의 눈금을 보고 승자를 판정
 	check_winner(0, 1);
+
+	// malloc test
+	// -> 실제로 숫자 값(상수)을 직접 넣는 것은 별로 좋지 X
+	create_int_dynamic_array(FOR_TEST_DYNAMIC_ARRAY_COUNT);
+
+	while (loop_count++ < FOR_TEST_DYNAMIC_ARRAY_COUNT)
+	{
+		put_one_integer_data(loop_count * 2);
+	}
+
+	print_integer_dynamic_array();
 
 	return 0;
 }
