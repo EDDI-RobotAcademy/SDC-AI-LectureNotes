@@ -69,6 +69,8 @@ void print_integer_dynamic_array(void)
 
 void create_char_dynamic_array(char *name)
 {
+	// malloc 앞 부분에 (char *) 혹은 (int *) 형태로 붙어 있는 정보가 있음
+	// 이것은 강제 캐스팅인데 실제 malloc의 리턴 타입은 void * 이기 때문임.
 	char_dynamic_array = (char*)malloc(sizeof(char) * (strlen(name) +1));
 }
 
