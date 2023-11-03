@@ -11,3 +11,8 @@ int generate_random_player2(int min, int max)
 {
 	return rand() % (max - min + 1) + min;
 }
+
+int generate_random(int min, int max)
+{
+	return rand() % (max - min + 1) + min;
+}

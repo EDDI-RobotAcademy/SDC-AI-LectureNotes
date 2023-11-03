@@ -27,6 +27,9 @@
     <ClCompile Include="random_gnerator.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="dice_fight_test.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dice_fight.h">
