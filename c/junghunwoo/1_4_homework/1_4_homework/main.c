@@ -27,18 +27,12 @@
 
 int main(void) {
 	int loop_count = 0;
-	//Agile 방식을 따를 떄 가장 중요한 것
-	// 세부 사항을 먼저 만들려고 하면 망합니다.
-	// 최상위 아젠다를 먼저 만들어야 합니다.
-
-		//현재 관점에서 최상위 아젠다는 아래와 같습니다.
-		// 결론적으로 소설을 쓰면 됩니다.
-		// 주의 할 사항 => 이과인 경우 답이 정해지길 원하는 경향이 있음 (나 포함)
-		// 그러다 보니 x^2을 적분 했을 때 1/3 x^3 이 나와야 한다라는 명확한 답을 원함
-		// 그러나 프로그래밍에는 정답이 없음 (소설 쓰라는 이유)
-		// 
+	
 		// 1. 플레이어 이름을 설정합니다.
 	int i;
+
+	int player1_score = 0;
+	int player2_score = 0;
 
 	//복습 할 떄 test_array가 결국
 	//malloc()을 통해 할당 받은 메모리 공간이라는 것을 상기하세요.
@@ -82,11 +76,7 @@ int main(void) {
 	}
 
 	print_integer_dynamic_array();
-	/* 지역변수는 특정 영역 '{' 으로 시작해서 '}'으로 끝난느 공간 내부에서만 사용할 수 있기 때문에
-	*  다르게 표현하자면
-	test_local_variable();
-	printf("test_variable = %d\n", test_variable);
-	*/
+
 
 	create_char_dynamic_array(person_name);
 	set_name_to_char_dynamic_array(person_name);
