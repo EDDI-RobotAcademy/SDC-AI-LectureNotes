@@ -17,7 +17,7 @@ int main(void)
 	int loop_count = 0;
 
 	char player1_name[PLAYER_NAME_MAX] = "alpha";
-	char player2_name[PLAYER_NAME_MAX] = "beta";;
+	char player2_name[PLAYER_NAME_MAX] = "beta";
 	int player1_score = 0;
 	int player2_score = 0;
 
@@ -58,6 +58,7 @@ int main(void)
 	set_player_name("Hello");
 	print_player_name();
 
+	printf("\n");
 
 	set_player_name("alpha");
 	print_player_name();
@@ -74,7 +75,7 @@ int main(void)
 
 	if (player1_score < player2_score)
 	{
-		printf("%d는 %d %d는 %d으로 %d가 이겼습니다.", player1_name, player1_score, player2_name, player2_score, player2_name);
+		printf("%s는 %d %s는 %d으로 %s가 이겼습니다.", player1_name, player1_score, player2_name, player2_score, player2_name);
 	}
 	else if(player1_score > player2_score)
 	{
