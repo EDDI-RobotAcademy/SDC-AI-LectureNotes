@@ -13,69 +13,72 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\player">
-      <UniqueIdentifier>{eacaf994-acf8-48ea-8679-d6d27d88cf31}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\dice">
-      <UniqueIdentifier>{ae2caacf-846b-45da-802b-706a0a860453}</UniqueIdentifier>
+    <Filter Include="소스 파일\utility">
+      <UniqueIdentifier>{d000966e-3b89-4da5-900b-302019bc1ae9}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\dice">
-      <UniqueIdentifier>{7d8332ce-696f-4ee1-a249-f8d5ad4cb0c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\utility">
-      <UniqueIdentifier>{0199a177-2550-43f8-ad6d-fe854ad760bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\utility">
-      <UniqueIdentifier>{81566890-5616-4c7d-8589-45332cb9057b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\winner">
-      <UniqueIdentifier>{bd0127a6-cbe4-48cf-9820-3fdb749df643}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\winner">
-      <UniqueIdentifier>{11f2672e-fa8b-451c-8017-a094b13d27c9}</UniqueIdentifier>
+      <UniqueIdentifier>{5773ff77-f0f6-49e7-bc4f-61efcf04b87f}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\malloc_test">
-      <UniqueIdentifier>{e25a9834-77c9-4344-8db2-8db3055f68b1}</UniqueIdentifier>
+      <UniqueIdentifier>{29388565-1768-48ef-b2ff-adfe43dcb4a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\winner">
+      <UniqueIdentifier>{cb1dd564-4661-4c95-977f-534dcbc840de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\player">
+      <UniqueIdentifier>{c671d221-12df-4c03-9a6e-e6370071a1b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\dice">
+      <UniqueIdentifier>{32ea5d55-fbbd-45fe-9f54-7637d4b787ff}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\malloc_test">
-      <UniqueIdentifier>{846daafa-c141-4b79-870c-f496156ff287}</UniqueIdentifier>
+      <UniqueIdentifier>{d27465ce-8273-4c35-94b9-24d65ea2781f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\winner">
+      <UniqueIdentifier>{7ea06ea5-0096-4349-b9a5-1255bee5a3dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\utility">
+      <UniqueIdentifier>{c6d519dc-0ecf-451d-965b-2c125d139ad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\player">
+      <UniqueIdentifier>{037e11a2-2c1a-4031-bced-bcfec4f75963}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="player.c">
-      <Filter>소스 파일\player</Filter>
-    </ClCompile>
     <ClCompile Include="dice_game.c">
       <Filter>소스 파일\dice</Filter>
     </ClCompile>
-    <ClCompile Include="win.c">
-      <Filter>소스 파일\winner</Filter>
-    </ClCompile>
-    <ClCompile Include="malloc_test.c">
+    <ClCompile Include="malloc_test..c">
       <Filter>소스 파일\malloc_test</Filter>
+    </ClCompile>
+    <ClCompile Include="player.c">
+      <Filter>소스 파일\player</Filter>
     </ClCompile>
     <ClCompile Include="random_generator.c">
       <Filter>소스 파일\utility</Filter>
     </ClCompile>
+    <ClCompile Include="win.c">
+      <Filter>소스 파일\winner</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="player.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="dice_game.h">
       <Filter>헤더 파일\dice</Filter>
     </ClInclude>
-    <ClInclude Include="random_generator.h">
-      <Filter>헤더 파일\utility</Filter>
+    <ClInclude Include="malloc_test.h">
+      <Filter>헤더 파일\malloc_test</Filter>
     </ClInclude>
     <ClInclude Include="win.h">
       <Filter>헤더 파일\winner</Filter>
     </ClInclude>
-    <ClInclude Include="malloc_test.h">
-      <Filter>헤더 파일\malloc_test</Filter>
+    <ClInclude Include="random_generator.h">
+      <Filter>헤더 파일\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>헤더 파일\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

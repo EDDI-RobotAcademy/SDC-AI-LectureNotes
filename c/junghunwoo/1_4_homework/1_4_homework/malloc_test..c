@@ -11,7 +11,7 @@
 // 보편적으로 int의 '*'을 별개로 생각한는 경향이 존재합니다.
 // 그러나 포인터에서는 'int *'이 데이터 타입입니다.
 // 'int'와 'int*'이 존재한다면 두 개는 서로 다른 '데이터타입'입니다.
-int *integer_dynamic_array;
+int* integer_dynamic_array;
 int current_integer_dynamic_array_index;
 
 char* char_dynamic_array;
@@ -50,7 +50,7 @@ void create_int_dynamic_array(int count)
 	// 여기서 5는 main에 있는 #define FOR_TEST_DYNAMIC_ARRAY_COUNT		5 에 5를 나타낸다 즉 수정이 가능합니다.
 	// 즉 이러한 형태로 코드를 작성하면
 	// int arr[count]형태로 배열을 만들 수 있습니다
-	integer_dynamic_array = (int *)malloc(sizeof(int) * count);
+	integer_dynamic_array = (int*)malloc(sizeof(int) * count);
 }
 
 bool put_one_integer_data(int data)
@@ -75,7 +75,7 @@ void create_char_dynamic_array(char* name)
 {
 	// malloc 앞 부분에 (char *) 혹은 (int *) 형태로 붙어 있는 정보가 있습니다.
 	// 이것은 강제 캐스팅인데 실제 malloc의 리턴 타입은 void*이기 떄문에 그렇습니다.
-	char_dynamic_array = (char*)malloc(sizeof(char) * (strlen(name)+1));
+	char_dynamic_array = (char*)malloc(sizeof(char) * (strlen(name) + 1));
 }
 
 void set_name_to_char_dynamic_array(char* name)
