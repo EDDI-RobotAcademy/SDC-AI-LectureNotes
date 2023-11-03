@@ -16,9 +16,7 @@ void set_player_name(char name[])
 void print_player_name(void)
 {
 	// %s는 문자열을 출력할 때 사용(문장 출력)
-<<<<<<< HEAD
+
 	printf("사용자 이름은: %s\n", player_name);
-=======
-	printf("사용자 이름: %s\n", player_name);
->>>>>>> ff1371bda160b8833fb064d2b66a1bd8bbf7e7fb
+
 }
