@@ -127,11 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dice_game.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="player.c" />
+    <ClCompile Include="random_generator.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dice_game.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="random_generator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
