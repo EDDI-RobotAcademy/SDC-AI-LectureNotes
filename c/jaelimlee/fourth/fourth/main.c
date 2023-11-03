@@ -17,6 +17,7 @@
 
 #include "player.h"
 #include "dice_game.h"
+#include "random_generator.h"
 //#include "winner.h"
 
 int main(void)
