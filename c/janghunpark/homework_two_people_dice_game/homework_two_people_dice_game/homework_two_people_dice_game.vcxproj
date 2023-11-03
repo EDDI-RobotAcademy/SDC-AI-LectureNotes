@@ -131,6 +131,7 @@
     <ClCompile Include="generate_random.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="player.c" />
+    <ClCompile Include="sub.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dice_game.h" />

@@ -5,16 +5,25 @@
 #define MIN		1
 #define MAX		6
 
-int dice_number = 0;
-int roll_time = 0;
+int dice_number1 = 0;
+int dice_number2 = 0;
 
-void roll_dice(void)
+void roll_dice1(void)
 {
-	dice_number = generate_random(MIN, MAX);
+	dice_number1 = generate_random1(MIN, MAX);
 }
 
-void print_dice_number(void)
+void print_dice_number1(void)
 {
-	for 
-	printf("%d\n", dice_number);
+	printf("%d\n", dice_number1);
+}
+
+void roll_dice2(void)
+{
+	dice_number2 = generate_random2(MIN, MAX);
+}
+
+void print_dice_number2(void)
+{
+	printf("%d\n", dice_number2);
 }

@@ -6,17 +6,15 @@
 
 int main(void)
 {
-	int player_count = 0;
+	set_player_name1("hello");
+	print_player_name1();
+	roll_dice1();
+	print_dice_number1();
 
-	set_player_name("hello");
-	print_player_name();
-	roll_dice();
-	print_dice_number();
-
-	set_player_name("goodbye");
-	print_player_name();
-	roll_dice();
-	print_dice_number();
+	set_player_name2("goodbye");
+	print_player_name2();
+	roll_dice2();
+	print_dice_number2();
 
 	return 0;
 }

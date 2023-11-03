@@ -51,6 +51,9 @@
     <ClCompile Include="dice_game.c">
       <Filter>소스 파일\game\dice</Filter>
     </ClCompile>
+    <ClCompile Include="sub.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="generate_random.h">
