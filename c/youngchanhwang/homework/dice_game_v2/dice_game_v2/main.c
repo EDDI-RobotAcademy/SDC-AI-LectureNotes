@@ -3,10 +3,8 @@
 #include "player.h"
 #include "dice_game.h"
 #include "random_generator.h"
-
-
 #include "random_generator.h"
-
+#include "result.h"
 
 #define PLAYER_COUNT		2
 
@@ -32,16 +30,20 @@ int main(void)
 		roll_dice(index);
 		print_dice_number(index);
 	}
-
+	printf("\n");
 	// 두번째 주사위
 	for (index = 0; index < PLAYER_COUNT; index++) 
 	{
 		roll_dice_second(index);
+	}
+	for (index = 0; index < PLAYER_COUNT; index++)
+	{
 		print_dice_number(index);
 	}
 	// 결과
 
-	//check_winner();
+	result(0, 1);
+
 
 
 }
