@@ -37,6 +37,18 @@
     <Filter Include="헤더 파일\game\player">
       <UniqueIdentifier>{3a0c3e92-93f5-463c-83db-057e0156907d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\game\skill">
+      <UniqueIdentifier>{4558d69d-ffbf-4c89-93cf-210a51860a2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\skill">
+      <UniqueIdentifier>{08ef7a39-0a43-4942-a98f-1d7dbe324b4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game\result">
+      <UniqueIdentifier>{bb53278d-e97f-4afc-95f5-d28a0d5930e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\result">
+      <UniqueIdentifier>{6092e492-9b80-4296-bff9-f1206ef1ed47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -51,6 +63,12 @@
     <ClCompile Include="player.c">
       <Filter>소스 파일\game\player</Filter>
     </ClCompile>
+    <ClCompile Include="dice_skill.c">
+      <Filter>소스 파일\game\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="result.c">
+      <Filter>소스 파일\game\result</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="random_generator.h">
@@ -61,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="player.h">
       <Filter>헤더 파일\game\player</Filter>
+    </ClInclude>
+    <ClInclude Include="dice_skill.h">
+      <Filter>헤더 파일\game\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="result.h">
+      <Filter>헤더 파일\game\result</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

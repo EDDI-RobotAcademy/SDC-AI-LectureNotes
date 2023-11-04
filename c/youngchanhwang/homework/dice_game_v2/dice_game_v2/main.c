@@ -39,9 +39,6 @@ int main(void)
 		roll_dice_second(index);
 		print_dice_number(index);
 	}
-	// 스킬설정 추가해야함
-
-
 	// 결과
 
 	//check_winner();
