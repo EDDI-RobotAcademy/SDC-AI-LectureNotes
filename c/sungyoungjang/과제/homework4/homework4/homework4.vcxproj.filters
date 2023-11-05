@@ -39,6 +39,9 @@
     <ClCompile Include="random_gen.c">
       <Filter>소스 파일\utility</Filter>
     </ClCompile>
+    <ClCompile Include="skill.c">
+      <Filter>소스 파일\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dice.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="random_gen.h">
       <Filter>헤더 파일\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="skill.h">
+      <Filter>헤더 파일\game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

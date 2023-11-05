@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "skill.h"
+
 
 int main(void) 
 {
@@ -13,40 +15,32 @@ int main(void)
 	roll_dice(0);
 	roll_dice(1);
 
-	print_dice_number(0);
-	print_dice_number(1);
+	int player1 = print_dice_number(0);
+	int player2 = print_dice_number(1);
 
-	int player1dice = print_dice_number(0);
-	int player2dice = print_dice_number(1);
+	int* player_scores[] = {2};
 
+	skill(0, player1, player_scores);
+	skill(1, player2, player_scores);
 
-}
+	printf("플레이어 1의 현재 점수: %d\n", player_scores[0]);
+	printf("플레이어 2의 현재 점수: %d\n", player_scores[1]);
 
-
-
-
-/*int main() {
 	
 
-	char player1 = "유비";
-	char player2 = "조조";
-
-	int player1dice = dice();
-	printf("유비의 주사위는 %d\n", player1dice);
-
-	int player2dice = dice();
-	printf("쬬의 주사위는 %d\n", player2dice);
-
-	if (player1dice < player2dice) {
-		printf("쬬의 승리\n");
+	if (player_scores[0] > player_scores[1])
+	{
+		printf("플레이어 1이 승리했습니다!\n");
 	}
-	if (player1dice > player2dice) {
-		printf("유비의 승리\n");
-
+	else if (player_scores[0] < player_scores[1]) 
+	{
+		printf("플레이어 2가 승리했습니다!\n");
 	}
-	if (player1dice == player2dice) {
-		printf("무승부입니다.");
-
+	else
+	{
+		printf("무승부입니다!\n");
 	}
+	
+	return 0;
 }
-*/
+

@@ -131,11 +131,13 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="player.c" />
     <ClCompile Include="random_gen.c" />
+    <ClCompile Include="skill.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dice.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="random_gen.h" />
+    <ClInclude Include="skill.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
