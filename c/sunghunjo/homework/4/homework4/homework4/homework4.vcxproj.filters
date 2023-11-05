@@ -31,17 +31,23 @@
     <Filter Include="소스 파일\game\dice">
       <UniqueIdentifier>{f7c8ffa9-df91-44fd-bf48-7cf0f6b8c9e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\game\skill">
-      <UniqueIdentifier>{80d32c27-6365-4321-a4a7-461e0e05c1a0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\game\dice">
       <UniqueIdentifier>{d10f3e0e-467c-4628-b584-1b881a45e65a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\game\skill">
-      <UniqueIdentifier>{6dd86942-72ab-4e9a-a47c-b3737fd542fb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\game\player">
       <UniqueIdentifier>{7babdacc-8ea0-4050-9a8e-7f6ea59cca4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\attack">
+      <UniqueIdentifier>{32143d63-3088-4f64-92f6-87d707d651e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game\attack">
+      <UniqueIdentifier>{37f09128-9de9-4d29-b034-154032c9ccdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game\winner">
+      <UniqueIdentifier>{e4edfc21-953c-4746-9e32-e607790ef731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\winner">
+      <UniqueIdentifier>{9ab88aa0-3af8-4253-aeb6-dc4bda6bf149}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,17 +57,17 @@
     <ClCompile Include="dice.c">
       <Filter>소스 파일\game\dice</Filter>
     </ClCompile>
-    <ClCompile Include="skill.c">
-      <Filter>소스 파일\game\skill</Filter>
-    </ClCompile>
     <ClCompile Include="random_generator.c">
-      <Filter>소스 파일\utility</Filter>
-    </ClCompile>
-    <ClCompile Include="malloc.c">
       <Filter>소스 파일\utility</Filter>
     </ClCompile>
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="player_attack.c">
+      <Filter>소스 파일\game\attack</Filter>
+    </ClCompile>
+    <ClCompile Include="win.c">
+      <Filter>소스 파일\game\winner</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,14 +77,14 @@
     <ClInclude Include="player.h">
       <Filter>헤더 파일\game\player</Filter>
     </ClInclude>
-    <ClInclude Include="skill.h">
-      <Filter>헤더 파일\game\skill</Filter>
-    </ClInclude>
     <ClInclude Include="random_generator.h">
       <Filter>헤더 파일\utility</Filter>
     </ClInclude>
-    <ClInclude Include="malloc.h">
-      <Filter>헤더 파일\utility</Filter>
+    <ClInclude Include="player_attack.h">
+      <Filter>헤더 파일\game\attack</Filter>
+    </ClInclude>
+    <ClInclude Include="win.h">
+      <Filter>헤더 파일\game\winner</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

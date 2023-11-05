@@ -129,17 +129,17 @@
   <ItemGroup>
     <ClCompile Include="dice.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="malloc.c" />
     <ClCompile Include="player.c" />
+    <ClCompile Include="player_attack.c" />
     <ClCompile Include="random_generator.c" />
-    <ClCompile Include="skill.c" />
+    <ClCompile Include="win.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dice.h" />
-    <ClInclude Include="malloc.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="player_attack.h" />
     <ClInclude Include="random_generator.h" />
-    <ClInclude Include="skill.h" />
+    <ClInclude Include="win.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,6 +3,8 @@
 #include "player.h"
 #include "dice.h"
 #include "skill.h"
+#include "random_generator.h"
+#include "win.h"
 
 // player정하기(? 명)2명
 // player 이름을 만듬 malloc으로 player[]에 공간을 만들어서 이름을 저장함
@@ -27,11 +29,24 @@
 
 int main(void)
 {
-	char* player_name= "철수";
-	char* player_name2 = "영희";
+	set_player_info("철수");
+	set_player_info("영희");
 
+	print_player_info(0);
+	print_player_info(1);
 
+	random_config();
+	roll_dice(0);
+	roll_dice(1);
 
+	printf("\n");
+
+	print_dice_number(0);
+	print_dice_number(1);
+
+	printf("\n");
+
+	check_winner(0, 1);
 
 	return 0;
 }
