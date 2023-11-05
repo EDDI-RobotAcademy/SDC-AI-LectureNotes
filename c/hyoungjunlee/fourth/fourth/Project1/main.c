@@ -4,7 +4,7 @@
 #include "random_generator.h"
 #include "win.h"
 #include "malloc_test.h"
-
+#define FOR_TEST_DYNAMIC_ARRAY_COUNT	5
 
 
 //Domain(주제) 분리하기
@@ -34,7 +34,7 @@ int main(void)
 	int  loop_count = 0;
 	set_player_info("first_player");
 	set_player_info("second_player");
-#define FOR_TEST_DYNAMIC_ARRAY_COUNT	5
+
 	int i;
 
 	//복습할 때 test_array가 결국 malloc을 통해 할당받은 메모리 공간이라는 것을 상기하세요
@@ -82,6 +82,9 @@ int main(void)
 	create_char_dynamic_array(person_name);
 	set_name_to_char_dynamic_array(person_name);
 	print_char_dynamic_array();
+
+	
+	
 	
 	return 0;
 }

@@ -76,7 +76,7 @@ void create_char_dynamic_array(char *name)
 }
 void set_name_to_char_dynamic_array(char* name)
 {
-	strncpy(char_dynamic_array, name, strlen(name) + 1);
+	strncpy(char_dynamic_array, name, strlen(name)+1);
 }
 void print_char_dynamic_array(void)
 {
