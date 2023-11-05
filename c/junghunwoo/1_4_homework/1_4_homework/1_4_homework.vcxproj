@@ -132,6 +132,7 @@
     <ClCompile Include="malloc_test..c" />
     <ClCompile Include="player.c" />
     <ClCompile Include="random_generator.c" />
+    <ClCompile Include="second_dice.c" />
     <ClCompile Include="win.c" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="malloc_test.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="random_generator.h" />
+    <ClInclude Include="second_dice.h" />
     <ClInclude Include="win.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

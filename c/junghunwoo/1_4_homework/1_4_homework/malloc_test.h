@@ -3,6 +3,8 @@
 extern int* integer_dynamic_array;
 extern char* char_dynamic_array;
 
+extern int* dice_game_score;
+
 void test_local_variable(void);
 
 void create_int_dynamic_array(int count);

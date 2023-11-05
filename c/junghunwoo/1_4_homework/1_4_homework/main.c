@@ -3,6 +3,21 @@
 /* 사용자 2명을 만들어서 각 사용자들의 이름을 지정하도록 구성합니다.
 *  각각의 사용자 2명의 주사위를 굴립니다.
 *  주사위를 굴려서 숫자가 큰 사람이 이겼다고 출력하도록 만들어봅시다!
+* 첫 번째 주사위가 짝수라면 두 번째 주사위를 굴립니다.
+
+두 번째 주사위는 점수에 합산되며 스킬을 사용할 수 있습니다.
+
+(즉 첫 번째 주사위가 홀수면 두 번째 주사위를 굴릴 수 없습니다)
+
+?
+
+(두 번째 주사위 - 스킬용 설정)
+
+숫자 2가 나오면 자신의 주사위에 + 3을 적용합니다.
+
+숫자 4가 나오면 그냥 죽습니다 (자살)
+
+숫자 3이 나오면 상대편 점수에 -4를 공격합니다.
 */
 
 // Domain (주제) 분리하기
@@ -16,6 +31,7 @@
 // 주사위
 
 #include "dice_game.h"
+#include "second_dice.h"
 #include "random_generator.h"
 #include "win.h"
 #include "player.h"
@@ -26,6 +42,7 @@
 
 
 int main(void) {
+	
 	int loop_count = 0;
 	
 		// 1. 플레이어 이름을 설정합니다.
@@ -36,15 +53,17 @@ int main(void) {
 
 	//복습 할 떄 test_array가 결국
 	//malloc()을 통해 할당 받은 메모리 공간이라는 것을 상기하세요.
+	
 	int test_array[3] = { 1, 2, 3 };
 	int* test_pointer = test_array;
 
 	char person_name[32] = "안녕하세요";
-
+	/*
 	for (i = 0; i < 3; i++)
 	{
 		printf("포인터를 배열처럼 사용 할 수 있음: %d\n", test_pointer[i]);
 	}
+	*/
 
 	set_player_info("first_player");
 	set_player_info("second_player");
@@ -54,12 +73,13 @@ int main(void) {
 
 	//2. 각 플레이어들이 주사위를 굴립니다
 	// random_config()을 하지 않으면 랜덤성이 되지 않고 둘 다 같은 값만 나오게된다.
+	
 	random_config();
 	roll_dice(0);
-	roll_dice(1);
 
-	print_dice_number(0);
-	print_dice_number(1);
+	roll_dice2(0);
+
+
 
 	// 3. 굴린 주사위의 눈금을 보고 승자를 판정합니다.
 	check_winner(0, 1);
@@ -68,6 +88,8 @@ int main(void) {
 	// =>실제로 숫자 값(상수)를 직접 때려 넣는 것은
 	//		별로 좋지 않습니다.(예제라 그냥 사용)
 
+	
+	/*
 	create_int_dynamic_array(FOR_TEST_DYNAMIC_ARRAY_COUNT);
 
 	while (loop_count++ < FOR_TEST_DYNAMIC_ARRAY_COUNT)
@@ -81,6 +103,8 @@ int main(void) {
 	create_char_dynamic_array(person_name);
 	set_name_to_char_dynamic_array(person_name);
 	print_char_dynamic_array();
+	*/
+
 
 	return 0;
 }

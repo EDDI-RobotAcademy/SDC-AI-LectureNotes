@@ -17,6 +17,11 @@ int current_integer_dynamic_array_index;
 char* char_dynamic_array;
 int current_char_dynamic_array_index;
 
+int* dice_game_score;
+int current_dice_game_score_index;
+
+
+
 void test_local_variable(void)
 {
 
@@ -24,7 +29,7 @@ void test_local_variable(void)
 
 void create_int_dynamic_array(int count)
 {
-	// malloc => Menory Allocation의 약어
+	// malloc => Memory Allocation의 약어
 	// 일반적으로 프로그래밍을 할 때 반드시 알아야 하는 4가지 영역이 존재합니다.
 	// Stack : 지역 변수
 	// Heap : 동적 할당(new, malloc)
@@ -86,4 +91,16 @@ void set_name_to_char_dynamic_array(char* name)
 void print_char_dynamic_array(void)
 {
 	printf("char_dynamic_array = %s\n", char_dynamic_array);
+}
+
+
+void create_dice_game_score(int count)
+{
+	dice_game_score = (int*)malloc(sizeof(int) * count);
+}
+
+bool put_dice_game_score(int data)
+{
+	dice_game_score[current_dice_game_score_index++] = data;
+	return true;
 }

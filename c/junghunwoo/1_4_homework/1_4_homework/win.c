@@ -2,15 +2,15 @@
 #include "player.h"
 #include"dice_game.h"
 
-void check_winner(const int index1, const int index2)
+void check_winner(const int index)
 {
-	if (player_each_dice_number[index1] > player_each_dice_number[index2])
+	if (player_each_dice_score1 > player_each_dice_score2)
 	{
-		printf("player 번호 %d = %s 님이 승리하셨습니다!", index1, player[index1]);
+		printf("%d 대 %d 으로 player 번호 %d = %s 님이 승리하셨습니다!\n", player_each_dice_score1, player_each_dice_score2, index, player[index]);
 	}
-	else if (player_each_dice_number[index1] < player_each_dice_number[index2])
+	else if (player_each_dice_score1 < player_each_dice_score2)
 	{
-		printf("player 번호 %d = %s 님이 승리하셨습니다!", index2, player[index2]);
+		printf("%d 대 %d 으로 player 번호 %d = %s 님이 승리하셨습니다!\n", player_each_dice_score1, player_each_dice_score2, 1, player[1]);
 	}
 	else
 	{
