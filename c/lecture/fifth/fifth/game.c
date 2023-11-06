@@ -8,6 +8,7 @@
 
 #define SECOND_DICE_INDEX			1
 #define BUFF_NUMBER					3
+#define DEBUFF_NUMBER				4
 
 int player_each_dice_number[MAX_PLAYER_NUMBER][MAX_ROLL_NUMBER];
 
@@ -49,6 +50,7 @@ void play_game(void)
 
 void apply_dice_skill(int current_player_index)
 {
+	int target_player_index;
 	int second_dice_number = 
 		player_each_dice_number[current_player_index][SECOND_DICE_INDEX] = roll_dice();
 
@@ -63,6 +65,12 @@ void apply_dice_skill(int current_player_index)
 			break;
 
 		case 3:
+			target_player_index = find_target_player(current_player_index);
+			printf("스킬 적용 전 눈금 %d\n", 
+				player_each_dice_number[target_player_index][SECOND_DICE_INDEX]);
+			debuff_to_target_player(target_player_index);
+			printf("스킬 적용 이후 눈금 %d\n",
+				player_each_dice_number[target_player_index][SECOND_DICE_INDEX]);
 			break;
 
 		case 4:
@@ -77,4 +85,16 @@ void apply_dice_skill(int current_player_index)
 void buff_to_current_player(int current_player_index)
 {
 	player_each_dice_number[current_player_index][SECOND_DICE_INDEX] += BUFF_NUMBER;
+}
+
+int find_target_player(int current_player_index)
+{
+	// 조건 ? 참인경우 : 거짓인경우
+	// 위의 형태로 작성합니다.
+	return current_player_index ? 0 : 1;
+}
+
+void debuff_to_target_player(int target_player_index)
+{
+	player_each_dice_number[target_player_index][SECOND_DICE_INDEX] -= DEBUFF_NUMBER;
 }
