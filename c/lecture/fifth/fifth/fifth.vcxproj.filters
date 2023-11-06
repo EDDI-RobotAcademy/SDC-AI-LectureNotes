@@ -54,6 +54,9 @@
     <ClCompile Include="game.c">
       <Filter>소스 파일\game</Filter>
     </ClCompile>
+    <ClCompile Include="common.c">
+      <Filter>소스 파일\utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="player.h">
@@ -67,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="game.h">
       <Filter>헤더 파일\game</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>헤더 파일\utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

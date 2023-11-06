@@ -2,12 +2,16 @@
 #include "player.h"
 #include "dice.h"
 #include "random.h"
+#include "common.h"
 
 #include <stdio.h>
+
+int player_each_dice_number[MAX_PLAYER_NUMBER][MAX_ROLL_NUMBER];
 
 void play_game(void)
 {
 	int loop;
+	int current_player_index;
 	char* nickname[MAX_PLAYER_NUMBER] = {
 		"ÀÔ¹ú·ÁÈúµé¾î°£´Ù",
 		"ÁÖ´Ô°çÀ¸·Î"
@@ -22,9 +26,14 @@ void play_game(void)
 	print_player_list();
 
 	random_seed_config();
-	for (loop = 0; loop < MAX_PLAYER_NUMBER; loop++)
+	for (current_player_index = 0; current_player_index < MAX_PLAYER_NUMBER; current_player_index++)
 	{
-		int first_dice_number = roll_dice();
+		int try_count = 0;
+		int first_dice_number;
+
+		first_dice_number = 
+			player_each_dice_number[current_player_index][try_count] = roll_dice();
+
 		printf("ÁÖ»çÀ§ ´«±Ý: %d\n", first_dice_number);
 
 		if (check_even(first_dice_number))
