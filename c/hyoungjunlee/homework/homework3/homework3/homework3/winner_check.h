@@ -1,0 +1,1 @@
+void winner_check(int player1, int player2);
