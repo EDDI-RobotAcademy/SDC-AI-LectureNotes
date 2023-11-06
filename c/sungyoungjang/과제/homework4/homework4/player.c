@@ -19,4 +19,3 @@ void print_player_info(int index)
 {
 	printf("사용자 %d 의 이름은 =%s\n", index, player[index]);
 }
-
