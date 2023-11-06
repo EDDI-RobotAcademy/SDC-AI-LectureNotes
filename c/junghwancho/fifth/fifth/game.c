@@ -7,25 +7,26 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define FIRST_DICE_INDEX			0
-#define SECOND_DICE_INDEX			1
-#define BUFF_NUMBER					3
-#define DEBUFF_NUMBER				4
-#define PLAYER_DEATH				-4444
+#define FIRST_DICE_INDEX			0  // 첫 번째 DICE INDEX 정의
+#define SECOND_DICE_INDEX			1  // 두 번째 DICE INDEX 정의
 
-int player_each_dice_number[MAX_PLAYER_NUMBER][MAX_ROLL_NUMBER];
+#define BUFF_NUMBER					3  // 두 번째 주사위가 3이 나오면 BUFF 하도록 사용하려고 상수값 정의
+#define DEBUFF_NUMBER				4  // 두 번째 주사위가 4가 나오면 DEBUFF 하도록 사용하려고 상수값 정의
+#define PLAYER_DEATH				-4444  // 두 번째 주사위가 4가 나오면 PLAYER_DEATH로 사용하려고 상수값 정의
 
-void play_game(void)
+int player_each_dice_number[MAX_PLAYER_NUMBER][MAX_ROLL_NUMBER]; // 주사위를 굴려 나온 숫자 값을 저장하기 위한 배열
+
+void play_game(void) // play_game 이라는 input void output void 함수 선언
 {
-	int loop;
-	int current_player_index;
+	int loop; // play_game에서 사용할 loop라는 지역 변수 선언 -> player nickname 설정 시 반복 
+	int current_player_index; // play_game에서 사용할 current_player_index 지역 변수 선언 -> 
 	char* nickname[MAX_PLAYER_NUMBER] = {
 		"입벌려힐들어간다",
 		"주님곁으로"
 	};
 
 	printf("사용자 닉네임 생성\n");
-	// 아래 루프에 넣어도 상관없으나 우선은 별도로 분리하겠습니다
+	
 	for (loop = 0; loop < MAX_PLAYER_NUMBER; loop++)
 	{
 		init_player_nickname(nickname[loop]);
@@ -33,6 +34,7 @@ void play_game(void)
 	print_player_list();
 
 	random_seed_config();
+
 	for (current_player_index = 0; current_player_index < MAX_PLAYER_NUMBER; current_player_index++)
 	{
 		int try_count = 0;
