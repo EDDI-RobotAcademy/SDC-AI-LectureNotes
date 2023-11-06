@@ -17,26 +17,14 @@
 이 방식을 적용하여 승자를 판정해봅시다!
 */
 
-// 주사위 굴리기
+// 주사위 굴리기 
 // 스킬 사용하기
-// 사용자 만들기
+// 사용자 만들기 v
 // 승자 판정하기
-#include "player.h"
+#include "game.h"
 
 int main(void)
 {
-	int loop;
-	char* nickname[MAX_PLAYER_NUMBER] = {
-		"입벌려힐들어간다",
-		"주님곁으로"
-	};
-
-	printf("퀴즈 풀이!\n");
-	for (loop = 0; loop < MAX_PLAYER_NUMBER; loop++)
-	{
-		init_player_nickname(nickname[loop]);
-	}
-	print_player_list();
-
+	play_game();
 	return 0;
 }

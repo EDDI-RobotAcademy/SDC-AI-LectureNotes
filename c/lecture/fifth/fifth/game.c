@@ -24,7 +24,13 @@ void play_game(void)
 	random_seed_config();
 	for (loop = 0; loop < MAX_PLAYER_NUMBER; loop++)
 	{
-		int returned_dice = roll_dice();
-		printf("주사위 눈금: %d\n", returned_dice);
+		int first_dice_number = roll_dice();
+		printf("주사위 눈금: %d\n", first_dice_number);
+
+		if (check_even(first_dice_number))
+		{
+			printf("주사위 스킬을 발동합니다!\n");
+			//apply_dice_skill();
+		}
 	}
 }
