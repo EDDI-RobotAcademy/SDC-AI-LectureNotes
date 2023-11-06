@@ -34,7 +34,11 @@ int main(void)
 	// 두번째 주사위
 	for (index = 0; index < PLAYER_COUNT; index++) 
 	{
-		roll_dice_second(index);
+		if (player_score_array[index] % 2 == 0)
+		{
+			roll_dice_second(index);
+
+		}
 	}
 	for (index = 0; index < PLAYER_COUNT; index++)
 	{
