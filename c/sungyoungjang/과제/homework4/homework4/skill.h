@@ -1,0 +1,1 @@
+void skill(int,int,int*);

@@ -42,9 +42,6 @@
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="player.c">
-      <Filter>소스 파일\player</Filter>
-    </ClCompile>
     <ClCompile Include="random.c">
       <Filter>소스 파일\utility</Filter>
     </ClCompile>
@@ -54,11 +51,14 @@
     <ClCompile Include="game.c">
       <Filter>소스 파일\game</Filter>
     </ClCompile>
+    <ClCompile Include="common.c">
+      <Filter>소스 파일\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="player.c">
+      <Filter>소스 파일\utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="player.h">
-      <Filter>헤더 파일\player</Filter>
-    </ClInclude>
     <ClInclude Include="random.h">
       <Filter>헤더 파일\utility</Filter>
     </ClInclude>
@@ -67,6 +67,12 @@
     </ClInclude>
     <ClInclude Include="game.h">
       <Filter>헤더 파일\game</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>헤더 파일\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>헤더 파일\utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

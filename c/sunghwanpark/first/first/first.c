@@ -21,18 +21,3 @@ int main(void)
 	
 	return 0; 
 }
-/*
-#ifdef 0
-
-void 속도제어()
-{
-	//속도 제어를 전압으로 한다 가정 
-	float voltage = acquire_voltage_from_adc_sensor();
-	//전압 값을 토대로 pid 값을 조정 (것셈 및 곱셈, 적분, 미분) 
-	pid_t* pid_struct = adjust_pid_control_structure();
-	// 실질적인 속도 제어 
-	control_velocity(pid_struct);
-}
-
-#endif
-*/

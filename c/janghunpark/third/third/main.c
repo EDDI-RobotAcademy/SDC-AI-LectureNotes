@@ -3,6 +3,7 @@
 #include "print_even_advanced.h"
 #include "print_random.h"
 #include "dice_game.h"
+#include "player.h"
 
 #define LOOP_MAX		3
 
@@ -50,6 +51,9 @@ int	main(void)
 		print_dice_number();
 		printf("extern이 어쨌다고? = %d\n", dice_number);
 	}
+
+	set_player_name("hello");
+	print_player_name();
 
 	return 0;
 }
