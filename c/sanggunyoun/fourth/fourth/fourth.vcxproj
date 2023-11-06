@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b587f4d9-2218-4e8e-99de-49a1941ed51a}</ProjectGuid>
-    <RootNamespace>third</RootNamespace>
+    <ProjectGuid>{a3fac3bc-463b-48c0-add6-ee187e9336e9}</ProjectGuid>
+    <RootNamespace>fourth</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,21 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="dice_game.h" />
-    <ClCompile Include="dice_game.c" />
-    <ClCompile Include="player.c" />
-    <ClCompile Include="print_even.c" />
+    <ClCompile Include="dice_gmae.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="print_even_advanced.c" />
-    <ClCompile Include="print_random.c" />
+    <ClCompile Include="malloc_test.c" />
+    <ClCompile Include="player.c" />
     <ClCompile Include="random_generator.c" />
+    <ClCompile Include="winner.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dice_game.h" />
+    <ClInclude Include="malloc_test.h" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="print_even.h" />
-    <ClInclude Include="print_even_advanced.h" />
-    <ClInclude Include="print_random.h" />
     <ClInclude Include="random_generator.h" />
+    <ClInclude Include="winner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
