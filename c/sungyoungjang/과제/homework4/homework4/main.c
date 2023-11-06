@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "skill.h"
 
+#define MAX_PLAYER_NUMBER	2
 
 int main(void) 
 {
@@ -12,13 +13,11 @@ int main(void)
 	print_player_info(1);
 
 	random_config();
-	roll_dice(0);
-	roll_dice(1);
 
 	int player1 = print_dice_number(0);
 	int player2 = print_dice_number(1);
-
-	int* player_scores[] = {2};
+	
+	int* player_scores[MAX_PLAYER_NUMBER] = {2};
 
 	skill(0, player1, player_scores);
 	skill(1, player2, player_scores);
@@ -26,13 +25,11 @@ int main(void)
 	printf("플레이어 1의 현재 점수: %d\n", player_scores[0]);
 	printf("플레이어 2의 현재 점수: %d\n", player_scores[1]);
 
-	
-
 	if (player_scores[0] > player_scores[1])
 	{
 		printf("플레이어 1이 승리했습니다!\n");
 	}
-	else if (player_scores[0] < player_scores[1]) 
+	else if (player_scores[0] < player_scores[1])
 	{
 		printf("플레이어 2가 승리했습니다!\n");
 	}

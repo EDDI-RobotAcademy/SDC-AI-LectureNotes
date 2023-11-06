@@ -5,7 +5,9 @@
 
 void skill(int index, int first_dice, int* player_scores)
 {
-
+    random_config();
+    int first_dice = roll_dice(0);
+    int fitst_dice = roll_dice(1);
     
     if (first_dice % 2 == 0)
     {
