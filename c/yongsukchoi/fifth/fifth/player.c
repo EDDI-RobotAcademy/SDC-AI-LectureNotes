@@ -10,7 +10,7 @@ int player_count;
 
 void init_player_nickname(char* nickname) {
 	int nickname_length = strlen(nickname);
-	player_nickname[player_count++] = (char*)malloc(sizeof(char) * nickname_length);
+	player_nickname[player_count] = (char*)malloc(sizeof(char) * nickname_length);
 	strncpy(player_nickname[player_count], nickname, nickname_length + 1);
 
 	player_count++;

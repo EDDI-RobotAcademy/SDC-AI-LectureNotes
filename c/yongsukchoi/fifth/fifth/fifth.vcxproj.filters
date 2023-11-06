@@ -19,6 +19,24 @@
     <Filter Include="헤더 파일\player">
       <UniqueIdentifier>{0935d50e-b25b-46ff-8bfe-0dde55bf65d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\utility">
+      <UniqueIdentifier>{8d94e782-cceb-4c60-83dd-1883228a38a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\utility">
+      <UniqueIdentifier>{cfdf4b93-8023-4e06-a529-6667d4947a41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\dice">
+      <UniqueIdentifier>{3b6d1f4e-a31e-4bcf-a75c-170f5c5dd251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\dice">
+      <UniqueIdentifier>{ee2e90d5-87ce-4e68-95ae-50d6c1dc8f7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game">
+      <UniqueIdentifier>{59883d70-c367-4cca-a53a-377ee3f4f7ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game">
+      <UniqueIdentifier>{527eb53e-99b6-483b-8587-f579a9d1c9f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -27,10 +45,28 @@
     <ClCompile Include="player.c">
       <Filter>소스 파일\player</Filter>
     </ClCompile>
+    <ClCompile Include="random.c">
+      <Filter>소스 파일\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="dice.c">
+      <Filter>소스 파일\dice</Filter>
+    </ClCompile>
+    <ClCompile Include="game.c">
+      <Filter>소스 파일\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="player.h">
       <Filter>헤더 파일\player</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>헤더 파일\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="dice.h">
+      <Filter>헤더 파일\dice</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>헤더 파일\game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
