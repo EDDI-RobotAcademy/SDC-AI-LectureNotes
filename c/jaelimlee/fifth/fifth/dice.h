@@ -1,1 +1,1 @@
-int roll_dice(const int min, const int max);
+int roll_dice(void);
