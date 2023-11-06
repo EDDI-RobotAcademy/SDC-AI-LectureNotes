@@ -34,7 +34,7 @@
       <Filter>소스 파일\player</Filter>
     </ClCompile>
     <ClCompile Include="random.c">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
