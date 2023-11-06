@@ -17,17 +17,35 @@
 
 #include <stdio.h>
 #include "player.h"
+#include "dice.h"
+#include "random_generator.h"
+
+
 
 int main(void)
 {
 	// 1. 플레이어 이름 설정 
-	char person_name[32] = "유저1";
+	char person_name1[32] = "유저0";
+	char person_name2[32] = "유저1";
 
-	create_char_dynamic_array(person_name);
-	set_name_to_char_dynamic_array(person_name);
+	create_char_dynamic_array(person_name1);
+	set_name_to_char_dynamic_array(person_name1);
 	print_char_dynamic_array();
 
+	create_char_dynamic_array(person_name2);
+	set_name_to_char_dynamic_array(person_name2);
+	print_char_dynamic_array();
+
+	
 	// 2. 주사위 2개 굴림
+	random_config();
+
+	roll_dice(0);
+	roll_dice(1);
+
+	print_dice_number(0);
+	print_dice_number(1);
+
 
 	// 3. 
 }

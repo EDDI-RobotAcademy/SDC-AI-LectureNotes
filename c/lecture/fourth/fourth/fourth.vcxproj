@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e6e7517b-9b35-4e8b-981a-862be1615745}</ProjectGuid>
-    <RootNamespace>homework4</RootNamespace>
+    <ProjectGuid>{411abc71-9b63-410f-bc1d-aef979a868fb}</ProjectGuid>
+    <RootNamespace>fourth</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,15 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="dice.c" />
+    <ClCompile Include="dice_game.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="malloc_test.c" />
     <ClCompile Include="player.c" />
     <ClCompile Include="random_generator.c" />
+    <ClCompile Include="win.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dice.h" />
+    <ClInclude Include="dice_game.h" />
+    <ClInclude Include="malloc_test.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="random_generator.h" />
+    <ClInclude Include="win.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

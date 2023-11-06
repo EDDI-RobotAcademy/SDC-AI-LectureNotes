@@ -19,5 +19,5 @@ void set_name_to_char_dynamic_array(char* name)
 
 void print_char_dynamic_array(void)
 {
-	printf("사용자 = %s\n", char_dynamic_array);
+	printf("플레이어: %s\n", char_dynamic_array);
 }
