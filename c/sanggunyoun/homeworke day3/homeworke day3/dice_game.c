@@ -9,7 +9,7 @@ int dice_number = 0;
 
 
 
-int roll_dice(void)    //이게 주사위 굴린?
+void roll_dice(int)    //이게 주사위 굴린?
 {
 	dice_number = generate_random(MIN, MAX);
 }

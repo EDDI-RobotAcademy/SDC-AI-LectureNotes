@@ -62,9 +62,10 @@ int main(void)
 	//roll_dice(first_player);
 	//roll_dice(second_player);
 
+	random_config();
 	roll_dice(0);
 	roll_dice(1);
-	random_config();
+	
 
 	print_dice_number(0);
 	print_dice_number(1);
