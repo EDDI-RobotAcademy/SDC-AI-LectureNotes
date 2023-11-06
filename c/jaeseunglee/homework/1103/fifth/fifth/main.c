@@ -5,7 +5,7 @@
 
 int main(void)
 {
-	playe_game();
+	play_game();
 
 	return 0;
 	

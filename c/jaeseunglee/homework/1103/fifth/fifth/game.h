@@ -1,4 +1,10 @@
 #pragma once
 
 
-void player_game();
+void play_game();
+void apply_dice_skill(const int current_player_index);
+void buff_to_current_player(int current_player_index);
+int find_target_player(int current_player_index);
+void debuff_to_target_player(int target_player_index);
+void player_death(int current_player_index);
+void check_winner();
