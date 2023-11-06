@@ -2,18 +2,12 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
 #include "player.h"
-
 
 char* player_nickname[MAX_PLAYER_NUMBER];
 int player_count;
 
-/// <summary>
-/// asdfasfsdaf
-/// </summary>
-/// <param name="nickname"></param>
 void init_player_nickname(char* nickname)
 {
 	int nickname_length = strlen(nickname);
@@ -31,5 +25,4 @@ void print_player_list(void)
 	{
 		printf("사용자 %d: 닉네임: %s\n", loop_count, player_nickname[loop_count]);
 	}
-
 }

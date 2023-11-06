@@ -1,8 +1,7 @@
-#define _CRT_SECURE_NO_WARNINGS
+#include "random.h"
 
 #include <time.h>
 #include <stdlib.h>
-#include "random.h"
 
 void random_seed_config(void)
 {
