@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{53f18b70-7aae-4d4a-abd2-d870e490235b}</ProjectGuid>
-    <RootNamespace>third</RootNamespace>
+    <ProjectGuid>{dfbdb622-1753-45c0-ab1b-bdd82e804113}</ProjectGuid>
+    <RootNamespace>주사위게임퀴즈풀이</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,21 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="dice_game.c" />
-    <ClCompile Include="find_even.c" />
+    <ClCompile Include="common.c" />
+    <ClCompile Include="dice.c" />
+    <ClCompile Include="game.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="player.c" />
-    <ClCompile Include="print_even_adv.c" />
-    <ClCompile Include="print_random.c" />
-    <ClCompile Include="random_generator.c" />
+    <ClCompile Include="random.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dice_game.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="dice.h" />
+    <ClInclude Include="game.h" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="print_even.h" />
-    <ClInclude Include="print_even_adv.h" />
-    <ClInclude Include="print_random.h" />
-    <ClInclude Include="random_generator.h" />
+    <ClInclude Include="random.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
