@@ -9,7 +9,7 @@ int for_assembly_function_test(const int number)
 }
 
 int main(void)
-{ 
+{
 	int return_value;
 	// const(constant, 상수) ?
 	// 엄밀하게 실제로 const는 불변성을 대표함
