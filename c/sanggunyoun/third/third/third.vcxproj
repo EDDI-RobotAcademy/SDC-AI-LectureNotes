@@ -127,13 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dice_game.h" />
+    <ClCompile Include="dice_game.c" />
+    <ClCompile Include="player.c" />
     <ClCompile Include="print_even.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="print_even_advanced.c" />
-    <ClCompile Include="print_randon.c" />
+    <ClCompile Include="print_random.c" />
     <ClCompile Include="random_generator.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="player.h" />
     <ClInclude Include="print_even.h" />
     <ClInclude Include="print_even_advanced.h" />
     <ClInclude Include="print_random.h" />
