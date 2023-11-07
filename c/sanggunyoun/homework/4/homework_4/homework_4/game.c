@@ -28,13 +28,13 @@ void play_game(void)
 		"주님곁으로"
 	};
 
-	printf("사용자 닉네임 생성\n");
+	printf("사용자 닉네임 생성\n");		// --처음 표시
 	// 아래 루프에 넣어도 상관없으나 우선은 별도로 분리하겠습니다
 	for (loop = 0; loop < MAX_PLAYER_NUMBER; loop++)
 	{
 		init_player_nickname(nickname[loop]);
 	}
-	print_player_list();
+	print_player_list();		//	-()를 안에 위에 언급한 nickname이 기입?
 
 	random_seed_config();
 	for (current_player_index = 0; current_player_index < MAX_PLAYER_NUMBER; current_player_index++)
@@ -65,7 +65,7 @@ void apply_dice_skill(int current_player_index)
 
 	printf("현재 두 번째 주사위 눈금 = %d\n", second_dice_number);
 
-	switch (second_dice_number)
+	switch (second_dice_number)		// -switch이랑 for문이랑 차이? 찾아보자
 	{
 	case 2:
 		buff_to_current_player(current_player_index);
@@ -114,8 +114,10 @@ void debuff_to_target_player(int target_player_index)
 void player_death(int current_player_index)
 {
 	player_each_dice_number[current_player_index][SECOND_DICE_INDEX] = PLAYER_DEATH;
+	//	- 맨위 define한 능력치 적용 -444
 }
 
+	//	- play_game 문장 맨 아래 마지막에 승패를 알려주는 문장을 여기에서 정의하여 출력
 void check_winner(void)
 {
 	int each_player_dice_sum[MAX_PLAYER_NUMBER];
