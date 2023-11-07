@@ -57,8 +57,8 @@ void play_game(void)
 void apply_dice_skill(int current_player_index)
 {
 	int target_player_index;
-	int second_dice_number = 
-		player_each_dice_number[current_player_index][SECOND_DICE_INDEX] = roll_dice();
+	int second_dice_number = roll_dice();
+	player_each_dice_number[current_player_index][SECOND_DICE_INDEX] += second_dice_number;
 
 	printf("현재 두 번째 주사위 눈금 = %d\n", second_dice_number);
 
