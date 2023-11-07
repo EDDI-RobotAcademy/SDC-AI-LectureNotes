@@ -4,6 +4,7 @@
 #include "print_random.h"
 #include "dice_game.h"
 #include "random_dice.h"
+#include "player.h"
 
 #define LOOP_MAX  5
 
@@ -18,7 +19,7 @@ int main(void)
 	// 시작 ~ 끝 사이의 숫자에서 짝수를 출력 
 	print_even_number_from_start_to_end(start,end);
 	printf("\n");
-
+	
 	printf("조금 더 개선한 코드!\n");
 	print_even_number_from_start_to_end_advanced(start, end);
 	printf("\n");
@@ -49,7 +50,11 @@ int main(void)
 		roll_dice();
 		print_dice_number();
 	}
+	
+	printf("\n");
 
+	set_player_name("박성환");
+	print_player_name();
 	return 0;
 }
 

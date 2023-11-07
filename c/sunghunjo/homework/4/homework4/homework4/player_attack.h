@@ -1,0 +1,1 @@
+void attack_player(int);
