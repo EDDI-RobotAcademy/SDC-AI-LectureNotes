@@ -59,8 +59,8 @@ void play_game(void) // play_game 이라는 input void output void 함수 선언
 void apply_dice_skill(int current_player_index) // 위의 apply_dice_skill 수행 function 정의
 {
 	int target_player_index; // 짝수, 3, 4 가 나왔을 때 skill을 사용 할 수 있도록 사용 할 변수 선언
-	int second_dice_number = // ????? 기존 player_each_dice_number에 다시 roll_dice 값을 plus = second_dice_number
-		player_each_dice_number[current_player_index][SECOND_DICE_INDEX] += roll_dice(); 
+	int second_dice_number = roll_dice(); // ????? 기존 player_each_dice_number에 다시 roll_dice 값을 plus = second_dice_number
+	player_each_dice_number[current_player_index][SECOND_DICE_INDEX] += second_dice_number;
 
 	printf("현재 두 번째 주사위 눈금 = %d\n", second_dice_number); // 두 번째 dice number print
 
@@ -75,7 +75,7 @@ void apply_dice_skill(int current_player_index) // 위의 apply_dice_skill 수행 fu
 	case 3:
 		target_player_index = find_target_player(current_player_index); // ??? 이해가 좀 더 필요함
 		printf("스킬 적용 전 눈금 %d\n",
-			player_each_dice_number[target_player_index][SECOND_DICE_INDEX]);
+		player_each_dice_number[target_player_index][SECOND_DICE_INDEX]);
 		debuff_to_target_player(target_player_index);
 		printf("스킬 적용 이후 눈금 %d\n",
 			player_each_dice_number[target_player_index][SECOND_DICE_INDEX]);
@@ -127,7 +127,7 @@ void check_winner(void) // 위의 승부 판결 기능
 	for (current_player_index = 0; current_player_index < MAX_PLAYER_NUMBER; current_player_index++)
 	{
 		each_player_dice_sum[current_player_index] =
-			player_each_dice_number[current_player_index][FIRST_DICE_INDEX];
+			player_each_dice_number[current_player_index][FIRST_DICE_INDEX] +
 			player_each_dice_number[current_player_index][SECOND_DICE_INDEX];
 	}
 	for (i = 0; i < MAX_PLAYER_NUMBER; i++)
