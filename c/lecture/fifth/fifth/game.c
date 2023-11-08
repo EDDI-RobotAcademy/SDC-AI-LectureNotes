@@ -5,9 +5,14 @@
 #include "common.h"
 
 #include <stdio.h>
+#include <stdbool.h>
 
+#define FIRST_DICE_INDEX			0
 #define SECOND_DICE_INDEX			1
+
 #define BUFF_NUMBER					3
+#define DEBUFF_NUMBER				4
+#define PLAYER_DEATH				-4444
 
 int player_each_dice_number[MAX_PLAYER_NUMBER][MAX_ROLL_NUMBER];
 
@@ -45,12 +50,15 @@ void play_game(void)
 			apply_dice_skill(current_player_index);
 		}
 	}
+
+	check_winner();
 }
 
 void apply_dice_skill(int current_player_index)
 {
-	int second_dice_number = 
-		player_each_dice_number[current_player_index][SECOND_DICE_INDEX] = roll_dice();
+	int target_player_index;
+	int second_dice_number = roll_dice();
+	player_each_dice_number[current_player_index][SECOND_DICE_INDEX] += second_dice_number;
 
 	printf("현재 두 번째 주사위 눈금 = %d\n", second_dice_number);
 
@@ -63,9 +71,18 @@ void apply_dice_skill(int current_player_index)
 			break;
 
 		case 3:
+			target_player_index = find_target_player(current_player_index);
+			printf("스킬 적용 전 눈금 %d\n", 
+				player_each_dice_number[target_player_index][SECOND_DICE_INDEX]);
+			debuff_to_target_player(target_player_index);
+			printf("스킬 적용 이후 눈금 %d\n",
+				player_each_dice_number[target_player_index][SECOND_DICE_INDEX]);
 			break;
 
 		case 4:
+			player_death(current_player_index);
+			printf("죽었음: %d\n", 
+				player_each_dice_number[current_player_index][SECOND_DICE_INDEX]);
 			break;
 
 		default:
@@ -77,4 +94,65 @@ void apply_dice_skill(int current_player_index)
 void buff_to_current_player(int current_player_index)
 {
 	player_each_dice_number[current_player_index][SECOND_DICE_INDEX] += BUFF_NUMBER;
+}
+
+int find_target_player(int current_player_index)
+{
+	// 조건 ? 참인경우 : 거짓인경우
+	// 위의 형태로 작성합니다.
+	return current_player_index ? 0 : 1;
+}
+
+void debuff_to_target_player(int target_player_index)
+{
+	player_each_dice_number[target_player_index][SECOND_DICE_INDEX] -= DEBUFF_NUMBER;
+}
+
+void player_death(int current_player_index)
+{
+	player_each_dice_number[current_player_index][SECOND_DICE_INDEX] = PLAYER_DEATH;
+}
+
+void check_winner(void)
+{
+	int each_player_dice_sum[MAX_PLAYER_NUMBER];
+	int current_player_index;
+	int i;
+
+	int death_count = 0;
+	bool does_everyone_lose = false;
+
+	for (current_player_index = 0; current_player_index < MAX_PLAYER_NUMBER; current_player_index++)
+	{
+		each_player_dice_sum[current_player_index] =
+			player_each_dice_number[current_player_index][FIRST_DICE_INDEX] +
+			player_each_dice_number[current_player_index][SECOND_DICE_INDEX];
+	}
+
+	// 4에 대한 예외 처리
+	for (i = 0; i < MAX_PLAYER_NUMBER; i++)
+	{
+		if (player_each_dice_number[i][SECOND_DICE_INDEX] == PLAYER_DEATH)
+		{
+			death_count++;
+			printf("플레이어%d 님은 패배하셨습니다!\n", i);
+		}
+	}
+
+	if (death_count == 2) { does_everyone_lose = true; }
+
+	if (does_everyone_lose) { return; }
+
+	if (each_player_dice_sum[0] > each_player_dice_sum[1])
+	{
+		printf("0번 플레이어 승리!");
+	}
+	else if (each_player_dice_sum[0] < each_player_dice_sum[1])
+	{
+		printf("1번 플레이어 승리!");
+	}
+	else
+	{
+		printf("무승부!");
+	}
 }

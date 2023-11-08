@@ -1,1 +1,1 @@
-int generate_random(const int min,const int max);
+int generate_random(const int ,const int);
