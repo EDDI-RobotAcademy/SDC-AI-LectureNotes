@@ -28,11 +28,13 @@ struct _led
     bool status;
 };
 
+extern int led_array_count;
 extern led *led_array;
 
 // 결론적으로 class가 되었던 struct(구조체)가 되었건 진정한 목적은 
 // type을 custom 하겠다는 것이 주요하다. 
 led *init_led_object(int count);
-void set_led_status(int led_index, bool on_off);
+void set_led_status(led *array, int led_index, bool on_off);
+void print_led_array_status(led *array);
 
 #endif
