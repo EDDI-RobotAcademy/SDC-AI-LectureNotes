@@ -19,7 +19,7 @@ void init_account_manager_object(void)
 void register_new_account(char *name)
 {
     int current_index = global_account_manager.current_account_index;
-    int name_length = strlen(name);
+    int name_length = strlen(name) + 1;
 
     global_account_manager.account_array[current_index].account_name = 
         (char *)malloc(sizeof(char) * name_length);
