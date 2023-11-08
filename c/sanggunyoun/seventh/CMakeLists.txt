@@ -6,13 +6,14 @@ set(CMAKE_C_FLAGS "${CMAKE_CFKAGS} -g")
 
 set(CMAKE_BUILD_TYPE Debug)
 
-file(GLOB SOURCE_FILES
+
+    file(GLOB SOURCE_FILES
         "*.c"
         "led/entity/*.c"
+        "account/entity/*.c"
 )
-    # 여기있는 배열들은 전역
-
+     # 여기있는 배열들은 전역
 add_executable(
-    c_app
+    test_app
     ${SOURCE_FILES}
 )
