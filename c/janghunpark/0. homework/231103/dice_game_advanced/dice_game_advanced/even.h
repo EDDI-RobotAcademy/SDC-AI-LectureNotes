@@ -1,0 +1,1 @@
+void check_even_dice_number(void);
