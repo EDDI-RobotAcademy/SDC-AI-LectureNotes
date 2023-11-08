@@ -2,6 +2,9 @@
 #include "led/entity/led.h"
 #include "account/entity/account_manager.h"
 
+//cmd(TERMINAL)에서 c언어 디버깅 및 실행 방법
+//자신 폴더의 build폴더로 들어 간다
+//cmake .. -> make -> ./c.app 순으로 엔터
 
 int main (void)
 {
