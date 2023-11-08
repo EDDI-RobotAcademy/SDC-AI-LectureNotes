@@ -1,18 +1,30 @@
 #include <stdio.h>
+
 #include "skill.h"
 #include "player.h"
-
 
 void skill(int index, int first_dice, int* player_scores)
 {
     random_config();
+    /* 똑같은 것 두 개 배치 불가능
     int first_dice = roll_dice(0);
     int fitst_dice = roll_dice(1);
+    */
+    //int second_dice = roll_dice(0);
+    //second_dice = roll_dice(1);
+
+    player_scores[index] += first_dice;
     
+    printf("index: %d\n", index);
     if (first_dice % 2 == 0)
     {
-       
+        /* 자신의 점수는 계산 안하고 상대 점수만 계산했음 */
         int second_dice = roll_dice(index);
+
+        // 현재 자신의 점수를 계산한다.
+        // 통짜로 만드는 것의 위험성 ... 로직 정리가 안됩니다.
+        player_scores[index] += second_dice;
+
         printf("%d 번 플레이어의 두 번째 주사위 눈금은 %d\n", index, second_dice);
         if (second_dice == 2)
         {
@@ -22,7 +34,7 @@ void skill(int index, int first_dice, int* player_scores)
         else if (second_dice == 4)
         {
             printf("%d 번 플레이어의 두 번째 주사위가 4가 나왔습니다. 플레이어가 게임에서 탈락합니다.\n", index);
-            
+            player_scores[index] = -4444;
         }
         else if (second_dice == 3)
         {
