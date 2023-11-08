@@ -7,7 +7,8 @@ int led_array_count;
 
 led *init_led_objeckt(int count)
 {
-    const led *tmp_led_array = (led*)malloc(sizeof(led) * count);
+    // led 타입의 메모리 공간을 저장하는 포인터
+    led *tmp_led_array = (led*)malloc(sizeof(led) * count);
     led_array_count = count;
     return tmp_led_array;
 }
