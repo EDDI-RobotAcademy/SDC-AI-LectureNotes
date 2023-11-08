@@ -63,8 +63,9 @@ void apply_dice_skill(const int current_player_index)
 
 	// 전역변수는 초기값이 0이기에 초기화 할 필요는 없음
 	// 재사용이 필요하거나, 지역변수일 경우 초기화 작업을 해줄 필요가 있음
-	int second_dice_number = 
-		player_each_dice_number[current_player_index][SECOND_DICE_INDEX] += roll_dice();
+	int second_dice_number = roll_dice();
+
+	player_each_dice_number[current_player_index][SECOND_DICE_INDEX] += second_dice_number;
 	printf("두 번째 주사위는 %d\n", second_dice_number);
 
 	int target_player_index;
