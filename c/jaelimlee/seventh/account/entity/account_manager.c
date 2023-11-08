@@ -21,9 +21,12 @@ void init_account_manager_object(void)
 void register_new_account(char *name)
 {
     int current_index = global_account_manager.current_account_index;
-    int name_length = strlen(name);
+    int name_length = strlen(name) + 1;
+
+    global_account_manager.account_array[current_index].account_name = 
+        (char *)malloc(sizeof(char) * name_length);
     
-    strncpy(&global_account_manager.account_array[current_index].account_name,
+    strncpy(global_account_manager.account_array[current_index].account_name,
             name,
             name_length);
 
@@ -34,6 +37,7 @@ void print_account_manager(void)
 {
     int i;
     int current_account_max = global_account_manager.current_account_index;
+    printf("current_account_max: %d\n", current_account_max);
 
     for (i = 0; i < current_account_max; i++)
     {
