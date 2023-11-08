@@ -129,6 +129,54 @@ c_app/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/build
 .PHONY : c_app/fast
 
+account/entity/account.o: account/entity/account.c.o
+.PHONY : account/entity/account.o
+
+# target to build an object file
+account/entity/account.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/account/entity/account.c.o
+.PHONY : account/entity/account.c.o
+
+account/entity/account.i: account/entity/account.c.i
+.PHONY : account/entity/account.i
+
+# target to preprocess a source file
+account/entity/account.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/account/entity/account.c.i
+.PHONY : account/entity/account.c.i
+
+account/entity/account.s: account/entity/account.c.s
+.PHONY : account/entity/account.s
+
+# target to generate assembly for a file
+account/entity/account.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/account/entity/account.c.s
+.PHONY : account/entity/account.c.s
+
+account/entity/account_manager.o: account/entity/account_manager.c.o
+.PHONY : account/entity/account_manager.o
+
+# target to build an object file
+account/entity/account_manager.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/account/entity/account_manager.c.o
+.PHONY : account/entity/account_manager.c.o
+
+account/entity/account_manager.i: account/entity/account_manager.c.i
+.PHONY : account/entity/account_manager.i
+
+# target to preprocess a source file
+account/entity/account_manager.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/account/entity/account_manager.c.i
+.PHONY : account/entity/account_manager.c.i
+
+account/entity/account_manager.s: account/entity/account_manager.c.s
+.PHONY : account/entity/account_manager.s
+
+# target to generate assembly for a file
+account/entity/account_manager.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/account/entity/account_manager.c.s
+.PHONY : account/entity/account_manager.c.s
+
 led/entity/led.o: led/entity/led.c.o
 .PHONY : led/entity/led.o
 
@@ -186,6 +234,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... c_app"
+	@echo "... account/entity/account.o"
+	@echo "... account/entity/account.i"
+	@echo "... account/entity/account.s"
+	@echo "... account/entity/account_manager.o"
+	@echo "... account/entity/account_manager.i"
+	@echo "... account/entity/account_manager.s"
 	@echo "... led/entity/led.o"
 	@echo "... led/entity/led.i"
 	@echo "... led/entity/led.s"

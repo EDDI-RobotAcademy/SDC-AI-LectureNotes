@@ -17,5 +17,11 @@ int main (void)
     }
     print_led_array_status(led_array);
 
+    printf("account,account_manager test!\n");
+    
+    init_account_manager_object();
+    register_new_account("test");
+    print_account_manager();
+
     return 0;
 }

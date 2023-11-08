@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/c_app.dir/account/entity/account.c.o"
+  "CMakeFiles/c_app.dir/account/entity/account.c.o.d"
+  "CMakeFiles/c_app.dir/account/entity/account_manager.c.o"
+  "CMakeFiles/c_app.dir/account/entity/account_manager.c.o.d"
   "CMakeFiles/c_app.dir/led/entity/led.c.o"
   "CMakeFiles/c_app.dir/led/entity/led.c.o.d"
   "CMakeFiles/c_app.dir/main.c.o"

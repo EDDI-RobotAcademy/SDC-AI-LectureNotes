@@ -69,10 +69,38 @@ include CMakeFiles/c_app.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/c_app.dir/flags.make
 
+CMakeFiles/c_app.dir/account/entity/account.c.o: CMakeFiles/c_app.dir/flags.make
+CMakeFiles/c_app.dir/account/entity/account.c.o: ../account/entity/account.c
+CMakeFiles/c_app.dir/account/entity/account.c.o: CMakeFiles/c_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/c_app.dir/account/entity/account.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/c_app.dir/account/entity/account.c.o -MF CMakeFiles/c_app.dir/account/entity/account.c.o.d -o CMakeFiles/c_app.dir/account/entity/account.c.o -c /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/account/entity/account.c
+
+CMakeFiles/c_app.dir/account/entity/account.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/c_app.dir/account/entity/account.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/account/entity/account.c > CMakeFiles/c_app.dir/account/entity/account.c.i
+
+CMakeFiles/c_app.dir/account/entity/account.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/c_app.dir/account/entity/account.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/account/entity/account.c -o CMakeFiles/c_app.dir/account/entity/account.c.s
+
+CMakeFiles/c_app.dir/account/entity/account_manager.c.o: CMakeFiles/c_app.dir/flags.make
+CMakeFiles/c_app.dir/account/entity/account_manager.c.o: ../account/entity/account_manager.c
+CMakeFiles/c_app.dir/account/entity/account_manager.c.o: CMakeFiles/c_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/c_app.dir/account/entity/account_manager.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/c_app.dir/account/entity/account_manager.c.o -MF CMakeFiles/c_app.dir/account/entity/account_manager.c.o.d -o CMakeFiles/c_app.dir/account/entity/account_manager.c.o -c /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/account/entity/account_manager.c
+
+CMakeFiles/c_app.dir/account/entity/account_manager.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/c_app.dir/account/entity/account_manager.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/account/entity/account_manager.c > CMakeFiles/c_app.dir/account/entity/account_manager.c.i
+
+CMakeFiles/c_app.dir/account/entity/account_manager.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/c_app.dir/account/entity/account_manager.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/account/entity/account_manager.c -o CMakeFiles/c_app.dir/account/entity/account_manager.c.s
+
 CMakeFiles/c_app.dir/led/entity/led.c.o: CMakeFiles/c_app.dir/flags.make
 CMakeFiles/c_app.dir/led/entity/led.c.o: ../led/entity/led.c
 CMakeFiles/c_app.dir/led/entity/led.c.o: CMakeFiles/c_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/c_app.dir/led/entity/led.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/c_app.dir/led/entity/led.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/c_app.dir/led/entity/led.c.o -MF CMakeFiles/c_app.dir/led/entity/led.c.o.d -o CMakeFiles/c_app.dir/led/entity/led.c.o -c /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/led/entity/led.c
 
 CMakeFiles/c_app.dir/led/entity/led.c.i: cmake_force
@@ -86,7 +114,7 @@ CMakeFiles/c_app.dir/led/entity/led.c.s: cmake_force
 CMakeFiles/c_app.dir/main.c.o: CMakeFiles/c_app.dir/flags.make
 CMakeFiles/c_app.dir/main.c.o: ../main.c
 CMakeFiles/c_app.dir/main.c.o: CMakeFiles/c_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/c_app.dir/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/c_app.dir/main.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/c_app.dir/main.c.o -MF CMakeFiles/c_app.dir/main.c.o.d -o CMakeFiles/c_app.dir/main.c.o -c /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/main.c
 
 CMakeFiles/c_app.dir/main.c.i: cmake_force
@@ -99,17 +127,21 @@ CMakeFiles/c_app.dir/main.c.s: cmake_force
 
 # Object files for target c_app
 c_app_OBJECTS = \
+"CMakeFiles/c_app.dir/account/entity/account.c.o" \
+"CMakeFiles/c_app.dir/account/entity/account_manager.c.o" \
 "CMakeFiles/c_app.dir/led/entity/led.c.o" \
 "CMakeFiles/c_app.dir/main.c.o"
 
 # External object files for target c_app
 c_app_EXTERNAL_OBJECTS =
 
+c_app: CMakeFiles/c_app.dir/account/entity/account.c.o
+c_app: CMakeFiles/c_app.dir/account/entity/account_manager.c.o
 c_app: CMakeFiles/c_app.dir/led/entity/led.c.o
 c_app: CMakeFiles/c_app.dir/main.c.o
 c_app: CMakeFiles/c_app.dir/build.make
 c_app: CMakeFiles/c_app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable c_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable c_app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/c_app.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

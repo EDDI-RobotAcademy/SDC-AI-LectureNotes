@@ -81,12 +81,12 @@ clean: CMakeFiles/c_app.dir/clean
 CMakeFiles/c_app.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=1,2,3 "Built target c_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target c_app"
 .PHONY : CMakeFiles/c_app.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/c_app.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/c_app.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles 0
 .PHONY : CMakeFiles/c_app.dir/rule
