@@ -27,15 +27,13 @@
 // 사용자 만들기
 // 승자 판정하기
 
-#include <stdio.h>
-#include "game.h"
-#include "common.h"
+#include <stdio.h> // stdio.h 입출력 함수를 불러와 사용선언.
+#include "game.h" // game 헤더를 선언하여 game.c의 함수를 호출.
+#include "common.h" // common 헤더를 선언하여 common.c의 함수를 호출.
 
-int main(void)
+int main(void) // 프로그램의 시작점.
 {
-	play_game();
+	play_game(); // play_game() 함수 호출
 	
-
-
-	return 0;
+	return 0; // return 0 함수의 반환값으로 종료 할 때 0으로 리턴한다.= 프로그램의 종료를 의미
 }
