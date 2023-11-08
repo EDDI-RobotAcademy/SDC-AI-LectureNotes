@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "led/entity/led.h"
+#include "account/entity/account_manager.h"
 
 int main (void)
 {
@@ -17,6 +18,12 @@ int main (void)
     }
 
     print_led_array_status(led_array);
+
+    printf("account, account_manager test!\n");
+
+    init_account_manager_object();
+    register_new_account("hi");
+    print_account_manager();
 
     return 0;
 }
