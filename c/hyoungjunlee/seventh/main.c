@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "led/entity/led.h"
 
-int main()
+int main(void)
 {
     int i;
     led *led_array;
@@ -9,9 +9,9 @@ int main()
 
     printf("First C Programming on Linux!\n");
 
-    init_led_object(led_array_count);
+    led_array = init_led_object(led_array_count);
 
-    for(i=0; i< led_array_count; i++);
+    for(i=0; i< led_array_count; i++)
     {
         set_led_status(led_array,i,true);
     }
