@@ -9,6 +9,7 @@ set(CMAKE_BUILD_TYPE Debug)
 file(GLOB SOURCE_FILES
     "*.c"
     "led/entity/*.c"
+    "account/entity/*.c"
 )
 
 add_executable(
