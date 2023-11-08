@@ -20,7 +20,7 @@
 typedef struct _led led;
 
 // 구조체를 작성하는 경우레는 아래의 방식으로 작성합니다. 
-// 1. struct (새로 커스텀하여 만들 이름)
+// 1. struct (새로 커스텀하여 만들 이름) - 구조체 
 // 2. 중괄호 열고 닫은 이후 마지막에 ';' 추가 
 // 3. 커스텀한 내용이 어떤 정보들을 담게 할 것인지 데이터 배치 
 struct _led
@@ -28,6 +28,7 @@ struct _led
     bool status;
 };
 
+// main 함수에 사용 될 변수들 - extern 필요 
 extern int led_array_count;
 extern led *led_array;
 
