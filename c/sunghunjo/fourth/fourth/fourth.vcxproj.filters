@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일\utility">
+      <UniqueIdentifier>{ca258e55-ce4e-453f-ad4c-36b20c50f631}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game">
+      <UniqueIdentifier>{8d30695c-4f4d-4dd2-8a46-4634a492ab0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game\dice">
+      <UniqueIdentifier>{a044bd20-a068-4422-9149-85e5cb666766}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game">
+      <UniqueIdentifier>{87056f15-3a4b-461a-863f-705099cf6012}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\player">
+      <UniqueIdentifier>{afa192c9-6930-4402-ace2-cdfefc4fc366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\dice">
+      <UniqueIdentifier>{80ef1dcc-7fea-43e8-8b3d-4828c5a82787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\winner">
+      <UniqueIdentifier>{4a8735a2-9177-4eb4-bc4a-dbac3a53463d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game\player">
+      <UniqueIdentifier>{98ee90b3-afba-40d1-b151-fb6b713da656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game\winner">
+      <UniqueIdentifier>{8976a8b1-02fa-4e1b-9792-1130ff540249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\utility">
+      <UniqueIdentifier>{545f4b15-b507-4c3e-8261-e74211eaee81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\mallocr_test">
+      <UniqueIdentifier>{32888c75-b4ec-46b9-ac34-913b7c6704d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\mallocr_test">
+      <UniqueIdentifier>{03f77aa8-f3e9-43a3-bb4f-93ef5c628e70}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="player.c">
+      <Filter>소스 파일\game\player</Filter>
+    </ClCompile>
+    <ClCompile Include="dice_game.c">
+      <Filter>소스 파일\game\dice</Filter>
+    </ClCompile>
+    <ClCompile Include="random_generator.c">
+      <Filter>소스 파일\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="win.c">
+      <Filter>소스 파일\game\winner</Filter>
+    </ClCompile>
+    <ClCompile Include="malloc_test.c">
+      <Filter>소스 파일\mallocr_test</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="player.h">
+      <Filter>헤더 파일\game\player</Filter>
+    </ClInclude>
+    <ClInclude Include="dice_game.h">
+      <Filter>헤더 파일\game\dice</Filter>
+    </ClInclude>
+    <ClInclude Include="random_generator.h">
+      <Filter>헤더 파일\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="win.h">
+      <Filter>헤더 파일\game\winner</Filter>
+    </ClInclude>
+    <ClInclude Include="malloc_test.h">
+      <Filter>헤더 파일\mallocr_test</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
