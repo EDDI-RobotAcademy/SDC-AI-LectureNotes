@@ -1,5 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,c,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,c,c++
+#
+# Don't add build from c code
+build
 
 ### C ###
 # Prerequisites
