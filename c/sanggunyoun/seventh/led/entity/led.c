@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "led.h"
 
@@ -6,7 +7,7 @@ int led_array_count;
 
 led *init_led_object(int count)
 {
-    const led *tmp_led_array = (led *)malloc(sizeof(led) * count);
+    led *tmp_led_array = (led *)malloc(sizeof(led) * count);
     led_array_count = count;
     return tmp_led_array;
 }

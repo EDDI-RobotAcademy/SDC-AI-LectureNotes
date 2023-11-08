@@ -10,6 +10,7 @@ file(GLOB SOURCE_FILES
         "*.c"
         "led/entity/*.c"
 )
+    # 여기있는 배열들은 전역
 
 add_executable(
     c_app
