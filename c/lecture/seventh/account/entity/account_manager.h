@@ -17,5 +17,7 @@ struct _account_manager
 extern account_manager global_account_manager;
 
 void init_account_manager_object(void);
+void register_new_account(char *name);
+void print_account_manager(void);
 
 #endif
