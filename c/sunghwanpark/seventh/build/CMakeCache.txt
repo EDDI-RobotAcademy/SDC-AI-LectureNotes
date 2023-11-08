@@ -140,7 +140,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Project
+CMAKE_PROJECT_NAME:STATIC=c_app
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -212,6 +212,15 @@ Project_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh
+
+//Value Computed by CMake
+c_app_BINARY_DIR:STATIC=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build
+
+//Value Computed by CMake
+c_app_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+c_app_SOURCE_DIR:STATIC=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh
 
 
 ########################

@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/bu
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: CMakeFiles/c_app.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,8 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean:
+clean: CMakeFiles/c_app.dir/clean
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/c_app.dir
+
+# All Build rule for target.
+CMakeFiles/c_app.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles --progress-num=1,2,3 "Built target c_app"
+.PHONY : CMakeFiles/c_app.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/c_app.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/c_app.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eddi/proj/SDC-AI-LectureNotes/c/sunghwanpark/seventh/build/CMakeFiles 0
+.PHONY : CMakeFiles/c_app.dir/rule
+
+# Convenience name for target.
+c_app: CMakeFiles/c_app.dir/rule
+.PHONY : c_app
+
+# clean rule for target.
+CMakeFiles/c_app.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/clean
+.PHONY : CMakeFiles/c_app.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -7,8 +7,16 @@
 				{
 					"build" : ".",
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
 					"projectIndex" : 0,
-					"source" : "."
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
 				}
 			],
 			"name" : "Debug",
@@ -19,10 +27,23 @@
 					[
 						0
 					],
-					"name" : "Project"
+					"name" : "c_app",
+					"targetIndexes" : 
+					[
+						0
+					]
 				}
 			],
-			"targets" : []
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "c_app::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-c_app-Debug-a94ff7c896e325f7a5b7.json",
+					"name" : "c_app",
+					"projectIndex" : 0
+				}
+			]
 		}
 	],
 	"kind" : "codemodel",

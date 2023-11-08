@@ -116,6 +116,67 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+#=============================================================================
+# Target rules for targets named c_app
+
+# Build rule for target.
+c_app: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_app
+.PHONY : c_app
+
+# fast build rule for target.
+c_app/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/build
+.PHONY : c_app/fast
+
+led/entity/led.o: led/entity/led.c.o
+.PHONY : led/entity/led.o
+
+# target to build an object file
+led/entity/led.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/led/entity/led.c.o
+.PHONY : led/entity/led.c.o
+
+led/entity/led.i: led/entity/led.c.i
+.PHONY : led/entity/led.i
+
+# target to preprocess a source file
+led/entity/led.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/led/entity/led.c.i
+.PHONY : led/entity/led.c.i
+
+led/entity/led.s: led/entity/led.c.s
+.PHONY : led/entity/led.s
+
+# target to generate assembly for a file
+led/entity/led.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/led/entity/led.c.s
+.PHONY : led/entity/led.c.s
+
+main.o: main.c.o
+.PHONY : main.o
+
+# target to build an object file
+main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/main.c.o
+.PHONY : main.c.o
+
+main.i: main.c.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/main.c.i
+.PHONY : main.c.i
+
+main.s: main.c.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/c_app.dir/build.make CMakeFiles/c_app.dir/main.c.s
+.PHONY : main.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -124,6 +185,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... c_app"
+	@echo "... led/entity/led.o"
+	@echo "... led/entity/led.i"
+	@echo "... led/entity/led.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
