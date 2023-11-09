@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\game">
+      <UniqueIdentifier>{e950a144-9b93-4e12-b394-77a70aac2708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game\player">
+      <UniqueIdentifier>{76f34c06-bfed-463d-b577-4ccb1d9d7aa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game\roll">
+      <UniqueIdentifier>{80ac257c-8479-4977-b046-2d08fbbc4fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game\win">
+      <UniqueIdentifier>{c0659ea8-c486-47c0-a2dc-700e9852c6fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\utility">
+      <UniqueIdentifier>{671a5c70-2dac-4dcb-b593-3c4ccbda6d25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\utility\generator">
+      <UniqueIdentifier>{573b4ddf-2a26-4743-8399-6c3c47104d17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game">
+      <UniqueIdentifier>{d853c7ba-4cea-4fb1-844c-92d83e647e5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\player">
+      <UniqueIdentifier>{da2352ac-666d-492f-89a6-ee782b677cd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\roll">
+      <UniqueIdentifier>{0b6f8a64-c95a-4525-8d45-5796b0667d52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game\win">
+      <UniqueIdentifier>{3ee52598-81e5-47f3-ac8c-72d161254b92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\utility">
+      <UniqueIdentifier>{660b2d9b-beec-4dde-ab10-b989a9933205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\utility\generator">
+      <UniqueIdentifier>{f3f3a1d5-7abd-4e97-9ff6-fa327230204b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="player.c">
+      <Filter>소스 파일\game\player</Filter>
+    </ClCompile>
+    <ClCompile Include="roll_dice.c">
+      <Filter>소스 파일\game\roll</Filter>
+    </ClCompile>
+    <ClCompile Include="random_generator.c">
+      <Filter>소스 파일\utility\generator</Filter>
+    </ClCompile>
+    <ClCompile Include="win.c">
+      <Filter>소스 파일\game\win</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="random_generator.h">
+      <Filter>헤더 파일\utility\generator</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>헤더 파일\game\player</Filter>
+    </ClInclude>
+    <ClInclude Include="roll_dice.h">
+      <Filter>헤더 파일\game\roll</Filter>
+    </ClInclude>
+    <ClInclude Include="win.h">
+      <Filter>헤더 파일\game\win</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
