@@ -15,21 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="first.c">
+    <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="second.c">
+    <ClCompile Include="player.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="fource.c">
+    <ClCompile Include="dice.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="random_generator.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="win.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="second.h">
+    <ClInclude Include="player.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="fourth.h">
+    <ClInclude Include="random_generator.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="dice.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="win.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
