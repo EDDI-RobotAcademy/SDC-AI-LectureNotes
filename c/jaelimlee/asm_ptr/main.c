@@ -30,11 +30,10 @@ int main (void)
     int ***ptr4 = array3;
 
     printf("**ptr4[%d] = %d\n", 0, **ptr4[0]);
-    printf("**ptr4[%d] = %d\n", 1, **ptr4[1]);
     printf("*(*ptr4)[%d] = %d\n", 0, *(*ptr4)[0]);
     printf("*(*ptr4)[%d] = %d\n", 1, *(*ptr4)[1]);
     printf("*(*ptr4)[%d] = %d\n", 2, *(*ptr4)[2]);
-    
+
     return 0;
 
 }
