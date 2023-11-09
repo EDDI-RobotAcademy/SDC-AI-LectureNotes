@@ -10,7 +10,7 @@ player *init_player_object(void)
 {
     player *tmp_player = (player *)malloc(sizeof(player));
     tmp_player->id = current_player_max++;
-    
+
     return tmp_player;
 }
 
@@ -18,7 +18,7 @@ void set_player_name(player *object, char *name)
 {
     int name_length = strlen(name) + 1;
 
-    object->name = (char *)malloc(name_length);
+    object->name = (char *)malloc(sizeof(char) * name_length);
     strncpy(object->name, name, name_length);
 }
 
