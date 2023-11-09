@@ -12,6 +12,11 @@ dice *init_dice_object(void)
     return tmp_dice;
 }
 
+int get_dice_number(dice *object)
+{
+    return object->dice_number;
+}
+
 void print_dice_object(dice *object)
 {
     printf("주사위 눈금: %d\n", object->dice_number);

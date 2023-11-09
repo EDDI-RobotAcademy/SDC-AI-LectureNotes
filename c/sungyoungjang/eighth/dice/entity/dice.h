@@ -13,5 +13,6 @@ struct _dice
 
 dice *init_dice_object(void);
 void print_dice_object(dice *object);
+int get_dice_number(dice *object);
 
 #endif
