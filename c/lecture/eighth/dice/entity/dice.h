@@ -12,6 +12,7 @@ struct _dice
 #define MAX         6
 
 dice *init_dice_object(void);
+int get_dice_number(dice *object);
 void print_dice_object(dice *object);
 
 #endif
