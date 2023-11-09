@@ -19,6 +19,7 @@ void init_account_manager_object(void)
     global_account_manager.current_account_index = 0;
 }
 
+    // 계정 이름 저장 함수
 void register_new_account(char *name)
 {
     // 계정 정보 순서
@@ -40,16 +41,19 @@ void register_new_account(char *name)
     global_account_manager.current_account_index++;
 }
 
-    // 계정 이름 인쇄
+    // 계정 이름 인쇄 함수
 void print_account_manager(void)
 {
     int i;
     // 현재 index 정보를 계정 갯수로 대입 (0 부터 시작하여  마지막 처리 후 ++ 산정했음)
     int current_account_max = global_account_manager.current_account_index;
+    
+    // 계정 갯수 인쇄
     printf("current_account_max: %d\n", current_account_max);
 
     for (i = 0; i < current_account_max; i++)
     {
+        // 저장된 계정이름을 반복문을 통해 0 ~ max 까지 인쇄
         printf("사용자 name: %s\n", global_account_manager.account_array[i].account_name);
     }
 }
