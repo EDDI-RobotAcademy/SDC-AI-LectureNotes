@@ -16,6 +16,7 @@ int find_target_dice(int current_index)
     return current_index ? 0 : 1;
 }
 
+//                          player *player_object[MAX_PLAYER];
 void player_info_allocation(player **player_object_array, char **name)
 {
     int i;
@@ -112,8 +113,14 @@ void play_dice_game(dice *dice_array[MAX_PLAYER][MAX_DICE])
 int main (void)
 {
     // int i, j;
+    // player 객체를 관리하는 배열
+    // Player playerArray[MAX_PLAYER]; <- Java
+    // player는 무엇인가 ?
+    // 우리가 커스텀한 데이터타입임
+    // int와 int *의 차이점은 무엇인가 ?
     player *player_object[MAX_PLAYER];
     char *name[MAX_PLAYER] = {
+        "hello",
         "낵아마",
         "낵아뭐"
     };
