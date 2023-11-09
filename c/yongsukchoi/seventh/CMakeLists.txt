@@ -8,9 +8,8 @@ set(CMAKE_BUILD_TYPE Debug)
 
 file(GLOB SOURCE_FILES
         "*.c"
-        "player/entity/*.c"
-        "dice/entity/*.c"
-        "utility/*.c"
+        "led/entity/*.c"
+        "account/entity/*.c"
 )
 
 add_executable(
