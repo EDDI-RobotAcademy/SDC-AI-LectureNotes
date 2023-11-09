@@ -11,7 +11,7 @@ file(GLOB SOURCE_FILES
         "player/entity/*.c"
         "dice/entity/*.c"
         "utility/*.c"
-)
+    )
 
 add_executable(
     c_app
