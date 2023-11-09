@@ -9,6 +9,7 @@ void init_account_manager_object(void)
 {
     // 구조체를 사용할 때 포인터 변수는 '->' 로 접근
     // 포인터가 아닌 변수는 '.' 으로 접근
+    // 구조체에서 패딩을 써야 하는 이유 = 메모리를 낭비하게 되긴 하지만 데이터를 읽어 올 때 성능 저하 방지
     global_account_manager.account_array = 
         (account *)malloc(sizeof(account) * DEFAULT_ALLOC_COUNT);
 

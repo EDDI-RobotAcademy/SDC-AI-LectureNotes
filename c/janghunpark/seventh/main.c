@@ -4,8 +4,8 @@
 
 int main (void)
 {
-    int i;
-    led *led_array;
+    int i; // for 문 동작용 + led_array 배열에 상태를 저장하는 index
+    led *led_array; // led type의 배열 포인터
     const int led_array_count = 7;
     printf("First C Programming on Linux!\n");
     
