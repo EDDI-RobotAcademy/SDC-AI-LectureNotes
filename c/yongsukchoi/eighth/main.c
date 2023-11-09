@@ -19,7 +19,7 @@ int main(void)
     {
         player_object[i] = init_player_object();
         set_player_name(player_object[i], name[i]);
-        print_player_object(player_object[i]); 
+        print_player_object(player_object[i]);
     }
     
     return 0;
