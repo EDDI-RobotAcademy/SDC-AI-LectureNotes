@@ -7,6 +7,7 @@
 
 #define MAX_PLAYER          2
 #define MAX_DICE            2
+
 #define FIRST_DICE          0
 #define SECOND_DICE         1
 
@@ -25,8 +26,9 @@ int main (void)
     };
 
     dice *dice_array[MAX_PLAYER][MAX_DICE];
-    
+
     printf("Eighth work\n");
+
     for (i = 0; i < MAX_PLAYER; i++)
     {
         player_object[i] = init_player_object();
@@ -63,6 +65,7 @@ int main (void)
                     break;
                 }
             }
+            
             roll_dice(dice_array[i][j]);
             print_dice_object(dice_array[i][j]);
 
