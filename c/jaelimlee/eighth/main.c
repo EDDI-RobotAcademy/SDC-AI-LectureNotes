@@ -15,7 +15,8 @@ int find_target_dice(int current_index)
 {
     return current_index ? 0 : 1;
 }
-
+//                          player *player_object[MAX_PLAYER];
+//                          *와 MAX_PLAYER 등가 교환.
 void player_info_allocation(player **player_object_array, char **name)
 {
     int i;
@@ -117,7 +118,20 @@ void play_dice_game(dice *dice_array[MAX_PLAYER][MAX_DICE])
 int main (void)
 {
     // int i, j;
-    player *player_object[MAX_PLAYER];
+    //player 객체를 관리하는 배열
+    // player playerArray[MAX_PLAYER]; <- Java 코드 
+
+    // player: 우리가 커스텀한 데이터 타입
+
+    // int와 int *의 차이점: int에는 정수값, int *에는 메모리 주소
+
+    // int number = 4;
+    // int *pointer = &number;
+
+    // number의 메모리  4
+    // pointer      number
+
+    player *player_object[MAX_PLAYER]; 
     char *name[MAX_PLAYER] = {
         "낵아마",
         "낵아뭐"
