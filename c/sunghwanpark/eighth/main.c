@@ -17,7 +17,7 @@ int find_target_dice(int current_index)
     return current_index ? 0 : 1;
 }
 
-void player_allocation(player **player_object_array, char **name)
+void player_info_allocation(player **player_object_array, char **name)
 {
     int i;
     for (i=0; i<MAX_PLAYER; i++)
@@ -106,6 +106,18 @@ int main (void)
 {
     // int i,j;
     
+    // player 객체를 관리하는 배열 
+    // Player playerArray[MAX_PLAYER]; -> 자바 스타일 
+
+    //player는 무엇인가? 
+    // 우리가 커스텀한 데이터타입임 
+
+    // int 와 int*의 차이점은 무엇인가? 
+    // int number =4; 
+    // int *pointer = &number;
+    //
+    // number의 메모리        4
+    //   pointer          number 
     player *player_object[MAX_PLAYER];
     char *name[MAX_PLAYER] = {
         "낵아마", "낵아뭐"
@@ -114,7 +126,7 @@ int main (void)
     dice *dice_array[MAX_PLAYER][MAX_DICE];
     printf("Eighth work\n");
 
-    player_allocation(player_object,name);
+    player_info_allocation(player_object,name);
     /*
     for (i=0; i<MAX_PLAYER; i++)
     {
