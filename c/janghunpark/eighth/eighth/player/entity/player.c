@@ -8,7 +8,7 @@ unsigned int current_player_max;
 
 player *init_player_object(void)
 {
-    player *tmp_player = (player *)malloc(sizeof(player));
+    player *tmp_player = (player *)malloc(sizeof(player)); // player type의 size 만큼의 동적할당을 player *형태 강제캐스팅을 거쳐 tmp_player에 실행
     tmp_player->id = current_player_max++;
 
     return tmp_player;

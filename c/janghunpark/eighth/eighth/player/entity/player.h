@@ -5,7 +5,7 @@ typedef struct _player player;
 
 struct _player
 {
-    unsigned int id;
+    unsigned int id; // 음수를 쓰지 않겠다는 의지 (0부터 양수인 정수)
     char *name;
 };
 
