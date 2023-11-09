@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d8f0d8e9-f78f-4e4c-8132-719e47ed26dc}</ProjectGuid>
-    <RootNamespace>fisrt</RootNamespace>
+    <ProjectGuid>{d650a1d7-a781-4008-ba9c-c2d5a220be67}</ProjectGuid>
+    <RootNamespace>homework1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,13 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="first.c" />
-    <ClCompile Include="fource.c" />
-    <ClCompile Include="second.c" />
+    <ClCompile Include="dice.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="player.c" />
+    <ClCompile Include="random_generator.c" />
+    <ClCompile Include="win.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="fourth.h" />
-    <ClInclude Include="second.h" />
+    <ClInclude Include="dice.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="random_generator.h" />
+    <ClInclude Include="win.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
