@@ -3,19 +3,24 @@
 #include "player/entity/player.h"
 #include "dice/entity/dice.h"
 #include "utility/random.h"
+#include "utility/common.h"
 
 #define MAX_PLAYER          2
+#define MAX_DICE            2
+
+#define FIRST_DICE          0
+#define SECOND_DICE         1
 
 int main (void)
 {
-    int i;
+    int i, j;
     player *player_object[MAX_PLAYER];
     char *name[MAX_PLAYER] = {
         "낵아마",
         "낵아뭐"
     };
 
-    dice *dice_array[MAX_PLAYER];
+    dice *dice_array[MAX_PLAYER][MAX_DICE];
 
     printf("Eighth work\n");
 
@@ -30,8 +35,24 @@ int main (void)
 
     for (i = 0; i < MAX_PLAYER; i++)
     {
-        dice_array[i] = init_dice_object();
-        print_dice_object(dice_array[i]);
+        printf("player: %d\n", i);
+        for (j = 0; j < MAX_DICE; j++)
+        {
+            if (j == SECOND_DICE)
+            {
+                // '!' 는 NOT 연산자로
+                // 참을 부정하면 거짓
+                // 거짓을 부정하면 참
+                if (!decision_even(
+                        get_dice_number(dice_array[i][FIRST_DICE])))
+                {
+                    break;
+                }
+            }
+
+            dice_array[i][j] = init_dice_object();
+            print_dice_object(dice_array[i][j]);
+        }
     }
     
     return 0;
