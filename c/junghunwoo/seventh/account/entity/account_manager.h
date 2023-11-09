@@ -5,6 +5,7 @@
 
 #define DEFAULT_ALLOC_COUNT     32
 
+// 자료형을 커스텀하는 과정 
 typedef struct _account_manager account_manager;
 
 struct _account_manager

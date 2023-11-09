@@ -11,7 +11,7 @@ led *init_led_object(int count)
     led_array_count = count;
     return tmp_led_array;
 }
-
+// bool함수에는 true 또는 false가 들어가는 논리형 함수이다.
 void set_led_status(led *array, int led_index, bool on_off)
 {
     array[led_index].status = on_off;

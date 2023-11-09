@@ -14,6 +14,7 @@ int main (void)
    const int led_array_count = 7;
     printf("First C Programming on Linux!\n");
 
+    //led 갯수를 메모리 값에 넣는다.
     led_array = init_led_object(led_array_count);
 
     for (i = 0; i < led_array_count; i++)
