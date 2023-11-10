@@ -1,11 +1,3 @@
-#!/usr/bin/bash
-
-echo "First Argument: $1"
-
-mkdir $1
-cd $1
-
-CMAKELISTS_CONTENT=$(cat <<END
 cmake_minimum_required(VERSION 3.16)
 project(test_app C)
 
@@ -25,22 +17,3 @@ add_executable(
     test_app
     ${SOURCE_FILES}
 )
-END
-)
-
-echo "$CMAKELISTS_CONTENT" > CMakeLists.txt
-
-DEFAULT_MAIN_CODE=$(cat <<END
-#include <stdio.h>
-
-int main (void)
-{
-
-    return 0;
-}
-END
-)
-
-echo "$DEFAULT_MAIN_CODE" > main.c
-
-code .
