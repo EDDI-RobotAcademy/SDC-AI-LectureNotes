@@ -56,6 +56,9 @@ void dice_memory_allocation(dice *dice_array[MAX_PLAYER][MAX_DICE])
     {
         for (j = 0; j < MAX_DICE; j++)
         {
+            // 여기서 주사위 객체를 만들어서 배열이 관리하게 만듦
+            // init_ -> 생성자와 동일
+            // 결론적으로 내부에서 malloc()을 이용하여 메모리를 할당(객체생성)
             dice_array[i][j] = init_dice_object();
         }
     }
@@ -90,6 +93,7 @@ void apply_dice_skill(bool isFirstDiceIsEven,
                 break;
             
             default:
+                printf("스킬 발동 실패\n");
                 break;
         }
     }
@@ -104,7 +108,12 @@ void play_dice_game(dice *dice_array[MAX_PLAYER][MAX_DICE])
         printf("player: %d\n", i);
         for (j = 0; j < MAX_DICE; j++)
         {
+            // 굴린 주사위가 짝수인지 판별하기 위한 변수
             bool isFirstDiceIsEven = false;
+            // 두 번째 주사위를 굴릴 때 
+            // decision_even 과 get_dice_number를 통해
+            // 첫 번째 주사위가 짝수인지 여부를 판정하여
+            // isFirstDiceIsEven을 true false로 만든다.
             if (j == SECOND_DICE)
             {
                 // '!' 는 NOT 연산자로
@@ -113,15 +122,22 @@ void play_dice_game(dice *dice_array[MAX_PLAYER][MAX_DICE])
                 isFirstDiceIsEven = decision_even(
                         get_dice_number(dice_array[i][FIRST_DICE]));
 
+                // 홀수라면 더 이상 진행하지 않음
                 if (!isFirstDiceIsEven)
                 {
+                    // break의 경우 loop 1개를 탈출 할 수 있음
+                    // 이번 break는 결론적으로 j를 사용하는 for문을 탈출함
                     break;
                 }
             }
+            // isFirstDiceIsEven = check_first_dice_is_even(j, dicearray);
+            // if (isFirstDiceIsEven) break;
 
+            // 첫 번째 주사위가 짝수임을 판정 한 이후 두 번째 주사위가 굴러감
+            // 첫 번째 주사위도 여기서 굴러감
             roll_dice(dice_array[i][j]);
             print_dice_object(dice_array[i][j]);
-
+            
             apply_dice_skill(isFirstDiceIsEven, dice_array, i);
         }
     }
@@ -142,10 +158,15 @@ int main (void)
         "낵아뭐"
     };
 
+    // dice 포인터를 관리한다는 것
+    // => dice 객체를 관리
     dice *dice_array[MAX_PLAYER][MAX_DICE];
 
     printf("Eighth work\n");
 
+    // 배열의 이름은 배열의 시작 주소고
+    // 포인터는 주소를 저장하는 변수라는 것을 상기합시다.
+    // player 객체에 name 정보 설정
     player_info_allocation(player_object, name);
     /*
     for (i = 0; i < MAX_PLAYER; i++)
@@ -156,6 +177,7 @@ int main (void)
     }
     */
 
+    // 주사위 메모리(객체) 할당
     dice_memory_allocation(dice_array);
     /*
     random_seed_config();
@@ -169,6 +191,8 @@ int main (void)
     }
     */
 
+
+   // 주사위 놀이 시작!
     play_dice_game(dice_array);
 
    /*
