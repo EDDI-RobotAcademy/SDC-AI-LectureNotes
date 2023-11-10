@@ -3,7 +3,6 @@
 
 #include <stdbool.h>
 
-bool check_even(const int number);
-
+bool decision_even(const int number);
 
 #endif
