@@ -12,7 +12,7 @@ int main (void)
     printf("First C Programming on Linux!\n");
 
     led_array = init_led_object(led_array_count);
-    
+
     for (i = 0; i < led_array_count; i++)
     {
         set_led_status(led_array, i, true);
@@ -23,11 +23,9 @@ int main (void)
     printf("account, account_manager test!\n");
 
     init_account_manager_object();
-    register_new_account("name");
-    register_new_account("hi");
-    register_new_account("do");
-
+    register_new_account(name);
     print_account_manager();
+
 
     return 0;
 }
