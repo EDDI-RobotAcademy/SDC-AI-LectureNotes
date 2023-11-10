@@ -23,8 +23,24 @@ void player_info_allocation(player **player_object_array, char **name)
 
     for (i = 0; i < MAX_PLAYER; i++)
     {
+        // init_player_object()에 할당된 Heap Memory 주소는
+        // player_object_array[index]에 배치됨
+
+        // 각각의 player_object_array[index]에 가면 무엇이 있는가?
+        // Heap에 저장된 메모리 주소?
+        // 결런적으로는 player 객체
         player_object_array[i] = init_player_object();
+
+        // player 객체에 name 값 저장
         set_player_name(player_object_array[i], name[i]);
+
+        // player 객체의 toString() 메서드 <- Java 스타일 표현
+        // player 객체의 정보 출력 <- Java를 모를경우
+        // 여기에 무엇을 전달하는가?
+
+        // 메모리 주소값 <--세부 사항
+        // player 객체값 <-- 도메인
+        // 결론적으로 아무리 복잡한 상황이더라도 직관성을 제공하는 것이 Domain 관점임.
         print_player_object(player_object_array[i]);
     }
 }
@@ -39,11 +55,13 @@ void dice_memory_allocation(dice *dice_array[MAX_PLAYER][MAX_DICE])
     {
         for (j = 0; j < MAX_DICE; j++)
         {
+            // 여기서 주사위 객체를 만들어서 배열이 관리하게 만듬.
+            // 그리고 init_붙은 계열을 전부 C++, Java 등의 생성자와 동일하게 여기라고 했음.
+            // 결론적으로 내부에서 malloc()을 사용
             dice_array[i][j] = init_dice_object();
         }
     }
 }
-
 void apply_dice_skill(bool isFirstDiceIsEven, 
                     dice *dice_array[MAX_PLAYER][MAX_DICE], 
                     int player_index)
@@ -87,7 +105,12 @@ void play_dice_game(dice *dice_array[MAX_PLAYER][MAX_DICE])
         printf("player: %d\n", i);
         for (j = 0; j < MAX_DICE; j++)
         {
+            // 첫 번째 주사위가 짝수냐를 판정하기 위한 변수
             bool isFirstDiceIsEven = false;
+            // 두 번째 주사위를 굴릴 때
+            // decision_even과 get_dice_number를 통해
+            // 첫 번째 주사위가 짝수인지 여부를 판정하여
+            // isFirstDiceIsEven을 true, false로 만든다
             if (j == SECOND_DICE)
             {
                 // '!' 는 NOT 연산자로
@@ -96,12 +119,17 @@ void play_dice_game(dice *dice_array[MAX_PLAYER][MAX_DICE])
                 isFirstDiceIsEven = decision_even(
                         get_dice_number(dice_array[i][FIRST_DICE]));
 
+                // 홀수라면 더 이상 진행하지 않음.
                 if (!isFirstDiceIsEven)
                 {
+                    // 이 break의 경우 loop 1개를 탈출 할 수 있음.
                     break;
                 }
             }
+            // isFirstDiceIsEven = check_first_dice_is_even(j, dice_array);
 
+            // 첫 번째 주사위가 짝수임을 판정한 이후 두 번째 주사위가 굴러감.
+            // 첫 번째 주사위 또한 여기서 굴러감
             roll_dice(dice_array[i][j]);
             print_dice_object(dice_array[i][j]);
 
@@ -127,14 +155,18 @@ int main (void)
     pointer     num*/
     player *player_object[MAX_PLAYER];
     char *name[MAX_PLAYER] = {
-        "낵아마",
-        "낵아뭐"
+        "공손찬",
+        "원소"
     };
-
+    // dice 포인터를 관리한다는 것은 결론적으로 무엇을 관리하는 것인가?
+    // dice 객체를 관리한다는 것.
     dice *dice_array[MAX_PLAYER][MAX_DICE];
 
     printf("Eighth work\n");
 
+    // *****배열의 이름은 배열의 시작주소고*****
+    // *****포인터는 주소를 저장하는 변수라는 것을 상기합니다.*****
+    // player 객체에 name 정보 설정
     player_info_allocation(player_object, name);
     /*
     for (i = 0; i < MAX_PLAYER; i++)
@@ -145,6 +177,7 @@ int main (void)
     }
     */
 
+    // 주사위 메모리(객체) 할당
     dice_memory_allocation(dice_array);
     /*
     random_seed_config();
@@ -158,6 +191,7 @@ int main (void)
     }
     */
 
+    // 주사위 놀이 시작!
     play_dice_game(dice_array);
 
    /*
