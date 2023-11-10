@@ -1,10 +1,21 @@
 #include <stdio.h>
+#include <math.h>
+
+// 과제
+// x, y, z 속도 벡터가 존재합니다.
+// A_xyz 벡터에 -9 ~ 9 사이의 임의의 크기를 줍니다.
+// B_xyz 벡터에 -9 ~ 9 사이의 임의의 크기를 줍니다.
+// 통합 벡터는 x, y, z 각각의 벡터의 계산으로 산출합니다.
+// A가 B를 바라 볼 때 상대 벡터를 출력하세요.
+// 통합 벡터 길이 = sqrt(x^2 + y^2 + z^2)
 
 // 스포
 // int (*) (int, int) - return
 // fp_test
 // void (*)(int) - parameter;
 int (* fp_test(void (* handler)(int number)))(int, int);
+
+// int ret = fp_test(ptr)(3, 7);
 
 // Quiz. 함수 내부에서 계산한 배열을 리턴 할 수 있는 방법이 있을까요 ?
 
@@ -54,6 +65,11 @@ int main (void)
             printf("arr[%d][%d] = %d\n", i, j, arr[i][j]);
         }
     }
+
+    // pow는 멱급수라는 의미로 3의 2 제곱을 의미함
+    // 3의 3제곱을 만들거라면 pow(3, 3)
+    // sqrt는 제곱근
+    printf("sqrt(3^2 + 4^2) = %d\n", (int)sqrt(pow(3, 2) + pow(4, 2)));
 
     return 0;
 }
