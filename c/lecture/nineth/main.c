@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+// 스포
+// int (*) (int, int) - return
+// fp_test
+// void (*)(int) - parameter;
+int (* fp_test(void (* handler)(int number)))(int, int);
+
 // Quiz. 함수 내부에서 계산한 배열을 리턴 할 수 있는 방법이 있을까요 ?
 
 // int[3] * returned_array (void)
