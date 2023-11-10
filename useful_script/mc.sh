@@ -13,7 +13,7 @@ set(CMAKE_C_COMPILER "clang")
 set(CMAKE_CXX_COMPILER "clang++")
 
 set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g")
+set(CMAKE_C_FLAGS "\${CMAKE_C_FLAGS} -g")
 
 set(CMAKE_BUILD_TYPE Debug)
 
@@ -23,7 +23,7 @@ file(GLOB SOURCE_FILES
 
 add_executable(
     test_app
-    ${SOURCE_FILES}
+    \${SOURCE_FILES}
 )
 END
 )
