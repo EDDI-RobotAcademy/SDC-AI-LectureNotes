@@ -1,0 +1,55 @@
+{
+	"kind" : "toolchains",
+	"toolchains" : 
+	[
+		{
+			"compiler" : 
+			{
+				"id" : "Clang",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"/usr/lib/llvm-14/lib/clang/14.0.0/include",
+						"/usr/local/include",
+						"/usr/include/x86_64-linux-gnu",
+						"/usr/include"
+					],
+					"linkDirectories" : 
+					[
+						"/usr/lib/gcc/x86_64-linux-gnu/11",
+						"/usr/lib64",
+						"/lib/x86_64-linux-gnu",
+						"/lib64",
+						"/usr/lib/x86_64-linux-gnu",
+						"/usr/lib/llvm-14/lib",
+						"/lib",
+						"/usr/lib"
+					],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : 
+					[
+						"gcc",
+						"gcc_s",
+						"c",
+						"gcc",
+						"gcc_s"
+					]
+				},
+				"path" : "/usr/bin/clang",
+				"version" : "14.0.0"
+			},
+			"language" : "C",
+			"sourceFileExtensions" : 
+			[
+				"c",
+				"m"
+			]
+		}
+	],
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}
