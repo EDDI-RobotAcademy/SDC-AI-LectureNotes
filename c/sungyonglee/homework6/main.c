@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "vector/vector.h"
+#include "utility/random.h"
 
 
  
@@ -22,6 +23,8 @@ int main (void)
     };
 
     vector_info_allocation(vector_object, name);
+
+    random_seed_config();
 
 
     return 0;
