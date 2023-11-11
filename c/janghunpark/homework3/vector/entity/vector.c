@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 #include "vector.h"
-#include "../../utility/random/random.h"
+#include "../../utility/random.h"
 
 vector *init_vector_object(void)
 {

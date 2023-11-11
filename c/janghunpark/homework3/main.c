@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "vector/entity/vector.h"
-#include "utility/random/random.h"
+#include "utility/random.h"
 
 /*
 < Basic Logic >
