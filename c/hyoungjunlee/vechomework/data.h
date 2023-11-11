@@ -11,6 +11,6 @@ struct _vector
    int z;
 };
 vec* create_vector(void);
-void test(vec*vector);
+void data_input(vec* vector);
 
 #endif
