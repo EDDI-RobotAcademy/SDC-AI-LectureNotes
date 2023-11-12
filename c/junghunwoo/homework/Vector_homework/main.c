@@ -21,8 +21,8 @@ int main (void)
 {
     vector *vector_name_object[MAX_VECTOR_NAME];
     char *vector_name[MAX_VECTOR_NAME] = {
-        "AVector",
-        "BVector"
+        "A_Vector",
+        "B_Vector"
     };
 
     vector_name_info_allocation(vector_name_object, vector_name);

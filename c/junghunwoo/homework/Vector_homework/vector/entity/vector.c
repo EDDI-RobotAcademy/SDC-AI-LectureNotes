@@ -23,7 +23,7 @@ void set_vector_name(vector *object, char *vector_name)
     strncpy(object->vector_name, vector_name, name_length);
 }
 
-void print_vector_object(vector *object)
+void print_vector_name_object(vector *object)
 {
     printf("Vector_count: %d\n", object->vector_count);
     printf("vector_name: %s\n", object->vector_name);
