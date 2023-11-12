@@ -12,6 +12,7 @@ set(CMAKE_BUILD_TYPE Debug)
 file(GLOB SOURCE_FILES
         "*.c"
         "vecter/*.c"
+        "utility/*.c"
 )
 
 add_executable(
