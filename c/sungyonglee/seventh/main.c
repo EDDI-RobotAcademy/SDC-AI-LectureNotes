@@ -23,10 +23,9 @@ int main (void)
     printf("account, account_manager test!\n");
 
     init_account_manager_object();
-    register_new_account("name");
-    register_new_account("hi");
-    register_new_account("do");
-
+    register_new_account(name);
+    register_new_account("test");
+    register_new_account("go");
     print_account_manager();
 
     return 0;
