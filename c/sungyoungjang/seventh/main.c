@@ -3,17 +3,16 @@
 #include "led/entity/led.h"
 #include "account/entity/account_manager.h"
 
-int main (void)
+int main(void)
 {
     int i;
     led *led_array;
     const int led_array_count = 7;
-    char name[32] = "hi";
-    printf("First C Programming on Linux!\n");
+    printf("First C Programming on Linux!");   
 
     led_array = init_led_object(led_array_count);
-    
-    for (i = 0; i < led_array_count; i++)
+
+    for(i = 0; i < led_array_count; i++)
     {
         set_led_status(led_array, i, true);
     }
@@ -23,11 +22,8 @@ int main (void)
     printf("account, account_manager test!\n");
 
     init_account_manager_object();
-    register_new_account("name");
     register_new_account("hi");
-    register_new_account("do");
-
+    register_new_account("ho");
     print_account_manager();
-
     return 0;
 }

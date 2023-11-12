@@ -1,0 +1,6 @@
+{
+    "C_Cpp.dimInactiveRegions": false,
+    "files.associations": {
+        "stdio.h": "c"
+    }
+}
