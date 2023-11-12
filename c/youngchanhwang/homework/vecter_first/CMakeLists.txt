@@ -11,7 +11,7 @@ set(CMAKE_BUILD_TYPE Debug)
 
 file(GLOB SOURCE_FILES
         "*.c"
-        "vecter/*.c"
+        "vector/*.c"
         "utility/*.c"
 )
 

@@ -14,6 +14,10 @@ struct _vectors
 
 #define MAX         9
 #define MIN         -9
+vectors *init_vectors_object(void);
+void set_vectors_name(vectors *object, char *name);
+void set_vectors_xyz_number(vectors *object);
+void print_vectors_object(vectors *object);
 
 
 
