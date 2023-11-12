@@ -12,6 +12,8 @@ struct _vectors
     
 };
 
+#define MAX         9
+#define MIN         -9
 
 
 
