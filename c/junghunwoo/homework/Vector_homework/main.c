@@ -61,9 +61,9 @@ int main (void)
 
     xyz_memory_allocation(xyz_array);
 
-    vector_caculate(caculate_array[0], xyz_array[0], xyz_array[1]);
+    //vector_caculate(caculate_array[0], xyz_array[0], xyz_array[1]);
     
-    print_vector_caculate(caculate_array[0]);
+    //print_vector_caculate(caculate_array[0]);
 
 
 

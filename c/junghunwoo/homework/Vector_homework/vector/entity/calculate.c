@@ -14,7 +14,7 @@ caculate init_caculate_object(void)
 */
 void vector_caculate(caculate *result_object, xyz *object, xyz *target_object)
 {
-    caculate *result_object = (caculate *)malloc(sizeof(caculate));
+    //caculate *result_object = (caculate *)malloc(sizeof(caculate));
 
     result_object->x_result = object->x_number - target_object->x_number;
     result_object->y_result = object->y_number - target_object->y_number;
