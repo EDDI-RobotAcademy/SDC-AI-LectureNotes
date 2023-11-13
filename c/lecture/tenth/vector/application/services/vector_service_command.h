@@ -1,0 +1,13 @@
+#ifndef __VECTOR_SERVICE_COMMAND_H__
+#define __VECTOR_SERVICE_COMMAND_H__
+
+enum vector_add_service_command
+{
+    VECTOR_ADD_SERVICE_EXECUTE,
+    VECTOR_SERVICE_END
+};
+
+#define VECTOR_SERVICE_EXECUTE_BUFFER_COUNT         (VECTOR_SERVICE_END)
+#define VECTOR_SERVICE_EXECUTE_BUFFER               ((VECTOR_SERVICE_END) - 1)
+
+#endif
