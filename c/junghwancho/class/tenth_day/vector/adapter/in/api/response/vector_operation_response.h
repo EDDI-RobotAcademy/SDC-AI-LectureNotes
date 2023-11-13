@@ -1,10 +1,10 @@
-#ifndef __VEECTOR_OPERATION_RESPONSE_H__
-#define __VEECTOR_OPERATION_RESPONSE_H__
+#ifndef __VECTOR_RANDOM_OPERATION_RESPONSE_H__
+#define __VECTOR_RANDOM_OPERATION_RESPONSE_H__
 
-typedef struct vector_operation_response
+typedef struct _vector_operation_response
     vector_operation_response;
 
-struct vector_operation_response
+struct _vector_operation_response
 {
     float x;
     float y;
