@@ -17,6 +17,7 @@ file(GLOB SOURCE_FILES
         "vector/adapter/in/api/request/*.c"
         "vector/adapter/out/in_memory/*.c"
         "vector/adapter/out/in_memory/store/*.c"
+        "vector/adapter/out/in_memory/data/*.c"
         "vector/application/services/*.c"
         "vector/application/services/add/*.c"
         "vector/application/services/sub/*.c"

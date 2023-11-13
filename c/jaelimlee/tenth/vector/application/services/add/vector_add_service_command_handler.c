@@ -8,6 +8,9 @@
 
 float add_x_request_form(vector_operation_request *request_form)
 {
+    printf("뭐냐 ? first(x): %5.2f, second(x): %5.2f\n", 
+        request_form->first_vector->x, request_form->second_vector->x);
+        
     return request_form->first_vector->x + request_form->second_vector->x;
 }
 
@@ -27,15 +30,14 @@ void vector_add(vector_operation_request *request_form)
 
     printf("벡터 덧셈입니다!\n");
     print_vector_operation_request(request_form);
-    
+
     init_vector_model_object_with_value(
-        &vector_operation_result,
-        add_x_rerquest_form(request_form),
-        add_y_rerquest_form(request_form),
-        add_z_rerquest_form(request_form));
-    
+        &vector_operation_result, 
+        add_x_request_form(request_form), 
+        add_y_request_form(request_form), 
+        add_z_request_form(request_form));
+
     print_vector_model_object(&vector_operation_result);
 
-    vector_in_memory_command_table[VECTOR_IN_MEMORY_STORE]();
-
+    vector_in_memory_command_table[VECTOR_IN_MEMORY_STORE](&vector_operation_result);
 }

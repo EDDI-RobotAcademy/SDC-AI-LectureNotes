@@ -4,6 +4,8 @@
 #include "vector_service_command.h"
 #include "../../adapter/in/api/request/vector_operation_request.h"
 
+void just_dummy(vector_operation_request *nothing);
+
 // void (* A)(void) <- 함수 포인터
 // 함수 포인터는 리턴 타입과 입력 파라미터를 모두 명시해줘야 함.
 // 리턴 타입 (*포인터 변수) (파라미터) 형태로 작성해야 함

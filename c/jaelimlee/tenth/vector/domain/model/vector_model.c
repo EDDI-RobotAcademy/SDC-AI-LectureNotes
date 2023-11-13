@@ -1,8 +1,8 @@
 #include "vector_model.h"
 #include "../../../utility/random.h"
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 vector_model *init_vector_model_object(void)
 {
@@ -14,12 +14,10 @@ vector_model *init_vector_model_object(void)
     return tmp_vector;
 }
 
-// TODO: 실제로는 #define을 사용해서 함수 오버로딩을 했어야 함
+// TODO: 실제로는 #define을 사용해서 함수 오버로딩을 했어야함
 vector_model *init_vector_model_object_with_vector(vector_model *vector_object)
 {
     vector_model *tmp_vector = (vector_model *)malloc(sizeof(vector_model));
-
-    vector_object = (vector_model *)malloc(sizeof(vector_model));
 
     tmp_vector->x = vector_object->x;
     tmp_vector->y = vector_object->y;
@@ -30,13 +28,20 @@ vector_model *init_vector_model_object_with_vector(vector_model *vector_object)
 
 void init_vector_model_object_with_value(
     vector_model *vector_object, float x, float y, float z)
-    {
-        vector_object->x;
-        vector_object->y;
-        vector_object->z;
-    }
+{
+    //printf("x: %5.2f, y: %5.2f, z: %5.2f\n", x, y, z);
+
+    //printf("after malloc -> x: %5.2f, y: %5.2f, z: %5.2f\n", x, y, z);
+
+    vector_object->x = x;
+    vector_object->y = y;
+    vector_object->z = z;
+
+    // printf("vector_object->x: %5.2f, y: %5.2f, z: %5.2f\n",
+    //     vector_object->x, vector_object->y, vector_object->z);
+}
 
 void print_vector_model_object(vector_model *object)
 {
-    printf("\{x: %5.2f, y: %5.2f, z: %5.2f\}\n", object->x, object->y, object->z);
+    printf("\{ x: %5.2f, y: %5.2f, z: %5.2f \}\n", object->x, object->y, object->z);
 }
