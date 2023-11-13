@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include "utility/random.h"
+
 #include "vector/application/services/vector_service_command.h"
 #include "vector/application/services/add/vector_add_service_command_handler.h"
 #include "vector/application/services/sub/vector_sub_service_command_handler.h"
@@ -11,7 +13,9 @@
 
 int main (void)
 {
-    vector_service_command_table[VECTOR_SUB_SERVICE_EXECUTE]();
+    coinfig_random_seed();
+    
+    //vector_service_command_table[VECTOR_SUB_SERVICE_EXECUTE]();
     vector_math_api_command_table[VECTOR_MATH_API_RANDOM_OPERATION]();
 
     return 0;
