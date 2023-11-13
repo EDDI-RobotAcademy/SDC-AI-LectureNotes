@@ -1,0 +1,6 @@
+#ifndef __VECTOR_RANDOM_OPERATION_MATH_API_COMMAND_HANDLER_H__
+#define __VECTOR_RANDOM_OPERATION_MATH_API_COMMAND_HANDLER_H__
+
+void vector_random_operation(void);
+
+#endif
