@@ -10,6 +10,7 @@ vector_random_operation_response *
             malloc(sizeof(vector_random_operation_response));
 
     /* TODO: need to set response value from parameter*/
+    // 모름
 
     return response_vector;
 }
