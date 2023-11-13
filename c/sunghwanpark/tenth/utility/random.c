@@ -10,5 +10,5 @@ void config_random_seed(void)
 
 int generate_random(const int min, const int max)
 {
-    return rand () % (max-min+1)+min; 
+    return rand() % (max - min + 1) + min;
 }
