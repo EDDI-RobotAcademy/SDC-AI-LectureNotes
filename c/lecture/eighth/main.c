@@ -11,6 +11,8 @@
 #define FIRST_DICE          0
 #define SECOND_DICE         1
 
+void play_dice_game(dice *dice_array[MAX_PLAYER][MAX_DICE]);
+
 int find_target_dice(int current_index)
 {
     return current_index ? 0 : 1;
@@ -97,47 +99,7 @@ void apply_dice_skill(bool isFirstDiceIsEven,
     }
 }
 
-void play_dice_game(dice *dice_array[MAX_PLAYER][MAX_DICE])
-{
-    int i, j;
 
-    for (i = 0; i < MAX_PLAYER; i++)
-    {
-        printf("player: %d\n", i);
-        for (j = 0; j < MAX_DICE; j++)
-        {
-            // 첫 번째 주사위가 짝수냐를 판정하기 위한 변수
-            bool isFirstDiceIsEven = false;
-            // 두 번째 주사위를 굴릴 때
-            // decision_even과 get_dice_number를 통해
-            // 첫 번째 주사위가 짝수인지 여부를 판정하여
-            // isFirstDiceIsEven을 true, false로 만든다
-            if (j == SECOND_DICE)
-            {
-                // '!' 는 NOT 연산자로
-                // 참을 부정하면 거짓
-                // 거짓을 부정하면 참
-                isFirstDiceIsEven = decision_even(
-                        get_dice_number(dice_array[i][FIRST_DICE]));
-
-                // 홀수라면 더 이상 진행하지 않음
-                if (!isFirstDiceIsEven)
-                {
-                    // 이 break의 경우 loop 1개를 탈출 할 수 있음
-                    break;
-                }
-            }
-            // check_first_dice_is_even(j, dice_array);
-
-            // 첫 번째 주사위가 짝수임을 판정한 이후 두 번째 주사위가 굴러감
-            // 첫 번째 주사위 또한 여기서 굴러감
-            roll_dice(dice_array[i][j]);
-            print_dice_object(dice_array[i][j]);
-
-            apply_dice_skill(isFirstDiceIsEven, dice_array, i);
-        }
-    }
-}
 
 int main (void)
 {
@@ -254,4 +216,46 @@ int main (void)
     */
     
     return 0;
+}
+
+void play_dice_game(dice *dice_array[MAX_PLAYER][MAX_DICE])
+{
+    int i, j;
+
+    for (i = 0; i < MAX_PLAYER; i++)
+    {
+        printf("player: %d\n", i);
+        for (j = 0; j < MAX_DICE; j++)
+        {
+            // 첫 번째 주사위가 짝수냐를 판정하기 위한 변수
+            bool isFirstDiceIsEven = false;
+            // 두 번째 주사위를 굴릴 때
+            // decision_even과 get_dice_number를 통해
+            // 첫 번째 주사위가 짝수인지 여부를 판정하여
+            // isFirstDiceIsEven을 true, false로 만든다
+            if (j == SECOND_DICE)
+            {
+                // '!' 는 NOT 연산자로
+                // 참을 부정하면 거짓
+                // 거짓을 부정하면 참
+                isFirstDiceIsEven = decision_even(
+                        get_dice_number(dice_array[i][FIRST_DICE]));
+
+                // 홀수라면 더 이상 진행하지 않음
+                if (!isFirstDiceIsEven)
+                {
+                    // 이 break의 경우 loop 1개를 탈출 할 수 있음
+                    break;
+                }
+            }
+            // check_first_dice_is_even(j, dice_array);
+
+            // 첫 번째 주사위가 짝수임을 판정한 이후 두 번째 주사위가 굴러감
+            // 첫 번째 주사위 또한 여기서 굴러감
+            roll_dice(dice_array[i][j]);
+            print_dice_object(dice_array[i][j]);
+
+            apply_dice_skill(isFirstDiceIsEven, dice_array, i);
+        }
+    }
 }
