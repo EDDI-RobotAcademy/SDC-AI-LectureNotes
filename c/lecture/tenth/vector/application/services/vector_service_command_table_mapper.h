@@ -1,8 +1,8 @@
 #ifndef __VECTOR_ADD_SERVICE_COMMAND_TABLE_MAPPER_H__
 #define __VECTOR_ADD_SERVICE_COMMAND_TABLE_MAPPER_H__
 
-#include "vector_add_service_command.h"
-#include "vector_add_service_command_handler.h"
+#include "vector_service_command.h"
+#include "add/vector_add_service_command_handler.h"
 
 #define __VECTOR_ADD_SERVICE_COMMAND_TABLE(number, function_prototype) \
         [number] = function_prototype,
