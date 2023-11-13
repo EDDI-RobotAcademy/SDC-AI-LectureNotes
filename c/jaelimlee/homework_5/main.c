@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
-#include "random.h"
-#include "vector.h"
+#include "random/entity/random.h"
+#include "vector/entity/vector.h"
 
 #define MIN     -9
 #define MAX     9
@@ -16,7 +17,7 @@ int main (void)
     double A_xyz[VECTORSIZE];
     for (int i = 0; i < VECTORSIZE; i++)
     {
-        A_xyz[i] = generate_random(const int MIN, const int MAX);
+        A_xyz[i] = generate_random(MIN, MAX);
     }
     printf("A_xyw 벡터: %2f\n", A_xyz);
     
@@ -24,7 +25,7 @@ int main (void)
     double B_xyz[VECTORSIZE];
     for (int i = 0; i < VECTORSIZE; i++)
     {
-        B_xyz[i] = generate_random(const int MIN, const int MAX);
+        B_xyz[i] = generate_random(MIN, MAX);
     }
     printf("B_xyw 벡터: %2f\n", B_xyz);
 
