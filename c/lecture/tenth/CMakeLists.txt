@@ -12,7 +12,13 @@ set(CMAKE_BUILD_TYPE Debug)
 file(GLOB SOURCE_FILES
         "*.c"
         "utility/*.c"
+        "vector/adapter/in/api/*.c"
+        "vector/adapter/in/api/random_operation/*.c"
+        "vector/adapter/in/api/request/*.c"
+        "vector/application/services/*.c"
         "vector/application/services/add/*.c"
+        "vector/application/services/sub/*.c"
+        "vector/domain/model/*.c"
 )
 
 add_executable(
