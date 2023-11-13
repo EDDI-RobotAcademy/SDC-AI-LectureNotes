@@ -1,5 +1,9 @@
 #include "vector_add_service_command_handler.h"
 
+#include "../../../adapter/out/in_memory/vector_in_memory_command.h"
+#include "../../../adapter/out/in_memory/store/vector_store_in_memory_command_handler.h"
+#include "../../../adapter/out/in_memory/vector_in_memory_command_table.h"
+
 #include <stdio.h>
 
 float add_x_request_form(vector_operation_request *request_form)
@@ -35,5 +39,5 @@ void vector_add(vector_operation_request *request_form)
 
     print_vector_model_object(&vector_operation_result);
 
-    //vector_operation_result = init_vector_model_object_with_vector();
+    vector_in_memory_command_table[VECTOR_IN_MEMORY_STORE](&vector_operation_result);
 }
