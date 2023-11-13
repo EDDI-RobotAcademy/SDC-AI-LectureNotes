@@ -1,5 +1,5 @@
-#ifndef __VECTOR_H__
-#define __VECTOR_H__
+#ifndef __VECTOR_MODEL_H__
+#define __VECTOR_MODEL_H__
 
 #define VECTOR_MIN          (-9)
 #define VECTOR_MAX          (9)
