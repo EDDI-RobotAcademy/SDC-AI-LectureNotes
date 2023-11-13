@@ -1,0 +1,6 @@
+#ifndef __VECTOR_STORE_IN_MEMORY_COMMAND_HANDLER_H__
+#define __VECTOR_STORE_IN_MEMORY_COMMAND_HANDLER_H__
+
+void store_vector(void);
+
+#endif
