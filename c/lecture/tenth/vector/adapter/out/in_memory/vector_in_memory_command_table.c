@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 #include "vector_in_memory_command.h"
+#include "../../../domain/model/vector_model.h"
 
-void vector_in_memory_not_implemented(void)
+void vector_in_memory_not_implemented(vector_model *nothing)
 {
     printf("아직 기능이 구현되지 않았습니다!\n");
 }

@@ -39,5 +39,5 @@ void vector_add(vector_operation_request *request_form)
 
     print_vector_model_object(&vector_operation_result);
 
-    vector_in_memory_command_table[VECTOR_IN_MEMORY_STORE]();
+    vector_in_memory_command_table[VECTOR_IN_MEMORY_STORE](&vector_operation_result);
 }
