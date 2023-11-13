@@ -15,6 +15,8 @@ file(GLOB SOURCE_FILES
         "vector/adapter/in/api/*.c"
         "vector/adapter/in/api/random_operation/*.c"
         "vector/adapter/in/api/request/*.c"
+        "vector/adapter/out/in_memory/*.c"
+        "vector/adapter/out/in_memory/store/*.c"
         "vector/application/services/*.c"
         "vector/application/services/add/*.c"
         "vector/application/services/sub/*.c"
