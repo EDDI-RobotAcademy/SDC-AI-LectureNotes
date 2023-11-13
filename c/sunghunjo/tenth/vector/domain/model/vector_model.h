@@ -16,6 +16,9 @@ struct _vector_model
 
 
 vector_model *init_vector_model_object(void);
+vector_model *init_vector_model_object_with_vector(vector_model *vector_object);
+void init_vector_model_object_with_value(
+    vector_model * vector_object, float x, float y, float z);
 void print_vector_model_object(vector_model *object);
 
 
