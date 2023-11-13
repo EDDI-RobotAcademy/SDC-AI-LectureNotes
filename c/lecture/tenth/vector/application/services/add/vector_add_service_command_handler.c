@@ -4,5 +4,5 @@
 
 void vector_add(void)
 {
-    printf("일단 호출 됩니다!\n");
+    printf("벡터 덧셈입니다!\n");
 }

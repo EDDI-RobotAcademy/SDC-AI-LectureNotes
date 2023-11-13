@@ -1,5 +1,6 @@
 #include "vector_service_command_table.h"
 #include "add/vector_add_service_command_handler.h"
+#include "sub/vector_sub_service_command_handler.h"
 
 #include <stdio.h>
 #include "vector_service_command.h"

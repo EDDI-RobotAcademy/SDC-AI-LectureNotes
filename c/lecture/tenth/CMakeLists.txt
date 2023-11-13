@@ -14,6 +14,7 @@ file(GLOB SOURCE_FILES
         "utility/*.c"
         "vector/application/services/*.c"
         "vector/application/services/add/*.c"
+        "vector/application/services/sub/*.c"
 )
 
 add_executable(
