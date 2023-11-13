@@ -15,7 +15,5 @@ vector_model *init_vector_model_object(void)
 
 void print_vector_model_object(vector_model *object)
 {
-    printf("x: %f\n", object->x);
-    printf("y: %f\n", object->y);
-    printf("z: %f\n", object->z);
+    printf("\{ x: %5.2f, y: %5.2f, z: %5.2f \}\n", object->x, object->y, object->z);
 }
