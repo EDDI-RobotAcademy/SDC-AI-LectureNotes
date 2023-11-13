@@ -2,7 +2,8 @@
 
 #include <stdio.h>
 
-void vector_add(void)
+void vector_add(vector_operation_request *request_form)
 {
-    printf("일단 호출 됩니다.\n");
+    printf("벡터 덧셈입니다!\n");
+    print_vector_operation_request(request_form);
 }
