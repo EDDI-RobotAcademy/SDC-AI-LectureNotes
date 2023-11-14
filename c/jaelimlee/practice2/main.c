@@ -5,6 +5,7 @@
 #include "3/third.h"
 #include "7/seventh.h"
 #include "8/eighth.h"
+#include "10/tenth.h"
 
 int main (void)
 {
@@ -45,6 +46,9 @@ int main (void)
     integer_random_array();
 
     // 9번 문제: 정수형 배열에 아무 숫자나 넣고 이 배열을 파라미터로 받아 출력하는 함수 작성 
+    // -> 위에 문제를 이미 함수로 만들었는데...으으으으
+
+    // 10번 문제: 정수형 배열에 아무 숫자나 넣고 이 배열의 모든 값을 더해서 return 하는 함수를 작성하세요.
 
     return 0;
 }
