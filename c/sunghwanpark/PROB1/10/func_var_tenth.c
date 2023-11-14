@@ -10,7 +10,7 @@ int and_test(int num1,int num2)
 
 int or_test(int num1,int num2)
 {
-    return num1 || num2;
+    return num1 || num2; 
 }
 
 int xor_test(int num1,int num2)
@@ -18,7 +18,7 @@ int xor_test(int num1,int num2)
     return num1 ^ num2;
 }
 
-int not_test(int num1)
+int not_test(int num)
 {
-    return ~num1;
+    return ~num;
 }

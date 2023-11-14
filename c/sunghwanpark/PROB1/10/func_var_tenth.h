@@ -7,6 +7,6 @@ int or_test(int num1,int num2);
 
 int xor_test(int num1,int num2);
 
-int not_test(int num1);
+int not_test(int num);
 
 #endif
