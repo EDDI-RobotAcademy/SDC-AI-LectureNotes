@@ -6,7 +6,7 @@
 이를 출력해서 잘 되었는지 확인하시오.
 */
 
-float quiz15(int number1, float number2)
+int quiz15(int number1, float number2)
 {
     return number1 + number2;
 }
