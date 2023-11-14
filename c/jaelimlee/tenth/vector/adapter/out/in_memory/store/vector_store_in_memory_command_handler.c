@@ -1,4 +1,5 @@
 #include "vector_store_in_memory_command_handler.h"
+#include <stdio.h>
 
 void store_vector(vector_model *vector_model_object)
 {
