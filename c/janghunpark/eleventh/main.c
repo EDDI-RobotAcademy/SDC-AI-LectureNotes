@@ -76,7 +76,7 @@ int main (void)
 
     // Q12. Memory 정의 복습
     // Memory 구조 (Stack, Heap, Data, Text)
-    // Stack = 지역변수, Heap = 동적 할당, Data = 전역변수, Text = 기계어 
+    // Stack = 지역변수, Heap = 동적 할당, Data = 정적 변수 & 전역변수, Text = 기계어 
 
     // Q13. 나머지, 덧셈, 곱셈 함수 활용
     doit_result = doit(200, 15);
