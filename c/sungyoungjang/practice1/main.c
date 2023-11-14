@@ -2,6 +2,7 @@
 
 #include "1/first.h"
 #include "2/second.h"
+#include "3/third.h"
 
 int main (void)
 {
@@ -15,6 +16,7 @@ int main (void)
 
     //3번
     
+    printf(random_num(random_gen));
     
     
     return 0;
