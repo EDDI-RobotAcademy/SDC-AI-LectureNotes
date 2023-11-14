@@ -36,6 +36,11 @@ void check_larger_number_and_print_result(int num1, int num2)
     }
 }
 
+void bit_calculation(int a, int b)
+{
+    printf("a = %d\n", a << b);
+}
+
 // Q3 전용 함수
 void seperate_integer_and_decimals(float num)
 {
@@ -54,6 +59,12 @@ void seperate_integer_and_decimals(float num)
     printf("소수부분 = %.2f\n", num-integral_part);
 }
 
+// Q4 전용 함수
+void check_float_double_size(void)
+{
+    printf("size of float = %d, size of double = %d\n", sizeof(float), sizeof(double));
+}
+
 int main (void)
 {
     random_config();
@@ -67,10 +78,14 @@ int main (void)
     int num1 = generate_random_integer(MIN, MAX);
     int num2 = generate_random_integer(MIN, MAX);
     check_larger_number_and_print_result(num1, num2);
+    bit_calculation(2, 10);
 
     // Q3.
     float num = generate_random_realnumber(MIN, MAX);
     seperate_integer_and_decimals(num);
+
+    // Q4. 
+    check_float_double_size();
 
     return 0;
 }
