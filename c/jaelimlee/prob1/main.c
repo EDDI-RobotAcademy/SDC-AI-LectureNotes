@@ -8,9 +8,15 @@
 #include "6/func_var_sixth.h"
 #include "9/func_var_ninth.h"
 #include "10/func_var_tenth.h"
+#include "11/func_var_eleventh.h"
+#include "13/func_var_thirteenth.h"
+#include "14/func_var_fourteenth.h"
+#include "15/func_var_fifteenth.h"
 
 int main (void)
 {
+    int result;
+
     // 1번 문제
     printf("1. result = %5.2f\n", just_multiple_float_and_integer(3, 7.7f));
 
@@ -57,6 +63,34 @@ int main (void)
     printf("10. 12 or 10 = %d\n", or_data(12, 10));
     printf("10. 5 xor 10 = %d\n", xor_data(5, 10));
     printf("10. not 6 = %d\n", not_data(6));
+
+    // 11번 문제
+    // 10진수 33에 ~연산을 취해서 그 결과값 알아보기
+    printf("11. not연산: %d\n", check_not_data(33));
+
+    // 12번 문제
+    // Memory 구조 (Stack, Heap, Data, Text)에 대해서 기술
+    // Stack: 지역 변수
+    // Heatp: new, malloc 등의 동적 할당
+    // Data: 정적 변수, 전역 변수
+    // Text: 기계어
+
+    // 13번 문제
+    printf("13. result = %d\n", process_data(doit(3, 7), letsgo(3, 7)));
+
+    // 14번 문제
+    if (!which_one_is_big(3,3))
+    {
+        printf("대소 비교 불가 == 둘이 숫자 같음\n");
+    }
+
+    if ((result = which_one_is_big(3, 7)))
+    {
+        printf("더 큰 놈은? %d\n", result);
+    }
+
+    // 15번 문제
+    printf("결과 = %d\n", return_integer_from_int_float_parameter(3, 7.7));
 
     return 0;
 }
