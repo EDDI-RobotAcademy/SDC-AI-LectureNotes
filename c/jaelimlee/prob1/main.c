@@ -5,6 +5,9 @@
 #include "3/func_var_third.h"
 #include "4/func_var_fourth.h"
 #include "5/func_var_fifth.h"
+#include "6/func_var_sixth.h"
+#include "9/func_var_ninth.h"
+#include "10/func_var_tenth.h"
 
 int main (void)
 {
@@ -27,6 +30,33 @@ int main (void)
     printf("5. result = %d\n", shortcut_test(11));
     printf("5. result = %d\n", shortcut_test(8));
     printf("5. result = %d\n", shortcut_test(1));
+
+    // 6번 문제
+    // 2의 n승 단위로 정렬 
+    printf("6. result = %d\n", number_align_with_parameter(10, 1040));
+    printf("6. result = %d\n", number_align_with_parameter(5, 776));
+    printf("6. result = %d\n", number_align_with_parameter(2, 123));
+    printf("6. result = %d\n", number_align_with_parameter(5, 64));
+
+
+    // 7번 문제
+    // 함수 프로토타입을 모르기 때문에 최상단에 함수 프로토타입을 작성하면 문제가 해결됨
+
+    // 8번 문제
+    // 특정 데이터 타입의 정보를 저장 할 수 있는 메모리 공간
+    
+
+    // 9번 문제
+    printf("9. overflow = %d\n", test_overflow(127));
+    printf("9. underflow = %d\n", test_underflow(-128));
+
+    // 10번 문제
+    // 2진수로 바꿔서 계산
+    // not은 부호 바꾸고 -1로 계산하는 것이 빠름 
+    printf("10. 5 and 14 = %d\n", and_data(5, 14));
+    printf("10. 12 or 10 = %d\n", or_data(12, 10));
+    printf("10. 5 xor 10 = %d\n", xor_data(5, 10));
+    printf("10. not 6 = %d\n", not_data(6));
 
     return 0;
 }
