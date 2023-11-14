@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "1/print_even_array.h"
 #include "2/play_hangman.h"
+#include "3/reverse_sort.h"
 
 
 int main (void)
@@ -11,7 +12,7 @@ int main (void)
     //2번 
     //play_hangman();
     //3번
-    
+    reverse_sort();
 
     return 0;
 }
