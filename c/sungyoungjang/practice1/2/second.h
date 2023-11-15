@@ -2,6 +2,6 @@
 #define __RANDOM_H__
 
 void random_pick(void);
-int random_gen(int min,int max);
+int random_gen(const int min,const int max);
 
 #endif

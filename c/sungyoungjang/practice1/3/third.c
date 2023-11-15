@@ -1,16 +1,23 @@
 #include "third.h"
 #include "../2/second.h"
+#include <stdio.h>
 
 
-int random_num(random_gen)
+int random_num(void)
 {
-    if(random_gen % 2 == 1)
+    
+    int random_result = random_gen(1,100);
+
+    if(random_result % 2 == 1)
     {
-        printf("%d는 홀수 입니다.\n",random_gen);
+        printf("%d는 홀수 입니다.\n",random_result);
     }
     
-    if(random_gen % 2 == 0)
+    if(random_result % 2 == 0)
     {
-        printf("짝수이므로 출력 X.\n",random_gen);
+        printf("짝수이므로 출력 X.\n");
     }
+
+    return random_result;
+
 }

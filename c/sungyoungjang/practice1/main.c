@@ -16,7 +16,7 @@ int main (void)
 
     //3번
     
-    printf(random_num(random_gen));
+    printf("%d",random_num());
     
     
     return 0;
