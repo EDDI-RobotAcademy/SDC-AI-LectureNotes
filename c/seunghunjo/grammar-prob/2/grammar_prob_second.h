@@ -5,5 +5,6 @@
 #define MAX                 6
 
 void print_random_number(void);
+void print_random_number_from_main_parameter_transfer(const int min, const int max);
 
 #endif
