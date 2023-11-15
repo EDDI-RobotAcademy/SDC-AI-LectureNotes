@@ -22,6 +22,7 @@ file(GLOB SOURCE_FILES
         "7/*.c"
         "8/*.c"
         "9/*.c"
+        "10/*.c"
 )
 
 add_executable(
