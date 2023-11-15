@@ -9,9 +9,12 @@
 #include "4/grammar_prob_fourth.h"
 #include "5/grammar_prob_fifth.h"
 #include "6/grammar_prob_sixth.h"
+#include "7/grammar_prob_seventh.h"
 
 int main (void)
 {
+    int i;
+    int *array_pointer;
     config_random_seed();
 
     // 1 번 문제.
@@ -42,6 +45,15 @@ int main (void)
 
     // 6 번 문제.
     printf("6. result = %d\n", return_from_transfer_two_parameter(3, 7));
+
+    // 7 번 문제.
+    array_pointer = return_random_array_data();
+    printf("7. 배열 받아 출력하기:\n");
+    for (i = 0; i < 3; i++)
+    {
+        printf("%3d", array_pointer[i]);
+    }
+    printf("\n");
 
     return 0;
 }
