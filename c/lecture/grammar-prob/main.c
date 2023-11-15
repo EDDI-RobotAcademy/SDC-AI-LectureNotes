@@ -10,9 +10,15 @@ int main (void)
 {
     config_random_seed();
 
+    // 1 번 문제.
     make_var_after_print();
-    print_random_number();
 
+    // 2 번 문제.
+    print_random_number();
+    // 2 번 가변 문제.
+    print_random_number_from_main_parameter_transfer(3, 4);
+
+    // extra 문제 (랜덤 소수점).
     print_float_random();
 
     return 0;
