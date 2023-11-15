@@ -3,6 +3,8 @@
 #include <time.h>
 #include <string.h>
 
+#include "11/eleventh.h"
+
 #define MIN             1
 #define MAX             10
 
@@ -99,12 +101,19 @@ int main (void)
     int_array_print(random_number,num);
 
     //10. 정수형 배열에 아무 숫자나 넣고 이 배열의 모든 값을 더해서 return 하는 함수를 작성하세요.
-    printf("모든 배열의 합: %d", int_array_sum(random_number,num));
+    printf("모든 배열의 합: %d\n", int_array_sum(random_number,num));
     
     // 11. 아무런 구조체 대충 하나 만들고 내부에 값을 할당하여 출력해봅시다.
     // 12. 구조체 내부에 char * 형태의 내용을 배치하고 이 내용에 값을 할당하여 출력해봅시다.
  
-    
+    eleventh *char_name;
+    char *char_pointer = "졸려서 힘들어요";
+
+    char_name = init_eleven_();
+    init_char_(char_name,char_pointer);
+
+    print_eleveth_name(char_name);
+
     return 0;
 
     
