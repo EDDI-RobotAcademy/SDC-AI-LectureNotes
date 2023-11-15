@@ -8,7 +8,7 @@ struct _test_struct
     int num1;
     float num2;
     double num3;
-    char *text;
+    char * text;
 };
 
 test_struct *alloc_test_struct(void);

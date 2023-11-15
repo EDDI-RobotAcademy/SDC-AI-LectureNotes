@@ -20,7 +20,7 @@ test_struct *alloc_test_struct(void)
 
     for (i = 0; i < random_count; i++)
     {
-        char character = generate_random(97, 122);
+        char character = generate_random(97,122);
         strncpy(&tmp_struct->text[i], &character, 1);
     }
 
