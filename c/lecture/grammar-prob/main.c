@@ -10,10 +10,13 @@
 #include "5/grammar_prob_fifth.h"
 #include "6/grammar_prob_sixth.h"
 #include "7/grammar_prob_seventh.h"
+#include "8/grammar_prob_eighth.h"
 
 int main (void)
 {
     int i;
+    int random_array_alloc_count;
+    int *random_array;
     int *array_pointer;
     config_random_seed();
 
@@ -52,6 +55,15 @@ int main (void)
     for (i = 0; i < 3; i++)
     {
         printf("%3d", array_pointer[i]);
+    }
+    printf("\n");
+
+    // 8 번 문제.
+    random_array_alloc_count = random_alloc_integer_array(&random_array);
+    printf("8. 동적 할당된 배열 출력하기:\n");
+    for (i = 0; i < random_array_alloc_count; i++)
+    {
+        printf("random_array[%d] = %d\n", i, random_array[i]);
     }
     printf("\n");
 
