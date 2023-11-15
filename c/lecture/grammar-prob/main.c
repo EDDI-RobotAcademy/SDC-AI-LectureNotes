@@ -8,6 +8,7 @@
 #include "3/grammar_prob_third.h"
 #include "4/grammar_prob_fourth.h"
 #include "5/grammar_prob_fifth.h"
+#include "6/grammar_prob_sixth.h"
 
 int main (void)
 {
@@ -38,6 +39,9 @@ int main (void)
 
     // 5 번 문제.
     print_integer_from_parameter(7);
+
+    // 6 번 문제.
+    printf("6. result = %d\n", return_from_transfer_two_parameter(3, 7));
 
     return 0;
 }
