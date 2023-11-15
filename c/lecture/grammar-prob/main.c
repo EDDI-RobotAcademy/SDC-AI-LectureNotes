@@ -67,5 +67,14 @@ int main (void)
     }
     printf("\n");
 
+    // 8 번 실패 케이스.
+    random_array_alloc_count = fail_random_alloc_integer_array(random_array);
+    printf("8. 실패 케이스 보기:\n");
+    for (i = 0; i < random_array_alloc_count; i++)
+    {
+        printf("random_array[%d] = %d\n", i, random_array[i]);
+    }
+    printf("\n");
+
     return 0;
 }
