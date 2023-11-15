@@ -11,10 +11,6 @@ set(CMAKE_BUILD_TYPE Debug)
 
 file(GLOB SOURCE_FILES
         "*.c"
-        "1/*.c"
-        "2/*.c"
-        "3/*.c"
-        "4/*.c"
 )
 
 add_executable(
