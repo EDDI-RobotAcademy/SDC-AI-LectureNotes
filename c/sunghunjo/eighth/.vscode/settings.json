@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "player.h": "c",
-        "stdio.h": "c",
-        "time.h": "c",
-        "random.h": "c"
-    },
-    "C_Cpp.errorSquiggles": "disabled"
-}
