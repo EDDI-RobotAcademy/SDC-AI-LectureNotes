@@ -6,7 +6,6 @@
 
 //2. 랜덤 숫자를 출력하세요.
 
-
 void random_config(void)
 {
     srand(time(NULL));
