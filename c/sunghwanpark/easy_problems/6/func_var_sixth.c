@@ -5,5 +5,5 @@
 
 int number_align_with_parameter(int base, int target_number)
 {
-    return target_number & ((int)(pow(2,base))-1);
+    return target_number & ((int)(pow(2, base))-1);
 }
