@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\dice">
+      <UniqueIdentifier>{30fd9e17-3d21-4b5c-80dc-32bb31051b6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\dice">
+      <UniqueIdentifier>{e59545a7-51a4-4aa6-b3a8-86d6d5057b9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\game">
+      <UniqueIdentifier>{a32e91a2-69dc-42c8-b175-931799b48699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\game">
+      <UniqueIdentifier>{675ee3fb-bc12-4afc-a6a5-3b447fdbb78d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\player.c">
+      <UniqueIdentifier>{4306b91a-52fd-4021-82ce-1d91bcdb8aa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\player">
+      <UniqueIdentifier>{dcdce738-507f-4d44-a082-a92758d8b166}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\utility">
+      <UniqueIdentifier>{bf8882ec-fe77-4237-a010-6a751072d41d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\utility">
+      <UniqueIdentifier>{3ed29104-9aa3-4b8e-90e7-53cf04ed2e32}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dice.c">
+      <Filter>소스 파일\dice</Filter>
+    </ClCompile>
+    <ClCompile Include="game.c">
+      <Filter>소스 파일\game</Filter>
+    </ClCompile>
+    <ClCompile Include="player.c">
+      <Filter>소스 파일\player.c</Filter>
+    </ClCompile>
+    <ClCompile Include="common.c">
+      <Filter>소스 파일\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="random.c">
+      <Filter>소스 파일\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dice.h">
+      <Filter>헤더 파일\dice</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>헤더 파일\game</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>헤더 파일\player</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>헤더 파일\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>헤더 파일\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ex.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
