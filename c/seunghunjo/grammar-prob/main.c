@@ -14,6 +14,7 @@
 #include "8/grammar_prob_eighth.h"
 #include "9/grammar_prob_ninth.h"
 #include "10/grammar_prob_tenth.h"
+#include "11/grammar_prob_eleventh.h"
 
 int main (void)
 {
@@ -22,6 +23,9 @@ int main (void)
     int *random_array;
     int *array_pointer;
     int *nine_prob_array;
+
+    test_struct *eleven_prob_struct;
+
     config_random_seed();
 
     // 1 번 문제.
@@ -94,6 +98,13 @@ int main (void)
 
     // 10 번 문제.
     printf("모든 배열의 요소 합: %d\n", add_every_array_element());
+
+    // 11, 12 번 문제.
+    eleven_prob_struct = alloc_test_struct();
+    printf("num1 = %d\n", eleven_prob_struct->num1);
+    printf("num2 = %f\n", eleven_prob_struct->num2);
+    printf("num3 = %lf\n", eleven_prob_struct->num3);
+    printf("text = %s\n", eleven_prob_struct->text);
 
     return 0;
 }
