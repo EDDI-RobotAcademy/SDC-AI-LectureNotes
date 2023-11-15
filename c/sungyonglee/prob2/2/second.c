@@ -13,7 +13,8 @@ int generate_random(const int min, const int max)
     return rand() % (max - min +1) + min;
 }
 
-int random_number(void)
+
+void random_number(void)
 {
     int number;
     number = generate_random(1, 100);
