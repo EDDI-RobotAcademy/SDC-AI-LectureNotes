@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "utility/random.h"
 
@@ -11,6 +12,7 @@
 #include "6/grammar_prob_sixth.h"
 #include "7/grammar_prob_seventh.h"
 #include "8/grammar_prob_eighth.h"
+#include "9/grammar_prob_ninth.h"
 
 int main (void)
 {
@@ -18,6 +20,7 @@ int main (void)
     int random_array_alloc_count;
     int *random_array;
     int *array_pointer;
+    int *nine_prob_array;
     config_random_seed();
 
     // 1 번 문제.
@@ -67,6 +70,8 @@ int main (void)
     }
     printf("\n");
 
+    free(random_array);
+
     // 8 번 실패 케이스.
     random_array_alloc_count = fail_random_alloc_integer_array(random_array);
     printf("8. 실패 케이스 보기:\n");
@@ -75,6 +80,16 @@ int main (void)
         printf("random_array[%d] = %d\n", i, random_array[i]);
     }
     printf("\n");
+
+    // 9 번 문제
+    nine_prob_array = alloc_array(&random_array_alloc_count);
+
+    for(i = 0; i < random_array_alloc_count; i++)
+    {
+        printf("이렇게도 출력 가능 = %d\n",nine_prob_array[i]);
+    }
+
+    free(nine_prob_array);
 
     return 0;
 }
