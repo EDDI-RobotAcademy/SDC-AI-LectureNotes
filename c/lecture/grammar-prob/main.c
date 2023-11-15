@@ -99,7 +99,7 @@ int main (void)
     // 10 번 문제.
     printf("모든 배열의 요소 합: %d\n", add_every_array_element());
 
-    // 11 번 문제.
+    // 11, 12 번 문제.
     eleven_prob_struct = alloc_test_struct();
     printf("num1 = %d\n", eleven_prob_struct->num1);
     printf("num2 = %f\n", eleven_prob_struct->num2);
