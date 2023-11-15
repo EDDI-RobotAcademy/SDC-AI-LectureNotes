@@ -1,0 +1,1 @@
+void seperate_int(float a);
