@@ -7,6 +7,7 @@
 #include "extra/i_wanna_return_float_random.h"
 #include "3/grammar_prob_third.h"
 #include "4/grammar_prob_fourth.h"
+#include "5/grammar_prob_fifth.h"
 
 int main (void)
 {
@@ -34,6 +35,9 @@ int main (void)
 
     // 4 번 문제.
     print_start_to_finish(3, 20);
+
+    // 5 번 문제.
+    print_integer_from_parameter(7);
 
     return 0;
 }
