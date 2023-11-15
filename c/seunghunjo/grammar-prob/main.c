@@ -43,13 +43,13 @@ int main (void)
     // 4 번 문제.
     print_start_to_finish(3, 20);
 
-    // 5번 문제
+    // 5 번 문제.
     print_integer_from_parameter(7);
 
-    // 6번문제
+    // 6 번 문제.
     printf("6. result = %d\n", return_from_transfer_two_parameter(3, 7));
 
-    // 7 번 문제
+    // 7 번 문제.
     array_pointer = return_random_array_data();
     printf("7. 배열 받아 출력하기:\n");
     for (i = 0; i < 3; i++)
@@ -57,13 +57,22 @@ int main (void)
         printf("%3d", array_pointer[i]);
     }
     printf("\n");
-    
-    // 8 번 문제
+
+    // 8 번 문제.
     random_array_alloc_count = random_alloc_integer_array(&random_array);
-    printf("8. 동적 할당된 배열 출력하기\n");
-    for(i = 0; i < random_array_alloc_count; i++)
+    printf("8. 동적 할당된 배열 출력하기:\n");
+    for (i = 0; i < random_array_alloc_count; i++)
     {
-        printf("random_array[%d]: %d\n",i,random_array[i]);
+        printf("random_array[%d] = %d\n", i, random_array[i]);
+    }
+    printf("\n");
+
+    // 8 번 실패 케이스.
+    random_array_alloc_count = fail_random_alloc_integer_array(random_array);
+    printf("8. 실패 케이스 보기:\n");
+    for (i = 0; i < random_array_alloc_count; i++)
+    {
+        printf("random_array[%d] = %d\n", i, random_array[i]);
     }
     printf("\n");
 
