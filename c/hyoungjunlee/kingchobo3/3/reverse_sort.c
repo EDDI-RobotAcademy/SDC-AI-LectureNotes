@@ -20,5 +20,14 @@ void reverse_sort(void)
     {
         printf("%d ",arr[j]);
     }
-    
+    int even=0;
+    int odd =0;
+    for(int p=0;p<len;p++)
+    {
+        if(p % 2 == 0)
+            even+=arr[p];
+        if(p % 2 == 1)
+            odd+=arr[p];
+    }
+    printf("홀수요소 합 %d 짝수요소 합 %d 둘의 곱 %d",even,odd,even*odd);
 }
