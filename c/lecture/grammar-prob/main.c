@@ -13,7 +13,7 @@
 #include "7/grammar_prob_seventh.h"
 #include "8/grammar_prob_eighth.h"
 #include "9/grammar_prob_ninth.h"
-
+#include "10/grammar_prob_tenth.h"
 
 int main (void)
 {
@@ -91,6 +91,9 @@ int main (void)
     }
 
     free(nine_prob_array);
+
+    // 10 번 문제.
+    printf("모든 배열의 요소 합: %d\n", add_every_array_element());
 
     return 0;
 }
