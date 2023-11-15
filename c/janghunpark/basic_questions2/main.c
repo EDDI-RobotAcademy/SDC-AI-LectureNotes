@@ -3,6 +3,7 @@
 #include "1/ski.h"
 #include "2/divisor.h"
 #include "3/multiples_of_three.h"
+#include "4/remainder_one.h"
 #include "9/mutiplication_table.h"
 
 int main (void)
@@ -20,6 +21,10 @@ int main (void)
     // 3번 문제
     printf("< 3번 문제 풀이 >\n");
     addition_of_multiples_of_three(1000);
+
+    // 4번 문제
+    printf("< 4번 문제 풀이 >\n");
+    remainder_one(1000, 4, 6);
 
     // 9번 문제
     printf("< 9번 문제 풀이 >\n");

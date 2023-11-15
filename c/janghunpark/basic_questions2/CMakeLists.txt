@@ -14,6 +14,7 @@ file(GLOB SOURCE_FILES
         "1/*.c"
         "2/*.c"
         "3/*.c"
+        "4/*.c"
         "9/*.c"
 )
 
