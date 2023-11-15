@@ -1,0 +1,1 @@
+void check_float_double_size(int sizeof_float, int sizeof_double);
