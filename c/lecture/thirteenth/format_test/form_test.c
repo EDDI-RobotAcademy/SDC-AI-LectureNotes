@@ -27,3 +27,10 @@ test_form *init_test_form(char *major, int age, char *self_introduction)
 
     return tmp_form;
 }
+
+test_form **init_test_form_array(int count)
+{
+    test_form **tmp_format = (test_form **)malloc(sizeof(test_form *) * count);
+
+    return tmp_format;
+}
