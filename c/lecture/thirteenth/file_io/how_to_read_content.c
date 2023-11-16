@@ -5,7 +5,7 @@
 
 #define BUDDY_PAGE_SIZE         (1)
 
-void read_content_from_file(int file_descriptor, char *read_content)
+void read_content_from_file_and_print(int file_descriptor, char *read_content)
 {
     int read_bytes;
 
@@ -14,6 +14,11 @@ void read_content_from_file(int file_descriptor, char *read_content)
         write(1, read_content, read_bytes);
     }
     printf("\n");
+}
+
+void read_content_from_file(int file_descriptor, char *read_content)
+{
+    read(file_descriptor, read_content, 4096);
 }
 
 void reset_file_pointer(int file_descriptor)

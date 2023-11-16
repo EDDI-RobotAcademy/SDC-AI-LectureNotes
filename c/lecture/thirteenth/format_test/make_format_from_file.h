@@ -3,6 +3,6 @@
 
 #include "form_test.h"
 
-test_form **read_file_to_format(char *filename);
+test_form **read_file_to_format(void);
 
 #endif

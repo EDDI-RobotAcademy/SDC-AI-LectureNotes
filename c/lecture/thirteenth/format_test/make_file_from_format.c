@@ -17,7 +17,7 @@ void adjust_write_contents_from_format(char *contents, test_form *format)
     int age_size;
     int major_length, self_introduction_length;
 
-    sprintf(contents, "id:%d,major:%s,age:%d,introduction:%s\n", 
+    sprintf(contents, "id:%d,major:%s,age:%d,introduction:%s,\n", 
         format->unique_id, format->major, format->age, format->self_introduction);
     printf("contents: %s\n", contents);
 }
