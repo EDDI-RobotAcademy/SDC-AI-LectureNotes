@@ -12,6 +12,7 @@ set(CMAKE_BUILD_TYPE Debug)
 file(GLOB SOURCE_FILES
         "*.c"
         "file_io/*.c"
+        "format_test/*.c"
 )
 
 add_executable(
