@@ -13,6 +13,7 @@ void read_content_from_file(int file_descriptor, char * read_content)
     {
         write(1,read_content, read_bytes);
     }
+    printf("\n");
 }
 
 void reset_file_pointer(int file_descriptor)
