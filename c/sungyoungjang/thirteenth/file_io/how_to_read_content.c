@@ -5,20 +5,25 @@
 
 #define BUDDY_PAGE_SIZE         (1)
 
-void read_content_from_file(int file_descriptor, char *read_content)
+void read_content_from_file_and_print(int file_descriptor, char *read_content)
 {
     int read_bytes;
 
-
     while ((read_bytes = read(file_descriptor, read_content, BUDDY_PAGE_SIZE)) > 0)
     {
-
-        write(2, read_content,read_bytes);
+        write(1, read_content, read_bytes);
     }
-
+    printf("\n");
 }
 
-void reset_file_pointer(int file_discriptor)
+void read_content_from_file(int file_descriptor, char *read_content)
 {
-    lseek(file_discriptor, 0 , SEEK_SET);
+    read(file_descriptor, read_content, 4096);
+}
+
+void reset_file_pointer(int file_descriptor)
+{
+    // https://elixir.bootlin.com/linux/latest/source/include/linux/fdtable.h#L49
+    // https://elixir.bootlin.com/linux/latest/source/include/linux/fs.h#L1007
+    lseek(file_descriptor, 0, SEEK_SET);
 }

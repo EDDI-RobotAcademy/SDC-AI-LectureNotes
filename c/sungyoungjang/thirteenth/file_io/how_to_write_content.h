@@ -3,6 +3,6 @@
 
 #include <stdbool.h>
 
-bool write_content_in_file(int,char *);
+bool write_content_in_file(int, char *);
 
 #endif
