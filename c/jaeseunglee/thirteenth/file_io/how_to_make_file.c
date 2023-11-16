@@ -1,6 +1,5 @@
 #include <unistd.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <sys/types.h>
 
 #include "how_to_make_file.h"

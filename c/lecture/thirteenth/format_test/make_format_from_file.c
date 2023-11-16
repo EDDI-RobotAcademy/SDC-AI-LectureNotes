@@ -1,6 +1,8 @@
 #include "make_format_from_file.h"
 
 #include <fcntl.h>
+#include <unistd.h>
+#include <string.h>
 
 #define BUDDY_PAGE_SIZE         4096
 
@@ -16,7 +18,7 @@ int find_enter_line_for_format_count(char *buffer, int total_length)
 
     for (i = 0; i < total_length; i++)
     {
-        if (!strncmp(&buffer[i], '\n', 1))
+        if (!strncmp(&buffer[i], "\\n", 1))
         {
             count++;
         }
