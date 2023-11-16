@@ -1,0 +1,1 @@
+id:0,major:시고르자브종,age:20,introduction:낵아 시고르자브종이다!
