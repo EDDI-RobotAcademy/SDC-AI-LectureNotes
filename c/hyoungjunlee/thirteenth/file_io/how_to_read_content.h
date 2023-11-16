@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-void read_content_from_file(int, char *);
+void read_content_from_file_and_print(int, char *);
 void reset_file_pointer(int);
 
 #endif
