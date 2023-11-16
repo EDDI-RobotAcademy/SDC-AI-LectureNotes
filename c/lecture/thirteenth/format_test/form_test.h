@@ -14,6 +14,8 @@ struct _test_form
 };
 
 int increment_test_form_unique_id(void);
+test_form *init_test_form_with_id(int id, char *major, int age, char *self_introduction);
 test_form *init_test_form(char *, int, char *);
+test_form **init_test_form_array(int count);
 
 #endif
