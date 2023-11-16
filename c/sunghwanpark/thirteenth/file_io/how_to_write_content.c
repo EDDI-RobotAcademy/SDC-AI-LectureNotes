@@ -17,5 +17,6 @@ bool write_content_in_file(int file_descriptor, char *content)
         printf("write() System Call Error!\n");
         return false;
     }
+
     return true;
 }
