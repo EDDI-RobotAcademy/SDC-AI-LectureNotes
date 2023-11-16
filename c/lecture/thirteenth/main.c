@@ -25,6 +25,10 @@ int main (void)
     char major[SLAB_CACHE] = "시고르자브종";
     char self_introduction[SLAB_CACHE3] = "낵아 시고르자브종이다!";
 
+    test_form *format2;
+    char major2[SLAB_CACHE] = "시고르원조";
+    char self_introduction2[SLAB_CACHE3] = "낵아 시고르원조다!";
+
     // 0644는 8진수임
     int created_file_descriptor = file_open(
         "/home/eddi/proj/SDC-AI-LectureNotes/"
@@ -40,8 +44,19 @@ int main (void)
 
     file_close(created_file_descriptor);
 
+    created_file_descriptor = file_open(
+        "/home/eddi/proj/SDC-AI-LectureNotes/"
+        "c/lecture/thirteenth/created_file/format_test.txt", O_CREAT | O_RDWR | O_TRUNC, 0644);
+
+    file_close(created_file_descriptor);
+
     format = init_test_form(major, 20, self_introduction);
     write_format_to_file(format);
+
+    format2 = init_test_form(major2, 20, self_introduction2);
+    write_format_to_file(format2);
+
+
 
     return 0;
 }
