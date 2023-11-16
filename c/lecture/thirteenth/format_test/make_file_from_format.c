@@ -29,7 +29,7 @@ bool write_format_to_file(test_form *format)
     int created_file_descriptor = file_open(
         "/home/eddi/proj/SDC-AI-LectureNotes/"
         "c/lecture/thirteenth/created_file/format_test.txt", 
-            O_CREAT | O_RDWR | O_TRUNC, 0644);
+            O_CREAT | O_RDWR | O_APPEND, 0644);
 
     adjust_write_contents_from_format(write_contents, format);
 
