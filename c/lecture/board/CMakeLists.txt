@@ -27,6 +27,7 @@ file(GLOB C_SOURCES
 
 file(GLOB CPP_TEST_SOURCES
     "tests/*.cpp"
+    "tests/board/domain/model/*.cpp"
 )
 
 add_library(logic_lib ${C_SOURCES})
