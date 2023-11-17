@@ -23,8 +23,10 @@ int main (void)
     char read_buffer[SLAB_CACHE];
 
     test_form *format;
-    char major[SLAB_CACHE] = "시고르자브종";
-    char self_introduction[SLAB_CACHE3] = "낵아 시고르자브종이다!";
+    char major[SLAB_CACHE] = "여긴어디나는누구";
+    int age = 31;
+    char self_introduction[SLAB_CACHE3] = "교수님잘못했어요교수님잘못했어요교수님잘못했어요교수님잘못했어요교수님잘못했어요";
+
 
     test_form *format2;
     char major2[SLAB_CACHE] = "시고르원조";
@@ -51,7 +53,7 @@ int main (void)
 
     file_close(created_file_descriptor);
 
-    format = init_test_form(major, 20, self_introduction);
+    format = init_test_form(major, age, self_introduction);
     write_format_to_file(format);
 
     format2 = init_test_form(major2, 20, self_introduction2);

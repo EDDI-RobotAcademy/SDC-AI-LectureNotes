@@ -14,6 +14,7 @@
 
 int file_total_length (int file_descriptor)
 {
+    // lseek의 리턴 값은 두 번째 인자부터 3번째 인자까지 file pointer를 이동한 숫자
     return lseek(file_descriptor, 0, SEEK_END);
 }
 
@@ -47,24 +48,27 @@ test_form **set_test_form_with_read_contents(
     bool started = false;
     int read_contents_length = strlen(read_contents);
 
+    // 읽은 내용을 1 바이트씩 순회
     for (i = 0; i < read_contents_length; i++)
     {
+        // ":" 찾기
+        // 왜 찾는가 ?
+        // format이 아래와 같으니까
+        // id:1,major:시고르원조,age:20,introduction:낵아 시고르원조다!,
         if (!started && !strncmp(&read_contents[i], ":", 1))
         {
             start = i;
             started = true;
         }
 
+        // "," 찾기
         if (started && !strncmp(&read_contents[i], ",", 1))
         {
             finish = i;
             started = false;
             printf("start = %d, finish = %d\n", start, finish);
 
-            // for (i = 0; i < object_count; i++)
-            // {
-            //     test_format_array[i] = init_test_form(major, age, introduction);
-            // }
+            // ":" 과 "," 사이의 값이 객체에 배치해야하는 정보임
             if (field_count % 4 == 0)
             {
                 char tmp_str[32] = { 0 };
@@ -76,6 +80,8 @@ test_form **set_test_form_with_read_contents(
             if (field_count % 4 == 1)
             {
                 char tmp_str[32] = { 0 };
+                // major 배열이 기존 정보를 유지하고 있을 가능성이 있으므로
+                // 전체 배열을 0 으로 초기화 시키는 작업임
                 memset(major, 0x00, 32);
                 strncpy(major, &read_contents[start + 1], finish - start - 1);
                 printf("major = %s\n", major);
@@ -97,7 +103,7 @@ test_form **set_test_form_with_read_contents(
                 printf("itroduction: %s\n", introduction);
 
                 test_format_array[field_count / 4] = 
-                    init_test_form_with_id(unique_id, major, age, introduction);
+                init_test_form_with_id(unique_id, major, age, introduction);
             }
 
             // if (field_count % 4 == 0) {
@@ -119,6 +125,7 @@ test_form **read_file_to_format(void)
 
     test_form **test_format_array;
 
+    // O_RDONLY: 읽기 전용
     int created_file_descriptor = file_open(
         "/home/eddi/proj/SDC-AI-LectureNotes/"
         "c/lecture/thirteenth/created_file/format_test.txt", 
