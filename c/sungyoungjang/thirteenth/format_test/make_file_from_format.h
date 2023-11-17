@@ -7,6 +7,4 @@
 
 bool write_format_to_file(test_form *);
 
-void NewFunction();
-
 #endif

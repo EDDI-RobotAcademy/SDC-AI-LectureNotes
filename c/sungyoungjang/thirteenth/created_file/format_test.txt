@@ -1,2 +1,4 @@
 id:0,major:조조,age:20,introduction:딴딴하게!,
 id:1,major:제갈량,age:20,introduction:화공이다!,
+
+sprintf

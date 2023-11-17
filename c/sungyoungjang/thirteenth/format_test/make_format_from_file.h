@@ -5,6 +5,4 @@
 
 test_form **read_file_to_format(void);
 
-void NewFunction(int created_file_descriptor);
-
 #endif

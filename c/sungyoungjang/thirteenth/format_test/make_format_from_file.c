@@ -137,7 +137,7 @@ test_form **read_file_to_format(void)
     printf("read_contents: %s\n", read_contents);
 
     total_length = file_total_length(created_file_descriptor);
-NewFunction(created_file_descriptor);
+    file_close(created_file_descriptor);
 
     object_count = find_enter_line_for_format_count(read_contents, total_length);
     test_format_array = init_test_form_array(object_count);
@@ -145,9 +145,4 @@ NewFunction(created_file_descriptor);
 
     test_format_array = set_test_form_with_read_contents(test_format_array, object_count, read_contents);
     printf("test_format_array: 0x%x\n", test_format_array);
-}
-
-void NewFunction(int created_file_descriptor)
-{
-    file_close(created_file_descriptor);
 }

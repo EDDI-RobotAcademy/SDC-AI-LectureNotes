@@ -36,17 +36,12 @@ bool write_format_to_file(test_form *format)
             // O_APPEND : 파일 내용의 후속 내용 덧 붙이기 가능(= 수정)
             // O_TRUNC : 밀어붙이기
             /*
-NewFunction();
+            0644 -> 소유자한테 수정권한을 주며 그 외에는 읽기권한만 제공
             */
 
     adjust_write_contents_from_format(write_contents, format);
 
     write_content_in_file(created_file_descriptor, write_contents);
-
+    
     file_close(created_file_descriptor);
-}
-
-void NewFunction()
-{
-            0644 -> 소유자한테 수정권한을 주며 그 외에는 읽기권한만 제공
 }
