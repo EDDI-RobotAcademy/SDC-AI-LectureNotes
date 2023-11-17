@@ -61,3 +61,8 @@ char *get_board_model_title(board_model_title *object)
 {
     return object->board_title;
 }
+
+void clear_board_model_title(board_model_title *object)
+{
+    free(object);
+}

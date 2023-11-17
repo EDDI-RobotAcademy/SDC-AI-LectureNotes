@@ -43,12 +43,30 @@ TEST(board_model_title, 게시물_수정시_제목_수정)
     update_board_model_title_object = 
         update_board_model_title(board_model_title_object, update_board_title);
 
-    
-
     EXPECT_NE(update_board_model_title_object, nullptr);
     EXPECT_TRUE(
         !strncmp(
             get_board_model_title(update_board_model_title_object), 
             update_board_title,
             update_board_title_length));
+
+    clear_board_model_title(update_board_model_title_object);
+}
+
+TEST(board_model_title, 게시물_생성시_제목_작성)
+{
+    char board_title[] = "정상적인제목";
+    int board_title_length = strlen(board_title);
+
+    board_model_title *board_model_title_object =
+        init_board_model_title_with_parameter(board_title);
+
+    EXPECT_NE(board_model_title_object, nullptr);
+    EXPECT_TRUE(
+        !strncmp(
+            get_board_model_title(board_model_title_object), 
+            board_title,
+            board_title_length));
+
+    clear_board_model_title(board_model_title_object);
 }
