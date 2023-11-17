@@ -24,11 +24,15 @@ endif()
 enable_testing()
 
 # C source files
+# 기존의 main.c에 병합될 소스 코드들(원래 하던 대로 넣으면 됨)
 file(GLOB C_SOURCES
     "simple/*.c"
 )
 
 # C++ test source files
+# test로 사용할 파일들은 여기에 정보 배치
+# network을 테스트한다면 "tests/network/*.cpp" 와 같은 형태로 만듭니다.
+# 결론적으로 test 또한 Domain 관리를 해야하기 때문
 file(GLOB CPP_TEST_SOURCES
     "tests/*.cpp"
 )
