@@ -23,6 +23,7 @@ enable_testing()
 
 file(GLOB C_SOURCES
     "board/domain/model/*.c"
+    "utility/*.c"
 )
 
 file(GLOB CPP_TEST_SOURCES
