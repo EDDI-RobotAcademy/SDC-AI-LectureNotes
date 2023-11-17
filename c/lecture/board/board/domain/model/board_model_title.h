@@ -11,10 +11,11 @@ typedef struct _board_model_title board_model_title;
 
 struct _board_model_title
 {
-    char title[MAX_TITLE_LENGTH];
+    char board_title[MAX_TITLE_LENGTH];
 };
 
 board_model_title *init_board_model_title_with_parameter(char *);
+board_model_title *update_board_model_title(char *);
 
 #ifdef __cplusplus
 }
