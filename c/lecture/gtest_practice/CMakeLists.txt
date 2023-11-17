@@ -1,3 +1,5 @@
+# CMakeLists.txt
+
 cmake_minimum_required(VERSION 3.16)
 project(test_app C CXX)
 
@@ -41,16 +43,37 @@ target_link_libraries(every_unit_test PRIVATE ${GTEST_LIBRARIES} pthread simple_
 add_test(NAME every_unit_test COMMAND every_unit_test)
 set_tests_properties(every_unit_test PROPERTIES FAIL_REGULAR_EXPRESSION ".*[Ff]ail.*")
 
+# Custom command to check test results and build c_app accordingly
+add_custom_command(
+    TARGET every_unit_test
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E echo "Checking test results..."
+    COMMAND ${CMAKE_COMMAND} -E env TEST_RESULT=$<TARGET_FILE:every_unit_test> ${CMAKE_CURRENT_SOURCE_DIR}/build_script.sh
+    COMMAND_ERROR_IS_FATAL
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    COMMENT "Running every_unit_test and building c_app if tests pass..."
+    VERBATIM
+)
+
+
+# # Custom target to build c_app only if tests pass
+# add_custom_target(build_c_app
+#     DEPENDS every_unit_test
+# )
+
 # Main application (C)
 file(GLOB MAIN_SOURCES
     "*.c"
 )
 
+# Only build c_app if every_unit_test is successful
 add_executable(
     c_app
     ${C_SOURCES}
     ${MAIN_SOURCES}
 )
 
-# Link the main application with the simple library
-target_link_libraries(c_app PRIVATE simple_lib)
+# Set 'make run' as the default target
+add_custom_target(run
+    DEPENDS every_unit_test
+)
