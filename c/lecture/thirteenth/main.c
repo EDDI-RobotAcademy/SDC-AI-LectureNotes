@@ -7,6 +7,7 @@
 
 #include "format_test/form_test.h"
 #include "format_test/make_file_from_format.h"
+#include "format_test/make_format_from_file.h"
 
 // Linux OS가 메모리를 관리 할 때 Slab 단위 및 Buddy 단위로 관리함
 // Slab은 32 * 2^n 형태로 구성됨
@@ -22,8 +23,10 @@ int main (void)
     char read_buffer[SLAB_CACHE];
 
     test_form *format;
-    char major[SLAB_CACHE] = "시고르자브종";
-    char self_introduction[SLAB_CACHE3] = "낵아 시고르자브종이다!";
+    char major[SLAB_CACHE] = "여긴어디나는누구";
+    int age = 31;
+    char self_introduction[SLAB_CACHE3] = "교수님잘못했어요교수님잘못했어요교수님잘못했어요교수님잘못했어요교수님잘못했어요";
+
 
     test_form *format2;
     char major2[SLAB_CACHE] = "시고르원조";
@@ -40,7 +43,7 @@ int main (void)
     write_content_in_file(created_file_descriptor, contents);
     reset_file_pointer(created_file_descriptor);
 
-    read_content_from_file(created_file_descriptor, read_buffer);
+    read_content_from_file_and_print(created_file_descriptor, read_buffer);
 
     file_close(created_file_descriptor);
 
@@ -50,13 +53,13 @@ int main (void)
 
     file_close(created_file_descriptor);
 
-    format = init_test_form(major, 20, self_introduction);
+    format = init_test_form(major, age, self_introduction);
     write_format_to_file(format);
 
     format2 = init_test_form(major2, 20, self_introduction2);
     write_format_to_file(format2);
 
-
+    read_file_to_format();
 
     return 0;
 }
