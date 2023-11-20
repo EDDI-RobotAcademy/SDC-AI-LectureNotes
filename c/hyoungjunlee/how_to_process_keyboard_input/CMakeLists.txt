@@ -11,19 +11,7 @@ set(CMAKE_BUILD_TYPE Debug)
 
 file(GLOB SOURCE_FILES
         "*.c"
-        "1/*.c"
-        "2/*.c"
-        "3/*.c"
-        "4/*.c"
-        "5/*.c"
-        "6/*.c"
-        "7/*.c"
-        "8/*.c"
-        "9/*.c"
-        "10/*.c"
-        "11/*.c"
-        "12/*.c"
-        "random_set/*.c"
+        "ui/console/*.c"
 )
 
 add_executable(
