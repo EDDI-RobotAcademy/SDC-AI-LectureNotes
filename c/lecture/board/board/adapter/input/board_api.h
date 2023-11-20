@@ -1,6 +1,10 @@
 #ifndef __BOARD_API_H__
 #define __BOARD_API_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 enum board_api
 {
     BOARD_API_LIST,
@@ -13,5 +17,9 @@ enum board_api
 
 #define BOARD_API_BUFFER_COUNT          (BOARD_API_END)
 #define BOARD_API_BUFFER                ((BOARD_API_END) - 1)
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
