@@ -8,10 +8,14 @@ extern "C" {
 #include <stdbool.h>
 #include <setjmp.h>
 
+#define DIVIDE_BY_ZERO          3
+#define ARRAY_INDEX_EXCEED      9
+
 extern jmp_buf global_exception_buffer;
 
-bool divide_by_zero(int target, int zero, jmp_buf env);
-bool array_index_exceed(int *array, int index, jmp_buf env);
+int divide_by_zero(int target, int zero);
+bool array_index_exceed(int index);
+void exception_setup_table(void);
 void just_test(void);
 
 #ifdef __cplusplus
