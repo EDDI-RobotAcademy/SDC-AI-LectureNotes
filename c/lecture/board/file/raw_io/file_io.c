@@ -2,6 +2,7 @@
 
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 
 int file_open(char *filename, int option, unsigned int permission)
 {

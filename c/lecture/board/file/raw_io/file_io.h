@@ -16,7 +16,7 @@ extern "C" {
 int file_open(char *filename, int option, unsigned int permission);
 int file_open(char *filename, int option);
 void write_to_file(int file_descriptor, char *write_buffer);
-void read_from_file(int file_descriptor, char *read_buffer);
+void read_from_file(int file_descriptor, char *read_buffer, int size);
 void file_close(int file_descriptor);
 
 #ifdef __cplusplus
