@@ -1,16 +1,16 @@
+#include "../utility/random.h"
 #include "second.h"
 
-#include <time.h>
-#include <stdlib.h>
 #include <stdio.h>
 
-void random_pick(void)
+void random_number(void)
 {
-    srand(time(NULL));
+    printf("랜덤 숫자는 : %d\n",random_gen(MIN,MAX));
+    
 }
 
-int random_gen(const int min,const int max)
+// 가변
+void print_random_number_from_main_parammeter_transfer(const int min,const int max)
 {
-    random_pick();
-    return rand() % (max - min + 1) - min;
+        printf("(main parameter transfer)랜덤 숫자는 : %d\n",random_gen(min,max));
 }
