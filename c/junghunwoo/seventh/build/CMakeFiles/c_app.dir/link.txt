@@ -1,0 +1,1 @@
+/usr/bin/clang  -g -g CMakeFiles/c_app.dir/account/entity/account.c.o CMakeFiles/c_app.dir/account/entity/account_manager.c.o CMakeFiles/c_app.dir/led/entity/led.c.o CMakeFiles/c_app.dir/main.c.o -o c_app 
