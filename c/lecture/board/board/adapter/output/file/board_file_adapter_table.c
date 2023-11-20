@@ -1,5 +1,7 @@
 #include "board_file_adapter_table.h"
-#include "handler/board_file_adapter_handler.h"
+#include "handler/find_all/board_file_adapter_find_all_handler.h"
+#include "handler/save/board_file_adapter_save_handler.h"
+#include "handler/find_by_id/board_file_adapter_find_by_id_handler.h"
 
 #include <stdio.h>
 

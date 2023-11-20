@@ -5,7 +5,6 @@
 #include <stdio.h>
 
 #include "../../../board/adapter/input/board_api.h"
-#include "../../../board/adapter/input/handler/list/board_api_list_handler.h"
 #include "../../../board/adapter/input/board_api_table.h"
 
 #include "../user_keyboard/user_keyboard_input.h"
@@ -20,7 +19,10 @@ void start_console_ui_window(void)
     while (!player_enter_quit)
     {
         user_choice_command_number = user_choice_number_for_board_command();
-        board_api_table[BOARD_API_CREATE]();
+        board_api_table[BOARD_API_REGISTER]();
+        board_api_table[BOARD_API_READ]();
+        board_api_table[BOARD_API_MODIFY]();
+        board_api_table[BOARD_API_REMOVE]();
         break;
     }
 }

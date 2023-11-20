@@ -8,7 +8,7 @@ extern "C" {
 enum board_api
 {
     BOARD_API_LIST,
-    BOARD_API_CREATE,
+    BOARD_API_REGISTER,
     BOARD_API_READ,
     BOARD_API_MODIFY,
     BOARD_API_REMOVE,
