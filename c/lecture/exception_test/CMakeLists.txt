@@ -22,13 +22,12 @@ endif()
 enable_testing()
 
 file(GLOB C_SOURCES
-    "board/domain/model/*.c"
+	"sample/*.c"
     "utility/*.c"
 )
 
 file(GLOB CPP_TEST_SOURCES
     "tests/*.cpp"
-    "tests/board/domain/model/*.cpp"
 )
 
 add_library(logic_lib ${C_SOURCES})
@@ -55,7 +54,7 @@ file(GLOB MAIN_SOURCES
 )
 
 add_executable(
-    board_app
+    c_app
     ${C_SOURCES}
     ${MAIN_SOURCES}
 )
