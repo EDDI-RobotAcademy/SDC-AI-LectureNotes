@@ -12,7 +12,7 @@ int main (void)
     //2번 
     //play_hangman();
     //3번,4번
-    reverse_sort();
+    //reverse_sort();
 
     return 0;
 }

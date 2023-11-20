@@ -1,0 +1,10 @@
+과정 중 error가 발생하면 printf로 찍어보면서 어떤 요소가 이상한 값인지 파악해보기
+
+**DDD Steps
+1. Define domain event
+2. Tell the story
+3. Process grouping
+4. Define command
+5. Define trigger
+6. Define aggregate(비즈니스 목적 수행을 위한 객체들의 집합)  
+7. Define bounded context
