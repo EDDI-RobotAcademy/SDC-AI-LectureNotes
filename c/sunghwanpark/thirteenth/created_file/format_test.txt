@@ -1,0 +1,2 @@
+id:0,major:시고르자브종,age:20,introduction:낵아 시고르자브종이다!,
+id:1,major:시고르원조,age:20,introduction:낵아 시고르원조다!,
