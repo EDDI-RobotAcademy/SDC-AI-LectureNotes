@@ -22,12 +22,17 @@ endif()
 enable_testing()
 
 file(GLOB C_SOURCES
-    "board/application/services/handler/*.c"
-    "board/application/services/*.c"
     "board/adapter/input/handler/*.c"
     "board/adapter/input/*.c"
+    "board/application/services/handler/*.c"
+    "board/application/services/*.c"
+    "board/adapter/output/file/handler/*.c"
+    "board/adapter/output/file/*.c"
     "board/domain/model/*.c"
-    "ui/console/*.c"
+    "ui/console/user_keyboard/*.c"
+    "ui/console/window/*.c"
+    "file/raw_io/*.c"
+    "file/*.c"
     "utility/*.c"
 )
 
