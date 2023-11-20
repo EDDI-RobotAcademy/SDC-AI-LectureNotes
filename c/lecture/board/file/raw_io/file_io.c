@@ -1,8 +1,13 @@
 #include "file_io.h"
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int file_open(char *filename, int option, unsigned int permission)
 {

@@ -5,7 +5,9 @@
 extern "C" {
 #endif
 
-void find_all_from_file(void);
+#include "../repository/in_memory_board.h"
+
+in_memory_board **find_all_from_file(void);
 
 #ifdef __cplusplus
 }

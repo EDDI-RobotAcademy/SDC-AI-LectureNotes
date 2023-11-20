@@ -1,5 +1,5 @@
-#ifndef __BOARD_API_HANDLER_H__
-#define __BOARD_API_HANDLER_H__
+#ifndef __BOARD_API_LIST_HANDLER_H__
+#define __BOARD_API_LIST_HANDLER_H__
 
 #ifdef __cplusplus
 extern "C" {

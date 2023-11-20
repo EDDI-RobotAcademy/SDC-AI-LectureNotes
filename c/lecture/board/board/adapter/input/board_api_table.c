@@ -1,5 +1,6 @@
 #include "board_api_table.h"
-#include "handler/board_api_handler.h"
+#include "handler/list/board_api_list_handler.h"
+#include "handler/register/board_api_register_handler.h"
 
 #include <stdio.h>
 
