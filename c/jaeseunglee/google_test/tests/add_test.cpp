@@ -3,5 +3,10 @@
 
 TEST(AddTest, onePlusTwoGivesThree)
 {
-    EXPECT_EQ(5, add(1,2));
+    EXPECT_EQ(2, add(3,2));
+}
+
+TEST(한글도, 되냐)
+{
+    EXPECT_EQ(103, add(51,52));
 }
