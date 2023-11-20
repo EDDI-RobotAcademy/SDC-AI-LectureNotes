@@ -1,6 +1,7 @@
 #include "exception.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 jmp_buf global_exception_buffer;
 
@@ -13,8 +14,26 @@ int divide_by_zero(int target, int number)
 	return target / number;
 }
 
-bool array_index_exceed(int *array, int index, jmp_buf env)
+typedef struct _test_array test_array;
+struct _test_array
 {
+	int max_count;
+	int *array;
+};
+
+bool array_index_exceed(int index)
+{
+	test_array test_array_for_exception;
+	test_array_for_exception.max_count = 6;
+	test_array_for_exception.array = (int *)malloc(sizeof(int) * 6);
+
+	if (index > test_array_for_exception.max_count)
+	{
+		longjmp(global_exception_buffer, ARRAY_INDEX_EXCEED);
+	}
+
+	printf("결과 출력: %d\n", test_array_for_exception.array[index]);
+
 	return false;
 }
 
@@ -24,11 +43,11 @@ void exception_setup_table(void)
 	switch (setjmp(global_exception_buffer))
 	{
 		case DIVIDE_BY_ZERO:
-			printf("현재 계산되는 입력값 중 0으로 처리되는 값이 존재합니다!\n");
+			printf("현재 계산되는 입력값 중 0으로 나누기를 하고 있습니다!\n");
 			break;
 
-		default:
-			printf("사고 없음!\n");
+		case ARRAY_INDEX_EXCEED:
+			printf("배열의 인덱스 한도를 초과하셨습니다!\n");
 			break;
 	}
 }
