@@ -65,6 +65,7 @@ int main (void)
 
     exception_setup_table();
     divide_by_zero(7, generate_random(0, 1));
+    array_index_exceed(10);
 
     return 0;
 }
