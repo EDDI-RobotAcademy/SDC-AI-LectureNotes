@@ -6,8 +6,9 @@ extern "C" {
 #endif
 
 #include "board_file_adapter.h"
+#include "repository/in_memory_board.h"
 
-typedef void (* board_file_adapter_call_ptr_t) (void *);
+typedef void * (* board_file_adapter_call_ptr_t) (void *);
 
 void board_file_adapter_not_implemented (void *);
 

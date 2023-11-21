@@ -6,7 +6,9 @@
 
 #include "../../../../../../file/file.h"
 #include "../../../../../../file/raw_io/file_io.h"
-#include "../../../../../../in_memory/board/in_memory_board_manager.h"
+//#include "../../../../../../in_memory/board/in_memory_board_manager.h"
+
+#include "../../repository/in_memory_board_manager.h"
 
 #include <fcntl.h>
 #include <stdbool.h>
@@ -86,11 +88,12 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
 }
 
 // update인지 register 인지에 대한 일관성
-in_memory_board **save_to_file(void *domain_board_model)
+in_memory_board *save_to_file(void *domain_board_model)
 {
     board_model *board = domain_board_model;
     bool existing_info;
     int file_descriptor;
+    int board_id;
     // char pwd_path[PATH_MAX];
     // int current_path_length;
 
@@ -114,6 +117,11 @@ in_memory_board **save_to_file(void *domain_board_model)
     write_board_info_to_file(file_descriptor, board);
 
     file_close(file_descriptor);
+
+    printf("after close()\n");
+    alloc_in_memory_board_manager(board);
     
-    return NULL;
+    printf("after alloc_in_memory_board_manager()\n");
+    board_id = get_board_model_id(board->board_model_id);
+    return &global_in_memory_board_manager.in_memory_board_array[board_id];
 }

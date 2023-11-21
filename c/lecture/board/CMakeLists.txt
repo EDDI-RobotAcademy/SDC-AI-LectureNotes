@@ -30,6 +30,7 @@ file(GLOB C_SOURCES
     "board/adapter/input/handler/remove/*.c"
     "board/adapter/input/*.c"
     "board/application/services/request/*.c"
+    "board/application/services/response/*.c"
     "board/application/services/handler/get_list/*.c"
     "board/application/services/handler/create/*.c"
     "board/application/services/handler/get_one/*.c"

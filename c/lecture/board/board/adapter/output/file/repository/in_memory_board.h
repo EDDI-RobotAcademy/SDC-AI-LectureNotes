@@ -23,6 +23,7 @@ struct _in_memory_board
 };
 
 in_memory_board *init_in_memory_board_object(unsigned int, char *, char *, char *);
+void alloc_memory_board_object(in_memory_board *, unsigned int, char *, char *, char *);
 void clear_in_memory_board_object(in_memory_board *);
 
 #ifdef __cplusplus

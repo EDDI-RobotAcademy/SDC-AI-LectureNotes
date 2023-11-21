@@ -8,6 +8,17 @@ in_memory_board *init_in_memory_board_object(unsigned int id, char *title, char 
     int title_length, writer_length, content_length;
     in_memory_board *tmp_board = (in_memory_board *)malloc(sizeof(in_memory_board));
 
+    alloc_memory_board_object(tmp_board, id, title, writer, content);
+
+    return tmp_board;
+}
+
+void alloc_memory_board_object(
+        in_memory_board *tmp_board, unsigned int id,
+        char *title, char *writer, char *content)
+{
+    int title_length, writer_length, content_length;
+
     title_length = strlen(title) + 1;
     writer_length = strlen(writer) + 1;
     content_length = strlen(content) + 1;
@@ -20,8 +31,6 @@ in_memory_board *init_in_memory_board_object(unsigned int id, char *title, char 
     strncpy(tmp_board->title, title, title_length);
     strncpy(tmp_board->writer, writer, writer_length);
     strncpy(tmp_board->content, content, content_length);
-
-    return tmp_board;
 }
 
 void clear_in_memory_board_object(in_memory_board *object)

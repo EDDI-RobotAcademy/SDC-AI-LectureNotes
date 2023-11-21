@@ -10,11 +10,17 @@
 #include "../../../../domain/model/board_model_info.h"
 
 #include "../../../../application/services/request/board_service_create_request.h"
+#include "../../../../adapter/output/file/repository/in_memory_board.h"
+
+#include "../../../../application/services/response/board_service_create_response.h"
 
 void board_service_create(void *request)
 {
     board_model *board;
     board_service_create_request *create_request = request;
+
+    in_memory_board *created_board;
+    board_service_create_response *create_response;
 
     printf("board service: 게시물을 생성합니다!\n");
 
@@ -32,5 +38,12 @@ void board_service_create(void *request)
         )
     );
 
-    board_file_adapter_table[BOARD_FILE_ADAPTER_SAVE](board);
+    created_board = board_file_adapter_table[BOARD_FILE_ADAPTER_SAVE](board);
+    //clear_board_service_create_request(create_request);
+
+    // create_response = init_board_service_create_response(
+    //     get_in_memory_board_title(created_board),
+    //     get_in_memory_board_writer(created_board),
+    //     get_in_memory_board_content(created_board)
+    // );
 }

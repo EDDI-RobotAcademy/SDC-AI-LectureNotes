@@ -12,7 +12,7 @@ in_memory_board **transform_read_buffer_to_board_list(char *buffer)
     return NULL;
 }
 
-in_memory_board **find_all_from_file(void *domain_board_model)
+in_memory_board *find_all_from_file(void *domain_board_model)
 {
     bool can_read_file;
     char read_buffer[BUDDY_PAGE_SIZE] = { 0 };
