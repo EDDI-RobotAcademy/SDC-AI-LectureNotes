@@ -1,0 +1,3 @@
+/home/eddi/proj/SDC-AI-LectureNotes/c/junghunwoo/seventh/build/CMakeFiles/c_app.dir
+/home/eddi/proj/SDC-AI-LectureNotes/c/junghunwoo/seventh/build/CMakeFiles/edit_cache.dir
+/home/eddi/proj/SDC-AI-LectureNotes/c/junghunwoo/seventh/build/CMakeFiles/rebuild_cache.dir
