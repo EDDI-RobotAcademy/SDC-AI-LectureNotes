@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-void board_api_modify(void)
+void board_api_modify(void *request_form)
 {
     printf("board api: 게시물을 수정합니다!\n");
 

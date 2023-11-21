@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-void board_api_read(void)
+void board_api_read(void *request_form)
 {
     printf("board api: 게시물을 읽습니다!\n");
 

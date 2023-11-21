@@ -6,8 +6,9 @@
 
 #include <stdio.h>
 
-void board_api_register(void)
+void board_api_register(void *request_form)
 {
+    //board_create_request *request;
     printf("board api: 게시물을 작성합니다!\n");
 
     board_service_table[BOARD_SERVICE_CREATE]();

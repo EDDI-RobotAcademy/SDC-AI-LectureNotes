@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-void board_api_remove(void)
+void board_api_remove(void *request_form)
 {
     printf("board api: 게시물을 삭제합니다!\n");
 

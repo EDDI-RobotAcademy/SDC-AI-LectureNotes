@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-void board_api_register(void);
+void board_api_register(void *);
 
 #ifdef __cplusplus
 }

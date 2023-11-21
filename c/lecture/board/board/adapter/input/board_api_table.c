@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 
-void board_api_not_implemented (void)
+void board_api_not_implemented (void *nothing)
 {
     printf("Board API: 아직 구현되지 않은 기능입니다!\n");
 }

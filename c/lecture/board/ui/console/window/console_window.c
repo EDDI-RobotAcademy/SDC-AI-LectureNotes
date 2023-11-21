@@ -14,15 +14,15 @@ void start_console_ui_window(void)
     int user_choice_command_number;
     bool player_enter_quit = false;
 
-    board_api_table[BOARD_API_LIST]();
+    board_api_table[BOARD_API_LIST](NULL);
 
     while (!player_enter_quit)
     {
         user_choice_command_number = user_choice_number_for_board_command();
-        board_api_table[BOARD_API_REGISTER]();
-        board_api_table[BOARD_API_READ]();
-        board_api_table[BOARD_API_MODIFY]();
-        board_api_table[BOARD_API_REMOVE]();
+        board_api_table[BOARD_API_REGISTER](NULL);
+        board_api_table[BOARD_API_READ](NULL);
+        board_api_table[BOARD_API_MODIFY](NULL);
+        board_api_table[BOARD_API_REMOVE](NULL);
         break;
     }
 }
