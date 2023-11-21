@@ -7,7 +7,7 @@ extern "C" {
 
 #include "../../repository/in_memory_board.h"
 
-in_memory_board **save_to_file(void);
+in_memory_board **save_to_file(void *);
 
 #ifdef __cplusplus
 }

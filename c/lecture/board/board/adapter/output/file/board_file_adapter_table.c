@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-void board_file_adapter_not_implemented (void)
+void board_file_adapter_not_implemented (void *nothing)
 {
     printf("Board File Adapter: 아직 구현되지 않은 기능입니다!\n");
 }

@@ -32,5 +32,5 @@ void board_service_create(void *request)
         )
     );
 
-    board_file_adapter_table[BOARD_FILE_ADAPTER_SAVE]();
+    board_file_adapter_table[BOARD_FILE_ADAPTER_SAVE](board);
 }

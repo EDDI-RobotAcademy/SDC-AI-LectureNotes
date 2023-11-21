@@ -10,5 +10,5 @@ void board_service_get_list(void *request)
 {
     printf("board service: 게시판 리스트를 획득합니다!\n");
 
-    board_file_adapter_table[BOARD_FILE_ADAPTER_FIND_ALL]();
+    board_file_adapter_table[BOARD_FILE_ADAPTER_FIND_ALL](NULL);
 }
