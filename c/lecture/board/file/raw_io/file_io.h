@@ -17,6 +17,9 @@ int file_open(char *filename, int option, unsigned int permission);
 int file_open(char *filename, int option);
 void write_to_file(int file_descriptor, char *write_buffer);
 void read_from_file(int file_descriptor, char *read_buffer, int size);
+void reset_file_pointer(int file_descriptor);
+int file_total_length(int file_descriptor);
+void move_file_pointer(int file_descriptor, int point);
 void file_close(int file_descriptor);
 
 #ifdef __cplusplus
