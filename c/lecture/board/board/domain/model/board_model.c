@@ -35,6 +35,19 @@ board_model *init_board_model_with_parameter(
     return tmp_board;
 }
 
+board_model *create_board_model_with_parameter(
+        board_model_info *board_info)
+{
+    board_model *tmp_board;
+
+    tmp_board = init_board_model_with_parameter(
+        init_board_model_id(),
+        board_info
+    );
+
+    return tmp_board;
+}
+
 void clear_board_model(board_model *object)
 {
     clear_board_model_id(object->board_model_id);

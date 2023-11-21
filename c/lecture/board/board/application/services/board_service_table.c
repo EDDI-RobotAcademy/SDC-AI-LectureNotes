@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-void board_service_not_implemented (void)
+void board_service_not_implemented (void *nothing)
 {
     printf("Board Service: 아직 구현되지 않은 기능입니다!\n");
 }

@@ -23,6 +23,7 @@ struct _board_model
 };
 
 board_model *init_board_model_with_parameter(board_model_id *, board_model_info *);
+board_model *create_board_model_with_parameter(board_model_info *);
 
 void clear_board_model(board_model *);
 

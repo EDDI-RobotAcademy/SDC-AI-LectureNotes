@@ -10,5 +10,5 @@ void board_api_remove(void *request_form)
 {
     printf("board api: 게시물을 삭제합니다!\n");
 
-    board_service_table[BOARD_SERVICE_REMOVE]();
+    board_service_table[BOARD_SERVICE_REMOVE](NULL);
 }

@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-void board_service_get_list(void);
+void board_service_get_list(void *);
 
 #ifdef __cplusplus
 }

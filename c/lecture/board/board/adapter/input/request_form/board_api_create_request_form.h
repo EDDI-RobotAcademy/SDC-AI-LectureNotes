@@ -1,5 +1,5 @@
-#ifndef __BOARD_CREATE_REQUEST_H__
-#define __BOARD_CREATE_REQUEST_H__
+#ifndef __BOARD_API_CREATE_REQUEST_FORM_H__
+#define __BOARD_API_CREATE_REQUEST_FORM_H__
 
 #ifdef __cplusplus
 extern "C" {

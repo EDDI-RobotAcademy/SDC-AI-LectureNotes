@@ -18,11 +18,11 @@ void start_console_ui_window(void)
 
     while (!player_enter_quit)
     {
-        user_choice_command_number = user_choice_number_for_board_command();
-        board_api_table[BOARD_API_REGISTER](NULL);
-        board_api_table[BOARD_API_READ](NULL);
-        board_api_table[BOARD_API_MODIFY](NULL);
-        board_api_table[BOARD_API_REMOVE](NULL);
+        // user_choice_command_number = user_choice_number_for_board_command();
+        // board_api_table[BOARD_API_REGISTER](NULL);
+        // board_api_table[BOARD_API_READ](NULL);
+        // board_api_table[BOARD_API_MODIFY](NULL);
+        // board_api_table[BOARD_API_REMOVE](NULL);
         break;
     }
 }
