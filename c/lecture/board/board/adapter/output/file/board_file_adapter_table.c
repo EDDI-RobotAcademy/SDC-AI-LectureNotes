@@ -2,6 +2,7 @@
 #include "handler/find_all/board_file_adapter_find_all_handler.h"
 #include "handler/save/board_file_adapter_save_handler.h"
 #include "handler/find_by_id/board_file_adapter_find_by_id_handler.h"
+#include "handler/delete_by_id/board_file_adapter_delete_by_id_handler.h"
 
 #include <stdio.h>
 

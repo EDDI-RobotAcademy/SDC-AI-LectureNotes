@@ -22,18 +22,24 @@ endif()
 enable_testing()
 
 file(GLOB C_SOURCES
+    "board/adapter/input/request_form/*.c"
     "board/adapter/input/handler/list/*.c"
     "board/adapter/input/handler/register/*.c"
     "board/adapter/input/handler/read/*.c"
+    "board/adapter/input/handler/modify/*.c"
+    "board/adapter/input/handler/remove/*.c"
     "board/adapter/input/*.c"
     "board/application/services/handler/get_list/*.c"
     "board/application/services/handler/create/*.c"
     "board/application/services/handler/get_one/*.c"
+    "board/application/services/handler/modify/*.c"
+    "board/application/services/handler/remove/*.c"
     "board/application/services/*.c"
     "board/adapter/output/file/repository/*.c"
     "board/adapter/output/file/handler/find_all/*.c"
     "board/adapter/output/file/handler/save/*.c"
     "board/adapter/output/file/handler/find_by_id/*.c"
+    "board/adapter/output/file/handler/delete_by_id/*.c"
     "board/adapter/output/file/*.c"
     "board/domain/model/*.c"
     "ui/console/user_keyboard/*.c"
@@ -47,7 +53,7 @@ file(GLOB C_SOURCES
 file(GLOB CPP_TEST_SOURCES
     "tests/*.cpp"
     "tests/board/domain/model/*.cpp"
-    "tests/board/adapter/output/file/repository/*.cpp"
+    "tests/board/adapter/input/*.cpp"
 )
 
 add_library(logic_lib ${C_SOURCES})

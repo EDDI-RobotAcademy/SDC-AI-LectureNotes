@@ -2,6 +2,8 @@
 #include "handler/list/board_api_list_handler.h"
 #include "handler/register/board_api_register_handler.h"
 #include "handler/read/board_api_read_handler.h"
+#include "handler/modify/board_api_modify_handler.h"
+#include "handler/remove/board_api_remove_handler.h"
 
 #include <stdio.h>
 
