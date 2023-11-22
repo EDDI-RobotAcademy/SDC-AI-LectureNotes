@@ -54,7 +54,7 @@ void print_board_service_list_response(board_service_list_response **object_arra
     int total_length = global_in_memory_board_manager.alloc_count;
 
     printf("%-8s%-25s%-15s\n", "번호", "제목", "작성자");
-    printf("=========================================\n");
+    printf("==========================================\n");
 
     for (i = 0; i < total_length; i++)
     {
