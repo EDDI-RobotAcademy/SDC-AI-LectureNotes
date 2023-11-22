@@ -4,6 +4,9 @@
 # Don't add .vscode settings
 .vscode
 
+# Do not add board_info.txt
+board_info.txt
+
 # Don't add build from c code
 build
 
