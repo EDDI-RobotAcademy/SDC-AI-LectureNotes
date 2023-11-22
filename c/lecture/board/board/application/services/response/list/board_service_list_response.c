@@ -58,7 +58,7 @@ void print_board_service_list_response(board_service_list_response **object_arra
 
     for (i = 0; i < total_length; i++)
     {
-        printf("%-8d%-25s%-15s\n",
+        printf("%-6d%-25s%-15s\n",
             object_array[i]->id, object_array[i]->title, object_array[i]->writer);
     }
 }

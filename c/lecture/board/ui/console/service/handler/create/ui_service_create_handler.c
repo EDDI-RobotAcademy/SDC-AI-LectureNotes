@@ -11,9 +11,9 @@ void *ui_service_create(void *nothing)
 
     board_api_create_request_form *create_request_form;
 
-    get_user_keyboard_input_with_message("제목을 입력하세요!", title);
-    get_user_keyboard_input_with_message("작성자를 입력하세요!", writer);
-    get_user_keyboard_input_with_message("내용을 입력하세요!", content);
+    get_user_keyboard_input_with_message("제목을 입력하세요: ", title);
+    get_user_keyboard_input_with_message("작성자를 입력하세요: ", writer);
+    get_user_keyboard_input_with_message("내용을 입력하세요: ", content);
 
     printf("제목: %s, 작성자: %s, 내용: %s\n", title, writer, content);
 
