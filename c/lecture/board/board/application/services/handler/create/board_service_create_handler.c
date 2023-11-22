@@ -24,7 +24,7 @@ void board_service_create(void *request)
 
     printf("board service: 게시물을 생성합니다!\n");
 
-    board = create_board_model_with_parameter(
+    board = init_board_model_with_parameter(
         init_board_model_info_with_parameter(
             init_board_model_title_with_parameter(
                 get_board_service_create_request_title(create_request)

@@ -21,6 +21,8 @@ extern in_memory_board_manager global_in_memory_board_manager;
 void init_in_memory_board_manager(void);
 void alloc_in_memory_board_manager(board_model *board);
 
+void read_file_to_set_board_manager(void);
+
 #ifdef __cplusplus
 }
 #endif
