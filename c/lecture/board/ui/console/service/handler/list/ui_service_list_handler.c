@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-void *ui_service_list(void *)
+void *ui_service_list(void *nothing)
 {
     return NULL;
 }

@@ -14,7 +14,7 @@ in_memory_board_manager global_in_memory_board_manager;
 
 void init_in_memory_board_manager(void)
 {
-    global_in_memory_board_manager.alloc_count = DEFAULT_ALLOC_NUMBER;
+    global_in_memory_board_manager.alloc_count = 0;
     global_in_memory_board_manager.in_memory_board_array = 
         (in_memory_board *)malloc(sizeof(in_memory_board) * DEFAULT_ALLOC_NUMBER);
 }
@@ -44,7 +44,7 @@ void convert_file_to_in_memory_board(char *read_buffer, int read_size)
     char writer[32] = { 0 };
     char content[32] = { 0 };
 
-    printf("read_size = %d\n", read_size);
+    // printf("read_size = %d\n", read_size);
 
     // TODO: Need to update
     for (i = 0; i < read_size; i++)
@@ -54,13 +54,13 @@ void convert_file_to_in_memory_board(char *read_buffer, int read_size)
             char unique_id[32] = { 0 };
             //start = end + 1;
             end = i;
-            printf("unique id start = %d, end = %d\n", start, end);
+            // printf("unique id start = %d, end = %d\n", start, end);
 
             memset(unique_id, 0x00, 32);
             //strncpy(unique_id, &read_buffer[start], end);
             strncpy(unique_id, &read_buffer[start], end - start + 1);
             unique_board_id = atoi(unique_id);
-            printf("unique_board_id = %u\n", unique_board_id);
+            // printf("unique_board_id = %u\n", unique_board_id);
             
             //global_in_memory_board_manager.in_memory_board_array[count / 4].id = atoi(tmp_string);
             count++;
@@ -72,11 +72,11 @@ void convert_file_to_in_memory_board(char *read_buffer, int read_size)
         if ((count % 4 == 1) && !strncmp(&read_buffer[i], &file_separator, 1))
         {
             end = i - 1;
-            printf("unique id start = %d, end = %d\n", start, end);
+            // printf("unique id start = %d, end = %d\n", start, end);
 
             memset(title, 0x00, 32);
             strncpy(title, &read_buffer[start], end - start + 1);
-            printf("title = %s\n", title);
+            // printf("title = %s\n", title);
             
             //global_in_memory_board_manager.in_memory_board_array[count / 4].title = title;
             count++;
@@ -88,11 +88,11 @@ void convert_file_to_in_memory_board(char *read_buffer, int read_size)
         if ((count % 4 == 2) && !strncmp(&read_buffer[i], &file_separator, 1))
         {
             end = i - 1;
-            printf("unique id start = %d, end = %d\n", start, end);
+            // printf("unique id start = %d, end = %d\n", start, end);
 
             memset(writer, 0x00, 32);
             strncpy(writer, &read_buffer[start], end - start + 1);
-            printf("writer = %s\n", writer);
+            // printf("writer = %s\n", writer);
             
             //global_in_memory_board_manager.in_memory_board_array[count / 4].writer = writer;
             count++;
@@ -104,15 +104,13 @@ void convert_file_to_in_memory_board(char *read_buffer, int read_size)
         if ((count % 4 == 3) && !strncmp(&read_buffer[i], &file_separator, 1))
         {
             end = i - 1;
-            printf("unique id start = %d, end = %d\n", start, end);
+            // printf("unique id start = %d, end = %d\n", start, end);
 
             memset(content, 0x00, 32);
             strncpy(content, &read_buffer[start], end - start + 1);
-            printf("content = %s\n", content);
+            // printf("content = %s\n", content);
             
             //global_in_memory_board_manager.in_memory_board_array[count / 4].content = content;
-            count++;
-
             start = i + 2;
             i++;
 
@@ -123,6 +121,8 @@ void convert_file_to_in_memory_board(char *read_buffer, int read_size)
                 writer, 
                 content);
 
+            global_in_memory_board_manager.alloc_count++;
+            count++;
             //end += 2;
         }
     }

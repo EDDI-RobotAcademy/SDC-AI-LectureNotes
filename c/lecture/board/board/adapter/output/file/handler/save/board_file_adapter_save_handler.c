@@ -99,6 +99,7 @@ int find_unique_id_in_reverse_order(char *read_buffer)
             check_four_separator = false;
             start = i + 1;
             printf("reverse found start: %d\n", start);
+            break;
         }
     }
 
@@ -221,5 +222,6 @@ in_memory_board *save_to_file(void *domain_board_model)
     printf("after close()\n");
     
     board_id = get_board_model_id(board->board_model_id);
-    return &global_in_memory_board_manager.in_memory_board_array[board_id];
+    global_in_memory_board_manager.alloc_count++;
+    return &global_in_memory_board_manager.in_memory_board_array[board_id - 1];
 }
