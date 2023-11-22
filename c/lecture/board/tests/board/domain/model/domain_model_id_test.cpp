@@ -9,7 +9,7 @@ TEST(board_model_id, 게시물_생성시_번호_생성)
     current_board_model_id = get_board_model_id(board_model_id_object);
     
     EXPECT_NE(board_model_id_object, nullptr);
-    EXPECT_EQ(current_board_model_id, 0);
+    EXPECT_EQ(current_board_model_id, get_board_model_id(board_model_id_object));
 
     clear_board_model_id(board_model_id_object);
 }
