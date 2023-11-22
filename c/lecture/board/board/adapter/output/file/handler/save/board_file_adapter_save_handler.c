@@ -70,8 +70,41 @@ void convert_board_model(board_model *board, char *data_to_write, unsigned int u
 
 int find_unique_id_in_reverse_order(char *read_buffer)
 {
+    int i;
+    int count = 0;
+    int start = 0, end;
+    char found_unique_id[32] = { 0 };
+    bool check_four_separator = false;
+    char enter_character = '\n';
+    char find_separator = 0x1c;
     int read_buffer_length = strlen(read_buffer);
 
+    for (i = read_buffer_length - 1; i >= 0; i--)
+    {
+        if (!strncmp(&read_buffer[i], &find_separator, 1))
+        {
+            count++;
+        }
+
+        if (!check_four_separator && count == 4)
+        {
+            end = i - 1;
+            printf("reverse found end: %d\n", end);
+            check_four_separator = true;
+        }
+
+        if (check_four_separator && 
+            !strncmp(&read_buffer[i], &enter_character, 1))
+        {
+            check_four_separator = false;
+            start = i + 1;
+            printf("reverse found start: %d\n", start);
+        }
+    }
+
+    strncpy(found_unique_id, &read_buffer[start], end - start + 1);
+
+    return atoi(found_unique_id);
 }
 
 void write_board_info_to_file(int file_descriptor, board_model *board)
@@ -86,6 +119,9 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
 
     printf("file length = %d\n", file_length);
     printf("file_descriptor = %d\n", file_descriptor);
+
+    printf("board = 0x%x\n", board);
+    printf("board->board_model_id = 0x%x\n", board->board_model_id);
     
     // 생성(create)
     if (board->board_model_id == NULL)
@@ -93,6 +129,7 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
         int file_end;
         unsigned int unique_id = 0;
 
+        printf("create start\n");
         read_from_file(file_descriptor, read_buffer, BUDDY_PAGE_SIZE);
         file_end = strlen(read_buffer);
         printf("read_buffer_length = %d\n", file_end);
@@ -113,13 +150,14 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
         write_to_file(file_descriptor, data_to_write);
         printf("create finish to write file\n");
 
-        // set_board_model_id(
-        //     board,
-        //     init_board_model_id_with_parameter(unique_id)
-        // );
+        set_board_model_id(
+            board,
+            init_board_model_id_with_parameter(unique_id)
+        );
     }
     else if (get_board_model_id(board->board_model_id) != NULL)
     {
+        printf("update start\n");
         read_from_file(file_descriptor, read_buffer, BUDDY_PAGE_SIZE);
 
         // update 대응

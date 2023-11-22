@@ -58,6 +58,7 @@ board_model *init_board_model_with_parameter(board_model_info *board_info)
     tmp_board =
         (board_model *)malloc(sizeof(board_model));
 
+    tmp_board->board_model_id = NULL;
     tmp_board->board_model_info = board_info;
 
     return tmp_board;

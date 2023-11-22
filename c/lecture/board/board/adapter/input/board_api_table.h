@@ -7,9 +7,9 @@ extern "C" {
 
 #include "board_api.h"
 
-typedef void (* board_api_call_ptr_t) (void *);
+typedef void * (* board_api_call_ptr_t) (void *);
 
-void board_api_not_implemented (void *);
+void *board_api_not_implemented (void *);
 
 extern const board_api_call_ptr_t board_api_table[BOARD_API_BUFFER_COUNT];
 
