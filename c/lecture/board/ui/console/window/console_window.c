@@ -14,6 +14,7 @@
 #include "../service/ui_service.h"
 #include "../service/handler/list/ui_service_list_handler.h"
 #include "../service/handler/create/ui_service_create_handler.h"
+#include "../service/handler/read/ui_service_read_handler.h"
 #include "../service/ui_service_table.h"
 
 void start_console_ui_window(void)
@@ -25,8 +26,8 @@ void start_console_ui_window(void)
     int user_choice_command_number;
     bool player_enter_quit = false;
 
-    board_api_table[BOARD_API_LIST](NULL);
     printf("start ui loop\n");
+    board_api_table[BOARD_API_LIST](NULL);
 
     while (!player_enter_quit)
     {
