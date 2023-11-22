@@ -1,5 +1,3 @@
-
-
 void random_size_dynamic_array(int random_size)
 {   
     int *dynamic_array;

@@ -4,9 +4,9 @@
 // 2. print
 
 #include <stdbool.h>
-#include "common.h"
+#include "check_odd.h"
 
 bool check_odd_number(int random_number)
 {
-    return (random_number % 2) ? false : true;
+    return (random_number % 2) ? true : false;
 }
