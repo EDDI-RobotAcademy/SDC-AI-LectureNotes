@@ -2,6 +2,7 @@
 
 #include "ui_service_table.h"
 #include "handler/create/ui_service_create_handler.h"
+#include "handler/list/ui_service_list_handler.h"
 
 #include <stdio.h>
 

@@ -12,6 +12,7 @@
 #include "../../../board/adapter/input/request_form/board_api_create_request_form.h"
 
 #include "../service/ui_service.h"
+#include "../service/handler/list/ui_service_list_handler.h"
 #include "../service/handler/create/ui_service_create_handler.h"
 #include "../service/ui_service_table.h"
 
@@ -19,6 +20,7 @@ void start_console_ui_window(void)
 {
     //board_api_create_request_form *create_request_form;
     void *request_form;
+    void *response_form;
 
     int user_choice_command_number;
     bool player_enter_quit = false;
@@ -29,7 +31,7 @@ void start_console_ui_window(void)
     {
         user_choice_command_number = user_choice_number_for_board_command();
         request_form = ui_service_table[user_choice_command_number](NULL);
-        board_api_table[user_choice_command_number](request_form);
+        response_form = board_api_table[user_choice_command_number](request_form);
     }
 }
 

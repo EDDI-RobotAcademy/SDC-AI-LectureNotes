@@ -46,6 +46,7 @@ file(GLOB C_SOURCES
     "board/domain/model/*.c"
     "ui/console/service/*.c"
     "ui/console/service/handler/create/*.c"
+    "ui/console/service/handler/list/*.c"
     "ui/console/user_keyboard/*.c"
     "ui/console/window/*.c"
     "in_memory/board/*.c"
