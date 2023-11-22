@@ -26,12 +26,13 @@ void start_console_ui_window(void)
     bool player_enter_quit = false;
 
     board_api_table[BOARD_API_LIST](NULL);
+    printf("start ui loop\n");
 
     while (!player_enter_quit)
     {
         user_choice_command_number = user_choice_number_for_board_command();
         request_form = ui_service_table[user_choice_command_number](NULL);
-        response_form = board_api_table[user_choice_command_number](request_form);
+        board_api_table[user_choice_command_number](request_form);
     }
 }
 
