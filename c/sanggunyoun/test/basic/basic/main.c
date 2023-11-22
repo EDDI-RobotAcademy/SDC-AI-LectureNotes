@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define SIZE 3
+#define SIZE 3  // 7번
 #define MAX 100
 #define MIN 1
 #define COUNT 1
@@ -12,15 +12,14 @@ void printAge(int number)
     {
     printf("입력된 정수: %d\n", number);
     }
-
 // 6번
-int Sum(int num1, int num2) 
-{
-    int sum = num1 + num2;
-
-    printf("\n");
+    int Sum(int num1, int num2) 
+    { int sum = num1 + num2;
+     printf("\n");
+     
     return sum;
-}
+    }
+
 
 
 // 7번
@@ -47,7 +46,7 @@ int main()
     int i;
     int count = COUNT;
 
-    
+    srand(time(NULL));
 
     printf("랜덤 숫자 출력:\n");
 
@@ -55,8 +54,11 @@ int main()
     {
         int random_number = rand() % (max - min + 1) + min;
         printf("%d ", random_number);
+        
     }
+
     printf("\n");
+    
 
     // 3번 위에서 만든 랜덤 숫자가 2로 나눠서 나머지가 1인 경우만 출력하세요
     printf("랜덤 숫자 홀수 출력:\n");
@@ -70,6 +72,8 @@ int main()
         }
     }
     printf("\n");
+
+    //srand(time(NULL));
 
     // 4. 숫자 3~20사이의 모든 정수를 출력하세요
    printf("3~20에서 정수 출력:\n");
@@ -90,6 +94,7 @@ int main()
 
         int result = Sum(input1, input2);
 
+
     printf("두 정수의 합: %d", result);
 
     printf("\n");
@@ -104,11 +109,11 @@ int main()
     }
     printArray(arr, SIZE);
 
- 
+    //srand(time(NULL));
    
   
 
-    srand(time(NULL));
+    
     
     return 0;
 
