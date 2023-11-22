@@ -155,8 +155,10 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
             board,
             init_board_model_id_with_parameter(unique_id)
         );
+
+        global_in_memory_board_manager.alloc_count++;
     }
-    else if (get_board_model_id(board->board_model_id) != NULL)
+    else if (board->board_model_id != NULL)
     {
         printf("update start\n");
         read_from_file(file_descriptor, read_buffer, BUDDY_PAGE_SIZE);
@@ -224,7 +226,7 @@ in_memory_board *save_to_file(void *domain_board_model)
     board_id = get_board_model_id(board->board_model_id);
     printf("save adapter: board_id = %d\n", board_id);
     
-    global_in_memory_board_manager.alloc_count++;
+    //global_in_memory_board_manager.alloc_count++;
 
     alloc_in_memory_board_manager(board);
     return &global_in_memory_board_manager.in_memory_board_array[board_id];
