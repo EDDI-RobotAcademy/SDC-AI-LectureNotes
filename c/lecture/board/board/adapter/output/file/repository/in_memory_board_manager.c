@@ -134,7 +134,12 @@ void read_file_to_set_board_manager(void)
     char read_buffer[4096] = { 0 };
 
     file_descriptor = file_open("../database/board_info.txt", O_RDONLY);
+
+    if (file_descriptor == -1) { return; }
+    
     read_from_file(file_descriptor, read_buffer, 4096);
 
     convert_file_to_in_memory_board(read_buffer, strlen(read_buffer));
+
+    file_close(file_descriptor);
 }

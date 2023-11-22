@@ -90,11 +90,12 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
     // 생성(create)
     if (board->board_model_id == NULL)
     {
-        int file_end = strlen(read_buffer);
+        int file_end;
         unsigned int unique_id = 0;
 
         read_from_file(file_descriptor, read_buffer, BUDDY_PAGE_SIZE);
-        printf("read_buffer_length = %lu\n", file_end);
+        file_end = strlen(read_buffer);
+        printf("read_buffer_length = %d\n", file_end);
 
         if (file_end > 0)
         {
@@ -108,16 +109,16 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
         move_file_pointer(file_descriptor, file_end);
         printf("create move pointer\n");
 
+        //printf("data_to_write: %s\n", data_to_write);
         write_to_file(file_descriptor, data_to_write);
         printf("create finish to write file\n");
 
-        set_board_model_id(
-            board,
-            init_board_model_id_with_parameter(unique_id)
-        );
+        // set_board_model_id(
+        //     board,
+        //     init_board_model_id_with_parameter(unique_id)
+        // );
     }
-
-    if (get_board_model_id(board->board_model_id) != NULL)
+    else if (get_board_model_id(board->board_model_id) != NULL)
     {
         read_from_file(file_descriptor, read_buffer, BUDDY_PAGE_SIZE);
 
