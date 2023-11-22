@@ -6,9 +6,11 @@
 
 #include <stdio.h>
 
-void board_api_list(void *request_form)
+void *board_api_list(void *request_form)
 {
     printf("board api: 게시판 리스트를 조회합니다!\n");
 
     board_service_table[BOARD_SERVICE_GET_LIST](NULL);
+
+    return NULL;
 }

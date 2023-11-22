@@ -44,6 +44,9 @@ file(GLOB C_SOURCES
     "board/adapter/output/file/handler/delete_by_id/*.c"
     "board/adapter/output/file/*.c"
     "board/domain/model/*.c"
+    "ui/console/service/*.c"
+    "ui/console/service/handler/create/*.c"
+    "ui/console/service/handler/list/*.c"
     "ui/console/user_keyboard/*.c"
     "ui/console/window/*.c"
     "in_memory/board/*.c"
@@ -56,6 +59,8 @@ file(GLOB CPP_TEST_SOURCES
     "tests/*.cpp"
     "tests/board/domain/model/*.cpp"
     "tests/board/adapter/input/*.cpp"
+    "tests/board/adapter/output/file/handler/save/*.cpp"
+    "tests/ui/console/service/*.cpp"
 )
 
 add_library(logic_lib ${C_SOURCES})
