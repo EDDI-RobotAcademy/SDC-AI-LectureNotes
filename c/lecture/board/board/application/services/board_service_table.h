@@ -7,9 +7,9 @@ extern "C" {
 
 #include "board_service.h"
 
-typedef void (* board_service_call_ptr_t) (void *);
+typedef void * (* board_service_call_ptr_t) (void *);
 
-void board_service_not_implemented (void *);
+void *board_service_not_implemented (void *);
 
 extern const board_service_call_ptr_t board_service_table[BOARD_SERVICE_BUFFER_COUNT];
 

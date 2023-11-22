@@ -6,9 +6,11 @@
 
 #include <stdio.h>
 
-void board_api_read(void *request_form)
+void *board_api_read(void *request_form)
 {
     printf("board api: 게시물을 읽습니다!\n");
 
     board_service_table[BOARD_SERVICE_GET_ONE](NULL);
+
+    return NULL;
 }
