@@ -16,6 +16,8 @@
 #include "../service/handler/create/ui_service_create_handler.h"
 #include "../service/handler/read/ui_service_read_handler.h"
 #include "../service/handler/modify/ui_service_modify_handler.h"
+#include "../service/handler/remove/ui_service_remove_handler.h"
+#include "../service/handler/exit/ui_service_exit_handler.h"
 #include "../service/ui_service_table.h"
 
 void start_console_ui_window(void)
