@@ -125,9 +125,30 @@ int find_enter_line_from_target_index(char *buffer, int target_index)
     return -1;
 }
 
+int get_enter_line_count(char *buffer)
+{
+    int i;
+    int count = 0;
+    char enter_character = '\n';
+    int buffer_length = strlen(buffer);
+
+    for (i = 0; i < buffer_length; i++)
+    {
+        if (!strncmp(&buffer[i], &enter_character, 1))
+        {
+            count++;
+        }
+    }
+
+    return count;
+}
+
 void write_board_info_to_file(int file_descriptor, board_model *board)
 {
     int find_enter_line;
+    int increase_decrease_size_number;
+    int current_line_character_count;
+    int new_line_character_count;
     int file_length;
     int target_index = 0;
     char read_buffer[BUDDY_PAGE_SIZE] = { 0 };
@@ -156,8 +177,9 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
 
         if (file_end > 0)
         {
-            unique_id = find_unique_id_in_reverse_order(read_buffer);
-            unique_id++;
+            //unique_id = find_unique_id_in_reverse_order(read_buffer);
+            unique_id = get_enter_line_count(read_buffer);
+            unique_id;
         }
 
         convert_board_model(board, data_to_write, unique_id);
@@ -208,6 +230,16 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
         printf("apply modification to write file\n");
 
         write_to_file(file_descriptor, backup_buffer);
+
+        current_line_character_count = find_enter_line - target_index + 1;
+        new_line_character_count = strlen(data_to_write);
+
+        increase_decrease_size_number =
+            new_line_character_count - current_line_character_count;
+        
+        truncate(GLOBAL_FILE_FULL_PATH, 
+            file_length + increase_decrease_size_number);
+
         printf("update finish\n");
     }
 
