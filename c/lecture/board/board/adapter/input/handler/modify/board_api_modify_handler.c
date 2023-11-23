@@ -16,7 +16,7 @@ void *board_api_modify(void *request_form)
         return NULL;
     }
 
-    board_service_table[BOARD_SERVICE_MODIFY](NULL);
+    board_service_table[BOARD_SERVICE_MODIFY](request_form);
 
     return NULL;
 }
