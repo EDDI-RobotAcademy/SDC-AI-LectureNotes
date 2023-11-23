@@ -8,9 +8,10 @@
 
 #include <stdio.h>
 
-void board_service_not_implemented (void *nothing)
+void *board_service_not_implemented (void *nothing)
 {
     printf("Board Service: 아직 구현되지 않은 기능입니다!\n");
+    return NULL;
 }
 
 const board_service_call_ptr_t board_service_table[BOARD_SERVICE_BUFFER_COUNT] =

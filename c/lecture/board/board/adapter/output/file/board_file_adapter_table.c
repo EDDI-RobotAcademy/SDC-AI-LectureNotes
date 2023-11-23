@@ -6,9 +6,10 @@
 
 #include <stdio.h>
 
-void board_file_adapter_not_implemented (void *nothing)
+void *board_file_adapter_not_implemented (void *nothing)
 {
     printf("Board File Adapter: 아직 구현되지 않은 기능입니다!\n");
+    return NULL;
 }
 
 const board_file_adapter_call_ptr_t board_file_adapter_table[BOARD_FILE_ADAPTER_BUFFER_COUNT] =
