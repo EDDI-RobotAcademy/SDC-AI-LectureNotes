@@ -108,12 +108,31 @@ int find_unique_id_in_reverse_order(char *read_buffer)
     return atoi(found_unique_id);
 }
 
+int find_enter_line_from_target_index(char *buffer, int target_index)
+{
+    int i;
+    char enter_character = '\n';
+    int buffer_length = strlen(buffer);
+
+    for (i = target_index; i < buffer_length; i++)
+    {
+        if (!strncmp(&buffer[i], &enter_character, 1))
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
 void write_board_info_to_file(int file_descriptor, board_model *board)
 {
+    int find_enter_line;
     int file_length;
     int target_index = 0;
     char read_buffer[BUDDY_PAGE_SIZE] = { 0 };
     char data_to_write[BUDDY_PAGE_SIZE] = { 0 };
+    char backup_buffer[BUDDY_PAGE_SIZE] = { 0 };
 
     file_length = file_total_length(file_descriptor);
     reset_file_pointer(file_descriptor);
@@ -169,14 +188,27 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
             file_length,
             read_buffer);
 
+        find_enter_line = find_enter_line_from_target_index(read_buffer, target_index);
+        if (find_enter_line == -1)
+        {
+            printf("find enter line error!\n");
+            return;
+        }
+
         convert_board_model(board, data_to_write);
         printf("update convert\n");
+
+        strncpy(backup_buffer, &read_buffer[find_enter_line + 1], file_length - find_enter_line);
+        printf("backup_buffer: %s\n", backup_buffer);
 
         move_file_pointer(file_descriptor, target_index);
         printf("update move pointer\n");
 
         write_to_file(file_descriptor, data_to_write);
-        printf("update finish to write file\n");
+        printf("apply modification to write file\n");
+
+        write_to_file(file_descriptor, backup_buffer);
+        printf("update finish\n");
     }
 
     printf("after file work\n");
