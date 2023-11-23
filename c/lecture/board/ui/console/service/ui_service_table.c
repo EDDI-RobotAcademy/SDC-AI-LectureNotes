@@ -6,6 +6,8 @@
 #include "handler/read/ui_service_read_handler.h"
 #include "handler/modify/ui_service_modify_handler.h"
 
+#include "handler/exit/ui_service_exit_handler.h"
+
 #include <stdio.h>
 
 void *ui_service_not_implemented (void *nothing)

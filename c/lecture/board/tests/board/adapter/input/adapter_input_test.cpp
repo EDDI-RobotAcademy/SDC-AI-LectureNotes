@@ -42,4 +42,3 @@ TEST(board_adapter_input, 게시판에_게시물_작성하기)
     //     );
     // }
 }
-
