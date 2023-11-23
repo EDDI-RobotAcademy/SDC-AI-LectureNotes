@@ -10,5 +10,5 @@ void board_service_modify(void *request)
 {
     printf("board service: 게시물 정보를 수정합니다!\n");
 
-    board_file_adapter_table[BOARD_FILE_ADAPTER_SAVE](NULL);
+    board_file_adapter_table[BOARD_FILE_ADAPTER_SAVE](request);
 }
