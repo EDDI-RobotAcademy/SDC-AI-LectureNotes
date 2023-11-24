@@ -14,6 +14,10 @@
 #include "../service/ui_service.h"
 #include "../service/handler/list/ui_service_list_handler.h"
 #include "../service/handler/create/ui_service_create_handler.h"
+#include "../service/handler/read/ui_service_read_handler.h"
+#include "../service/handler/modify/ui_service_modify_handler.h"
+#include "../service/handler/remove/ui_service_remove_handler.h"
+#include "../service/handler/exit/ui_service_exit_handler.h"
 #include "../service/ui_service_table.h"
 
 void start_console_ui_window(void)
@@ -25,13 +29,14 @@ void start_console_ui_window(void)
     int user_choice_command_number;
     bool player_enter_quit = false;
 
+    printf("start ui loop\n");
     board_api_table[BOARD_API_LIST](NULL);
 
     while (!player_enter_quit)
     {
         user_choice_command_number = user_choice_number_for_board_command();
         request_form = ui_service_table[user_choice_command_number](NULL);
-        response_form = board_api_table[user_choice_command_number](request_form);
+        board_api_table[user_choice_command_number](request_form);
     }
 }
 

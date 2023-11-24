@@ -99,6 +99,7 @@ int find_unique_id_in_reverse_order(char *read_buffer)
             check_four_separator = false;
             start = i + 1;
             printf("reverse found start: %d\n", start);
+            break;
         }
     }
 
@@ -107,12 +108,52 @@ int find_unique_id_in_reverse_order(char *read_buffer)
     return atoi(found_unique_id);
 }
 
+int find_enter_line_from_target_index(char *buffer, int target_index)
+{
+    int i;
+    char enter_character = '\n';
+    int buffer_length = strlen(buffer);
+
+    for (i = target_index; i < buffer_length; i++)
+    {
+        if (!strncmp(&buffer[i], &enter_character, 1))
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+int get_enter_line_count(char *buffer)
+{
+    int i;
+    int count = 0;
+    char enter_character = '\n';
+    int buffer_length = strlen(buffer);
+
+    for (i = 0; i < buffer_length; i++)
+    {
+        if (!strncmp(&buffer[i], &enter_character, 1))
+        {
+            count++;
+        }
+    }
+
+    return count;
+}
+
 void write_board_info_to_file(int file_descriptor, board_model *board)
 {
+    int find_enter_line;
+    int increase_decrease_size_number;
+    int current_line_character_count;
+    int new_line_character_count;
     int file_length;
     int target_index = 0;
     char read_buffer[BUDDY_PAGE_SIZE] = { 0 };
     char data_to_write[BUDDY_PAGE_SIZE] = { 0 };
+    char backup_buffer[BUDDY_PAGE_SIZE] = { 0 };
 
     file_length = file_total_length(file_descriptor);
     reset_file_pointer(file_descriptor);
@@ -136,8 +177,9 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
 
         if (file_end > 0)
         {
-            unique_id = find_unique_id_in_reverse_order(read_buffer);
-            unique_id++;
+            //unique_id = find_unique_id_in_reverse_order(read_buffer);
+            unique_id = get_enter_line_count(read_buffer);
+            unique_id;
         }
 
         convert_board_model(board, data_to_write, unique_id);
@@ -154,8 +196,10 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
             board,
             init_board_model_id_with_parameter(unique_id)
         );
+
+        global_in_memory_board_manager.alloc_count++;
     }
-    else if (get_board_model_id(board->board_model_id) != NULL)
+    else if (board->board_model_id != NULL)
     {
         printf("update start\n");
         read_from_file(file_descriptor, read_buffer, BUDDY_PAGE_SIZE);
@@ -166,14 +210,37 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
             file_length,
             read_buffer);
 
+        find_enter_line = find_enter_line_from_target_index(read_buffer, target_index);
+        if (find_enter_line == -1)
+        {
+            printf("find enter line error!\n");
+            return;
+        }
+
         convert_board_model(board, data_to_write);
         printf("update convert\n");
+
+        strncpy(backup_buffer, &read_buffer[find_enter_line + 1], file_length - find_enter_line);
+        printf("backup_buffer: %s\n", backup_buffer);
 
         move_file_pointer(file_descriptor, target_index);
         printf("update move pointer\n");
 
         write_to_file(file_descriptor, data_to_write);
-        printf("update finish to write file\n");
+        printf("apply modification to write file\n");
+
+        write_to_file(file_descriptor, backup_buffer);
+
+        current_line_character_count = find_enter_line - target_index + 1;
+        new_line_character_count = strlen(data_to_write);
+
+        increase_decrease_size_number =
+            new_line_character_count - current_line_character_count;
+        
+        truncate(GLOBAL_FILE_FULL_PATH, 
+            file_length + increase_decrease_size_number);
+
+        printf("update finish\n");
     }
 
     printf("after file work\n");
@@ -221,5 +288,10 @@ in_memory_board *save_to_file(void *domain_board_model)
     printf("after close()\n");
     
     board_id = get_board_model_id(board->board_model_id);
+    printf("save adapter: board_id = %d\n", board_id);
+    
+    //global_in_memory_board_manager.alloc_count++;
+
+    alloc_in_memory_board_manager(board);
     return &global_in_memory_board_manager.in_memory_board_array[board_id];
 }

@@ -3,6 +3,10 @@
 #include "ui_service_table.h"
 #include "handler/create/ui_service_create_handler.h"
 #include "handler/list/ui_service_list_handler.h"
+#include "handler/read/ui_service_read_handler.h"
+#include "handler/modify/ui_service_modify_handler.h"
+#include "handler/remove/ui_service_remove_handler.h"
+#include "handler/exit/ui_service_exit_handler.h"
 
 #include <stdio.h>
 
