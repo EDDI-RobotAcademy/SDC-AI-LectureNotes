@@ -8,6 +8,7 @@ int main (void)
 {
     printf("C Based DDD Practice: Board\n");
     init_in_memory_board_manager();
+    read_file_to_set_board_manager();
 
     start_console_ui_window();
     

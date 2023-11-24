@@ -40,6 +40,7 @@ board_model_content *init_board_model_content_with_parameter(char *board_content
     if (check_board_content_validation(board_content))
     {
         tmp_content = (board_model_content *)malloc(sizeof(board_model_content));
+        memset(tmp_content, 0x00, MAX_CONTENT_LENGTH);
         board_content_length = strlen(board_content);
 
         strncpy(tmp_content->board_content, board_content, board_content_length);
