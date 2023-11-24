@@ -8,6 +8,8 @@ board_api_create_request_form *init_board_api_create_request_form(
 {
     int title_length, writer_length, content_length;
 
+    if (title == NULL) { return NULL; }
+
     board_api_create_request_form *tmp_request_form = (board_api_create_request_form *)
         malloc(sizeof(board_api_create_request_form));
 

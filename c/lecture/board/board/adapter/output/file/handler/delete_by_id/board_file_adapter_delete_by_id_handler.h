@@ -7,7 +7,7 @@ extern "C" {
 
 #include "../../repository/in_memory_board.h"
 
-in_memory_board *delete_by_id_to_file(void *);
+void *delete_by_id_to_file(void *);
 
 #ifdef __cplusplus
 }

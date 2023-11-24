@@ -50,3 +50,13 @@ void clear_board_service_create_response(board_service_create_response *origin)
 
     free(origin);
 }
+
+void print_board_service_response(board_service_create_response *object)
+{
+    printf("\033[1;34m%-8s%-25s%-15s\033[0m\n", "번호", "제목", "작성자");
+    printf("==========================================\n");
+    printf("\033[1;32m%-6d%-25.*s%-15.*s\033[0m\n",
+        object->id, 25, object->title, 15, object->writer);
+    printf("\033[1;33m================== 내용 ==================\033[0m\n");
+    printf("\033[1;33m%s\033[0m\n", object->content);
+}

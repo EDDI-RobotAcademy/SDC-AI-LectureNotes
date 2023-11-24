@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-void board_service_create(void *);
+void *board_service_create(void *);
 
 #ifdef __cplusplus
 }
