@@ -24,6 +24,8 @@ char *get_board_service_create_response_content(board_service_create_response *)
 
 void clear_board_service_create_response(board_service_create_response *);
 
+void print_board_service_response(board_service_create_response *);
+
 #ifdef __cplusplus
 }
 #endif
