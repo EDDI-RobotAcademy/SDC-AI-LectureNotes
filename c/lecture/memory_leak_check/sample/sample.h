@@ -14,6 +14,7 @@ struct _memory_leak_sample
 };
 
 memory_leak_sample *init_memory_leak_sample_object(void);
+void clear_memory_leak_sample_object(memory_leak_sample *);
 
 #ifdef __cplusplus
 }
