@@ -25,7 +25,7 @@ int find_enter_line_for_format_count(char *buffer, int total_length)
 
     for (i = 0; i < total_length; i++)
     {
-        if (!strncmp(&buffer[i], "\\n", 1))
+        if (!strncmp(&buffer[i], "\n", 1))
         {
             count++;
         }
