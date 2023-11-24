@@ -40,6 +40,7 @@ board_model_writer *init_board_model_writer_with_parameter(char *board_writer)
     if (check_board_writer_validation(board_writer))
     {
         tmp_writer = (board_model_writer *)malloc(sizeof(board_model_writer));
+        memset(tmp_writer, 0x00, MAX_WRITER_LENGTH);
         board_writer_length = strlen(board_writer);
 
         strncpy(tmp_writer->board_writer, board_writer, board_writer_length);

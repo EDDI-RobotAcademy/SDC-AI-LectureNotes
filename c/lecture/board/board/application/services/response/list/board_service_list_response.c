@@ -10,6 +10,8 @@ board_service_list_response *init_board_service_list_response(
 {
     int title_length, writer_length;
 
+    if (id == -1) { return NULL; }
+
     board_service_list_response *tmp_response = (board_service_list_response *)
         malloc(sizeof(board_service_list_response));
 
@@ -58,6 +60,8 @@ void print_board_service_list_response(board_service_list_response **object_arra
 
     for (i = 0; i < total_length; i++)
     {
+        if (object_array[i] == NULL) { continue; }
+        
         printf("%-6d%-25s%-15s\n",
             object_array[i]->id, object_array[i]->title, object_array[i]->writer);
     }
