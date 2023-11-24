@@ -10,5 +10,5 @@ void board_service_remove(void *request)
 {
     printf("board service: 게시물을 삭제합니다!\n");
 
-    board_file_adapter_table[BOARD_FILE_ADAPTER_DELETE](NULL);
+    board_file_adapter_table[BOARD_FILE_ADAPTER_DELETE](request);
 }

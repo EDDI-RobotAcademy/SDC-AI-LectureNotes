@@ -6,9 +6,17 @@
 
 #include <stdio.h>
 
-void board_api_modify(void *request_form)
+void *board_api_modify(void *request_form)
 {
     printf("board api: 게시물을 수정합니다!\n");
 
-    board_service_table[BOARD_SERVICE_MODIFY](NULL);
+    if (request_form == NULL)
+    {
+        printf("수정할 내용을 입력해주세요\n");
+        return NULL;
+    }
+
+    board_service_table[BOARD_SERVICE_MODIFY](request_form);
+
+    return NULL;
 }

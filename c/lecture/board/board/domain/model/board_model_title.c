@@ -40,6 +40,7 @@ board_model_title *init_board_model_title_with_parameter(char *board_title)
     if (check_board_title_validation(board_title))
     {
         tmp_title = (board_model_title *)malloc(sizeof(board_model_title));
+        memset(tmp_title, 0x00, MAX_TITLE_LENGTH);
         board_title_length = strlen(board_title);
 
         strncpy(tmp_title->board_title, board_title, board_title_length);

@@ -8,6 +8,8 @@ board_service_create_request *init_board_service_create_request(
 {
     int title_length, writer_length, content_length;
 
+    if (title == NULL) { return NULL; }
+
     board_service_create_request *tmp_request = (board_service_create_request *)
         malloc(sizeof(board_service_create_request));
 
