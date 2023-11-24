@@ -6,6 +6,10 @@ extern "C" {
 #endif
 
 typedef struct _memory_leak_sample memory_leak_sample;
+
+// memory_leak_sample * 리턴
+// void 파라메터
+// 함수 포인터 타입 이름 memory_leak_sample_constructor
 typedef memory_leak_sample *(* memory_leak_sample_constructor)(void);
 typedef void (* memory_leak_sample_destructor)(memory_leak_sample *);
 
