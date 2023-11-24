@@ -50,6 +50,8 @@ file(GLOB C_SOURCES
     "ui/console/service/handler/list/*.c"
     "ui/console/service/handler/read/*.c"
     "ui/console/service/handler/modify/*.c"
+    "ui/console/service/handler/remove/*.c"
+    "ui/console/service/handler/exit/*.c"
     "ui/console/user_keyboard/*.c"
     "ui/console/window/*.c"
     "in_memory/board/*.c"

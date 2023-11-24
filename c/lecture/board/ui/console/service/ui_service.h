@@ -12,6 +12,7 @@ enum ui_service
     UI_SERVICE_GET_ONE,
     UI_SERVICE_MODIFY,
     UI_SERVICE_REMOVE,
+    UI_SERVICE_EXIT,
     UI_SERVICE_END
 };
 
