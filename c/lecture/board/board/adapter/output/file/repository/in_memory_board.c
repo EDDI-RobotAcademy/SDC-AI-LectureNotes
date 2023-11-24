@@ -33,6 +33,26 @@ void alloc_memory_board_object(
     strncpy(tmp_board->content, content, content_length);
 }
 
+unsigned int get_in_memory_board_id(in_memory_board *object)
+{
+    return object->id;
+}
+
+char *get_in_memory_board_title(in_memory_board *object)
+{
+    return object->title;
+}
+
+char *get_in_memory_board_writer(in_memory_board *object)
+{
+    return object->writer;
+}
+
+char *get_in_memory_board_content(in_memory_board *object)
+{
+    return object->content;
+}
+
 void clear_in_memory_board_object(in_memory_board *object)
 {
     free(object->title);

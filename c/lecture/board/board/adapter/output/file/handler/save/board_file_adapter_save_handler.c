@@ -2,8 +2,6 @@
 
 #include <stdio.h>
 
-#include "../../../../../domain/model/board_model.h"
-
 #include "../../../../../../file/file.h"
 #include "../../../../../../file/raw_io/file_io.h"
 //#include "../../../../../../in_memory/board/in_memory_board_manager.h"
@@ -56,6 +54,59 @@ void convert_board_model(board_model *board, char *data_to_write)
         0x1c);
 }
 
+void convert_board_model(board_model *board, char *data_to_write, unsigned int unique_id)
+{
+    // ascii code 0x1c = File Seperator
+    sprintf(data_to_write, "%u%c%s%c%s%c%s%c\n",
+        unique_id,
+        0x1c,
+        get_board_model_title(board->board_model_info->board_model_title),
+        0x1c,
+        get_board_model_writer(board->board_model_info->board_model_writer),
+        0x1c,
+        get_board_model_content(board->board_model_info->board_model_content),
+        0x1c);
+}
+
+int find_unique_id_in_reverse_order(char *read_buffer)
+{
+    int i;
+    int count = 0;
+    int start = 0, end;
+    char found_unique_id[32] = { 0 };
+    bool check_four_separator = false;
+    char enter_character = '\n';
+    char find_separator = 0x1c;
+    int read_buffer_length = strlen(read_buffer);
+
+    for (i = read_buffer_length - 1; i >= 0; i--)
+    {
+        if (!strncmp(&read_buffer[i], &find_separator, 1))
+        {
+            count++;
+        }
+
+        if (!check_four_separator && count == 4)
+        {
+            end = i - 1;
+            printf("reverse found end: %d\n", end);
+            check_four_separator = true;
+        }
+
+        if (check_four_separator && 
+            !strncmp(&read_buffer[i], &enter_character, 1))
+        {
+            check_four_separator = false;
+            start = i + 1;
+            printf("reverse found start: %d\n", start);
+        }
+    }
+
+    strncpy(found_unique_id, &read_buffer[start], end - start + 1);
+
+    return atoi(found_unique_id);
+}
+
 void write_board_info_to_file(int file_descriptor, board_model *board)
 {
     int file_length;
@@ -67,11 +118,46 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
     reset_file_pointer(file_descriptor);
 
     printf("file length = %d\n", file_length);
-
     printf("file_descriptor = %d\n", file_descriptor);
+
+    printf("board = 0x%x\n", board);
+    printf("board->board_model_id = 0x%x\n", board->board_model_id);
     
-    if (file_length > 0)
+    // 생성(create)
+    if (board->board_model_id == NULL)
     {
+        int file_end;
+        unsigned int unique_id = 0;
+
+        printf("create start\n");
+        read_from_file(file_descriptor, read_buffer, BUDDY_PAGE_SIZE);
+        file_end = strlen(read_buffer);
+        printf("read_buffer_length = %d\n", file_end);
+
+        if (file_end > 0)
+        {
+            unique_id = find_unique_id_in_reverse_order(read_buffer);
+            unique_id++;
+        }
+
+        convert_board_model(board, data_to_write, unique_id);
+        printf("create convert\n");
+
+        move_file_pointer(file_descriptor, file_end);
+        printf("create move pointer\n");
+
+        //printf("data_to_write: %s\n", data_to_write);
+        write_to_file(file_descriptor, data_to_write);
+        printf("create finish to write file\n");
+
+        set_board_model_id(
+            board,
+            init_board_model_id_with_parameter(unique_id)
+        );
+    }
+    else if (get_board_model_id(board->board_model_id) != NULL)
+    {
+        printf("update start\n");
         read_from_file(file_descriptor, read_buffer, BUDDY_PAGE_SIZE);
 
         // update 대응
@@ -79,12 +165,26 @@ void write_board_info_to_file(int file_descriptor, board_model *board)
             get_board_model_id(board->board_model_id),
             file_length,
             read_buffer);
+
+        convert_board_model(board, data_to_write);
+        printf("update convert\n");
+
+        move_file_pointer(file_descriptor, target_index);
+        printf("update move pointer\n");
+
+        write_to_file(file_descriptor, data_to_write);
+        printf("update finish to write file\n");
     }
 
-    convert_board_model(board, data_to_write);
-    move_file_pointer(file_descriptor, target_index);
+    printf("after file work\n");
 
-    write_to_file(file_descriptor, data_to_write);
+    //alloc_in_memory_board_manager(board);
+    //printf("after alloc_in_memory_board_manager()\n");
+
+    // convert_board_model(board, data_to_write);
+    // move_file_pointer(file_descriptor, target_index);
+
+    // write_to_file(file_descriptor, data_to_write);
 }
 
 // update인지 register 인지에 대한 일관성
@@ -98,7 +198,7 @@ in_memory_board *save_to_file(void *domain_board_model)
     // int current_path_length;
 
     printf("Board File Adapter: 게시물 저장\n");
-    printf("board unique id: %d\n", board->board_model_id->board_id);
+    //printf("board unique id: %d\n", board->board_model_id->board_id);
     // printf("현재 디렉토리: %s\n", getcwd(pwd_path, PATH_MAX));
 
     // current_path_length = strlen(pwd_path);
@@ -119,9 +219,7 @@ in_memory_board *save_to_file(void *domain_board_model)
     file_close(file_descriptor);
 
     printf("after close()\n");
-    alloc_in_memory_board_manager(board);
     
-    printf("after alloc_in_memory_board_manager()\n");
     board_id = get_board_model_id(board->board_model_id);
     return &global_in_memory_board_manager.in_memory_board_array[board_id];
 }
