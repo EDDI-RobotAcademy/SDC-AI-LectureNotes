@@ -10,7 +10,7 @@ void sample(void);
 typedef struct _memory_leak_sample memory_leak_sample;
 
 
-typedef memory_leak_sample *(*memory_leak_sample_constructor)(void);
+typedef memory_leak_sample* (*memory_leak_sample_constructor)(void);
 typedef void (*memory_leak_sample_destructor)(memory_leak_sample* );
 
 struct _memory_leak_sample
