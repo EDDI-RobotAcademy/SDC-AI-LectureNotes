@@ -134,6 +134,8 @@ void read_file_to_set_board_manager(void)
     int file_descriptor;
     char read_buffer[4096] = { 0 };
 
+    // build에 대한 상대 경로
+    // 절대 경로를 사용해도 무방
     file_descriptor = file_open("../database/board_info.txt", O_RDONLY);
 
     if (file_descriptor == -1) { return; }
