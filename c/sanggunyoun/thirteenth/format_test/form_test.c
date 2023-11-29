@@ -5,6 +5,7 @@
 
 unsigned int test_form_unique_id;
 
+// 유니크 아이디 자동으로 증가 team2 에서 이미 생성한 기능
 int increment_test_form_unique_id(void)
 {
     return test_form_unique_id++;
