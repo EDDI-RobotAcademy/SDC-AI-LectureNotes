@@ -1,0 +1,8 @@
+//
+// Created by eddi on 23. 11. 29.
+//
+
+#ifndef CPP_TEST_BOARDAPILISTHANDLER_H
+#define CPP_TEST_BOARDAPILISTHANDLER_H
+
+#endif //CPP_TEST_BOARDAPILISTHANDLER_H
