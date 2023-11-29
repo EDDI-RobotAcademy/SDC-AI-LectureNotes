@@ -1,51 +1,70 @@
 #include <iostream>
 
-int main()
-{
-    std::cout<<"Hello, World!"<<std::endl;
+#include "api/BoardApi.h"
+#include "api/BoardApiTable.h"
+
+#include "mysql_test/DbProcess.h"
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+
+//    int api_index = static_cast<int>(BoardAPI::LIST);
+//    board_api_table[api_index](nullptr);
+
+    const char* DB_HOST = "localhost";
+    const char* DB_USER = "eddi";
+    const char* DB_PASS = "eddi@123";
+    const char* DB_NAME = "test_db";
+
+    // 생성자 호출
+    // 사실상 C에서 init_db_process_object()와 같은 역할임
+    // DbProcess 라는 이름의 함수가
+    // DB_HOST, DB_USER, DB_PASS, DB_NAME을 가지고 실행되는 것
+    DbProcess db(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+    // db라는 변수는 위의 정보를 토대로하는 객체임
+    // 만약 연결이 잘 되었다면 1이 리턴되며
+    // 연결에 문제가 발생했다면 0이 리턴됨
+    if (!db.connect()) {
+        std::cerr << "Connection error" << std::endl;
+        return 1;
+    }
+
+    // 다음으로 db 객체의 insertData 함수(매서드)를 실행
+    // insertData(db) <- C에서는 이런 형태로 사용했었음
+    // 데이터 생성(게시물 생성)
+    if (!db.insertData()) {
+        std::cerr << "Error during insertion" << std::endl;
+    }
+
+    // 데이터 전체 조회(리스트)
+    db.selectData();
+
+    int updateBoardId = 3;
+    std::string newTitle = "Updated Title";
+    std::string newContent = "Updated Content";
+    if (db.updateData(updateBoardId, newTitle, newContent)) {
+        std::cout << "Record updated successfully" << std::endl;
+    } else {
+        std::cerr << "Error updating record" << std::endl;
+    }
+
+    std::cout << "---- All Records After Update ----" << std::endl;
+    db.selectData();
+
+    int deleteBoardId = 3;
+    if (db.deleteData(deleteBoardId)) {
+        std::cout << "Record deleted successfully" << std::endl;
+    } else {
+        std::cerr << "Error deleting record" << std::endl;
+    }
+
+    std::cout << "---- All Records After Delete ----" << std::endl;
+    db.selectData();
+
+    int readBoardId = 4;
+    std::cout << "---- Read Record ----" << std::endl;
+    db.readData(readBoardId);
+
     return 0;
 }
-
-// 1. DDD를 수행하여 얻는 이점은 ? (3가지 이상)
-//  1) 코드 간의 결합성을 낮추어 확장성을 높임
-//  2) 테스트에 용이
-//  3) 유지보수 용이
-// 협업의 용이,
-
-// 2. Domain 이란 결국 무엇인가 ?
-//  1) 실제로 작동 되는 기능과, entity 가 작성됨
-//  2) 외부로 나가는 의존성이 없는 순수 기능
-// 기능이 실제 작동 되는 작은 단위 ? 주제 ?
-
-// 3. GoogleTest 를 사용하는 이유는 ?
-//  1) 좋아서 ?
-// test를 일부러 실패하게 만들어서 대충 이런식으로 만들거라고 추상화 ?
-// 던졌을 때 잘 처리해 줄 수 있는지 형태를 만들기 위해 ?
-// 세부사항보다는 내가 만들고 싶은 추상적인 내용을 만들어서 DDD를 잘 하기 위해
-
-// 4. Test를 작성함으로 얻는 이점은 ?
-//  1) 중간 중간 테스트 함으로 프로젝트가 터지는 것을 방지하기 위해
-// backlog 작성에 용이 및 검증 용이
-
-// 5. backlog를 작성 할 때 To do 리스트만 관리하면 어떤 문제가 발생하는가 ?
-//  1) 누가, 목적, 무엇을 하려는지 모름
-
-// 6. 작업 마다 커밋을 하지 않고 한 번에 몰아서 통커밋 하는 경우 어떤 문제가 발생하냐 ?
-//  1) 컴플릿 날 수도 있다.
-// 작업 파악이 어려움
-
-// 7. backlog 를 관리하지 않는 경우 어떤 문제가 발생하냐 ?
-//  1) 누가 어떤 작업을 하고 있는지 모름
-//  2) 고로 작업의 효율성이 떨어지고 소통의 부재가 될 수 있음
-
-// 8. 함수 포인터 배열을 사용함으로 얻는 이득은 ?
-// 협업에 용이
-// IoC 개념으로 유연한 설계 구조를 가지게 됨 => 변경의 파급을 끊기 위해
-
-// 9. API Controller, Domain Service, Repository가 분리됨으로 얻는 이점은 ?
-//  1) 입출력은 architecture 의 표면부에서 일어나고, 유지보수를 자주 해야하는 domain, repository를 분리함으로
-//     확장 시 용이하게 됨
-// domain service = action, repository = adapter out, 실제 세부사항이 어디에 배치될 건가(trace 기능)
-
-// 10. slack 채널 이슈를 살피지 않는 경우 무슨 문제가 발생 ?
-//  1) 프로젝트에서 어떤 이슈가 나는지 모르고 소통의 부재가 됨
