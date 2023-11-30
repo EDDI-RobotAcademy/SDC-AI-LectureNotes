@@ -8,7 +8,7 @@ vector_operation_request *init_vector_operation_request(vector_model *first_vect
     vector_operation_request *vector_request = (vector_operation_request *)malloc(sizeof(vector_operation_request));
 
     vector_request->first_vector = first_vector_model;
-    vector_request->second_vector = second_vector_model;
+    vector_request->second_vector = second_vector_model; 
 
     return vector_request;
 }
