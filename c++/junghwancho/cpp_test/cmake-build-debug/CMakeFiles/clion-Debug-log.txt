@@ -1,0 +1,4 @@
+/home/eddi/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/eddi/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja -DCMAKE_CXX_COMPILER=clang++ -G Ninja -S /home/eddi/proj/SDC-AI-LectureNotes/c++/junghwancho/cpp_test -B /home/eddi/proj/SDC-AI-LectureNotes/c++/junghwancho/cpp_test/cmake-build-debug
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/eddi/proj/SDC-AI-LectureNotes/c++/junghwancho/cpp_test/cmake-build-debug

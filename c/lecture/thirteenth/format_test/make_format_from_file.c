@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+
 #define BUDDY_PAGE_SIZE         4096
 
 int file_total_length (int file_descriptor)
