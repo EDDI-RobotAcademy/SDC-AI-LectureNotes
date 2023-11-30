@@ -13,6 +13,9 @@ private:
     const int z;
 public:
     Vector(int, int, int);
+    Vector vectorSum(Vector&);
+    Vector vectorScalarProduct(int);
+    Vector vectorCrossProduct(Vector&)
     float getVectorAmount();
     int getX();
     int getY();
