@@ -6,12 +6,18 @@
 #include <cmath>
 
 Displacement::Displacement(Vector& _start, Vector& _end) : start_vector(_start), end_vector(_end) {
-    int x = _end.getX() - _start.getX();
-    int y = _end.getY() - _start.getY();
-    int z = _end.getZ() - _start.getZ();
-    size = (float)sqrt(pow(x,2) + pow(y,2) + pow(z,2));
+
 }
 
 Displacement::~Displacement() {
 
+}
+
+float Displacement::getSizeofDisplacement() {
+    int x = end_vector.getX() - start_vector.getX();
+    int y = end_vector.getY() - start_vector.getY();
+    int z = end_vector.getZ() - start_vector.getZ();
+    float size;
+    size = (float)sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+    return size;
 }
