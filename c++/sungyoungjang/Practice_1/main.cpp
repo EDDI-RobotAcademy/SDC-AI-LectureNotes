@@ -2,6 +2,7 @@
 #include "01_Dice/Dice.h"
 #include "02_Player/Player.h"
 #include "03_Post/Post.h"
+#include "04_Vector/Vector.h"
 
 int main() {
     Dice *dice = new Dice();
@@ -33,5 +34,13 @@ int main() {
 
     delete post;
 
+    Vector vector1,vector2,sumVector,subVector;
+
+    sumVector = Vector::VectorAdd(vector1,vector2);
+    subVector = Vector::VectorSub(vector1,vector2);
+
+
+
+z
     return 0;
 }
