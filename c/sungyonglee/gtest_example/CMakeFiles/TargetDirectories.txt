@@ -1,0 +1,7 @@
+/home/eddi/proj/SDC-AI-LectureNotes/c/sungyonglee/gtest_example/CMakeFiles/logic_lib.dir
+/home/eddi/proj/SDC-AI-LectureNotes/c/sungyonglee/gtest_example/CMakeFiles/every_unit_test.dir
+/home/eddi/proj/SDC-AI-LectureNotes/c/sungyonglee/gtest_example/CMakeFiles/c_app.dir
+/home/eddi/proj/SDC-AI-LectureNotes/c/sungyonglee/gtest_example/CMakeFiles/run.dir
+/home/eddi/proj/SDC-AI-LectureNotes/c/sungyonglee/gtest_example/CMakeFiles/test.dir
+/home/eddi/proj/SDC-AI-LectureNotes/c/sungyonglee/gtest_example/CMakeFiles/edit_cache.dir
+/home/eddi/proj/SDC-AI-LectureNotes/c/sungyonglee/gtest_example/CMakeFiles/rebuild_cache.dir

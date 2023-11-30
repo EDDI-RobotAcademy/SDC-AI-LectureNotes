@@ -53,6 +53,7 @@ int main (void)
 
     file_close(created_file_descriptor);
 
+
     format = init_test_form(major, age, self_introduction);
     write_format_to_file(format);
 
