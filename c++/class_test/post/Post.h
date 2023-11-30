@@ -16,6 +16,10 @@ private:
     std::string content;
 public:
     Post(std::string&, std::string&, std::string&, std::string&);
+    void readPost();
+    bool checkPassword(std::string&);
+    void editPost(std::string&, std::string&);
+
     ~Post();
 };
 
