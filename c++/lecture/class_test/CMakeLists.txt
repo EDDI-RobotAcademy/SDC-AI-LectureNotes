@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(class_test main.cpp
         dice/Dice.cpp
-        dice/Dice.h)
+        dice/Dice.h
+        player/Player.cpp
+        player/Player.h)
