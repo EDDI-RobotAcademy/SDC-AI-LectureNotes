@@ -14,3 +14,4 @@ const vector_math_api_call_ptr_t \
         [0 ... VECTOR_MATH_API_CALL_BUFFER] = not_implemented,
         #include "vector_math_api_command_table_mapper.h"
 };
+

@@ -15,6 +15,13 @@
 int file_total_length (int file_descriptor)
 {
     // lseek의 리턴 값은 두 번째 인자부터 3번째 인자까지 file pointer를 이동한 숫자
+    /*  fd: 파일 디스크립터입니다. 열린 파일을 가리키는 식별자로, 파일을 열고 조작하는 데 사용됩니다.
+        offset: 이동할 위치를 지정하는 값입니다. 이 값은 whence 매개변수에 의해 해석됩니다.
+        whence: 이동할 기준 위치를 지정하는 값입니다. 다음 세 가지 값 중 하나를 선택할 수 있습니다:
+        SEEK_SET: 파일의 시작부터 offset만큼 이동합니다.
+        SEEK_CUR: 파일의 현재 위치부터 offset만큼 이동합니다.
+        SEEK_END: 파일의 끝부터 offset만큼 이동합니다.*/
+
     return lseek(file_descriptor, 0, SEEK_END);
 }
 
@@ -66,7 +73,7 @@ test_form **set_test_form_with_read_contents(
         {
             finish = i;
             started = false;
-            printf("start = %d, finish = %d\n", start, finish);
+            //printf("start = %d, finish = %d\n", start, finish);
 
             // ":" 과 "," 사이의 값이 객체에 배치해야하는 정보임
             if (field_count % 4 == 0)
