@@ -18,18 +18,13 @@ void Order::printMenu() {
     for(int i = 0; i<10;i++)
     {
 
-        std::cout << "메뉴: " << menu[i] << std::endl;
+        std::cout << "메뉴: " << menuList[i] << std::endl;
 
     }
 
 }
 
-void Order::addMenu(std::string&& _menu) {
-    for(int i = 0; i<10;i++)
-    {
-        menu[i] = _menu[i];
-        std::cout << "메뉴: " << menu << std::endl;
-
-    }
+void Order::addMenu(std::vector<std::string> _menuList) {
+    menuList = _menuList;
 
 }

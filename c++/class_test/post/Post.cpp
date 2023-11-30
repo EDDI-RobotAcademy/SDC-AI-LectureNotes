@@ -5,6 +5,8 @@
 #include <iostream>
 #include "Post.h"
 
+int post_count = 0;
+
 Post::Post(std::string & _title, std::string & _writer, std::string & _password, std::string & _content) :
        unique_id(post_count), title(_title), writer(_writer), password(_password), content(_content){
 

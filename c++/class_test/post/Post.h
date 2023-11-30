@@ -6,6 +6,7 @@
 #define CLASS_TEST_POST_H
 
 #include <string>
+extern int post_count;
 
 class Post {
 private:
@@ -23,6 +24,6 @@ public:
     ~Post();
 };
 
-int post_count;
+
 
 #endif //CLASS_TEST_POST_H

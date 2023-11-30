@@ -7,16 +7,16 @@
 
 
 #include <string>
-
+#include <vector>
 
 
 class Order {
 private:
     const int table_number;
-    std::string menu[10];
+    std::vector<std::string> menuList;
 public:
     Order(int);
-    void addMenu(std::string&);
+    void addMenu(std::vector<std::string>);
     void printMenu();
     ~Order();
 };

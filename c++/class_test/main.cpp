@@ -3,6 +3,7 @@
 #include "player/Player.h"
 #include "vector/Vector.h"
 #include "order/Order.h"
+#include "post/Post.h"
 
 int main() {
 //    if(true){
@@ -35,7 +36,29 @@ int main() {
     std::cout << "넌 이름이뭐에요??? " << player.getPlayerName() << std::endl;
     std::cout << "넌 몇살이세요???? " << player.getPlayerAge() << std::endl;
 
+    std::string title = "ㅇㅇㅇㅇㅇ";
+    std::string writer = "ㄴㄴㄴㄴㄴㄴ";
+    std::string password = "ㅁㅁㅁㅁ";
+    std::string content = "ㅋㅋㅋㅋㅋㅋㅋㅋ";
 
+
+    Post post(title,writer,password,content);
+    post.readPost();
+    if(post.checkPassword(password))
+    {
+        std::string n_title = "얄라리얄라";
+        std::string n_content = "살어리 살어리랏다";
+
+        post.editPost(n_title, n_content);
+    }
+
+    post.readPost();
+
+    std::vector<std::string> menu = {"abc", "제육볶음", "오뎅탕", "참이슬", "테라", "떡볶이", "짬뽕"};
+    Order order(0);
+
+    order.addMenu(menu);
+    order.printMenu();
 
     return 0;
 }
