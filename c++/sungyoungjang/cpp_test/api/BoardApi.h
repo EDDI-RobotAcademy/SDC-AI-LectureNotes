@@ -14,7 +14,7 @@ enum class BoardAPI {
     END
 };
 
-constexpr int BOARD_API_BUFFER_COUNT = static_cast<int>(BoardAPI::END);
+constexpr int BOARD_API_BUFFER_COUNT = static_cast<int>(BoardAPI::END); // static_cast 를 해야 번호를 인식 *필 *
 constexpr int BOARD_API_BUFFER = BOARD_API_BUFFER_COUNT - 1;
 
 #endif //CPP_TEST_BOARDAPI_H

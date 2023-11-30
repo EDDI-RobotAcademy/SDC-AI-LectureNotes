@@ -10,7 +10,7 @@
 
 void* board_api_not_implemented(void* input) {
     std::cout << "Board API: 아직 구현되지 않은 기능입니다!" << std::endl;
-    return nullptr;
+    return nullptr;  // = dummy 와 같음
 }
 
 std::array<BoardAPIFunction, BOARD_API_BUFFER_COUNT> board_api_table = {
