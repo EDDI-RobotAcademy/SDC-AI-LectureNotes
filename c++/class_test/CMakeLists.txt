@@ -22,4 +22,6 @@ add_executable(class_test main.cpp
         spherical/Spherical.h
         displacement/Displacement.cpp
         displacement/Displacement.h
+        triangle/Triangle.cpp
+        triangle/Triangle.h
 )
