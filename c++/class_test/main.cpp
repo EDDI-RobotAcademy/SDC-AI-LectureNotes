@@ -1,6 +1,8 @@
 #include <iostream>
 #include "dice/Dice.h"
 #include "player/Player.h"
+#include "vector/Vector.h"
+#include "order/Order.h"
 
 int main() {
 //    if(true){

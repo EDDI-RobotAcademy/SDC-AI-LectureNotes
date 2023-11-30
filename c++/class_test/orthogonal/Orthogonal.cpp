@@ -3,3 +3,11 @@
 //
 
 #include "Orthogonal.h"
+
+Orthogonal::Orthogonal() {
+
+}
+
+Orthogonal::~Orthogonal() {
+
+}
