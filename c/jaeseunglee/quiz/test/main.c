@@ -66,7 +66,7 @@ int main (void)
     quiz2_11();
     quiz2_12();
 
-    
+    printf("%.2f",random_float());
 
     return 0;
 }
