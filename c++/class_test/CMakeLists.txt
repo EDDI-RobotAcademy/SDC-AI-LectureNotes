@@ -8,4 +8,18 @@ add_executable(class_test main.cpp
         dice/Dice.h
         player/Player.cpp
         player/Player.h
+        post/Post.cpp
+        post/Post.h
+        vector/Vector.cpp
+        vector/Vector.h
+        matrix/Matrix.cpp
+        matrix/Matrix.h
+        orthogonal/Orthogonal.cpp
+        orthogonal/Orthogonal.h
+        order/Order.cpp
+        order/Order.h
+        spherical/Spherical.cpp
+        spherical/Spherical.h
+        displacement/Displacement.cpp
+        displacement/Displacement.h
 )
