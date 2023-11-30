@@ -14,7 +14,7 @@ enum class BoardAPI {
     END
 };
 
-constexpr int BOARD_API_BUFFER_COUNT = static_cast<int>(BoardAPI::END);
+constexpr int BOARD_API_BUFFER_COUNT = static_cast<int>(BoardAPI::END); // static_cast<int>로 enum을 숫자로 지정해 줘야함
 constexpr int BOARD_API_BUFFER = BOARD_API_BUFFER_COUNT - 1;
 
 #endif //CPP_TEST_BOARDAPI_H
