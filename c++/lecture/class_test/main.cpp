@@ -15,5 +15,10 @@ int main() {
     // 포인터로 객체 받았을 경우 delete가 필요함
     delete dice;
 
+    Dice dice2;
+    dice2.rollDice();
+
+    std::cout << "이것도 됨 ? " << dice2.getDiceNumber() << std::endl;
+
     return 0;
 }
