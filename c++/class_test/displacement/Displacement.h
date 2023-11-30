@@ -11,6 +11,7 @@ class Displacement {
 private:
     Vector start_vector;
     Vector end_vector;
+    float size;
 public:
     Displacement(Vector& _start, Vector& _end);
     ~Displacement();

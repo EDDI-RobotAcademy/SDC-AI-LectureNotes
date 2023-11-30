@@ -20,3 +20,15 @@ Vector::~Vector()
 {
 
 }
+
+int Vector::getX() {
+    return x;
+}
+
+int Vector::getY() {
+    return y;
+}
+
+int Vector::getZ() {
+    return z;
+}

@@ -14,6 +14,9 @@ private:
 public:
     Vector(int, int, int);
     float getVectorAmount();
+    int getX();
+    int getY();
+    int getZ();
     ~Vector();
 
 };
