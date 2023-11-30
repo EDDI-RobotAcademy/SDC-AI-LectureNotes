@@ -28,6 +28,9 @@ void Dice::rollDice() {
     std::uniform_int_distribution<int> distribution(DICE_MIN, DICE_MAX);
 
     diceNumber = distribution(mersenneTwister);
+    // MS 사이트에 보면 무수히 많은 통계 분포들 중
+    // 하나를 선택 할 수 있게 아주 많은 옵션들이 존재합니다.
+    // https://learn.microsoft.com/ko-kr/cpp/standard-library/random?view=msvc-170
 }
 
 int Dice::getDiceNumber() {
