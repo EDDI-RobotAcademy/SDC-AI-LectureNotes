@@ -8,9 +8,8 @@
 
 class Orthogonal {
 private:
-    int r;
-    int theta;
-    int pi;
+    int x;
+    int y;
 public:
     Orthogonal();
     ~Orthogonal();
