@@ -4,10 +4,12 @@
 
 #include "Vector.h"
 #include <cmath>
+#include "../utility/Random_generator.h"
 
 
 Vector::Vector(int _x, int _y, int _z) : x(_x), y(_y), z(_z)
 {
+
 
 }
 float Vector::getVectorAmount()

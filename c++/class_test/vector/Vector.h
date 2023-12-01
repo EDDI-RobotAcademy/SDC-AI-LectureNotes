@@ -8,9 +8,9 @@
 
 class Vector {
 private:
-    const int x;
-    const int y;
-    const int z;
+    int x;
+    int y;
+    int z;
 public:
     Vector(int, int, int);
     Vector vectorSum(Vector&);

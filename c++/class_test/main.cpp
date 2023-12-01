@@ -4,6 +4,10 @@
 #include "vector/Vector.h"
 #include "order/Order.h"
 #include "post/Post.h"
+#include "utility/Random_generator.h"
+
+#define VECTOR_MIN  (-10)
+#define VECTOR_MAX  10
 
 int main() {
 //    if(true){
@@ -56,6 +60,18 @@ int main() {
 
     // 4. 벡터 클래스를 만들어 봅시다.
 
+    Random_generator randomGeneratorX(VECTOR_MIN,VECTOR_MAX);
+    Random_generator randomGeneratorY(VECTOR_MIN,VECTOR_MAX);
+    Random_generator randomGeneratorZ(VECTOR_MIN,VECTOR_MAX);
+    int randomX = randomGeneratorX.getRandomNumber();
+    int randomY = randomGeneratorY.getRandomNumber();
+    int randomZ = randomGeneratorZ.getRandomNumber();
+
+    Vector vec(randomX,randomY,randomZ);
+    std::cout << "X: " << vec.getX() << " Y: " << vec.getY() << " Z: " << vec.getZ() <<
+     "\n랜덤 벡터의 크기: " << vec.getVectorAmount() << std::endl;
+
+    // 5. 행렬 클래스를 만들어 봅시다.
 
 
     // 6. 주문 클래스를 만들어 봅시다.
@@ -64,6 +80,8 @@ int main() {
 
     order.addMenu(menu);
     order.printMenu();
+
+    // 7.
 
     return 0;
 }
