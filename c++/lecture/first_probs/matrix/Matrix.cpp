@@ -13,8 +13,6 @@ Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols), data(rows, std::vec
     }
 }
 
-// lim x->0 sin(x) / x = 1
-
 Matrix::~Matrix() {}
 
 Matrix::Matrix(const Matrix& other) : rows(other.rows), cols(other.cols), data(other.data) {}
@@ -32,7 +30,8 @@ Matrix Matrix::operator+(const Matrix& other) const {
     Matrix result(rows, cols);
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            result.data[i][j] = data[i][j] + other.data[i][j];
+            //result.data[i][j] = data[i][j] + other.data[i][j];
+            result.data[i][j] = this->data[i][j] + other.data[i][j];
         }
     }
     return result;
