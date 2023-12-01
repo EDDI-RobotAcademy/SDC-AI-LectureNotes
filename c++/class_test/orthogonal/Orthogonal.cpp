@@ -21,18 +21,15 @@ Orthogonal::~Orthogonal() {
     std::cout << "직교 좌표 사라진다~" << std::endl;
 }
 
-Vector Orthogonal::getVectorFromOrthogonal() const {
-    auto *vector = new Vector(x,y,z);
 
-    return *vector;
+
+float Orthogonal::getX() {
+    return x;
+}
+float Orthogonal::getY() {
+    return y;
+}
+float Orthogonal::getZ() {
+    return z;
 }
 
-Spherical Orthogonal::getSphericalFromOrthogonal() {
-    auto tmp_r = (float)sqrt(pow(x,2)+pow(y,2)+pow(z,2));
-    auto tmp_theta = (float)acos((double) z/tmp_r);
-    auto tmp_phi = (float)atan((double) y/x);
-
-    auto *spherical = new Spherical(tmp_r, tmp_theta, tmp_phi);
-
-    return *spherical;
-}

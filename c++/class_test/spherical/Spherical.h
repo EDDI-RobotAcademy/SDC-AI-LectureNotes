@@ -6,7 +6,6 @@
 #define CLASS_TEST_SPHERICAL_H
 
 
-#include "../orthogonal/Orthogonal.h"
 
 class Spherical {
 private:
@@ -15,7 +14,9 @@ private:
     float phi;
 public:
     Spherical(float, float, float);
-    Orthogonal getOrthogonalFromSpherical();
+    float getR();
+    float getTheta();
+    float getPhi();
     ~Spherical();
 };
 

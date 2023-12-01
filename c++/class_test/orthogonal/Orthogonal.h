@@ -16,8 +16,11 @@ private:
 public:
     Orthogonal(float, float, float);
     Orthogonal(Vector&);
-    Vector getVectorFromOrthogonal() const;
-    Spherical getSphericalFromOrthogonal();
+
+    float getX();
+    float getY();
+    float getZ();
+
     ~Orthogonal();
 };
 

@@ -26,4 +26,6 @@ add_executable(class_test main.cpp
         triangle/Triangle.h
         utility/Random_generator.cpp
         utility/Random_generator.h
+        utility/System_changer.cpp
+        utility/System_changer.h
 )

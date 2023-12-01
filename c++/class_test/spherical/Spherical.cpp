@@ -15,10 +15,14 @@ Spherical::~Spherical() {
     std::cout << "구면 좌표 사라진다~" << std::endl;
 }
 
-Orthogonal Spherical::getOrthogonalFromSpherical() {
-    float _x = r * sin(theta) * cos(phi);
-    float _y = r * sin(theta) * sin(phi);
-    float _z = r * cos(theta);
-    auto *orthogonal = new Orthogonal(_x, _y, _z);
-    return *orthogonal;
+float Spherical::getR() {
+    return r;
+}
+
+float Spherical::getTheta() {
+    return theta;
+}
+
+float Spherical::getPhi() {
+    return phi;
 }

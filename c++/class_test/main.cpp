@@ -7,7 +7,7 @@
 #include "utility/Random_generator.h"
 #include "orthogonal/Orthogonal.h"
 #include "spherical/Spherical.h"
-
+#include "utility/System_changer.h"
 
 
 #define VECTOR_MIN  (-10)
@@ -100,14 +100,19 @@ int main() {
     order.printMenu();
 
     // 7. 직교 좌표 클래스를 만들어 봅시다
-    auto *orthogonal = new Orthogonal(vec);
-    Vector newVec = orthogonal->getVectorFromOrthogonal();
+    System_changer *systemChanger = new System_changer();
+
+    Orthogonal *orthogonal = new Orthogonal(vec);
+    Vector newVec = systemChanger->getVectorFromOrthogonal(*orthogonal);
     std::cout << "X: " << newVec.getX() << " Y: " << newVec.getY()  << " Z: " << newVec.getZ()  <<
               "\n랜덤 벡터의 크기: " << newVec.getVectorAmount() << std::endl;
 
     // 8. 구면 좌표 클래스를 만들어 봅시다
-    Spherical spherical = orthogonal->getSphericalFromOrthogonal();
-    auto *ortho = spherical.getOrthogonalFromSpherical();
-
+    Spherical spherical = systemChanger->getSphericalFromOrthogonal(*orthogonal);
+    std::cout << "구면좌표 R: " << spherical.getR() << " Theta: " << spherical.getTheta()
+        << " Phi: " << spherical.getPhi()  <<std::endl;
+    Orthogonal ortho = systemChanger->getOrthogonalFromSpherical(spherical);
+    std::cout << "직교 X: " << ortho.getX() << " Y: " << ortho.getY()
+        << " Z: " << ortho.getZ()  << std::endl;
     return 0;
 }
