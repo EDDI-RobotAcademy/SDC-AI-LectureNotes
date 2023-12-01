@@ -21,6 +21,10 @@ public:
     //explicit BoardController(BoardService* service) : boardService(service) { }
 
     std::vector<BoardResponse> boardList();
+    std::vector<BoardResponse> boardRegister();
+    std::vector<BoardResponse> boardRead();
+    std::vector<BoardResponse> boardModify();
+    void BoardRemove();
 };
 
 
