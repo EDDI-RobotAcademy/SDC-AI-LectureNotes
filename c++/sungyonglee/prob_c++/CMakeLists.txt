@@ -11,4 +11,6 @@ add_executable(prob_c__ main.cpp
         3/3.cpp
         3/3.h
         4/4.cpp
-        4/4.h)
+        4/4.h
+        5/5.h
+        5/5.cpp)

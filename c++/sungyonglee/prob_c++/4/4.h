@@ -7,35 +7,20 @@
 
 class Vector {
 private:
-    int vector_a;
-    int vector_b;
-    int result;
-
-public:
-    addVectors(int, int);
-
-};
-
-
-/*
-class Vector {
-private:
     const int VECTOR_MAX = 10;
-    const int VECTOR_MIN = -10;
-    const int VECTOR_COUNT = 2;
-    int vector_size;
-    int vector_x;
-    int vector_y;
-    int vector_z;
-    int tmp_x, tmp_y, tmp_z;
+    const int VECTOR_MIN = 0;
+    int x;
+    int y;
+    int z;
 
 public:
-    Vector();
     void rollVector();
-    int getVectorSize();
-    void setVector();
+    Vector();
+    int getX();
+    int getY();
+    int getZ();
+    void sumVector(Vector, Vector);
     ~Vector();
 };
-*/
 
 #endif //PROB_C___4_H
