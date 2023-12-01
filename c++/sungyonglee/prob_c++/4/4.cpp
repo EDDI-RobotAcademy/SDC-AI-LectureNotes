@@ -44,4 +44,15 @@ void Vector::sumVector(Vector vector1, Vector vector2) {
      std::cout << "vector2 : " << vector2.x << ", " << vector2.y << ", " << vector2.z << std::endl;
      std::cout << "result : " << x << ", " << y << ", " << z << std::endl;
 }
+
+void Vector::subVector(Vector vector1, Vector vector2) {
+    x = vector1.x - vector2.x;
+    y = vector1.y - vector2.y;
+    z = vector1.z - vector2.z;
+    std::cout << "\n벡터 뺄셈" << std::endl;
+    std::cout << "vector1 : " << vector1.x << ", " << vector1.y << ", " << vector1.z << std::endl;
+    std::cout << "vector2 : " << vector2.x << ", " << vector2.y << ", " << vector2.z << std::endl;
+    std::cout << "result : " << x << ", " << y << ", " << z << std::endl;
+}
+
 Vector::~Vector() { }

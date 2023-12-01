@@ -20,6 +20,7 @@ public:
     int getY();
     int getZ();
     void sumVector(Vector, Vector);
+    void subVector(Vector, Vector);
     ~Vector();
 };
 

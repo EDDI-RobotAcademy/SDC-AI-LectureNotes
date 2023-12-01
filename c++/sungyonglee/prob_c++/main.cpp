@@ -39,6 +39,7 @@ int main() {
 
     Vector *result_vector = new Vector();
     result_vector->sumVector(vector1, vector2);
+    result_vector->subVector(vector1, vector2);
 
     // delete vector;
 
