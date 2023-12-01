@@ -13,16 +13,16 @@ private:
     int x;
     int y;
     int z;
-    int randomNumber;
 public:
     Vector();
-    Vector(int x,int y, int z);
-
     void VectorRandom();
-    int getVectorRandomNum();
-    static Vector VectorAdd(const Vector& v1, const Vector& v2);
-    static Vector VectorSub(const Vector& v1, const Vector& v2);
-    ~Vector();
+    void VectorAdd(Vector,Vector);
+    void VectorSub(Vector, Vector);
+    int getVectorX();
+    int getVectorY();
+    int getVectorZ();
+
+
 
 };
 

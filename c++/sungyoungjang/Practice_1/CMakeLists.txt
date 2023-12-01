@@ -12,4 +12,6 @@ add_executable(Practice_1 main.cpp
         03_Post/Post.h
         04_Vector/Vector.cpp
         04_Vector/Vector.h
+        05_Matrix/Matrix.cpp
+        05_Matrix/Matrix.h
 )
