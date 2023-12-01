@@ -8,6 +8,8 @@
 #include "orthogonal/Orthogonal.h"
 #include "spherical/Spherical.h"
 #include "utility/System_changer.h"
+#include "displacement/Displacement.h"
+#include "triangle/Triangle.h"
 
 
 #define VECTOR_MIN  (-10)
@@ -107,6 +109,8 @@ int main() {
     std::cout << "X: " << newVec.getX() << " Y: " << newVec.getY()  << " Z: " << newVec.getZ()  <<
               "\n랜덤 벡터의 크기: " << newVec.getVectorAmount() << std::endl;
 
+
+
     // 8. 구면 좌표 클래스를 만들어 봅시다
     Spherical spherical = systemChanger->getSphericalFromOrthogonal(*orthogonal);
     std::cout << "구면좌표 R: " << spherical.getR() << " Theta: " << spherical.getTheta()
@@ -114,5 +118,28 @@ int main() {
     Orthogonal ortho = systemChanger->getOrthogonalFromSpherical(spherical);
     std::cout << "직교 X: " << ortho.getX() << " Y: " << ortho.getY()
         << " Z: " << ortho.getZ()  << std::endl;
+
+    // 9. 변위 클래스를 만들어 봅시다
+
+    Displacement *displacement = new Displacement(vec, vec2);
+    std::cout << "변위량: " << displacement->getSizeofDisplacement() << std::endl;
+
+    free(displacement);
+
+    // 10. 삼각형 클래스를 만들어 봅시다.
+
+    Triangle *triangleSSS = new Triangle(10,10,12);
+    triangleSSS->printTriangleSides();
+    Triangle *triangleSAS = new Triangle();
+    triangleSAS->getTriangleFromSAS(10,45,18);
+    Triangle *triangleASA = new Triangle();
+    triangleASA->getTriangleFromASA(56,10,48);
+
+
+    delete(systemChanger);
+    delete(orthogonal);
+    delete(triangleSSS);
+    delete(triangleSAS);
+    delete(triangleASA);
     return 0;
 }

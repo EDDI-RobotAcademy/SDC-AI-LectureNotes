@@ -12,7 +12,11 @@ private:
     float side2;
     float side3;
 public:
+    Triangle();
     Triangle(float, float, float);
+    void getTriangleFromSAS(float, float, float);
+    void getTriangleFromASA(float, float, float);
+    void printTriangleSides();
     float getTriangleArea();
     ~Triangle();
 };
