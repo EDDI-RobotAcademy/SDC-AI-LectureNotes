@@ -1,3 +1,4 @@
+/*
 #include "Vector.h"
 
 #include <iostream>
@@ -6,7 +7,7 @@
 
 #include <random>
 
-Vector() { }
+Vector::Vector() { }
 void Vector::randomx(){
     std::random_device rand_device;
     std::mt19937 mersenneTwister(rand_device());
@@ -31,5 +32,9 @@ void Vector::randomz(){
     z = distribution(mersenneTwister);
 }
 
-int Vector::getvector(int, int, int);
-~Vector() { }
+int Vector::printvector(){
+    Vector *vector = new Vector(randomx(), randomy(), randomz());
+    std::cout << "x값 : "<< vector->getid() << ", y값 : " << vector->gettitle() << ", z값 : " << vector->getwriter()
+              << std::endl;
+}
+Vector::~Vector() { }

@@ -2,6 +2,8 @@
 #include "dice/Dice.h"
 #include "player/Player.h"
 #include "post/Post.h"
+//#include "vector/Vector.h"
+#include "matrix/Matrix.h"
 
 int main() {
 //    if (true) {
@@ -38,6 +40,11 @@ int main() {
                 << ", 내용 : " << post->getcontent() << std::endl;
 
     delete post;
+
+    Matrix *matrix = new Matrix(10, 10);
+    matrix->setmatrix();
+
+
 
     return 0;
 }

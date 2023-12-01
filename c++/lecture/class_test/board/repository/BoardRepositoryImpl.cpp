@@ -43,6 +43,7 @@ std::vector<Board> BoardRepositoryImpl::findAll()
 {
     std::cout << "BoardReopository: 리스트 전체 출력!" << std::endl;
 
+
     const char* DB_HOST = "localhost";
     const char* DB_USER = "eddi";
     const char* DB_PASS = "eddi@123";

@@ -9,5 +9,5 @@ add_executable(class_test main.cpp
         player/Player.cpp
         post/Post.h
         post/Post.cpp
-        vector/Vector.h
-        vector/Vector.cpp)
+        matrix/Matrix.cpp
+        matrix/Matrix.h)
