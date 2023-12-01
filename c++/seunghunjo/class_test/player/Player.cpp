@@ -9,7 +9,6 @@
 // 소괄호 내부의 name이 입력 파라미터
 Player::Player(std::string& name, int age) : name(name), age(age) { }
 
-
 std::string Player::getPlayerName()
 {
     return name;

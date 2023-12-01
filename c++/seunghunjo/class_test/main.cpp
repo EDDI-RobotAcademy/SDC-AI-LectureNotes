@@ -1,7 +1,11 @@
 #include <iostream>
+#include <memory>
 #include "dice/Dice.h"
 #include "player/Player.h"
-#include "vector/Vector.h"
+#include "board/controller/BoardController.h"
+#include "board/service/BoardServiceImpl.h"
+#include "board/repository/BoardRepository.h"
+#include "board/repository/BoardRepositoryImpl.h"
 
 int main() {
 //    if (true) {
@@ -26,11 +30,16 @@ int main() {
     Player *player = new Player(test_name, 20);
 
     std::cout << "사용자 정보 - 이름: " << player->getPlayerName() <<
-        ", 나이: "<< player->getPlayerAge() << std::endl;
+        ", 나이: " << player->getPlayerAge() << std::endl;
 
     delete player;
 
-
+//    BoardRepository *boardRepository = new BoardRepositoryImpl();
+//    BoardService* boardService = new BoardServiceImpl();
+    auto boardRepository = std::make_shared<BoardRepositoryImpl>();
+    auto boardService = std::make_shared<BoardServiceImpl>(boardRepository);
+    auto boardController = std::make_shared<BoardController>(boardService);
+    boardController->boardList();
 
     return 0;
 }
