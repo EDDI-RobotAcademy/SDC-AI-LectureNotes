@@ -4,13 +4,14 @@
 
 #include "Displacement.h"
 #include <cmath>
+#include <iostream>
 
 Displacement::Displacement(Vector& _start, Vector& _end) : start_vector(_start), end_vector(_end) {
-
+    std::cout << "변위 생겨욧~" << std::endl;
 }
 
 Displacement::~Displacement() {
-
+    std::cout << "변위 터져욧~" << std::endl;
 }
 
 float Displacement::getSizeofDisplacement() {

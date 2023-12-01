@@ -13,10 +13,10 @@
 class Order {
 private:
     const int table_number;
-    std::vector<std::string> menuList;
+    std::vector<std::string>  menuList;
 public:
     Order(int);
-    void addMenu(std::vector<std::string>);
+    void addMenu(std::vector<std::string>&);
     void printMenu();
     ~Order();
 };

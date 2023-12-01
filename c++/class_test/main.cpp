@@ -5,6 +5,10 @@
 #include "order/Order.h"
 #include "post/Post.h"
 #include "utility/Random_generator.h"
+#include "orthogonal/Orthogonal.h"
+#include "spherical/Spherical.h"
+
+
 
 #define VECTOR_MIN  (-10)
 #define VECTOR_MAX  10
@@ -40,12 +44,13 @@ int main() {
     std::cout << "넌 이름이뭐에요??? " << player.getPlayerName() << std::endl;
     std::cout << "넌 몇살이세요???? " << player.getPlayerAge() << std::endl;
 
+
+
+    // 3. 게시물 클래스를 만들어 봅시다.
     std::string title = "ㅇㅇㅇㅇㅇ";
     std::string writer = "ㄴㄴㄴㄴㄴㄴ";
     std::string password = "ㅁㅁㅁㅁ";
     std::string content = "ㅋㅋㅋㅋㅋㅋㅋㅋ";
-
-    // 3. 게시물 클래스를 만들어 봅시다.
     Post post(title,writer,password,content);
     post.readPost();
     if(post.checkPassword(password))
@@ -63,25 +68,46 @@ int main() {
     Random_generator randomGeneratorX(VECTOR_MIN,VECTOR_MAX);
     Random_generator randomGeneratorY(VECTOR_MIN,VECTOR_MAX);
     Random_generator randomGeneratorZ(VECTOR_MIN,VECTOR_MAX);
+    Random_generator _randomGeneratorX(VECTOR_MIN,VECTOR_MAX);
+    Random_generator _randomGeneratorY(VECTOR_MIN,VECTOR_MAX);
+    Random_generator _randomGeneratorZ(VECTOR_MIN,VECTOR_MAX);
     int randomX = randomGeneratorX.getRandomNumber();
     int randomY = randomGeneratorY.getRandomNumber();
     int randomZ = randomGeneratorZ.getRandomNumber();
-
+    int _randomX = _randomGeneratorX.getRandomNumber();
+    int _randomY = _randomGeneratorY.getRandomNumber();
+    int _randomZ = _randomGeneratorZ.getRandomNumber();
     Vector vec(randomX,randomY,randomZ);
     std::cout << "X: " << vec.getX() << " Y: " << vec.getY() << " Z: " << vec.getZ() <<
      "\n랜덤 벡터의 크기: " << vec.getVectorAmount() << std::endl;
+
+    Vector vec2(_randomX,_randomY,_randomZ);
+
+    Vector vec3 = vec.vectorCrossProduct(vec2);
+
+    std::cout << "VEC3 X: " << vec3.getX() << " Y: " << vec3.getY() << " Z: " << vec3.getZ() << std::endl;
+
+
 
     // 5. 행렬 클래스를 만들어 봅시다.
 
 
     // 6. 주문 클래스를 만들어 봅시다.
-    std::vector<std::string> menu = {"abc", "제육볶음", "오뎅탕", "참이슬", "테라", "떡볶이", "짬뽕"};
+    std::vector<std::string> menu = {"abc초코", "제육볶음", "오뎅탕", "참이슬", "테라", "떡볶이", "짬뽕"};
     Order order(0);
 
     order.addMenu(menu);
     order.printMenu();
 
-    // 7.
+    // 7. 직교 좌표 클래스를 만들어 봅시다
+    auto *orthogonal = new Orthogonal(vec);
+    Vector newVec = orthogonal->getVectorFromOrthogonal();
+    std::cout << "X: " << newVec.getX() << " Y: " << newVec.getY()  << " Z: " << newVec.getZ()  <<
+              "\n랜덤 벡터의 크기: " << newVec.getVectorAmount() << std::endl;
+
+    // 8. 구면 좌표 클래스를 만들어 봅시다
+    Spherical spherical = orthogonal->getSphericalFromOrthogonal();
+    auto *ortho = spherical.getOrthogonalFromSpherical();
 
     return 0;
 }

@@ -4,6 +4,7 @@
 
 #include "Vector.h"
 #include <cmath>
+#include <iostream>
 #include "../utility/Random_generator.h"
 
 
@@ -52,6 +53,7 @@ Vector Vector::vectorScalarProduct(int _amount) {
 }
 
 Vector Vector::vectorCrossProduct(Vector & _vector_to_product) {
+
     int _x = y*_vector_to_product.getZ() - z*_vector_to_product.getY();
     int _y = z*_vector_to_product.getX() - x*_vector_to_product.getZ();
     int _z = x*_vector_to_product.getY() - y*_vector_to_product.getX();

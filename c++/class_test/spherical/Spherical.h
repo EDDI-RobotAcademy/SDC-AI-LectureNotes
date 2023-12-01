@@ -6,8 +6,17 @@
 #define CLASS_TEST_SPHERICAL_H
 
 
-class Spherical {
+#include "../orthogonal/Orthogonal.h"
 
+class Spherical {
+private:
+    float r;
+    float theta;
+    float phi;
+public:
+    Spherical(float, float, float);
+    Orthogonal getOrthogonalFromSpherical();
+    ~Spherical();
 };
 
 
