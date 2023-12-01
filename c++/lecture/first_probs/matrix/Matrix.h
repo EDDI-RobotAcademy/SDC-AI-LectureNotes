@@ -12,6 +12,8 @@ class Matrix {
 
 private:
     int rows, cols;
+    // std::vector = *
+    // std::vector<std::vector> = **
     std::vector<std::vector<double>> data;
 
 public:
