@@ -24,4 +24,6 @@ add_executable(class_test main.cpp
         displacement/Displacement.h
         triangle/Triangle.cpp
         triangle/Triangle.h
+        utility/Random_generator.cpp
+        utility/Random_generator.h
 )

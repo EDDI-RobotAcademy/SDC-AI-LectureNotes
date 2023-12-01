@@ -10,7 +10,7 @@ int main() {
 //        Dice dice;
 //        Dice dice2;
 //    }
-
+    // 1. 주사위 클래스를 만들어 봅시다.
     Dice *dice = new Dice();
     dice->rollDice();
 
@@ -28,7 +28,7 @@ int main() {
     std::cout << "이름이뭐에요??? " << player1->getPlayerName() <<
     "\n몇살이세요???? " << player1->getPlayerAge() << std::endl;
 
-
+    // 2. 사용자 클래스를 만들어 봅시다.
     delete player1;
     std::string myName = "이재승";
     int myAge = 30;
@@ -41,7 +41,7 @@ int main() {
     std::string password = "ㅁㅁㅁㅁ";
     std::string content = "ㅋㅋㅋㅋㅋㅋㅋㅋ";
 
-
+    // 3. 게시물 클래스를 만들어 봅시다.
     Post post(title,writer,password,content);
     post.readPost();
     if(post.checkPassword(password))
@@ -54,6 +54,11 @@ int main() {
 
     post.readPost();
 
+    // 4. 벡터 클래스를 만들어 봅시다.
+
+
+
+    // 6. 주문 클래스를 만들어 봅시다.
     std::vector<std::string> menu = {"abc", "제육볶음", "오뎅탕", "참이슬", "테라", "떡볶이", "짬뽕"};
     Order order(0);
 
