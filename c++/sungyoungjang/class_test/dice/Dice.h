@@ -7,19 +7,19 @@
 
 
 class Dice {
-private: // 객체안의 내용을 아무나 못본다.
+private:
     const int DICE_MAX = 6;
     const int DICE_MIN = 1;
     int diceNumber;
 
-public: // 객체안의 내용을 보려면 사용.
-//    // intt_xxx_object
-//    Dice(){
-//    std::cout << "마! 내가 생성자다!" << std:: endl;
+public:
+    // init_xxx_object
+//    Dice() {
+//        std::cout << "마! 내가 생성자다!" << std:: endl;
 //    }
-//    // free
-//    ~Dice(){
-//    std::cout << "난 죽을 때 출력됨" << std::endl;
+    // free
+//    ~Dice() {
+//        std::cout << "난 뒤질 때 출력됨" << std::endl;
 //    }
     Dice();
     void rollDice();
