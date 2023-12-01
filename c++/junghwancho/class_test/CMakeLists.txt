@@ -12,4 +12,5 @@ add_executable(class_test main.cpp
         board/Board.h
         vector/Vector.cpp
         vector/Vector.h
+        matrix/Matrix.cpp
 )

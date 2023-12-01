@@ -83,12 +83,17 @@ int main() {
               ", Y: " << vectorB->getVectorY() <<
               ", Z: " << vectorB->getVectorZ() <<std::endl;
 
-
+        vectorA->vectorSum(*vectorB);
+        vectorA->vectorCrossProduct(*vectorB);
+        int amount = 3;
+        vectorA->vectorScalarProduct(*vectorA, amount);
+        vectorB->vectorScalarProduct(*vectorB, amount);
 
     delete vectorA;
     delete vectorB;
+    // 5. 행렬 클래스를 만들어 봅시다.
 
-// 5. 행렬 클래스를 만들어 봅시다.
+
 
     return 0;
 }

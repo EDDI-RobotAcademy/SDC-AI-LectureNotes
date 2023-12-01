@@ -27,6 +27,9 @@ public:
     int getVectorX();
     int getVectorY();
     int getVectorZ();
+    int vectorSum(const Vector& other);
+    int vectorCrossProduct(const Vector& other) const;
+    int vectorScalarProduct(const Vector&, int amount);
     ~Vector();
 
 };
