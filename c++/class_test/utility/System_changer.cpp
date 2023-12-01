@@ -14,10 +14,10 @@ System_changer::~System_changer() {
     std::cout << "메타몽진화~!" << std::endl;
 }
 
-Spherical System_changer::getSphericalFromOrthogonal(Orthogonal & _orthogonal_to_change) {
-    float x = _orthogonal_to_change.getX();
-    float y = _orthogonal_to_change.getY();
-    float z = _orthogonal_to_change.getZ();
+Spherical System_changer::getSphericalFromOrthogonal(Orthogonal & _orthogonalToChange) {
+    float x = _orthogonalToChange.getX();
+    float y = _orthogonalToChange.getY();
+    float z = _orthogonalToChange.getZ();
     auto tmp_r = (float)sqrt(pow(x,2)+pow(y,2)+pow(z,2));
     auto tmp_theta = (float)acos((double) z/tmp_r);
     auto tmp_phi = (float)atan((double) y/x);
@@ -27,10 +27,10 @@ Spherical System_changer::getSphericalFromOrthogonal(Orthogonal & _orthogonal_to
     return *spherical;
 }
 
-Orthogonal System_changer::getOrthogonalFromSpherical(Spherical & _spherical_to_change) {
-    float r = _spherical_to_change.getR();
-    float theta = _spherical_to_change.getTheta();
-    float phi = _spherical_to_change.getPhi();
+Orthogonal System_changer::getOrthogonalFromSpherical(Spherical & _sphericalToChange) {
+    float r = _sphericalToChange.getR();
+    float theta = _sphericalToChange.getTheta();
+    float phi = _sphericalToChange.getPhi();
 
     float _x = r * sin(theta) * cos(phi);
     float _y = r * sin(theta) * sin(phi);
@@ -39,10 +39,10 @@ Orthogonal System_changer::getOrthogonalFromSpherical(Spherical & _spherical_to_
     return *orthogonal;
 }
 
-Vector System_changer::getVectorFromOrthogonal(Orthogonal & _orthogonal_to_change) {
-    float x = _orthogonal_to_change.getX();
-    float y = _orthogonal_to_change.getY();
-    float z = _orthogonal_to_change.getZ();
+Vector System_changer::getVectorFromOrthogonal(Orthogonal & _orthogonalToChange) {
+    float x = _orthogonalToChange.getX();
+    float y = _orthogonalToChange.getY();
+    float z = _orthogonalToChange.getZ();
 
     auto *vector = new Vector(x,y,z);
 
