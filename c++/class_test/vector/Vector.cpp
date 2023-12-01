@@ -10,7 +10,7 @@
 
 Vector::Vector(int _x, int _y, int _z) : x(_x), y(_y), z(_z)
 {
-
+    std::cout << "벡터맨~ 벡터맨~!" << std::endl;
 
 }
 float Vector::getVectorAmount()
@@ -21,7 +21,7 @@ float Vector::getVectorAmount()
 }
 Vector::~Vector()
 {
-
+    std::cout << "벡터 터져욧~~~~" << std::endl;
 }
 
 int Vector::getX() {
