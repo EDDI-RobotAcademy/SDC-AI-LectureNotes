@@ -49,3 +49,10 @@ Vector System_changer::getVectorFromOrthogonal(Orthogonal & _orthogonal_to_chang
     return *vector;
 }
 
+float System_changer::getDegreeFromRadian(float _rad){
+    return _rad * 180 / M_PI;
+}
+
+float System_changer::getRadianFromDegree(float _degree) {
+    return _degree * M_PI / 180;
+}

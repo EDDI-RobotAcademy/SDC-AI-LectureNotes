@@ -15,6 +15,8 @@ public:
     Spherical getSphericalFromOrthogonal(Orthogonal&);
     Orthogonal getOrthogonalFromSpherical(Spherical&);
     Vector getVectorFromOrthogonal(Orthogonal&);
+    float getDegreeFromRadian(float _rad);
+    float getRadianFromDegree(float _degree);
     ~System_changer();
 };
 
