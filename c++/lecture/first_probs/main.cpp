@@ -14,9 +14,13 @@ void vector_example()
     Vector v1;
     Vector v2;
 
+    // v1.operator+(v2)
     Vector sum = v1 + v2;
+    // v1.operator-(v2)
     Vector sub = v1 - v2;
 
+    // operator<< 이긴하지만
+    // 만들다 보니 느끼는 부분은 그냥 printVector()를 만드는 것이 더 좋은 것 같음
     std::cout << "v1: " << v1 << std::endl;
     std::cout << "v2: " << v2 << std::endl;
     std::cout << "v1 + v2: " << sum << std::endl;
@@ -25,10 +29,14 @@ void vector_example()
 
 void matrix_example()
 {
-    Matrix mat1(2, 3);
-    Matrix mat2(3, 2);
+    // 행렬의 곱셈 특성
+    Matrix mat1(2, 3);  // n by m
+    Matrix mat2(3, 2);  // m by p
+    // n by m * m by p = n by p (앞의 열과 뒤의 행이 같아야 곱셈이 가능함)
 
+    // mat1.operator+(mat2)
     Matrix sum = mat1 + mat2;
+    // mat1.operator-(mat2)
     Matrix diff = mat1 - mat2;
 
     std::cout << "mat1:\n" << mat1 << std::endl;
@@ -90,7 +98,7 @@ void spherical_example()
 void displacement_example()
 {
     Displacement initialDisplacement(RandomGenerator::generate(-15, 15), 45);
-    std::cout << "초기 변위 " << initialDisplacement.getDisplacementInfo() << std::endl;
+    std::cout << "초기 " << initialDisplacement.getDisplacementInfo() << std::endl;
 
     double timeInterval = 0.01;
 
@@ -99,10 +107,10 @@ void displacement_example()
 
         // 원래 방향도 바꿔야 하지만 이 부분은 대충합시다
         Displacement currentDisplacement(randomDisplacement, 45);
-        std::cout << "현재 감지된 미사일 변위 " << currentDisplacement.getDisplacementInfo() << std::endl;
+        std::cout << "현재 감지된 미사일 " << currentDisplacement.getDisplacementInfo() << std::endl;
 
         Velocity velocityObj = Displacement::calculateVelocity(initialDisplacement, currentDisplacement, timeInterval);
-        std::cout << "파악된 미사일 속도 " << velocityObj.getVelocityInfo() << std::endl;
+        std::cout << "파악된 미사일 " << velocityObj.getVelocityInfo() << std::endl;
 
         initialDisplacement = currentDisplacement;
 
@@ -116,6 +124,7 @@ int main() {
     matrix_example();
     coordinate_example();
     spherical_example();
+    // lim delta_h->0 [f(x + delta_h) - f(x)] / delta_h
     displacement_example();
 
     return 0;
