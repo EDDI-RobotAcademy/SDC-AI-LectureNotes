@@ -1,9 +1,11 @@
 #include <iostream>
+#include <memory>
 #include "dice/Dice.h"
 #include "player/Player.h"
-#include "post/Post.h"
-//#include "vector/Vector.h"
-#include "matrix/Matrix.h"
+#include "board/controller/BoardController.h"
+#include "board/service/BoardServiceImpl.h"
+#include "board/repository/BoardRepository.h"
+#include "board/repository/BoardRepositoryImpl.h"
 
 int main() {
 //    if (true) {
@@ -28,23 +30,17 @@ int main() {
     Player *player = new Player(test_name, 20);
 
     std::cout << "사용자 정보 - 이름: " << player->getPlayerName() <<
-              ", 나이: " << player->getPlayerAge() << std::endl;
+        ", 나이: " << player->getPlayerAge() << std::endl;
 
     delete player;
 
-    std::string test_title = "제목";
-    std::string test_writer = "작성자";
-    std::string test_content = "내용";
-    Post *post = new Post(1, test_title, test_writer, test_content);
-    std::cout << "게시물 번호 : "<< post->getid() << ", 제목 : " << post->gettitle() << ", 작성자 : " << post->getwriter()
-                << ", 내용 : " << post->getcontent() << std::endl;
-
-    delete post;
-
-    Matrix *matrix = new Matrix(10, 10);
-    matrix->setmatrix();
-
-
+//    BoardRepository *boardRepository = new BoardRepositoryImpl();
+//    BoardService* boardService = new BoardServiceImpl();
+    auto boardRepository = std::make_shared<BoardRepositoryImpl>();
+    auto boardService = std::make_shared<BoardServiceImpl>(boardRepository);
+    auto boardController = std::make_shared<BoardController>(boardService);
+    //위와 달리 BoardController->BoardService->BoardRepository순으로 실행
+    boardController->boardList();됌
 
     return 0;
 }
