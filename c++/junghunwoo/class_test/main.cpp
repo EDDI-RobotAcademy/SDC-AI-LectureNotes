@@ -40,7 +40,7 @@ int main() {
     auto boardService = std::make_shared<BoardServiceImpl>(boardRepository);
     auto boardController = std::make_shared<BoardController>(boardService);
     //위와 달리 BoardController->BoardService->BoardRepository순으로 실행
-    boardController->boardList();됌
+    boardController->boardList();
 
     return 0;
 }
