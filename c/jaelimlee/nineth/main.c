@@ -9,6 +9,7 @@
 // A가 B를 바라 볼 때 상대 벡터를 출력
 // 통합 벡터 길이 = sqrt(x^2 + y^2 + z^2) 
 
+
 // 스포
 // int (*) (int, int) - return
 // fp_test
