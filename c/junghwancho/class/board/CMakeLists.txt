@@ -95,6 +95,7 @@ add_executable(
     board_app
     ${C_SOURCES}
     ${MAIN_SOURCES}
+        board/adapter/input/response_form/board_list_response.h
 )
 
 add_custom_target(run

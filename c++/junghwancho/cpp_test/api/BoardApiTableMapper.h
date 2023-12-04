@@ -17,7 +17,7 @@
     [static_cast<int>(api_enum)] = [](void* input) { return static_cast<BoardAPIHandler*>(new handler_class())(input); },
 
 // Create an array using the mapping macro
-const BoardAPIFunctionPtr board_api_mapper[] = {
+const BoardAPIFunction board_api_mapper[] = {
 //        BOARD_API_MAPPER_ENTRY(BOARD_API_LIST, BoardAPIListHandler)
 //        BOARD_API_MAPPER_ENTRY(BOARD_API_REGISTER, BoardAPIRegisterHandler)
 //        BOARD_API_MAPPER_ENTRY(BOARD_API_READ, BoardAPIReadHandler)

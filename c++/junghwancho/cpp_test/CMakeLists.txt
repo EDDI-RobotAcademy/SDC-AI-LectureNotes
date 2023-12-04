@@ -22,6 +22,16 @@ add_executable(
         ${CPP_SOURCES}
         ${MAIN_SOURCES}
         api/BoardApiTableMapper.h
+        mysql_test/DbProcess.h
+        mysql_test/DbProcess.cpp
+        boardDB/BoardDB.cpp
+        boardDB/BoardDB.h
+        accountDB/AccountDB.cpp
+        accountDB/AccountDB.h
+        mysql_test/account/DbProcessAccount.cpp
+        mysql_test/account/DbProcessAccount.h
+        mysql_test/board/DbProcessBoard.cpp
+        mysql_test/board/DbProcessBoard.h
 )
 
 target_include_directories(main_app PRIVATE ${LIBMYSQLCLIENT_INCLUDE_DIRS})

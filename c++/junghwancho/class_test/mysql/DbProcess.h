@@ -14,7 +14,8 @@ public:
     ~DbProcess();
 
     bool connect();
-    bool insertData();
+    bool insertDataBoard();
+    bool insertDataAccount();
     bool updateData(int boardId, const std::string& newTitle, const std::string& newContent);
     bool deleteData(int boardId);
     void selectData();

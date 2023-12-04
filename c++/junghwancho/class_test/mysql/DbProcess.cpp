@@ -19,8 +19,15 @@ bool DbProcess::connect() {
     return (mysql_real_connect(conn, DB_HOST, DB_USER, DB_PASS, DB_NAME, 3306, nullptr, 0) != nullptr);
 }
 
-bool DbProcess::insertData() {
+bool DbProcess::insertDataBoard() {
     std::string insertQuery = "INSERT INTO board (content, title, writer, reg_date, upd_date) VALUES \
+                               ('테스트 내용', '테스트 제목', '테스트 작성자', now(6), now(6))";
+
+    return (mysql_query(conn, insertQuery.c_str()) == 0);
+}
+
+bool DbProcess::insertDataAccount() {
+    std::string insertQuery = "INSERT INTO account (content, title, writer, reg_date, upd_date) VALUES \
                                ('테스트 내용', '테스트 제목', '테스트 작성자', now(6), now(6))";
 
     return (mysql_query(conn, insertQuery.c_str()) == 0);
