@@ -10,7 +10,7 @@
 #include <array>
 #include <memory>
 
-using BoardAPIFunction = void* (*)(void*);
+using BoardAPIFunction = void* (*)(void*); // using = typedef와 같음
 
 extern std::array<BoardAPIFunction, BOARD_API_BUFFER_COUNT> board_api_table;
 
