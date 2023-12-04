@@ -2,10 +2,6 @@
 // Created by eddi on 23. 11. 29.
 //
 
-#ifndef CPP_TEST_BOARDAPITABLEMAPPER_H
-#define CPP_TEST_BOARDAPITABLEMAPPER_H
-
-#include "BoardApiTable.h"
 //#include "handler/list/board_api_list_handler.h"
 //#include "handler/register/board_api_register_handler.h"
 //#include "handler/read/board_api_read_handler.h"
@@ -18,7 +14,11 @@
 
 // Create an array using the mapping macro
 const BoardAPIFunctionPtr board_api_mapper[] = {
-//        BOARD_API_MAPPER_ENTRY(BOARD_API_LIST, BoardAPIListHandler)
+//        BOARD_API_MAPPER_ENTRY(BOARD_API_LIST, BoardAPIListHandl
+#ifndef CPP_TEST_BOARDAPITABLEMAPPER_H
+#define CPP_TEST_BOARDAPITABLEMAPPER_H
+
+#include "BoardApiTable.h"er)
 //        BOARD_API_MAPPER_ENTRY(BOARD_API_REGISTER, BoardAPIRegisterHandler)
 //        BOARD_API_MAPPER_ENTRY(BOARD_API_READ, BoardAPIReadHandler)
 //        BOARD_API_MAPPER_ENTRY(BOARD_API_MODIFY, BoardAPIModifyHandler)
