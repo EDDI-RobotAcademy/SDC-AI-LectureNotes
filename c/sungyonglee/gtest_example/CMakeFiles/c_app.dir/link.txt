@@ -1,0 +1,1 @@
+clang  -g -g CMakeFiles/c_app.dir/sample/sample.c.o CMakeFiles/c_app.dir/main.c.o -o c_app 

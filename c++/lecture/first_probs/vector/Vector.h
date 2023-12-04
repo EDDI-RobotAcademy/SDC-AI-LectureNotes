@@ -9,6 +9,8 @@
 #include <ostream>
 #include "../utility/RandomGenerator.h"
 
+// 결론 class를 사용 할 때는
+// 내부 정보 변경은 반드시 매서드(함수)를 통해서 진행합니다.
 class Vector {
 private:
     float x, y, z;
