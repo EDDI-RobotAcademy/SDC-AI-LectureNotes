@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblogic_lib.a CMakeFiles/logic_lib.dir/sample/sample.c.o
+/usr/bin/ranlib liblogic_lib.a
