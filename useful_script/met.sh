@@ -39,24 +39,19 @@ project($new_dir_name)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Locate GTest
+file(GLOB CPP_SOURCES
+
+)
+
 find_package(GTest REQUIRED)
-
-# Include directories
 include_directories(\${GTEST_INCLUDE_DIRS})
-
-# Add executable
-add_executable(\${PROJECT_NAME} gtest_main.cpp)
-
-# Link against GTest
+add_executable(\${PROJECT_NAME} gtest_main.cpp \${CPP_SOURCES})
 target_link_libraries(\${PROJECT_NAME} \${GTEST_LIBRARIES} pthread)
 
-# MySQL libraries and includes
-find_package(MySQL REQUIRED)
-include_directories(\${MYSQL_INCLUDE_DIRS})
-
-# Link against MySQL
-target_link_libraries(\${PROJECT_NAME} \${MYSQL_LIBRARIES})
+include(FindPkgConfig)
+pkg_check_modules(LIBMYSQLCLIENT REQUIRED mysqlclient)
+include_directories(\${LIBMYSQLCLIENT_INCLUDE_DIRS})
+target_link_libraries(\${PROJECT_NAME} \${GTEST_LIBRARIES} pthread \${LIBMYSQLCLIENT_LIBRARIES})
 "
 
 echo "$cmakelists_content" > "$new_dir_path/CMakeLists.txt"
