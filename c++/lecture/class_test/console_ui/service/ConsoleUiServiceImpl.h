@@ -7,12 +7,14 @@
 
 #include "ConsoleUiService.h"
 #include "../../account/controller/request_form/AccountRegisterRequestForm.h"
+#include "../../account/controller/request_form/AccountLoginRequestForm.h"
 
 class ConsoleUiServiceImpl : public ConsoleUiService {
 
 public:
     static ConsoleUiServiceImpl& getInstance();
     AccountRegisterRequestForm *makeAccountRegisterForm() override;
+    AccountLoginRequestForm *makeAccountLoginForm() override;
 };
 
 

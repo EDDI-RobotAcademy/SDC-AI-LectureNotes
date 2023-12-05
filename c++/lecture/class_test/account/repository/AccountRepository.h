@@ -12,6 +12,7 @@ class AccountRepository {
 public:
     virtual ~AccountRepository() = default;
     virtual Account *save(Account *acount) = 0;
+    virtual bool findByAccountId(std::string account_id) = 0;
 };
 
 #endif //CLASS_TEST_ACCOUNTREPOSITORY_H

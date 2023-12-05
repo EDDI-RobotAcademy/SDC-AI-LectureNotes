@@ -11,6 +11,8 @@ class AccountRepositoryImpl : public AccountRepository {
 
 public:
     Account *save(Account *account) override;
+    bool findByAccountId(std::string account_id) override;
+
     static AccountRepositoryImpl& getInstance();
 };
 

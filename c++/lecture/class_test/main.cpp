@@ -12,6 +12,18 @@
 #include "account/controller/AccountController.h"
 #include "console_ui/service/ConsoleUiServiceImpl.h"
 #include "console_ui/controller/ConsoleUiController.h"
+#include "mysql/DbProcess.h"
+
+void init_database_object()
+{
+    const char* host = "localhost";
+    const char* user = "eddi";
+    const char* pass = "eddi@123";
+    const char* dbName = "test_db";
+
+    DbProcess* dbInstance = DbProcess::getInstance(host, user, pass, dbName);
+    dbInstance->connect();
+}
 
 void init_singleton_object()
 {
@@ -23,6 +35,7 @@ void init_singleton_object()
 
     ConsoleUiServiceImpl& consoleUiService = ConsoleUiServiceImpl::getInstance();
     ConsoleUiController& uiController = ConsoleUiController::getInstance(std::make_shared<ConsoleUiServiceImpl>());
+
 
 }
 
@@ -61,6 +74,7 @@ int main() {
     boardController->boardList();
 
     init_singleton_object();
+    init_database_object();
 
     ConsoleUiController &uiController = ConsoleUiController::getInstance();
     uiController.uiAccountRegister();

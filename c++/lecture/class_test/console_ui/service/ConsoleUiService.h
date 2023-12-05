@@ -6,12 +6,14 @@
 #define CLASS_TEST_CONSOLEUISERVICE_H
 
 #include "../../account/controller/request_form/AccountRegisterRequestForm.h"
+#include "../../account/controller/request_form/AccountLoginRequestForm.h"
 
 class ConsoleUiService {
 public:
     virtual ~ConsoleUiService() = default;
 
     virtual AccountRegisterRequestForm *makeAccountRegisterForm() = 0;
+    virtual AccountLoginRequestForm *makeAccountLoginForm() = 0;
 };
 
 #endif //CLASS_TEST_CONSOLEUISERVICE_H

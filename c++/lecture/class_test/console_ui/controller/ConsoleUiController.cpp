@@ -5,6 +5,7 @@
 #include "ConsoleUiController.h"
 #include "../../account/controller/AccountController.h"
 #include "../service/ConsoleUiServiceImpl.h"
+#include "../../account/controller/request_form/AccountLoginRequestForm.h"
 
 ConsoleUiController::ConsoleUiController(
         std::shared_ptr<ConsoleUiService> consoleUiService)
@@ -25,12 +26,32 @@ ConsoleUiController& ConsoleUiController::getInstance() {
 
 void ConsoleUiController::uiAccountRegister()
 {
+    std::cout << "회원 가입을 진행합니다!" << std::endl;
     AccountRegisterRequestForm *requestForm;
 
     requestForm = consoleUiService->makeAccountRegisterForm();
-    AccountController& controller = AccountController::getInstance();
+    AccountController& accountController = AccountController::getInstance();
 
-    controller.accountRegister(requestForm);
+    AccountRegisterResponseForm *responseForm = accountController.accountRegister(requestForm);
 
-    //get_user_keyboard_input_with_message("사용자 계정 id를 입력하세요: ", user_input);
+    if (responseForm == nullptr) {
+        std::cout << "중복된 계정입니다" << std::endl;
+        // UI Command 창으로 보내야하지만 그냥 끝냄
+        return;
+    }
+
+    if (responseForm->getIsRegisterSuccess()) {
+        uiAccountLogin();
+    }
+}
+
+void ConsoleUiController::uiAccountLogin()
+{
+    std::cout << "로그인 콘솔 창입니다." << std::endl;
+    AccountLoginRequestForm *requestForm;
+
+    requestForm = consoleUiService->makeAccountLoginForm();
+    AccountController& accountController = AccountController::getInstance();
+
+    //accountController.accountLogin(requestForm);
 }

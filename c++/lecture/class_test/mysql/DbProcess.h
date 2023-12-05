@@ -13,16 +13,22 @@ public:
     DbProcess(const char* host, const char* user, const char* pass, const char* dbName);
     ~DbProcess();
 
+    static DbProcess* getInstance(const char* host, const char* user, const char* pass, const char* dbName);
+    static DbProcess* getInstance();
+
     bool connect();
-    bool insertData();
+    bool insertData(const std::string& queryString);
     bool updateData(int boardId, const std::string& newTitle, const std::string& newContent);
     bool deleteData(int boardId);
     void selectData();
     void readData(int boardId);
+    bool findData(const std::string& queryString);
 
     MYSQL *getConn();
 
 private:
+    static DbProcess* instance;
+
     MYSQL* conn;
     const char* DB_HOST;
     const char* DB_USER;

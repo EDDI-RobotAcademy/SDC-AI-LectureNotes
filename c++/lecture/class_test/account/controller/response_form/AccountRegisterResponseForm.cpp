@@ -4,4 +4,9 @@
 
 #include "AccountRegisterResponseForm.h"
 
-AccountRegisterResponseForm::AccountRegisterResponseForm (int id) : login_account_unique_id(id) { }
+AccountRegisterResponseForm::AccountRegisterResponseForm (bool is_register_success)
+                                        : is_register_success(is_register_success) { }
+
+bool AccountRegisterResponseForm::getIsRegisterSuccess() const {
+    return is_register_success;
+}

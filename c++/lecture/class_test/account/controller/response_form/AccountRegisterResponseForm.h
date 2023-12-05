@@ -8,10 +8,11 @@
 
 class AccountRegisterResponseForm {
 private:
-    int login_account_unique_id;
+    bool is_register_success;
 
 public:
-    AccountRegisterResponseForm (int id);
+    AccountRegisterResponseForm (bool is_register_success);
+    bool getIsRegisterSuccess() const;
 };
 
 

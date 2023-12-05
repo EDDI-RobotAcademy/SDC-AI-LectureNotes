@@ -18,6 +18,8 @@ AccountRegisterResponseForm *
     AccountRegisterResponse *response =
             accountService->create(requestForm->toAccountRegisterRequest());
 
+    if (response == nullptr) { return nullptr; }
+
     return response->toResponseForm();
 }
 

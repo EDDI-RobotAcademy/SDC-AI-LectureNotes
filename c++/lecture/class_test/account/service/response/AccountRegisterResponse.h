@@ -10,10 +10,10 @@
 
 class AccountRegisterResponse {
 private:
-    int login_account_unique_id;
+    bool is_register_success;
 
 public:
-    AccountRegisterResponse (int id);
+    AccountRegisterResponse (bool is_register_success);
     AccountRegisterResponseForm *toResponseForm();
 };
 

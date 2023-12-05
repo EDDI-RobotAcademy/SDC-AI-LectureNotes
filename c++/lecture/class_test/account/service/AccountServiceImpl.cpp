@@ -10,8 +10,16 @@ AccountServiceImpl::AccountServiceImpl(std::shared_ptr<AccountRepository> accoun
 AccountRegisterResponse *
         AccountServiceImpl::create(AccountRegisterRequest *request)
 {
+    if (accountRepository->findByAccountId(request->getAccountId())) {
+        return nullptr;
+    }
+
     Account *account = accountRepository->save(request->toAccount());
-    return new AccountRegisterResponse(account->get_id());
+
+    if (account != nullptr) {
+        return new AccountRegisterResponse(true);
+    }
+
 }
 
 AccountServiceImpl& AccountServiceImpl::getInstance(

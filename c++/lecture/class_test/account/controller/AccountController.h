@@ -10,6 +10,8 @@
 #include "../service/AccountService.h"
 #include "response_form/AccountRegisterResponseForm.h"
 #include "request_form/AccountRegisterRequestForm.h"
+#include "request_form/AccountLoginRequestForm.h"
+#include "response_form/AccountLoginResponseForm.h"
 
 class AccountController {
 private:
@@ -18,7 +20,9 @@ private:
 public:
     AccountController(std::shared_ptr<AccountService> accountService);
 
-    AccountRegisterResponseForm *accountRegister(AccountRegisterRequestForm *pForm);
+    AccountRegisterResponseForm *accountRegister(AccountRegisterRequestForm *form);
+    AccountLoginResponseForm *accountLogin(AccountLoginRequestForm *form);
+
     static AccountController& getInstance(std::shared_ptr<AccountService> accountService);
     static AccountController& getInstance();
 };

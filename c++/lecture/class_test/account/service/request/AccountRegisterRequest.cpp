@@ -12,3 +12,7 @@ Account *AccountRegisterRequest::toAccount()
 {
     return new Account(account_id, password);
 }
+
+std::string AccountRegisterRequest::getAccountId() const {
+    return account_id;
+}
