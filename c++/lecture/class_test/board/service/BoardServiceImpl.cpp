@@ -15,3 +15,7 @@ std::vector<BoardResponse> BoardServiceImpl::list()
 
     return std::vector<BoardResponse>();
 }
+
+std::vector<BoardResponse> BoardServiceImpl::create() {
+    return std::vector<BoardResponse>();
+}

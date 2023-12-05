@@ -11,7 +11,7 @@
 #include <random>
 
 Dice::Dice() {
-    std::cout << "마! 내가 생성자다!" << std::endl;
+    //std::cout << "마! 내가 생성자다!" << std::endl;
 
     // 지금 보았듯이 다소 이상한 랜덤을 생성하는 것을 볼 수 있다.
     // srand(static_cast<unsigned int>(time(0)));
@@ -38,5 +38,5 @@ int Dice::getDiceNumber() {
 }
 
 Dice::~Dice() {
-    std::cout << "난 뒤질 때 출력됨" << std::endl;
+    //std::cout << "난 뒤질 때 출력됨" << std::endl;
 }

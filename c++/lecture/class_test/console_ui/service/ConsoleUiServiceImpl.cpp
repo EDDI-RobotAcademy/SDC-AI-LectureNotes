@@ -1,0 +1,23 @@
+//
+// Created by eddi on 23. 12. 5.
+//
+
+#include "ConsoleUiServiceImpl.h"
+
+#include <string>
+#include "../../utility/keyboard/user_keyboard_input.h"
+
+ConsoleUiServiceImpl& ConsoleUiServiceImpl::getInstance() {
+    static ConsoleUiServiceImpl instance;
+    return instance;
+}
+
+AccountRegisterRequestForm *ConsoleUiServiceImpl::makeAccountRegisterForm()
+{
+    std::string input_account_id, input_password;
+
+    get_user_keyboard_input_with_message("사용자 계정 id를 입력하세요: ", input_account_id);
+    get_user_keyboard_input_with_message("사용자 계정 pw를 입력하세요: ", input_password);
+
+    return new AccountRegisterRequestForm(input_account_id, input_password);
+}
