@@ -23,6 +23,11 @@ file(GLOB CPP_SOURCES
         "account/controller/request_form/*.cpp"
         "account/service/*.cpp"
         "account/service/request/*.cpp"
+        "account/service/response/*.cpp"
+        "account/repository/*.cpp"
+        "console_ui/controller/*.cpp"
+        "console_ui/service/*.cpp"
+        "utility/keyboard/*.cpp"
 )
 
 file(GLOB MAIN_SOURCE

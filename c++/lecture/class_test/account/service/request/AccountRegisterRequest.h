@@ -15,8 +15,7 @@ private:
 
 public:
     AccountRegisterRequest(const std::string& account_id, const std::string& password);
-    Account toAccount();
-    ~AccountRegisterRequest();
+    Account *toAccount();
 };
 
 

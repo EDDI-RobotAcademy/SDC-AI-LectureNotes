@@ -4,6 +4,9 @@
 
 #include "Account.h"
 
+Account::Account(const std::string& account_id, const std::string& password)
+                        : account_id(account_id), password(password) { }
+
 Account::Account(int id, const std::string& account_id, const std::string& password) : id(id),
                                                                                        account_id(account_id),
                                                                                        password(password),
@@ -14,6 +17,11 @@ Account::Account(int id, const std::string& account_id, const std::string& passw
                  const std::string& reg_date, const std::string& upd_date) : id(id),
                                                                              account_id(account_id),
                                                                              password(password) { }
+
+int Account::get_id()
+{
+    return id;
+}
 
 void Account::printAccountInfo() {
 

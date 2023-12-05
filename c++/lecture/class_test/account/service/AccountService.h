@@ -7,12 +7,13 @@
 
 #include <vector>
 #include "response/AccountRegisterResponse.h"
+#include "request/AccountRegisterRequest.h"
 
 class AccountService {
 public:
     virtual ~AccountService() = default;
 
-    virtual std::vector<AccountRegisterResponse> create() = 0;
+    virtual AccountRegisterResponse *create(AccountRegisterRequest *pRequest) = 0;
 };
 
 #endif //CLASS_TEST_ACCOUNTSERVICE_H
