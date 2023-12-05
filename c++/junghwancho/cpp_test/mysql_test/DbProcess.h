@@ -14,16 +14,11 @@ public:
     ~DbProcess();
 
     bool connect();
-    bool insertDataBoard();
-    bool insertDataAccount();
-    bool updateDataBoard(int boardId, const std::string& newTitle, const std::string& newContent);
-    bool updateDataAccount(int uid, const std::string& newName, const std::string& newPassword);
-    bool deleteBoardData(int boardId);
-    bool deleteAccountData(int uid);
-    void selectBoardData();
-    void selectAccountData();
-    void readBoardData(int boardId);
-    void readAccountData(int uid);
+    bool insertData();
+    bool updateData(int boardId, const std::string& newTitle, const std::string& newContent);
+    bool deleteData(int boardId);
+    void selectData();
+    void readData(int boardId);
 
 private:
     MYSQL* conn;

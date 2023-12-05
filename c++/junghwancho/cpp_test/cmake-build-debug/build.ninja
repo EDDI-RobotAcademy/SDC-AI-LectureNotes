@@ -70,34 +70,6 @@ build CMakeFiles/main_app.dir/main.cpp.o: CXX_COMPILER__main_app_unscanned_Debug
   OBJECT_DIR = CMakeFiles/main_app.dir
   OBJECT_FILE_DIR = CMakeFiles/main_app.dir
 
-build CMakeFiles/main_app.dir/boardDB/BoardDB.cpp.o: CXX_COMPILER__main_app_unscanned_Debug /home/eddi/proj/SDC-AI-LectureNotes/c++/junghwancho/cpp_test/boardDB/BoardDB.cpp || cmake_object_order_depends_target_main_app
-  DEP_FILE = CMakeFiles/main_app.dir/boardDB/BoardDB.cpp.o.d
-  FLAGS = -g -std=gnu++17 -fcolor-diagnostics
-  INCLUDES = -I/usr/include/mysql
-  OBJECT_DIR = CMakeFiles/main_app.dir
-  OBJECT_FILE_DIR = CMakeFiles/main_app.dir/boardDB
-
-build CMakeFiles/main_app.dir/accountDB/AccountDB.cpp.o: CXX_COMPILER__main_app_unscanned_Debug /home/eddi/proj/SDC-AI-LectureNotes/c++/junghwancho/cpp_test/accountDB/AccountDB.cpp || cmake_object_order_depends_target_main_app
-  DEP_FILE = CMakeFiles/main_app.dir/accountDB/AccountDB.cpp.o.d
-  FLAGS = -g -std=gnu++17 -fcolor-diagnostics
-  INCLUDES = -I/usr/include/mysql
-  OBJECT_DIR = CMakeFiles/main_app.dir
-  OBJECT_FILE_DIR = CMakeFiles/main_app.dir/accountDB
-
-build CMakeFiles/main_app.dir/mysql_test/account/DbProcessAccount.cpp.o: CXX_COMPILER__main_app_unscanned_Debug /home/eddi/proj/SDC-AI-LectureNotes/c++/junghwancho/cpp_test/mysql_test/account/DbProcessAccount.cpp || cmake_object_order_depends_target_main_app
-  DEP_FILE = CMakeFiles/main_app.dir/mysql_test/account/DbProcessAccount.cpp.o.d
-  FLAGS = -g -std=gnu++17 -fcolor-diagnostics
-  INCLUDES = -I/usr/include/mysql
-  OBJECT_DIR = CMakeFiles/main_app.dir
-  OBJECT_FILE_DIR = CMakeFiles/main_app.dir/mysql_test/account
-
-build CMakeFiles/main_app.dir/mysql_test/board/DbProcessBoard.cpp.o: CXX_COMPILER__main_app_unscanned_Debug /home/eddi/proj/SDC-AI-LectureNotes/c++/junghwancho/cpp_test/mysql_test/board/DbProcessBoard.cpp || cmake_object_order_depends_target_main_app
-  DEP_FILE = CMakeFiles/main_app.dir/mysql_test/board/DbProcessBoard.cpp.o.d
-  FLAGS = -g -std=gnu++17 -fcolor-diagnostics
-  INCLUDES = -I/usr/include/mysql
-  OBJECT_DIR = CMakeFiles/main_app.dir
-  OBJECT_FILE_DIR = CMakeFiles/main_app.dir/mysql_test/board
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target main_app
@@ -106,7 +78,7 @@ build CMakeFiles/main_app.dir/mysql_test/board/DbProcessBoard.cpp.o: CXX_COMPILE
 #############################################
 # Link the executable main_app
 
-build main_app: CXX_EXECUTABLE_LINKER__main_app_Debug CMakeFiles/main_app.dir/api/BoardApiTable.cpp.o CMakeFiles/main_app.dir/mysql_test/DbProcess.cpp.o CMakeFiles/main_app.dir/main.cpp.o CMakeFiles/main_app.dir/boardDB/BoardDB.cpp.o CMakeFiles/main_app.dir/accountDB/AccountDB.cpp.o CMakeFiles/main_app.dir/mysql_test/account/DbProcessAccount.cpp.o CMakeFiles/main_app.dir/mysql_test/board/DbProcessBoard.cpp.o
+build main_app: CXX_EXECUTABLE_LINKER__main_app_Debug CMakeFiles/main_app.dir/api/BoardApiTable.cpp.o CMakeFiles/main_app.dir/mysql_test/DbProcess.cpp.o CMakeFiles/main_app.dir/main.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -lmysqlclient
   OBJECT_DIR = CMakeFiles/main_app.dir

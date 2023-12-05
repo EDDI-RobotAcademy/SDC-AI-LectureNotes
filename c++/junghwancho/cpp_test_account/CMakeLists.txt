@@ -22,6 +22,8 @@ add_executable(
         ${CPP_SOURCES}
         ${MAIN_SOURCES}
         api/BoardApiTableMapper.h
+        UI/GetUserKeyboardInput.cpp
+        UI/GetUserKeyboardInput.h
 )
 
 target_include_directories(main_app PRIVATE ${LIBMYSQLCLIENT_INCLUDE_DIRS})
