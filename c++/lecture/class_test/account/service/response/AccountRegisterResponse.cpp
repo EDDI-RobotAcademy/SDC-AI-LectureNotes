@@ -5,9 +5,10 @@
 #include "AccountRegisterResponse.h"
 #include "../../controller/response_form/AccountRegisterResponseForm.h"
 
-AccountRegisterResponse::AccountRegisterResponse (int id) : login_account_unique_id(id) { }
+AccountRegisterResponse::AccountRegisterResponse (bool is_register_success)
+                            : is_register_success(is_register_success) { }
 
 AccountRegisterResponseForm *AccountRegisterResponse::toResponseForm()
 {
-    return new AccountRegisterResponseForm(login_account_unique_id);
+    return new AccountRegisterResponseForm(is_register_success);
 }

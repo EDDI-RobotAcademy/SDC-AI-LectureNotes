@@ -6,11 +6,15 @@
 #define CLASS_TEST_ACCOUNTREPOSITORYIMPL_H
 
 #include "AccountRepository.h"
+#include <optional>
 
 class AccountRepositoryImpl : public AccountRepository {
 
 public:
     Account *save(Account *account) override;
+    bool getBoolWithFindByAccountId(std::string account_id) override;
+    std::optional<Account> findByAccountId(std::string accountId) override;
+
     static AccountRepositoryImpl& getInstance();
 };
 

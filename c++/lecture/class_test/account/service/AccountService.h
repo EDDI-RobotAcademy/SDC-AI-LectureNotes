@@ -8,12 +8,15 @@
 #include <vector>
 #include "response/AccountRegisterResponse.h"
 #include "request/AccountRegisterRequest.h"
+#include "response/AccountLoginResponse.h"
+#include "request/AccountLoginRequest.h"
 
 class AccountService {
 public:
     virtual ~AccountService() = default;
 
-    virtual AccountRegisterResponse *create(AccountRegisterRequest *pRequest) = 0;
+    virtual AccountRegisterResponse *create(AccountRegisterRequest *request) = 0;
+    virtual AccountLoginResponse *signIn(AccountLoginRequest *request) = 0;
 };
 
 #endif //CLASS_TEST_ACCOUNTSERVICE_H

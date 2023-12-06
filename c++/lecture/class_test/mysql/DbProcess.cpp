@@ -5,6 +5,8 @@
 #include "DbProcess.h"
 #include <iostream>
 
+DbProcess* DbProcess::instance = nullptr;
+
 DbProcess::DbProcess(const char* host, const char* user, const char* pass, const char* dbName)
         : conn(nullptr), DB_HOST(host), DB_USER(user), DB_PASS(pass), DB_NAME(dbName) {}
 
@@ -14,16 +16,24 @@ DbProcess::~DbProcess() {
     }
 }
 
+DbProcess* DbProcess::getInstance(const char* host, const char* user, const char* pass, const char* dbName) {
+    if (instance == nullptr) {
+        instance = new DbProcess(host, user, pass, dbName);
+    }
+    return instance;
+}
+
+DbProcess* DbProcess::getInstance() {
+    return instance;
+}
+
 bool DbProcess::connect() {
     conn = mysql_init(nullptr);
     return (mysql_real_connect(conn, DB_HOST, DB_USER, DB_PASS, DB_NAME, 3306, nullptr, 0) != nullptr);
 }
 
-bool DbProcess::insertData() {
-    std::string insertQuery = "INSERT INTO board (content, title, writer, reg_date, upd_date) VALUES \
-                               ('테스트 내용', '테스트 제목', '테스트 작성자', now(6), now(6))";
-
-    return (mysql_query(conn, insertQuery.c_str()) == 0);
+bool DbProcess::insertData(const std::string& queryString) {
+    return (mysql_query(conn, queryString.c_str()) == 0);
 }
 
 bool DbProcess::updateData(int boardId, const std::string& newTitle, const std::string& newContent) {
@@ -84,6 +94,46 @@ void DbProcess::readData(int boardId) {
         mysql_free_result(result);
     } else {
         std::cerr << "mysql_query() failed" << std::endl;
+    }
+}
+
+bool DbProcess::findData(const std::string& queryString) {
+    if (mysql_query(conn, queryString.c_str()) == 0) {
+        MYSQL_RES* result = mysql_store_result(conn);
+        if (result == nullptr) {
+            std::cerr << "mysql_store_result() failed" << std::endl;
+            return false;
+        }
+
+        MYSQL_ROW row = mysql_fetch_row(result);
+
+        if (row != nullptr) {
+            mysql_free_result(result);
+            return true;
+        } else {
+            mysql_free_result(result);
+            return false;
+        }
+    } else {
+        std::cerr << "mysql_query() failed" << std::endl;
+        return false;
+    }
+}
+
+MYSQL_ROW DbProcess::findRowData(const std::string& queryString) {
+    if (mysql_query(conn, queryString.c_str()) == 0) {
+        MYSQL_RES* result = mysql_store_result(conn);
+        if (result == nullptr) {
+            std::cerr << "mysql_store_result() failed" << std::endl;
+            return nullptr;
+        }
+
+        MYSQL_ROW row = mysql_fetch_row(result);
+        mysql_free_result(result);
+        return row;
+    } else {
+        std::cerr << "mysql_query() failed" << std::endl;
+        return nullptr;
     }
 }
 

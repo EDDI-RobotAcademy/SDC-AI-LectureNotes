@@ -20,6 +20,7 @@ public:
     static ConsoleUiController& getInstance();
 
     void uiAccountRegister();
+    void uiAccountLogin();
 };
 
 

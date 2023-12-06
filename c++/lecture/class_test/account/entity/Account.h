@@ -25,6 +25,8 @@ public:
           const std::string& reg_date, const std::string& upd_date);
 
     int get_id();
+    std::string get_account_id();
+    std::string get_password();
     void printAccountInfo();
 };
 

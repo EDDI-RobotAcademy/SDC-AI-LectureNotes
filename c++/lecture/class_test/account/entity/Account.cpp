@@ -23,6 +23,14 @@ int Account::get_id()
     return id;
 }
 
+std::string Account::get_account_id() {
+    return account_id;
+}
+
+std::string Account::get_password() {
+    return password;
+}
+
 void Account::printAccountInfo() {
 
 }
