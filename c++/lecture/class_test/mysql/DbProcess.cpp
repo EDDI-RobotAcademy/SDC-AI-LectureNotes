@@ -3,7 +3,12 @@
 //
 
 #include "DbProcess.h"
+#include "../board/entity/Board.h"
 #include <iostream>
+#include <optional>
+#include <tuple>
+#include <vector>
+#include <any>
 
 DbProcess* DbProcess::instance = nullptr;
 
@@ -144,3 +149,73 @@ MYSQL *DbProcess::getConn()
 {
     return conn;
 }
+
+template <typename T>
+T *DbProcess::insertOldEntityData(const std::string& queryString) {
+    if (mysql_query(conn, queryString.c_str()) == 0) {
+        MYSQL_RES* result = mysql_store_result(conn);
+        if (result) {
+            MYSQL_ROW row = mysql_fetch_row(result);
+            if (row) {
+                T* insertedEntity = new T;
+                std::apply([&row, insertedEntity](auto&&... args) {
+                    *insertedEntity = T(std::stoi(row[args])...);
+                }, insertedEntity->getAttributes());
+
+                mysql_free_result(result);
+                return insertedEntity;
+            }
+            mysql_free_result(result);
+        }
+    }
+
+    throw std::runtime_error("데이터 입력 중 오류가 발생하였습니다.");
+}
+
+//template <typename T>
+//std::unique_ptr<T> DbProcess::insertEntityData(const std::string& queryString) {
+//    if (mysql_query(conn, queryString.c_str()) == 0) {
+//        MYSQL_RES* result = mysql_store_result(conn);
+//        if (result) {
+//            MYSQL_ROW row = mysql_fetch_row(result);
+//            if (row) {
+//                T insertedEntity;
+//                std::apply([&row, &insertedEntity](auto&&... args) {
+//                    (insertedEntity.initializeFromRow(std::stoi(row[args])), ...);
+//                }, T::getAttributes());
+//
+//                mysql_free_result(result);
+//                return std::make_unique<T>(insertedEntity);
+//            }
+//            mysql_free_result(result);
+//        }
+//    }
+//
+//    throw std::runtime_error("데이터 입력 중 오류가 발생하였습니다.");
+//}
+
+template <typename T>
+std::unique_ptr<T> DbProcess::insertEntityData(const std::string& queryString) {
+    if (mysql_query(conn, queryString.c_str()) == 0) {
+        MYSQL_RES* result = mysql_store_result(conn);
+        if (result) {
+            MYSQL_ROW row = mysql_fetch_row(result);
+            if (row) {
+                std::unique_ptr<T> insertedEntity = std::make_unique<T>();
+
+                auto attributes = T::getAttributes();
+                constexpr size_t attributeCount = std::tuple_size_v<decltype(attributes)>;
+
+                insertedEntity->initializeFromRow(std::stoi(row[0]), row[1], row[2], row[3], row[4], row[5]);
+
+                mysql_free_result(result);
+                return insertedEntity;
+            }
+            mysql_free_result(result);
+        }
+    }
+
+    throw std::runtime_error("Failed to insert data into the database");
+}
+
+template std::unique_ptr<Board> DbProcess::insertEntityData(const std::string& queryString);

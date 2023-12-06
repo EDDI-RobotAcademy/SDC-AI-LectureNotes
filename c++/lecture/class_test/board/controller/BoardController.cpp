@@ -28,8 +28,8 @@ BoardRegisterResponseForm *BoardController::boardRegister(BoardRegisterRequestFo
     AccountService &accountService = AccountServiceImpl::getInstance();
     std::string writer = accountService.findAccoutIdBySessionId(requestForm->getWriterSessionId());
 
-    //boardService->create(requestForm->toBoardRegisterRequest(writer));
-    return nullptr;
+    BoardRegisterResponse *response = boardService->create(requestForm->toBoardRegisterRequest(writer));
+    return response->toBoardRegisterResponseForm();
 }
 
 BoardController& BoardController::getInstance(

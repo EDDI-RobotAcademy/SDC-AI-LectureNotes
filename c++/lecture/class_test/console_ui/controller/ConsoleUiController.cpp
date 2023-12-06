@@ -97,5 +97,12 @@ void ConsoleUiController::uiBoardRegister()
     BoardRegisterRequestForm *requestForm = consoleUiService->makeBoardRegisterForm(sessionId);
 
     BoardController &boardController = BoardController::getInstance();
-    boardController.boardRegister(requestForm);
+    BoardRegisterResponseForm *responseForm = boardController.boardRegister(requestForm);
+
+    uiBoardRead();
+}
+
+void ConsoleUiController::uiBoardRead()
+{
+
 }

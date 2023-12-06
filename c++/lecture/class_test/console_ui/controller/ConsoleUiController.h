@@ -24,6 +24,7 @@ public:
     void uiAccountLogout();
 
     void uiBoardRegister();
+    void uiBoardRead();
 };
 
 

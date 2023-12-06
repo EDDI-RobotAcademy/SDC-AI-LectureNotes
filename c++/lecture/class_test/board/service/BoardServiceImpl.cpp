@@ -17,5 +17,10 @@ std::vector<BoardRegisterResponse> BoardServiceImpl::list()
 }
 
 BoardRegisterResponse *BoardServiceImpl::create(BoardRegisterRequest *request) {
-    return nullptr;
+    Board *registeredBoard = boardRepository->save(request->toBoard());
+
+    return new BoardRegisterResponse(
+            registeredBoard->getTitle(),
+            registeredBoard->getWriter(),
+            registeredBoard->getContent());
 }

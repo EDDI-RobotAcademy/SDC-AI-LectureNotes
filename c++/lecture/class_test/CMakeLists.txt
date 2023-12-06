@@ -18,7 +18,6 @@ file(GLOB CPP_SOURCES
         "board/service/request/*.cpp"
         "board/service/*.cpp"
         "board/entity/*.cpp"
-        "mysql/*.cpp"
         "board/repository/*.cpp"
         "account/entity/*.cpp"
         "account/controller/*.cpp"
@@ -32,6 +31,7 @@ file(GLOB CPP_SOURCES
         "console_ui/service/*.cpp"
         "console_ui/repository/*.cpp"
         "utility/keyboard/*.cpp"
+        "mysql/*.cpp"
 )
 
 file(GLOB MAIN_SOURCE

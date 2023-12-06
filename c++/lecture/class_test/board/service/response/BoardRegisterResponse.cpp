@@ -5,7 +5,7 @@
 #include "BoardRegisterResponse.h"
 
 BoardRegisterResponse::BoardRegisterResponse (
-        const std::string& title, std::string& writer, const std::string& content)
+        const std::string& title, const std::string& writer, const std::string& content)
                                 : title(title), writer(writer), content(content) { }
 
 BoardRegisterResponseForm *BoardRegisterResponse::toBoardRegisterResponseForm()

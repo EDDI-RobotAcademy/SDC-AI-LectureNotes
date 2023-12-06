@@ -15,7 +15,7 @@ private:
     std::string content;
 
 public:
-    BoardRegisterResponse (const std::string& title, std::string& writer, const std::string& content);
+    BoardRegisterResponse (const std::string& title, const std::string& writer, const std::string& content);
     BoardRegisterResponseForm *toBoardRegisterResponseForm();
 };
 
