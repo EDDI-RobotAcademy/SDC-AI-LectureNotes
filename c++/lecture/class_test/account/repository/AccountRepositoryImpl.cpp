@@ -99,3 +99,18 @@ void AccountRepositoryImpl::deleteSession(int sessionId)
 
     dbInstance->deleteData(deleteQuery);
 }
+
+std::optional<Account> AccountRepositoryImpl::findAccountIdBySessionId(int sessionId)
+{
+    DbProcess* dbInstance = DbProcess::getInstance();
+    std::string queryString = "SELECT * FROM account WHERE account_id = '" + std::to_string(sessionId) + "'";
+
+    MYSQL_ROW row = dbInstance->findRowData(queryString);
+
+    if (row != nullptr) {
+        Account acc = constructAccountFromRow(row);
+        return std::make_optional(acc);
+    } else {
+        return std::nullopt;
+    }
+}

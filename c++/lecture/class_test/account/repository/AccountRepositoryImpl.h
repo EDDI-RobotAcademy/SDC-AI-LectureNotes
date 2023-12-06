@@ -15,6 +15,7 @@ public:
     bool getBoolWithFindByAccountId(std::string account_id) override;
     std::optional<Account> findByAccountId(std::string accountId) override;
     void deleteSession(int sessionId) override;
+    std::optional<Account> findAccountIdBySessionId(int sessionId) override;
 
     static AccountRepositoryImpl& getInstance();
 };

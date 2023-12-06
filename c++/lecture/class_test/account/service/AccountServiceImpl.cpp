@@ -5,6 +5,8 @@
 #include "AccountServiceImpl.h"
 #include "response/AccountRegisterResponse.h"
 
+std::shared_ptr<AccountServiceImpl> AccountServiceImpl::instance = nullptr;
+
 AccountServiceImpl::AccountServiceImpl(std::shared_ptr<AccountRepository> accountRepository) : accountRepository(accountRepository) { }
 
 AccountRegisterResponse *
@@ -52,9 +54,33 @@ void AccountServiceImpl::signOut(int sessionId)
     accountRepository->deleteSession(sessionId);
 }
 
+std::string AccountServiceImpl::findAccoutIdBySessionId(int sessionId)
+{
+    std::optional<Account> maybeAccount = accountRepository->findAccountIdBySessionId(sessionId);
+
+    if (maybeAccount.has_value()) {
+        Account account = maybeAccount.value();
+
+        return account.get_account_id();
+    } else {
+        return nullptr;
+    }
+
+    return nullptr;
+}
+
 AccountServiceImpl& AccountServiceImpl::getInstance(
         std::shared_ptr<AccountRepository> accountRepository)
 {
-    static AccountServiceImpl instance(accountRepository);
-    return instance;
+    if (!instance) {
+        instance = std::make_shared<AccountServiceImpl>(accountRepository);
+    }
+    return *instance;
+}
+
+AccountServiceImpl& AccountServiceImpl::getInstance() {
+    if (!instance) {
+        throw std::logic_error("Repository 객체와 함께 먼저 생성한 이후 사용하세요!");
+    }
+    return *instance;
 }

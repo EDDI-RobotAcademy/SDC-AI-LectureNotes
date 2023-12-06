@@ -30,6 +30,16 @@ AccountLoginRequestForm *ConsoleUiServiceImpl::makeAccountLoginForm()
     return new AccountLoginRequestForm(input_account_id, input_password);
 }
 
+BoardRegisterRequestForm *ConsoleUiServiceImpl::makeBoardRegisterForm(int sessionId)
+{
+    std::string title, content;
+
+    get_user_keyboard_input_with_message("게시물 제목을 입력하세요: ", title);
+    get_user_keyboard_input_with_message("게시물 내용을 입력하세요: ", content);
+
+    return new BoardRegisterRequestForm(title, sessionId, content);
+}
+
 void ConsoleUiServiceImpl::storeSession(int uniqueId)
 {
     consoleUiRepository->storeSignInSession(uniqueId);

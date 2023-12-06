@@ -18,6 +18,7 @@ public:
     virtual AccountRegisterResponse *create(AccountRegisterRequest *request) = 0;
     virtual AccountLoginResponse *signIn(AccountLoginRequest *request) = 0;
     virtual void signOut(int sessionId) = 0;
+    virtual std::string findAccoutIdBySessionId(int sessionId) = 0;
 };
 
 #endif //CLASS_TEST_ACCOUNTSERVICE_H

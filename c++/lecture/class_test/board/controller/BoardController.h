@@ -10,6 +10,8 @@
 #include <vector>
 
 #include "../service/BoardService.h"
+#include "request_form/BoardRegisterRequestForm.h"
+#include "response_form/BoardRegisterResponseForm.h"
 
 class BoardController {
 private:
@@ -20,10 +22,10 @@ public:
     BoardController(std::shared_ptr<BoardService> boardService);
     //explicit BoardController(BoardService* service) : boardService(service) { }
 
-    std::vector<BoardResponse> boardList();
-    std::vector<BoardResponse> boardRegister();
-    std::vector<BoardResponse> boardRead();
-    std::vector<BoardResponse> boardModify();
+    std::vector<BoardRegisterResponse> boardList();
+    BoardRegisterResponseForm *boardRegister(BoardRegisterRequestForm *requestForm);
+    std::vector<BoardRegisterResponse> boardRead();
+    std::vector<BoardRegisterResponse> boardModify();
     void BoardRemove();
 
     static BoardController& getInstance(std::shared_ptr<BoardService> boardService);

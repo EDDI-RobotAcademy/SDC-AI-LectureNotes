@@ -9,6 +9,8 @@
 #include "../repository/ConsoleUiRepositoryImpl.h"
 #include "../../board/controller/BoardController.h"
 
+#include "../../board/controller/request_form/BoardRegisterRequestForm.h"
+
 ConsoleUiController::ConsoleUiController(
         std::shared_ptr<ConsoleUiService> consoleUiService)
             : consoleUiService(consoleUiService) { }
@@ -81,4 +83,19 @@ void ConsoleUiController::uiAccountLogout()
 
     AccountController &accountController = AccountController::getInstance();
     accountController.accountLogout(sessionId);
+}
+
+void ConsoleUiController::uiBoardRegister()
+{
+    int sessionId = consoleUiService->getSignInSession();
+
+    if (sessionId == -1) {
+        std::cout << "로그인을 먼저 진행하세요!" << std::endl;
+        return;
+    }
+
+    BoardRegisterRequestForm *requestForm = consoleUiService->makeBoardRegisterForm(sessionId);
+
+    BoardController &boardController = BoardController::getInstance();
+    boardController.boardRegister(requestForm);
 }
