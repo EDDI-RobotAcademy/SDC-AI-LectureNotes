@@ -6,17 +6,18 @@
 #define CLASS_TEST_BOARDSERVICE_H
 
 #include <vector>
-#include "response/BoardResponse.h"
+#include "response/BoardRegisterResponse.h"
+#include "request/BoardRegisterRequest.h"
 
 class BoardService {
 public:
     virtual ~BoardService() = default;
     // virtual(가상) - 존재하지만 존재하지 않는 것이기 때문
-    // BoardResponse 다발을 리턴하는 list 함수를 만들 예정이야!
-    virtual std::vector<BoardResponse> list() = 0;
-    virtual std::vector<BoardResponse> create() = 0;
-//    virtual std::vector<BoardResponse> read() = 0;
-//    virtual std::vector<BoardResponse> modify() = 0;
+    // BoardRegisterResponse 다발을 리턴하는 list 함수를 만들 예정이야!
+    virtual std::vector<BoardRegisterResponse> list() = 0;
+    virtual BoardRegisterResponse *create(BoardRegisterRequest *request) = 0;
+//    virtual std::vector<BoardRegisterResponse> read() = 0;
+//    virtual std::vector<BoardRegisterResponse> modify() = 0;
 //    virtual void remove() = 0;
 };
 

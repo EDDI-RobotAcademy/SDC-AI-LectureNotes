@@ -69,3 +69,26 @@ std::vector<Board> BoardRepositoryImpl::findAll()
 
     return boardList;
 }
+
+Board *BoardRepositoryImpl::save(Board *board)
+{
+    DbProcess* dbInstance = DbProcess::getInstance();
+    std::string title = board->getTitle();
+    std::string writer = board->getWriter();
+    std::string content = board->getContent();
+
+    std::string queryString = "INSERT INTO board (title, writer, content) VALUES \
+                          ('" + title + "', '" + writer + "', '" + content + "' )";
+
+    //dbInstance->insertData(queryString);
+    std::unique_ptr<Board> insertedBoardPtr = dbInstance->insertEntityData<Board>(queryString);
+    //Board* insertedBoard = dbInstance->insertOldEntityData<Board>(queryString);
+
+    return insertedBoardPtr.release();
+    //return insertedBoard;
+}
+
+BoardRepositoryImpl& BoardRepositoryImpl::getInstance() {
+    static BoardRepositoryImpl instance;
+    return instance;
+}

@@ -21,6 +21,10 @@ public:
 
     void uiAccountRegister();
     void uiAccountLogin();
+    void uiAccountLogout();
+
+    void uiBoardRegister();
+    void uiBoardRead();
 };
 
 

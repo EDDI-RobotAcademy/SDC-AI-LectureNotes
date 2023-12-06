@@ -7,6 +7,9 @@
 #include "../service/ConsoleUiServiceImpl.h"
 #include "../../account/controller/request_form/AccountLoginRequestForm.h"
 #include "../repository/ConsoleUiRepositoryImpl.h"
+#include "../../board/controller/BoardController.h"
+
+#include "../../board/controller/request_form/BoardRegisterRequestForm.h"
 
 ConsoleUiController::ConsoleUiController(
         std::shared_ptr<ConsoleUiService> consoleUiService)
@@ -65,5 +68,41 @@ void ConsoleUiController::uiAccountLogin()
     }
 
     // 게시판 리스트
-    std::cout << "go list()" << std::endl;
+    BoardController& boardController = BoardController::getInstance();
+    boardController.boardList();
+}
+
+void ConsoleUiController::uiAccountLogout()
+{
+    int sessionId = consoleUiService->getSignInSession();
+
+    if (sessionId == -1) {
+        std::cout << "로그인을 먼저 진행하세요!" << std::endl;
+        return;
+    }
+
+    AccountController &accountController = AccountController::getInstance();
+    accountController.accountLogout(sessionId);
+}
+
+void ConsoleUiController::uiBoardRegister()
+{
+    int sessionId = consoleUiService->getSignInSession();
+
+    if (sessionId == -1) {
+        std::cout << "로그인을 먼저 진행하세요!" << std::endl;
+        return;
+    }
+
+    BoardRegisterRequestForm *requestForm = consoleUiService->makeBoardRegisterForm(sessionId);
+
+    BoardController &boardController = BoardController::getInstance();
+    BoardRegisterResponseForm *responseForm = boardController.boardRegister(requestForm);
+
+    uiBoardRead();
+}
+
+void ConsoleUiController::uiBoardRead()
+{
+
 }

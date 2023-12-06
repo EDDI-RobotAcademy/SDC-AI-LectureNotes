@@ -7,6 +7,7 @@
 
 #include "../../account/controller/request_form/AccountRegisterRequestForm.h"
 #include "../../account/controller/request_form/AccountLoginRequestForm.h"
+#include "../../board/controller/request_form/BoardRegisterRequestForm.h"
 
 class ConsoleUiService {
 public:
@@ -14,6 +15,8 @@ public:
 
     virtual AccountRegisterRequestForm *makeAccountRegisterForm() = 0;
     virtual AccountLoginRequestForm *makeAccountLoginForm() = 0;
+
+    virtual BoardRegisterRequestForm *makeBoardRegisterForm(int sessionId) = 0;
 
     virtual void storeSession(int uniqueId) = 0;
     virtual int getSignInSession() = 0;

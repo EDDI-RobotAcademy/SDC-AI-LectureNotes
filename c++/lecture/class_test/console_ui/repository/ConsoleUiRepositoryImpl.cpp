@@ -3,6 +3,9 @@
 //
 
 #include <sstream>
+#include <iostream>
+#include <ctime>
+#include <iomanip>
 #include "ConsoleUiRepositoryImpl.h"
 #include "../../mysql/DbProcess.h"
 
@@ -29,13 +32,22 @@ int ConsoleUiRepositoryImpl::getSignInSession() {
 }
 
 void ConsoleUiRepositoryImpl::storeSignInSession(int uniqueSessionId) {
+    std::cout << "세션을 등록합니다" << std::endl;
     DbProcess* dbInstance = DbProcess::getInstance();
 
     std::ostringstream oss;
     oss << uniqueSessionId;
     std::string uniqueSessionIdStr = oss.str();
 
-    std::string queryString = "INSERT INTO session (session_id) VALUES ('" + uniqueSessionIdStr + "')";
+    std::time_t currentTime = std::time(nullptr);
+    std::time_t expirationTime = currentTime + 3600;
+
+    std::ostringstream expirationTimeOss;
+    expirationTimeOss << std::put_time(std::localtime(&expirationTime), "%Y-%m-%d %H:%M:%S");
+    std::string expirationTimeStr = expirationTimeOss.str();
+
+    std::string queryString = "INSERT INTO session (session_id, expiration_time) VALUES "
+                              "('" + uniqueSessionIdStr + "', '" + expirationTimeStr + "')";
 
     dbInstance->insertData(queryString);
 }

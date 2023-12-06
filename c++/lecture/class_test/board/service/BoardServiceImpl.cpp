@@ -7,15 +7,20 @@
 
 BoardServiceImpl::BoardServiceImpl(std::shared_ptr<BoardRepository> boardRepository) : boardRepository(boardRepository) { }
 
-std::vector<BoardResponse> BoardServiceImpl::list()
+std::vector<BoardRegisterResponse> BoardServiceImpl::list()
 {
     std::cout << "BoardService: 리스트 출력!" << std::endl;
 
     boardRepository->findAll();
 
-    return std::vector<BoardResponse>();
+    return std::vector<BoardRegisterResponse>();
 }
 
-std::vector<BoardResponse> BoardServiceImpl::create() {
-    return std::vector<BoardResponse>();
+BoardRegisterResponse *BoardServiceImpl::create(BoardRegisterRequest *request) {
+    Board *registeredBoard = boardRepository->save(request->toBoard());
+
+    return new BoardRegisterResponse(
+            registeredBoard->getTitle(),
+            registeredBoard->getWriter(),
+            registeredBoard->getContent());
 }

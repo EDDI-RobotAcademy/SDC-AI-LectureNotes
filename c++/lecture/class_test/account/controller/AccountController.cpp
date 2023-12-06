@@ -43,6 +43,11 @@ AccountController::accountLogin(AccountLoginRequestForm *requestForm)
     return response->toResponseForm();
 }
 
+void AccountController::accountLogout(int sessionId)
+{
+    accountService->signOut(sessionId);
+}
+
 AccountController& AccountController::getInstance(
         std::shared_ptr<AccountService> accountService)
 {

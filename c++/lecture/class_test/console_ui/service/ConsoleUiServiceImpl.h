@@ -22,6 +22,8 @@ public:
     AccountRegisterRequestForm *makeAccountRegisterForm() override;
     AccountLoginRequestForm *makeAccountLoginForm() override;
 
+    BoardRegisterRequestForm *makeBoardRegisterForm(int sessionId) override;
+
     void storeSession(int uniqueId) override;
     int getSignInSession() override;
 };
