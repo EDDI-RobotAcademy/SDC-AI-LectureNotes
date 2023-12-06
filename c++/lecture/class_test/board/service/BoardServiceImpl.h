@@ -19,6 +19,7 @@ private:
 public:
     BoardServiceImpl(std::shared_ptr<BoardRepository> boardRepository);
     std::vector<BoardResponse> list() override;
+    std::vector<BoardResponse> create() override;
 };
 
 

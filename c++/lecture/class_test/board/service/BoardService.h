@@ -15,9 +15,9 @@ public:
     // BoardResponse 다발을 리턴하는 list 함수를 만들 예정이야!
     virtual std::vector<BoardResponse> list() = 0;
     virtual std::vector<BoardResponse> create() = 0;
-    virtual std::vector<BoardResponse> read() = 0;
-    virtual std::vector<BoardResponse> modify() = 0;
-    virtual void remove() = 0;
+//    virtual std::vector<BoardResponse> read() = 0;
+//    virtual std::vector<BoardResponse> modify() = 0;
+//    virtual void remove() = 0;
 };
 
 #endif //CLASS_TEST_BOARDSERVICE_H
