@@ -69,3 +69,8 @@ std::vector<Board> BoardRepositoryImpl::findAll()
 
     return boardList;
 }
+
+BoardRepositoryImpl& BoardRepositoryImpl::getInstance() {
+    static BoardRepositoryImpl instance;
+    return instance;
+}

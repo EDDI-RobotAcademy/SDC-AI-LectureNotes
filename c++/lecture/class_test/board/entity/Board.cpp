@@ -4,6 +4,13 @@
 
 #include "Board.h"
 
+Board::Board(const std::string& title, const std::string& writer, const std::string& content)
+        : title(title),
+          writer(writer),
+          content(content),
+          created_at(std::chrono::system_clock::now()),
+          updated_at(created_at) { }
+
 Board::Board(int id, const std::string& title, const std::string& writer, const std::string& content)
         : id(id),
           title(title),

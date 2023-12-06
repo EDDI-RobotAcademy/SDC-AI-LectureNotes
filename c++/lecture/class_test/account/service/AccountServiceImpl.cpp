@@ -29,6 +29,7 @@ AccountServiceImpl::signIn(AccountLoginRequest *request)
     std::optional<Account> accountOpt = accountRepository->findByAccountId(request->getAccountId());
 
     if (accountOpt.has_value()) {
+        std::cout << "매칭되는 사용자를 찾았습니다" << std::endl;
         Account account = accountOpt.value();
 
         if (account.get_password() == request->getPassword()) {
@@ -43,6 +44,12 @@ AccountServiceImpl::signIn(AccountLoginRequest *request)
     }
 
     return nullptr;
+}
+
+void AccountServiceImpl::signOut(int sessionId)
+{
+    // 사실 이러면 안되지만 적당히 퉁칩시다.
+    accountRepository->deleteSession(sessionId);
 }
 
 AccountServiceImpl& AccountServiceImpl::getInstance(

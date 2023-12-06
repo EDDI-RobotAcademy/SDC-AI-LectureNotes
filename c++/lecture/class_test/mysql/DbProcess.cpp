@@ -44,10 +44,13 @@ bool DbProcess::updateData(int boardId, const std::string& newTitle, const std::
     return (mysql_query(conn, updateQuery.c_str()) == 0);
 }
 
-bool DbProcess::deleteData(int boardId) {
-    std::string deleteQuery = "DELETE FROM board WHERE board_id = " + std::to_string(boardId);
-
-    return (mysql_query(conn, deleteQuery.c_str()) == 0);
+//bool DbProcess::deleteData(int boardId) {
+//    std::string deleteQuery = "DELETE FROM board WHERE board_id = " + std::to_string(boardId);
+//
+//    return (mysql_query(conn, deleteQuery.c_str()) == 0);
+//}
+bool DbProcess::deleteData(const std::string& queryString) {
+    return (mysql_query(conn, queryString.c_str()) == 0);
 }
 
 void DbProcess::selectData() {

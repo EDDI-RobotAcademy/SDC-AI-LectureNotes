@@ -26,8 +26,8 @@ public:
     std::vector<BoardResponse> boardModify();
     void BoardRemove();
 
-    BoardController& getInstance(std::shared_ptr<BoardService> boardService);
-    BoardController& getInstance();
+    static BoardController& getInstance(std::shared_ptr<BoardService> boardService);
+    static BoardController& getInstance();
 };
 
 

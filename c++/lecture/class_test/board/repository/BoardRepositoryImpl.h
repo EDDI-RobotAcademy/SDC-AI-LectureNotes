@@ -12,6 +12,8 @@ class BoardRepositoryImpl : public BoardRepository {
 
 public:
     std::vector<Board> findAll() override;
+
+    static BoardRepositoryImpl& getInstance();
 };
 
 

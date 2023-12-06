@@ -90,3 +90,12 @@ std::optional<Account> AccountRepositoryImpl::findByAccountId(std::string accoun
         return std::nullopt;
     }
 }
+
+void AccountRepositoryImpl::deleteSession(int sessionId)
+{
+    DbProcess* dbInstance = DbProcess::getInstance();
+
+    std::string deleteQuery = "DELETE FROM session WHERE session_id = " + std::to_string(sessionId);
+
+    dbInstance->deleteData(deleteQuery);
+}

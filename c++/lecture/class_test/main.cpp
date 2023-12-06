@@ -42,6 +42,12 @@ void init_singleton_object()
             std::make_shared<ConsoleUiServiceImpl>(
                     std::make_shared<ConsoleUiRepositoryImpl>());
     ConsoleUiController& uiController = ConsoleUiController::getInstance(consoleUiService);
+
+    BoardRepositoryImpl& boardRepository = BoardRepositoryImpl::getInstance();
+    std::shared_ptr<BoardService> boardService =
+            std::make_shared<BoardServiceImpl>(
+                    std::make_shared<BoardRepositoryImpl>());
+    BoardController& boardController = BoardController::getInstance(boardService);
 }
 
 int main() {

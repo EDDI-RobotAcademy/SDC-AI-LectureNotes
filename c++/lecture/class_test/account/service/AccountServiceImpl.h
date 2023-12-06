@@ -27,6 +27,7 @@ public:
 
     AccountRegisterResponse *create(AccountRegisterRequest *request) override;
     AccountLoginResponse *signIn(AccountLoginRequest *request) override;
+    void signOut(int sessionId) override;
 
     static AccountServiceImpl& getInstance(std::shared_ptr<AccountRepository> accountRepository);
 };

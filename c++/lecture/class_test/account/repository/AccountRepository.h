@@ -15,6 +15,7 @@ public:
     virtual Account *save(Account *acount) = 0;
     virtual bool getBoolWithFindByAccountId(std::string account_id) = 0;
     virtual std::optional<Account> findByAccountId(std::string accountId) = 0;
+    virtual void deleteSession(int sessionId) = 0;
 };
 
 #endif //CLASS_TEST_ACCOUNTREPOSITORY_H
