@@ -7,10 +7,8 @@
 #include <string>
 #include "../../utility/keyboard/user_keyboard_input.h"
 
-ConsoleUiServiceImpl& ConsoleUiServiceImpl::getInstance() {
-    static ConsoleUiServiceImpl instance;
-    return instance;
-}
+ConsoleUiServiceImpl::ConsoleUiServiceImpl(std::shared_ptr<ConsoleUiRepository> consoleUiRepository)
+                                                        : consoleUiRepository(consoleUiRepository) { }
 
 AccountRegisterRequestForm *ConsoleUiServiceImpl::makeAccountRegisterForm()
 {
@@ -30,4 +28,14 @@ AccountLoginRequestForm *ConsoleUiServiceImpl::makeAccountLoginForm()
     get_user_keyboard_input_with_message("pw: ", input_password);
 
     return new AccountLoginRequestForm(input_account_id, input_password);
+}
+
+void ConsoleUiServiceImpl::storeSession(int uniqueId)
+{
+    consoleUiRepository->storeSignInSession(uniqueId);
+}
+
+int ConsoleUiServiceImpl::getSignInSession()
+{
+    return consoleUiRepository->getSignInSession();
 }

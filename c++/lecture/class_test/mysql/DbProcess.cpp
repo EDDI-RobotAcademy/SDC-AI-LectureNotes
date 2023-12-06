@@ -120,6 +120,23 @@ bool DbProcess::findData(const std::string& queryString) {
     }
 }
 
+MYSQL_ROW DbProcess::findRowData(const std::string& queryString) {
+    if (mysql_query(conn, queryString.c_str()) == 0) {
+        MYSQL_RES* result = mysql_store_result(conn);
+        if (result == nullptr) {
+            std::cerr << "mysql_store_result() failed" << std::endl;
+            return nullptr;
+        }
+
+        MYSQL_ROW row = mysql_fetch_row(result);
+        mysql_free_result(result);
+        return row;
+    } else {
+        std::cerr << "mysql_query() failed" << std::endl;
+        return nullptr;
+    }
+}
+
 MYSQL *DbProcess::getConn()
 {
     return conn;

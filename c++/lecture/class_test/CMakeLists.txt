@@ -27,6 +27,7 @@ file(GLOB CPP_SOURCES
         "account/repository/*.cpp"
         "console_ui/controller/*.cpp"
         "console_ui/service/*.cpp"
+        "console_ui/repository/*.cpp"
         "utility/keyboard/*.cpp"
 )
 

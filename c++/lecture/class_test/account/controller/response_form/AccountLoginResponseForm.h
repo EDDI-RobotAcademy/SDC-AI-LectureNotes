@@ -12,6 +12,8 @@ private:
 
 public:
     AccountLoginResponseForm (int id);
+
+    int getLoginAccountUniqueId();
 };
 
 

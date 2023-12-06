@@ -13,6 +13,7 @@
 #include "console_ui/service/ConsoleUiServiceImpl.h"
 #include "console_ui/controller/ConsoleUiController.h"
 #include "mysql/DbProcess.h"
+#include "console_ui/repository/ConsoleUiRepositoryImpl.h"
 
 void init_database_object()
 {
@@ -33,10 +34,14 @@ void init_singleton_object()
                     std::make_shared<AccountRepositoryImpl>());
     AccountController& controller = AccountController::getInstance(service);
 
-    ConsoleUiServiceImpl& consoleUiService = ConsoleUiServiceImpl::getInstance();
-    ConsoleUiController& uiController = ConsoleUiController::getInstance(std::make_shared<ConsoleUiServiceImpl>());
+//    ConsoleUiServiceImpl& consoleUiService = ConsoleUiServiceImpl::getInstance();
+//    ConsoleUiController& uiController = ConsoleUiController::getInstance(std::make_shared<ConsoleUiServiceImpl>());
 
-
+    ConsoleUiRepositoryImpl& consoleUiRepository = ConsoleUiRepositoryImpl::getInstance();
+    std::shared_ptr<ConsoleUiService> consoleUiService =
+            std::make_shared<ConsoleUiServiceImpl>(
+                    std::make_shared<ConsoleUiRepositoryImpl>());
+    ConsoleUiController& uiController = ConsoleUiController::getInstance(consoleUiService);
 }
 
 int main() {

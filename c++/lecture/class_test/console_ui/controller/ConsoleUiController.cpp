@@ -6,6 +6,7 @@
 #include "../../account/controller/AccountController.h"
 #include "../service/ConsoleUiServiceImpl.h"
 #include "../../account/controller/request_form/AccountLoginRequestForm.h"
+#include "../repository/ConsoleUiRepositoryImpl.h"
 
 ConsoleUiController::ConsoleUiController(
         std::shared_ptr<ConsoleUiService> consoleUiService)
@@ -20,7 +21,9 @@ ConsoleUiController& ConsoleUiController::getInstance(
 
 ConsoleUiController& ConsoleUiController::getInstance() {
     static ConsoleUiController instance(
-            std::make_shared<ConsoleUiServiceImpl>());
+            std::make_shared<ConsoleUiServiceImpl>(
+                    std::make_shared<ConsoleUiRepositoryImpl>()));
+
     return instance;
 }
 
@@ -47,11 +50,20 @@ void ConsoleUiController::uiAccountRegister()
 
 void ConsoleUiController::uiAccountLogin()
 {
-    std::cout << "로그인 콘솔 창입니다." << std::endl;
-    AccountLoginRequestForm *requestForm;
+    // 로그인 세션 존재 여부 파악
+    int sessionId = consoleUiService->getSignInSession();
+    if (sessionId == -1) {
+        std::cout << "로그인 콘솔 창입니다." << std::endl;
+        AccountLoginRequestForm *requestForm;
+        AccountLoginResponseForm *responseForm;
 
-    requestForm = consoleUiService->makeAccountLoginForm();
-    AccountController& accountController = AccountController::getInstance();
+        requestForm = consoleUiService->makeAccountLoginForm();
+        AccountController &accountController = AccountController::getInstance();
 
-    //accountController.accountLogin(requestForm);
+        responseForm = accountController.accountLogin(requestForm);
+        consoleUiService->storeSession(responseForm->getLoginAccountUniqueId());
+    }
+
+    // 게시판 리스트
+    std::cout << "go list()" << std::endl;
 }

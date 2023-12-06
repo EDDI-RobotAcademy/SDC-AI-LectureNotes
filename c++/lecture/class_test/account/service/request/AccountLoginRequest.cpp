@@ -12,3 +12,11 @@ Account *AccountLoginRequest::toAccount()
 {
     return new Account(account_id, password);
 }
+
+std::string AccountLoginRequest::getAccountId() const {
+    return account_id;
+}
+
+std::string AccountLoginRequest::getPassword() const {
+    return password;
+}

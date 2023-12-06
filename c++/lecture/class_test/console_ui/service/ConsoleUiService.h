@@ -14,6 +14,9 @@ public:
 
     virtual AccountRegisterRequestForm *makeAccountRegisterForm() = 0;
     virtual AccountLoginRequestForm *makeAccountLoginForm() = 0;
+
+    virtual void storeSession(int uniqueId) = 0;
+    virtual int getSignInSession() = 0;
 };
 
 #endif //CLASS_TEST_CONSOLEUISERVICE_H

@@ -10,7 +10,7 @@ AccountServiceImpl::AccountServiceImpl(std::shared_ptr<AccountRepository> accoun
 AccountRegisterResponse *
         AccountServiceImpl::create(AccountRegisterRequest *request)
 {
-    if (accountRepository->findByAccountId(request->getAccountId())) {
+    if (accountRepository->getBoolWithFindByAccountId(request->getAccountId())) {
         return nullptr;
     }
 
@@ -20,6 +20,29 @@ AccountRegisterResponse *
         return new AccountRegisterResponse(true);
     }
 
+    return nullptr;
+}
+
+AccountLoginResponse *
+AccountServiceImpl::signIn(AccountLoginRequest *request)
+{
+    std::optional<Account> accountOpt = accountRepository->findByAccountId(request->getAccountId());
+
+    if (accountOpt.has_value()) {
+        Account account = accountOpt.value();
+
+        if (account.get_password() == request->getPassword()) {
+            return new AccountLoginResponse(true);
+        } else {
+            std::cout << "사용자 인증에 실패하였습니다" << std::endl;
+            return nullptr;
+        }
+    } else {
+        std::cout << "사용자 계정을 찾지 못했습니다" << std::endl;
+        return nullptr;
+    }
+
+    return nullptr;
 }
 
 AccountServiceImpl& AccountServiceImpl::getInstance(

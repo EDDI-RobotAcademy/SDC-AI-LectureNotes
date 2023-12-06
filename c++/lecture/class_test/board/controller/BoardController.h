@@ -25,6 +25,9 @@ public:
     std::vector<BoardResponse> boardRead();
     std::vector<BoardResponse> boardModify();
     void BoardRemove();
+
+    BoardController& getInstance(std::shared_ptr<BoardService> boardService);
+    BoardController& getInstance();
 };
 
 

@@ -23,6 +23,7 @@ public:
     void selectData();
     void readData(int boardId);
     bool findData(const std::string& queryString);
+    MYSQL_ROW findRowData(const std::string& queryString);
 
     MYSQL *getConn();
 
