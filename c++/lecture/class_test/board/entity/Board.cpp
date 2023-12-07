@@ -41,6 +41,10 @@ void Board::printBoardInfo() const {
         << ", Updated At: " << std::chrono::system_clock::to_time_t(updated_at) << std::endl;
 }
 
+const int &Board::getId() const {
+    return id;
+}
+
 const std::string &Board::getTitle() const {
     return title;
 }

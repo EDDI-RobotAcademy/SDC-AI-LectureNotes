@@ -11,6 +11,11 @@
 
 #include "../../board/controller/request_form/BoardRegisterRequestForm.h"
 #include "../../board/controller/response_form/BoardReadResponseForm.h"
+#include "../../board/controller/response_form/BoardListResponseForm.h"
+
+void setTextColor(int colorCode) {
+    std::cout << "\033[1;" << colorCode << "m";
+}
 
 ConsoleUiController::ConsoleUiController(
         std::shared_ptr<ConsoleUiService> consoleUiService)
@@ -129,4 +134,24 @@ void ConsoleUiController::uiBoardRead()
     }
 
     // 선택 할 수 있는 것 (수정, 삭제, 돌아가기)
+}
+
+void ConsoleUiController::uiBoardList()
+{
+    BoardController &boardController = BoardController::getInstance();
+    std::vector<BoardListResponseForm> responseFormList = boardController.boardList();
+
+    setTextColor(32);
+    std::cout << std::left << std::setw(10) << "ID" << std::setw(30) << "Title" << std::setw(20) << "Writer" << std::endl;
+    std::cout << "=============================================================" << std::endl;
+
+    if (responseFormList.empty()) {
+        std::cout << "등록된 게시물이 없습니다!" << std::endl;
+    }
+
+    for (auto& responseForm : responseFormList) {
+        std::cout << std::setw(10) << responseForm.getBoardId()
+                << std::setw(30) << responseForm.getTitle()
+                << std::setw(20) << responseForm.getWriter() << std::endl;
+    }
 }

@@ -47,20 +47,21 @@ std::vector<Board> BoardRepositoryImpl::findAll()
 {
     std::cout << "BoardReopository: 리스트 전체 출력!" << std::endl;
 
-    // MYSQL 접속 시작
-    const char* DB_HOST = "localhost";
-    const char* DB_USER = "eddi";
-    const char* DB_PASS = "eddi@123";
-    const char* DB_NAME = "test_db";
-
-    DbProcess db(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-    if (!db.connect()) {
-        std::cerr << "Connection error" << std::endl;
-    }
+//    // MYSQL 접속 시작
+//    const char* DB_HOST = "localhost";
+//    const char* DB_USER = "eddi";
+//    const char* DB_PASS = "eddi@123";
+//    const char* DB_NAME = "test_db";
+//
+//    DbProcess db(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+//
+//    if (!db.connect()) {
+//        std::cerr << "Connection error" << std::endl;
+//    }
     // MYSQL 접속 완료
+    DbProcess* dbInstance = DbProcess::getInstance();
 
-    std::vector<Board> boardList = fetchResults(db.getConn());
+    std::vector<Board> boardList = fetchResults(dbInstance->getConn());
 
     // 처리 결과 확인하는 부분
 //    for (const auto& board : boardList) {
