@@ -236,16 +236,18 @@ void ConsoleUiController::uiEngineStart()
 
         void* parameter = consoleUiService->determineParameter(static_cast<int>(convertedCommand));
         std::cout << "parameter: " << parameter << std::endl;
-        int *boardNo;
-        if (convertedCommand == ConsoleUiControllerCommand::BOARD_MODIFY || convertedCommand == ConsoleUiControllerCommand::BOARD_REMOVE) {
-            boardNo = reinterpret_cast<int *>(parameter);
-            std::cout << "boardNo: " << boardNo << std::endl;
-            //int* intParameter = static_cast<int*>(parameter);
-        }
+//        int *boardNo;
+//        if (convertedCommand == ConsoleUiControllerCommand::BOARD_MODIFY || convertedCommand == ConsoleUiControllerCommand::BOARD_REMOVE) {
+//            boardNo = reinterpret_cast<int *>(parameter);
+//            std::cout << "boardNo: " << boardNo << std::endl;
+//            //int* intParameter = static_cast<int*>(parameter);
+//        }
 
         executeCommand(
                 convertedCommand,
-                reinterpret_cast<void *>(boardNo));
+                parameter);
+
+        delete static_cast<int*>(parameter);
     }
 }
 
