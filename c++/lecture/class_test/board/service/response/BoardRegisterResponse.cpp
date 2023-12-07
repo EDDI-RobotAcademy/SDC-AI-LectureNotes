@@ -10,5 +10,5 @@ BoardRegisterResponse::BoardRegisterResponse (
 
 BoardRegisterResponseForm *BoardRegisterResponse::toBoardRegisterResponseForm()
 {
-    return nullptr;
+    return new BoardRegisterResponseForm(title, writer, content);
 }

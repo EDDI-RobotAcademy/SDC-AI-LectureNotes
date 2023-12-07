@@ -26,6 +26,9 @@ public:
     template <typename T>
     std::unique_ptr<T> insertEntityData(const std::string& queryString);
 
+    template <typename T>
+    std::unique_ptr<T> insertDataAfterReturnEntity(const std::string& queryString);
+
     bool updateData(int boardId, const std::string& newTitle, const std::string& newContent);
     //bool deleteData(int boardId);
     bool deleteData(const std::string& queryString);

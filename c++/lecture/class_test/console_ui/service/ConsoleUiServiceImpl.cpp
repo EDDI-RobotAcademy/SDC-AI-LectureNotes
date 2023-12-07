@@ -49,3 +49,12 @@ int ConsoleUiServiceImpl::getSignInSession()
 {
     return consoleUiRepository->getSignInSession();
 }
+
+int ConsoleUiServiceImpl::makeBoardReadForm()
+{
+    std::string readNo;
+
+    get_user_keyboard_input_with_message("읽을 게시물 번호를 입력하세요: ", readNo);
+
+    return std::stoi(readNo);
+}

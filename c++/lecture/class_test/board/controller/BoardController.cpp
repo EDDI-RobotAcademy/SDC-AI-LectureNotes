@@ -7,6 +7,9 @@
 #include "../repository/BoardRepositoryImpl.h"
 #include "../../account/service/AccountServiceImpl.h"
 
+#include "../service/response/BoardReadResponse.h"
+#include "response_form/BoardReadResponseForm.h"
+
 #include <iostream>
 #include <vector>
 
@@ -30,6 +33,17 @@ BoardRegisterResponseForm *BoardController::boardRegister(BoardRegisterRequestFo
 
     BoardRegisterResponse *response = boardService->create(requestForm->toBoardRegisterRequest(writer));
     return response->toBoardRegisterResponseForm();
+}
+
+BoardReadResponseForm *BoardController::boardRead(int boardNo)
+{
+    std::cout << "BoardController: 게시물 읽기!" << std::endl;
+
+    // 위에 처럼 requestForm 가져와서 session 정보 가지고 사용자 인증을 해야함 (우선 패스)
+    BoardReadResponse *response = boardService->read(boardNo);
+
+    return response->toBoardReadResponseForm();
+    //return nullptr;
 }
 
 BoardController& BoardController::getInstance(

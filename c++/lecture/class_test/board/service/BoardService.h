@@ -8,6 +8,7 @@
 #include <vector>
 #include "response/BoardRegisterResponse.h"
 #include "request/BoardRegisterRequest.h"
+#include "response/BoardReadResponse.h"
 
 class BoardService {
 public:
@@ -16,7 +17,7 @@ public:
     // BoardRegisterResponse 다발을 리턴하는 list 함수를 만들 예정이야!
     virtual std::vector<BoardRegisterResponse> list() = 0;
     virtual BoardRegisterResponse *create(BoardRegisterRequest *request) = 0;
-//    virtual std::vector<BoardRegisterResponse> read() = 0;
+    virtual BoardReadResponse *read(int boardNo) = 0;
 //    virtual std::vector<BoardRegisterResponse> modify() = 0;
 //    virtual void remove() = 0;
 };
