@@ -28,6 +28,9 @@ public:
     void storeSession(int uniqueId) override;
     int getSignInSession() override;
     int makeBoardReadForm() override;
+
+    void *determineParameter(int command) override;
+    ConsoleUiControllerCommand determineCommand(int sessionId, int command) override;
 };
 
 

@@ -26,8 +26,9 @@ BoardRegisterResponseForm *BoardController::boardRegister(BoardRegisterRequestFo
 {
     std::cout << "BoardController: 게시물 등록하기!" << std::endl;
 
-    AccountService &accountService = AccountServiceImpl::getInstance();
-    std::string writer = accountService.findAccoutIdBySessionId(requestForm->getWriterSessionId());
+    std::shared_ptr<AccountRepositoryImpl> repository = AccountRepositoryImpl::getInstance();
+    std::shared_ptr<AccountServiceImpl> accountService = AccountServiceImpl::getInstance(repository);
+    std::string writer = accountService->findAccoutIdBySessionId(requestForm->getWriterSessionId());
 
     BoardRegisterResponse *response = boardService->create(requestForm->toBoardRegisterRequest(writer));
     return response->toBoardRegisterResponseForm();

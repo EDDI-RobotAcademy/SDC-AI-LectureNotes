@@ -28,11 +28,15 @@ void init_database_object()
 
 void init_singleton_object()
 {
-    AccountRepositoryImpl& repository = AccountRepositoryImpl::getInstance();
-    std::shared_ptr<AccountService> service =
-            std::make_shared<AccountServiceImpl>(
-                    std::make_shared<AccountRepositoryImpl>());
-    AccountController& controller = AccountController::getInstance(service);
+    std::shared_ptr<AccountRepositoryImpl> repository = AccountRepositoryImpl::getInstance();
+
+//    std::shared_ptr<AccountService> service =
+//            std::make_shared<AccountServiceImpl>(
+//                    std::make_shared<AccountRepositoryImpl>(repository));
+    std::shared_ptr<AccountServiceImpl> serviceInstance = AccountServiceImpl::getInstance(repository);
+    //std::shared_ptr<AccountService> service(serviceInstance, [](auto) {});
+
+    AccountController& controller = AccountController::getInstance(serviceInstance);
 
 //    ConsoleUiServiceImpl& consoleUiService = ConsoleUiServiceImpl::getInstance();
 //    ConsoleUiController& uiController = ConsoleUiController::getInstance(std::make_shared<ConsoleUiServiceImpl>());
@@ -87,9 +91,11 @@ int main() {
     init_singleton_object();
     init_database_object();
 
+
     ConsoleUiController &uiController = ConsoleUiController::getInstance();
+    uiController.uiEngineStart();
     //uiController.uiAccountRegister();
-    uiController.uiBoardList();
+    //uiController.uiBoardList();
 
     return 0;
 }

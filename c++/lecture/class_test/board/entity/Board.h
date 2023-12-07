@@ -35,8 +35,9 @@ public:
     const std::string &getContent() const;
     const int &getId() const;
 
-    void setTitle(const std::string &title);
+    void setId(int id);
 
+    void setTitle(const std::string &title);
     void setContent(const std::string &content);
 
     void printBoardInfo() const;

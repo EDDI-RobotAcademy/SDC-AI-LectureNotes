@@ -4,10 +4,11 @@
 
 #include "AccountServiceImpl.h"
 #include "response/AccountRegisterResponse.h"
+#include "../repository/AccountRepositoryImpl.h"
 
 std::shared_ptr<AccountServiceImpl> AccountServiceImpl::instance = nullptr;
 
-AccountServiceImpl::AccountServiceImpl(std::shared_ptr<AccountRepository> accountRepository) : accountRepository(accountRepository) { }
+AccountServiceImpl::AccountServiceImpl(std::shared_ptr<AccountRepositoryImpl> accountRepository) : accountRepository(accountRepository) { }
 
 AccountRegisterResponse *
         AccountServiceImpl::create(AccountRegisterRequest *request)
@@ -69,18 +70,24 @@ std::string AccountServiceImpl::findAccoutIdBySessionId(int sessionId)
     return nullptr;
 }
 
-AccountServiceImpl& AccountServiceImpl::getInstance(
-        std::shared_ptr<AccountRepository> accountRepository)
+std::shared_ptr<AccountServiceImpl> AccountServiceImpl::getInstance(
+        std::shared_ptr<AccountRepositoryImpl> accountRepository)
 {
     if (!instance) {
+        std::cout << "AccountService Instance 생성" << std::endl;
         instance = std::make_shared<AccountServiceImpl>(accountRepository);
+
+        std::cout << "is it exist ?" << instance->accountRepository << std::endl;
     }
-    return *instance;
+    return instance;
 }
 
-AccountServiceImpl& AccountServiceImpl::getInstance() {
-    if (!instance) {
-        throw std::logic_error("Repository 객체와 함께 먼저 생성한 이후 사용하세요!");
-    }
-    return *instance;
+std::shared_ptr<AccountServiceImpl> AccountServiceImpl::getInstance() {
+
+    std::cout << "why no AccountServiceImpl ?" << instance << std::endl;
+
+//    if (!instance) {
+//        throw std::logic_error("Repository 객체와 함께 먼저 생성한 이후 사용하세요!");
+//    }
+    return instance;
 }
