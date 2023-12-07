@@ -47,8 +47,27 @@ BoardReadResponse *BoardServiceImpl::read(int boardNo)
                         board.getTitle(), board.getWriter(), board.getContent());
 
         return boardReadResponse.release();
-    } else {
-        return nullptr;
+    }
+
+    return nullptr;
+}
+
+BoardReadResponseForm *BoardServiceImpl::modify(BoardModifyRequest *request)
+{
+    std::optional<Board> maybeBoard = boardRepository->findById(request->getBoardNo());
+
+    if (maybeBoard.has_value()) {
+        Board board = maybeBoard.value();
+
+        board.setTitle(request->getTitle());
+        board.setContent(request->getContent());
+
+        Board *updatedBoard = boardRepository->save(&board);
+
+        return new BoardReadResponseForm(
+                updatedBoard->getTitle(),
+                updatedBoard->getWriter(),
+                updatedBoard->getContent());
     }
 
     return nullptr;

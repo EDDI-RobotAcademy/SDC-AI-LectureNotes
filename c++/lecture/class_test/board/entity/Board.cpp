@@ -56,3 +56,11 @@ const std::string &Board::getWriter() const {
 const std::string &Board::getContent() const {
     return content;
 }
+
+void Board::setTitle(const std::string &title) {
+    Board::title = title;
+}
+
+void Board::setContent(const std::string &content) {
+    Board::content = content;
+}

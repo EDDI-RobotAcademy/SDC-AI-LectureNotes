@@ -40,6 +40,16 @@ BoardRegisterRequestForm *ConsoleUiServiceImpl::makeBoardRegisterForm(int sessio
     return new BoardRegisterRequestForm(title, sessionId, content);
 }
 
+BoardModifyRequestForm *ConsoleUiServiceImpl::makeBoardModifyForm(int boardNo)
+{
+    std::string title, content;
+
+    get_user_keyboard_input_with_message("수정 할 게시물 제목을 입력하세요: ", title);
+    get_user_keyboard_input_with_message("수정 할 게시물 내용을 입력하세요: ", content);
+
+    return new BoardModifyRequestForm(boardNo, title, content);
+}
+
 void ConsoleUiServiceImpl::storeSession(int uniqueId)
 {
     consoleUiRepository->storeSignInSession(uniqueId);

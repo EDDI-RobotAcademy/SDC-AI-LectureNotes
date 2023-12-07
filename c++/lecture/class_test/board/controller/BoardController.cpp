@@ -44,6 +44,13 @@ BoardReadResponseForm *BoardController::boardRead(int boardNo)
     //return nullptr;
 }
 
+BoardReadResponseForm *BoardController::boardModify(BoardModifyRequestForm *requestForm)
+{
+    std::cout << "BoardController: 게시물 수정하기!" << std::endl;
+
+    return boardService->modify(requestForm->toBoardModifyRequest());
+}
+
 BoardController& BoardController::getInstance(
         std::shared_ptr<BoardService> boardService)
 {
