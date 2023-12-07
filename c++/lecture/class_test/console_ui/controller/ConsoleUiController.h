@@ -21,6 +21,13 @@ public:
 
     void uiAccountRegister();
     void uiAccountLogin();
+    void uiAccountLogout();
+
+    void uiBoardRegister();
+    void uiBoardRead();
+    void uiBoardList();
+    void uiBoardModify(int boardNo);
+    void uiBoardRemove(int boardNo);
 };
 
 

@@ -5,6 +5,8 @@
 #include "AccountServiceImpl.h"
 #include "response/AccountRegisterResponse.h"
 
+std::shared_ptr<AccountServiceImpl> AccountServiceImpl::instance = nullptr;
+
 AccountServiceImpl::AccountServiceImpl(std::shared_ptr<AccountRepository> accountRepository) : accountRepository(accountRepository) { }
 
 AccountRegisterResponse *
@@ -29,6 +31,7 @@ AccountServiceImpl::signIn(AccountLoginRequest *request)
     std::optional<Account> accountOpt = accountRepository->findByAccountId(request->getAccountId());
 
     if (accountOpt.has_value()) {
+        std::cout << "매칭되는 사용자를 찾았습니다" << std::endl;
         Account account = accountOpt.value();
 
         if (account.get_password() == request->getPassword()) {
@@ -45,9 +48,39 @@ AccountServiceImpl::signIn(AccountLoginRequest *request)
     return nullptr;
 }
 
+void AccountServiceImpl::signOut(int sessionId)
+{
+    // 사실 이러면 안되지만 적당히 퉁칩시다.
+    accountRepository->deleteSession(sessionId);
+}
+
+std::string AccountServiceImpl::findAccoutIdBySessionId(int sessionId)
+{
+    std::optional<Account> maybeAccount = accountRepository->findAccountIdBySessionId(sessionId);
+
+    if (maybeAccount.has_value()) {
+        Account account = maybeAccount.value();
+
+        return account.get_account_id();
+    } else {
+        return nullptr;
+    }
+
+    return nullptr;
+}
+
 AccountServiceImpl& AccountServiceImpl::getInstance(
         std::shared_ptr<AccountRepository> accountRepository)
 {
-    static AccountServiceImpl instance(accountRepository);
-    return instance;
+    if (!instance) {
+        instance = std::make_shared<AccountServiceImpl>(accountRepository);
+    }
+    return *instance;
+}
+
+AccountServiceImpl& AccountServiceImpl::getInstance() {
+    if (!instance) {
+        throw std::logic_error("Repository 객체와 함께 먼저 생성한 이후 사용하세요!");
+    }
+    return *instance;
 }

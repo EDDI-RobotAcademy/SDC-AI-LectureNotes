@@ -22,6 +22,7 @@ public:
 
     AccountRegisterResponseForm *accountRegister(AccountRegisterRequestForm *form);
     AccountLoginResponseForm *accountLogin(AccountLoginRequestForm *form);
+    void accountLogout(int sessionId);
 
     static AccountController& getInstance(std::shared_ptr<AccountService> accountService);
     static AccountController& getInstance();

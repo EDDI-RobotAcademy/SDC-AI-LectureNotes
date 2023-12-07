@@ -20,6 +20,7 @@
 
 class AccountServiceImpl : public AccountService {
 private:
+    static std::shared_ptr<AccountServiceImpl> instance;
     std::shared_ptr<AccountRepository> accountRepository;
 
 public:
@@ -27,8 +28,11 @@ public:
 
     AccountRegisterResponse *create(AccountRegisterRequest *request) override;
     AccountLoginResponse *signIn(AccountLoginRequest *request) override;
+    void signOut(int sessionId) override;
+    std::string findAccoutIdBySessionId(int sessionId) override;
 
     static AccountServiceImpl& getInstance(std::shared_ptr<AccountRepository> accountRepository);
+    static AccountServiceImpl& getInstance();
 };
 
 
