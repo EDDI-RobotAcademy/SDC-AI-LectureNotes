@@ -26,6 +26,7 @@ public:
     BoardRegisterResponse *create(BoardRegisterRequest *request) override;
     BoardReadResponse *read(int boardNo) override;
     BoardReadResponseForm *modify(BoardModifyRequest *request) override;
+    void remove(int boardNo) override;
 };
 
 

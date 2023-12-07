@@ -72,3 +72,8 @@ BoardReadResponseForm *BoardServiceImpl::modify(BoardModifyRequest *request)
 
     return nullptr;
 }
+
+void BoardServiceImpl::remove(int boardNo)
+{
+    boardRepository->deleteById(boardNo);
+}

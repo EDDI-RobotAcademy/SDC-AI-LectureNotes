@@ -142,6 +142,15 @@ std::optional<Board> BoardRepositoryImpl::findById(int boardNo)
     return std::nullopt;
 }
 
+void BoardRepositoryImpl::deleteById(int boardNo)
+{
+    DbProcess* dbInstance = DbProcess::getInstance();
+
+    std::string queryString = "DELETE FROM board WHERE board_id = '" + std::to_string(boardNo) + "'";
+
+    dbInstance->deleteData(queryString);
+}
+
 BoardRepositoryImpl& BoardRepositoryImpl::getInstance() {
     static BoardRepositoryImpl instance;
     return instance;
