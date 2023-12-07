@@ -15,13 +15,11 @@
 
 BoardController::BoardController(std::shared_ptr<BoardService> boardService) : boardService(boardService) { }
 
-std::vector<BoardRegisterResponse> BoardController::boardList()
+std::vector<BoardListResponseForm> BoardController::boardList()
 {
     std::cout << "BoardController: 게시물 리스트 출력!" << std::endl;
 
-    boardService->list();
-
-    return std::vector<BoardRegisterResponse>();
+    return boardService->list();
 }
 
 BoardRegisterResponseForm *BoardController::boardRegister(BoardRegisterRequestForm *requestForm)

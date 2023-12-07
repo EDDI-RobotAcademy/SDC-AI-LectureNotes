@@ -25,6 +25,7 @@ public:
 
     void uiBoardRegister();
     void uiBoardRead();
+    void uiBoardList();
 };
 
 

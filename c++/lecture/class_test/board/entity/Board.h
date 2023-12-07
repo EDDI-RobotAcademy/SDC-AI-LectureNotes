@@ -33,6 +33,7 @@ public:
     const std::string &getTitle() const;
     const std::string &getWriter() const;
     const std::string &getContent() const;
+    const int &getId() const;
 
     void printBoardInfo() const;
 
