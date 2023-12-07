@@ -215,7 +215,43 @@ std::unique_ptr<T> DbProcess::insertEntityData(const std::string& queryString) {
         }
     }
 
-    throw std::runtime_error("Failed to insert data into the database");
+    throw std::runtime_error("DB에 데이터를 넣는 중 문제가 발생하였습니다.");
 }
 
 template std::unique_ptr<Board> DbProcess::insertEntityData(const std::string& queryString);
+
+std::vector<std::string> fetchRow(MYSQL_RES* result) {
+    MYSQL_ROW row = mysql_fetch_row(result);
+    if (!row) {
+        throw std::runtime_error("Failed to fetch row");
+    }
+
+    unsigned int numFields = mysql_num_fields(result);
+    std::vector<std::string> values(numFields);
+
+    for (unsigned int i = 0; i < numFields; ++i) {
+        values[i] = row[i];
+    }
+
+    return values;
+}
+
+template <typename T>
+std::unique_ptr<T> DbProcess::insertDataAfterReturnEntity(const std::string& queryString) {
+    if (mysql_query(conn, queryString.c_str()) == 0) {
+        MYSQL_RES* result = mysql_store_result(conn);
+        if (result) {
+            std::vector<std::string> rowValues = fetchRow(result);
+
+            std::unique_ptr<T> insertedEntity = std::make_unique<T>();
+            insertedEntity->initializeFromRow(rowValues);
+
+            mysql_free_result(result);
+            return insertedEntity;
+        }
+    }
+
+    throw std::runtime_error("DB에 데이터를 넣는 중 문제가 발생하였습니다.");
+}
+
+template std::unique_ptr<Board> DbProcess::insertDataAfterReturnEntity(const std::string& queryString);

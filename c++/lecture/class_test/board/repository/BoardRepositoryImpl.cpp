@@ -81,11 +81,64 @@ Board *BoardRepositoryImpl::save(Board *board)
                           ('" + title + "', '" + writer + "', '" + content + "' )";
 
     //dbInstance->insertData(queryString);
-    std::unique_ptr<Board> insertedBoardPtr = dbInstance->insertEntityData<Board>(queryString);
+    //std::unique_ptr<Board> insertedBoardPtr = dbInstance->insertEntityData<Board>(queryString);
     //Board* insertedBoard = dbInstance->insertOldEntityData<Board>(queryString);
+    std::unique_ptr<Board> insertedBoardPtr = dbInstance->insertDataAfterReturnEntity<Board>(queryString);
 
     return insertedBoardPtr.release();
     //return insertedBoard;
+}
+
+std::chrono::system_clock::time_point convertBoardStringToTimePoint(const std::string& str) {
+    std::tm tm = {};
+    std::istringstream ss(str);
+    ss >> std::get_time(&tm, "%Y-%m-%d %H:%M:%S");
+
+    if (ss.fail()) {
+        throw std::runtime_error("Error parsing date string");
+    }
+
+    std::time_t time = std::mktime(&tm);
+    if (time == -1) {
+        throw std::runtime_error("Error converting time");
+    }
+
+    return std::chrono::system_clock::from_time_t(time);
+}
+
+Board constructBoardFromRow(MYSQL_ROW row) {
+    int board_id = std::stoi(row[0]);
+    std::string title = row[1];
+    std::string writer = row[2];
+    std::string content = row[3];
+
+    std::string reg_date_str = row[4];
+    std::string upd_date_str = row[5];
+
+    std::chrono::system_clock::time_point reg_date = convertBoardStringToTimePoint(reg_date_str);
+    std::chrono::system_clock::time_point upd_date = convertBoardStringToTimePoint(upd_date_str);
+
+    if (!reg_date_str.empty() && !upd_date_str.empty()) {
+        return Board(board_id, title, writer, content, reg_date_str, upd_date_str);
+    } else {
+        return Board(board_id, title, writer, content);
+    }
+}
+
+std::optional<Board> BoardRepositoryImpl::findById(int boardNo)
+{
+    DbProcess* dbInstance = DbProcess::getInstance();
+
+    std::string queryString = "SELECT * FROM board WHERE board_id = '" + std::to_string(boardNo) + "'";
+
+    MYSQL_ROW row = dbInstance->findRowData(queryString);
+
+    if (row != nullptr) {
+        Board board = constructBoardFromRow(row);
+        return std::make_optional(board);
+    }
+
+    return std::nullopt;
 }
 
 BoardRepositoryImpl& BoardRepositoryImpl::getInstance() {

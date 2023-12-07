@@ -20,6 +20,7 @@ public:
 
     virtual void storeSession(int uniqueId) = 0;
     virtual int getSignInSession() = 0;
+    virtual int makeBoardReadForm() = 0;
 };
 
 #endif //CLASS_TEST_CONSOLEUISERVICE_H

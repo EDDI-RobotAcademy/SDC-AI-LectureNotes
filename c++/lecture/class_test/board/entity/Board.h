@@ -10,6 +10,8 @@
 #include <chrono>
 #include <iostream>
 #include <tuple>
+#include <iomanip>
+#include <vector>
 
 class Board {
 private:
@@ -48,6 +50,22 @@ public:
         this->created_at = std::chrono::system_clock::from_time_t(std::stoi(reg_date));
         this->updated_at = std::chrono::system_clock::from_time_t(std::stoi(upd_date));
     }
+
+    void initializeFromRow(const std::vector<std::string>& values) {
+        if (values.size() != attributeCount) {
+            throw std::runtime_error("Mismatch in attribute count");
+        }
+
+        id = std::stoi(values[0]);
+        title = values[1];
+        writer = values[2];
+        content = values[3];
+
+        created_at = std::chrono::system_clock::from_time_t(std::stoi(values[4]));
+        updated_at = values[5].empty() ? created_at : std::chrono::system_clock::from_time_t(std::stoi(values[5]));
+    }
+
+    static constexpr size_t attributeCount = 6;
 
     static auto getAttributes() {
         return std::make_tuple(&Board::id, &Board::title, &Board::writer,

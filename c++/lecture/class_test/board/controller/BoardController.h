@@ -12,6 +12,7 @@
 #include "../service/BoardService.h"
 #include "request_form/BoardRegisterRequestForm.h"
 #include "response_form/BoardRegisterResponseForm.h"
+#include "response_form/BoardReadResponseForm.h"
 
 class BoardController {
 private:
@@ -24,7 +25,7 @@ public:
 
     std::vector<BoardRegisterResponse> boardList();
     BoardRegisterResponseForm *boardRegister(BoardRegisterRequestForm *requestForm);
-    std::vector<BoardRegisterResponse> boardRead();
+    BoardReadResponseForm *boardRead(int boardNo);
     std::vector<BoardRegisterResponse> boardModify();
     void BoardRemove();
 

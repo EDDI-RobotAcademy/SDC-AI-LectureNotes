@@ -24,3 +24,23 @@ BoardRegisterResponse *BoardServiceImpl::create(BoardRegisterRequest *request) {
             registeredBoard->getWriter(),
             registeredBoard->getContent());
 }
+
+BoardReadResponse *BoardServiceImpl::read(int boardNo)
+{
+    std::optional<Board> maybeBoard = boardRepository->findById(boardNo);
+
+    if (maybeBoard.has_value()) {
+        std::cout << "maybeBoard" << std::endl;
+        Board board = maybeBoard.value();
+
+        std::unique_ptr<BoardReadResponse> boardReadResponse =
+                std::make_unique<BoardReadResponse>(
+                        board.getTitle(), board.getWriter(), board.getContent());
+
+        return boardReadResponse.release();
+    } else {
+        return nullptr;
+    }
+
+    return nullptr;
+}

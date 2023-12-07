@@ -26,6 +26,7 @@ public:
 
     void storeSession(int uniqueId) override;
     int getSignInSession() override;
+    int makeBoardReadForm() override;
 };
 
 
