@@ -86,10 +86,19 @@ void *ConsoleUiServiceImpl::determineParameter(int command)
     UI_EXIT,           = 8
     */
 
+    std::cout << "Command: " << command << std::endl;
+
+    int* arr;
+
     switch (static_cast<ConsoleUiControllerCommand>(command)) {
         case ConsoleUiControllerCommand::BOARD_MODIFY:
         case ConsoleUiControllerCommand::BOARD_REMOVE:
-            return reinterpret_cast<void *>(ConsoleUiController::getCurrentReadBoardNo());
+            std::cout << "currentReadBoardNo: " << ConsoleUiController::getCurrentReadBoardNo() << std::endl;
+
+            arr = new int;
+            *arr = ConsoleUiController::getCurrentReadBoardNo();
+
+            return static_cast<void*>(arr);
 
         case ConsoleUiControllerCommand::ACCOUNT_REGISTER:
         case ConsoleUiControllerCommand::SIGN_IN:
@@ -141,6 +150,7 @@ ConsoleUiControllerCommand ConsoleUiServiceImpl::determineCommand(int sessionId,
             }
 
             if (ConsoleUiController::getCurrentState() == ConsoleUiControllerCommand::BOARD_READ) {
+                std::cout << "Modify" << std::endl;
                 return ConsoleUiControllerCommand::BOARD_MODIFY;
             }
 
