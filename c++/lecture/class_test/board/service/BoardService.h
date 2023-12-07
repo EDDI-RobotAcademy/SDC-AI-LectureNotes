@@ -21,8 +21,7 @@ public:
     virtual BoardRegisterResponse *create(BoardRegisterRequest *request) = 0;
     virtual BoardReadResponse *read(int boardNo) = 0;
     virtual BoardReadResponseForm *modify(BoardModifyRequest *request) = 0;
-//    virtual std::vector<BoardRegisterResponse> modify() = 0;
-//    virtual void remove() = 0;
+    virtual void remove(int boardNo) = 0;
 };
 
 #endif //CLASS_TEST_BOARDSERVICE_H

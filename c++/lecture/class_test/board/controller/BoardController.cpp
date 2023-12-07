@@ -51,6 +51,13 @@ BoardReadResponseForm *BoardController::boardModify(BoardModifyRequestForm *requ
     return boardService->modify(requestForm->toBoardModifyRequest());
 }
 
+void BoardController::boardRemove(int boardNo)
+{
+    std::cout << "BoardController: 게시물 삭제하기!" << std::endl;
+
+    boardService->remove(boardNo);
+}
+
 BoardController& BoardController::getInstance(
         std::shared_ptr<BoardService> boardService)
 {

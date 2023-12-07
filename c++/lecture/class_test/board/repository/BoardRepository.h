@@ -15,6 +15,7 @@ public:
     virtual std::vector<Board> findAll() = 0;
     virtual Board *save(Board *board) = 0;
     virtual std::optional<Board> findById(int boardNo) = 0;
+    virtual void deleteById(int boardNo) = 0;
 };
 
 #endif //CLASS_TEST_BOARDREPOSITORY_H

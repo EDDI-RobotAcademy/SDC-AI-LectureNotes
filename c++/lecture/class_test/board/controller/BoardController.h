@@ -29,7 +29,7 @@ public:
     BoardRegisterResponseForm *boardRegister(BoardRegisterRequestForm *requestForm);
     BoardReadResponseForm *boardRead(int boardNo);
     BoardReadResponseForm *boardModify(BoardModifyRequestForm *requestForm);
-    void BoardRemove();
+    void boardRemove(int boardNo);
 
     static BoardController& getInstance(std::shared_ptr<BoardService> boardService);
     static BoardController& getInstance();

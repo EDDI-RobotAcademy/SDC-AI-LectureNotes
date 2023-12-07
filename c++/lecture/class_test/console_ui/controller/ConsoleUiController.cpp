@@ -177,3 +177,16 @@ void ConsoleUiController::uiBoardModify(int boardNo) {
         std::cout << "내용: " << responseForm->getContent() << std::endl;
     }
 }
+
+void ConsoleUiController::uiBoardRemove(int boardNo)
+{
+    int sessionId = consoleUiService->getSignInSession();
+
+    if (sessionId == -1) {
+        std::cout << "로그인을 먼저 진행하세요!" << std::endl;
+        return;
+    }
+
+    BoardController &boardController = BoardController::getInstance();
+    boardController.boardRemove(boardNo);
+}
