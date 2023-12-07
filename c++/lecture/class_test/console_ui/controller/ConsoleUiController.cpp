@@ -133,6 +133,8 @@ void ConsoleUiController::uiBoardRead()
 
     // 이것도 사실 정석은 requestForm 만들어서 세션이랑 같이 보내야함
     int readBoardNo = consoleUiService->makeBoardReadForm();
+    std::cout << "readBoardNo: " << readBoardNo << std::endl;
+
     setCurrentReadBoardNo(readBoardNo);
 
     // 사실 위의 uiRepository에 state(상태) 값들을 저장해놨다면
@@ -227,12 +229,23 @@ void ConsoleUiController::uiEngineStart()
         int sessionId = consoleUiService->getSignInSession();
         uiIntroduce(sessionId);
         get_user_keyboard_input_with_message("수행 할 명령을 입력하세요: ", command);
+
+        ConsoleUiControllerCommand convertedCommand = consoleUiService->determineCommand(
+                sessionId,
+                std::stoi(command));
+
+        void* parameter = consoleUiService->determineParameter(static_cast<int>(convertedCommand));
+        std::cout << "parameter: " << parameter << std::endl;
+        int *boardNo;
+        if (convertedCommand == ConsoleUiControllerCommand::BOARD_MODIFY || convertedCommand == ConsoleUiControllerCommand::BOARD_REMOVE) {
+            boardNo = reinterpret_cast<int *>(parameter);
+            std::cout << "boardNo: " << boardNo << std::endl;
+            //int* intParameter = static_cast<int*>(parameter);
+        }
+
         executeCommand(
-                consoleUiService->determineCommand(
-                        sessionId,
-                        std::stoi(command)),
-                consoleUiService->determineParameter(
-                        std::stoi(command)));
+                convertedCommand,
+                reinterpret_cast<void *>(boardNo));
     }
 }
 
