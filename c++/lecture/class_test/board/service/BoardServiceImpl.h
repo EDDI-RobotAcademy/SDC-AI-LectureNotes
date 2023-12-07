@@ -25,6 +25,7 @@ public:
     std::vector<BoardListResponseForm> list() override;
     BoardRegisterResponse *create(BoardRegisterRequest *request) override;
     BoardReadResponse *read(int boardNo) override;
+    BoardReadResponseForm *modify(BoardModifyRequest *request) override;
 };
 
 

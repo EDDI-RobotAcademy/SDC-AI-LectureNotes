@@ -14,6 +14,7 @@
 #include "response_form/BoardRegisterResponseForm.h"
 #include "response_form/BoardReadResponseForm.h"
 #include "response_form/BoardListResponseForm.h"
+#include "request_form/BoardModifyRequestForm.h"
 
 class BoardController {
 private:
@@ -27,7 +28,7 @@ public:
     std::vector<BoardListResponseForm> boardList();
     BoardRegisterResponseForm *boardRegister(BoardRegisterRequestForm *requestForm);
     BoardReadResponseForm *boardRead(int boardNo);
-    std::vector<BoardRegisterResponse> boardModify();
+    BoardReadResponseForm *boardModify(BoardModifyRequestForm *requestForm);
     void BoardRemove();
 
     static BoardController& getInstance(std::shared_ptr<BoardService> boardService);

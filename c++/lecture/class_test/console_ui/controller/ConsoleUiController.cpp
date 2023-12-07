@@ -155,3 +155,25 @@ void ConsoleUiController::uiBoardList()
                 << std::setw(20) << responseForm.getWriter() << std::endl;
     }
 }
+
+void ConsoleUiController::uiBoardModify(int boardNo) {
+    int sessionId = consoleUiService->getSignInSession();
+
+    if (sessionId == -1) {
+        std::cout << "로그인을 먼저 진행하세요!" << std::endl;
+        return;
+    }
+
+    BoardModifyRequestForm *modifyRequestForm = consoleUiService->makeBoardModifyForm(boardNo);
+
+    BoardController &boardController = BoardController::getInstance();
+    BoardReadResponseForm *responseForm = boardController.boardModify(modifyRequestForm);
+
+    if (responseForm != nullptr) {
+        setTextColor(32);
+
+        std::cout << "제목: " << responseForm->getTitle() << std::endl;
+        std::cout << "작성자: " << responseForm->getWriter() << std::endl;
+        std::cout << "내용: " << responseForm->getContent() << std::endl;
+    }
+}

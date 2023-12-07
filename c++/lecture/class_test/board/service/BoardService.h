@@ -10,6 +10,7 @@
 #include "request/BoardRegisterRequest.h"
 #include "response/BoardReadResponse.h"
 #include "../controller/response_form/BoardListResponseForm.h"
+#include "request/BoardModifyRequest.h"
 
 class BoardService {
 public:
@@ -19,6 +20,7 @@ public:
     virtual std::vector<BoardListResponseForm> list() = 0;
     virtual BoardRegisterResponse *create(BoardRegisterRequest *request) = 0;
     virtual BoardReadResponse *read(int boardNo) = 0;
+    virtual BoardReadResponseForm *modify(BoardModifyRequest *request) = 0;
 //    virtual std::vector<BoardRegisterResponse> modify() = 0;
 //    virtual void remove() = 0;
 };

@@ -23,6 +23,7 @@ public:
     AccountLoginRequestForm *makeAccountLoginForm() override;
 
     BoardRegisterRequestForm *makeBoardRegisterForm(int sessionId) override;
+    BoardModifyRequestForm *makeBoardModifyForm(int boardNo) override;
 
     void storeSession(int uniqueId) override;
     int getSignInSession() override;
