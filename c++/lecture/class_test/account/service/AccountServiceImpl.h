@@ -16,23 +16,24 @@
 
 #include "../repository/AccountRepository.h"
 #include "AccountService.h"
+#include "../repository/AccountRepositoryImpl.h"
 
 
 class AccountServiceImpl : public AccountService {
 private:
     static std::shared_ptr<AccountServiceImpl> instance;
-    std::shared_ptr<AccountRepository> accountRepository;
+    std::shared_ptr<AccountRepositoryImpl> accountRepository;
 
 public:
-    AccountServiceImpl(std::shared_ptr<AccountRepository> accountRepository);
+    AccountServiceImpl(std::shared_ptr<AccountRepositoryImpl> accountRepository);
 
     AccountRegisterResponse *create(AccountRegisterRequest *request) override;
     AccountLoginResponse *signIn(AccountLoginRequest *request) override;
     void signOut(int sessionId) override;
     std::string findAccoutIdBySessionId(int sessionId) override;
 
-    static AccountServiceImpl& getInstance(std::shared_ptr<AccountRepository> accountRepository);
-    static AccountServiceImpl& getInstance();
+    static std::shared_ptr<AccountServiceImpl> getInstance(std::shared_ptr<AccountRepositoryImpl> accountRepository);
+    static std::shared_ptr<AccountServiceImpl> getInstance();
 };
 
 

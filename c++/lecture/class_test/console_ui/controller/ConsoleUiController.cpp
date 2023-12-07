@@ -12,10 +12,14 @@
 #include "../../board/controller/request_form/BoardRegisterRequestForm.h"
 #include "../../board/controller/response_form/BoardReadResponseForm.h"
 #include "../../board/controller/response_form/BoardListResponseForm.h"
+#include "../../utility/keyboard/user_keyboard_input.h"
 
 void setTextColor(int colorCode) {
     std::cout << "\033[1;" << colorCode << "m";
 }
+
+int ConsoleUiController::currentReadBoardNo = 0;
+ConsoleUiControllerCommand ConsoleUiController::currentState;
 
 ConsoleUiController::ConsoleUiController(
         std::shared_ptr<ConsoleUiService> consoleUiService)
@@ -38,6 +42,8 @@ ConsoleUiController& ConsoleUiController::getInstance() {
 
 void ConsoleUiController::uiAccountRegister()
 {
+    setCurrentState(ConsoleUiControllerCommand::ACCOUNT_REGISTER);
+
     std::cout << "회원 가입을 진행합니다!" << std::endl;
     AccountRegisterRequestForm *requestForm;
 
@@ -59,6 +65,7 @@ void ConsoleUiController::uiAccountRegister()
 
 void ConsoleUiController::uiAccountLogin()
 {
+    setCurrentState(ConsoleUiControllerCommand::SIGN_IN);
     // 로그인 세션 존재 여부 파악
     int sessionId = consoleUiService->getSignInSession();
     if (sessionId == -1) {
@@ -80,6 +87,8 @@ void ConsoleUiController::uiAccountLogin()
 
 void ConsoleUiController::uiAccountLogout()
 {
+    setCurrentState(ConsoleUiControllerCommand::SIGN_OUT);
+
     int sessionId = consoleUiService->getSignInSession();
 
     if (sessionId == -1) {
@@ -93,6 +102,8 @@ void ConsoleUiController::uiAccountLogout()
 
 void ConsoleUiController::uiBoardRegister()
 {
+    setCurrentState(ConsoleUiControllerCommand::BOARD_REGISTER);
+
     int sessionId = consoleUiService->getSignInSession();
 
     if (sessionId == -1) {
@@ -111,6 +122,8 @@ void ConsoleUiController::uiBoardRegister()
 
 void ConsoleUiController::uiBoardRead()
 {
+    setCurrentState(ConsoleUiControllerCommand::BOARD_READ);
+
     int sessionId = consoleUiService->getSignInSession();
 
     if (sessionId == -1) {
@@ -120,6 +133,7 @@ void ConsoleUiController::uiBoardRead()
 
     // 이것도 사실 정석은 requestForm 만들어서 세션이랑 같이 보내야함
     int readBoardNo = consoleUiService->makeBoardReadForm();
+    setCurrentReadBoardNo(readBoardNo);
 
     // 사실 위의 uiRepository에 state(상태) 값들을 저장해놨다면
     // 매번 번거롭게 boardController에 요청할 필요가 없을 것입니다.
@@ -138,6 +152,8 @@ void ConsoleUiController::uiBoardRead()
 
 void ConsoleUiController::uiBoardList()
 {
+    setCurrentState(ConsoleUiControllerCommand::BOARD_LIST);
+
     BoardController &boardController = BoardController::getInstance();
     std::vector<BoardListResponseForm> responseFormList = boardController.boardList();
 
@@ -157,6 +173,8 @@ void ConsoleUiController::uiBoardList()
 }
 
 void ConsoleUiController::uiBoardModify(int boardNo) {
+    setCurrentState(ConsoleUiControllerCommand::BOARD_MODIFY);
+
     int sessionId = consoleUiService->getSignInSession();
 
     if (sessionId == -1) {
@@ -180,6 +198,8 @@ void ConsoleUiController::uiBoardModify(int boardNo) {
 
 void ConsoleUiController::uiBoardRemove(int boardNo)
 {
+    setCurrentState(ConsoleUiControllerCommand::BOARD_REMOVE);
+
     int sessionId = consoleUiService->getSignInSession();
 
     if (sessionId == -1) {
@@ -189,4 +209,120 @@ void ConsoleUiController::uiBoardRemove(int boardNo)
 
     BoardController &boardController = BoardController::getInstance();
     boardController.boardRemove(boardNo);
+}
+
+void ConsoleUiController::uiExit()
+{
+    std::cout << "다음에 또 만나요 ~" << std::endl;
+
+    std::exit(0);
+}
+
+void ConsoleUiController::uiEngineStart()
+{
+    std::string command;
+    initializeCommandTable();
+
+    while (true) {
+        int sessionId = consoleUiService->getSignInSession();
+        uiIntroduce(sessionId);
+        get_user_keyboard_input_with_message("수행 할 명령을 입력하세요: ", command);
+        executeCommand(
+                consoleUiService->determineCommand(
+                        sessionId,
+                        std::stoi(command)),
+                consoleUiService->determineParameter(
+                        std::stoi(command)));
+    }
+}
+
+void ConsoleUiController::initializeCommandTable() {
+    commandTable.resize(static_cast<size_t>(ConsoleUiControllerCommand::UI_COMMAND_END));
+
+    commandTable[static_cast<size_t>(ConsoleUiControllerCommand::ACCOUNT_REGISTER)] =
+            +[](ConsoleUiController* controller, void* data) { controller->uiAccountRegister(); };
+    commandTable[static_cast<size_t>(ConsoleUiControllerCommand::SIGN_IN)] =
+            +[](ConsoleUiController* controller, void* data) { controller->uiAccountLogin(); };
+    commandTable[static_cast<size_t>(ConsoleUiControllerCommand::SIGN_OUT)] =
+            +[](ConsoleUiController* controller, void* data) { controller->uiAccountLogout(); };
+    commandTable[static_cast<size_t>(ConsoleUiControllerCommand::BOARD_LIST)] =
+            +[](ConsoleUiController* controller, void* data) { controller->uiBoardList(); };
+    commandTable[static_cast<size_t>(ConsoleUiControllerCommand::BOARD_REGISTER)] =
+            +[](ConsoleUiController* controller, void* data) { controller->uiBoardRegister(); };
+    commandTable[static_cast<size_t>(ConsoleUiControllerCommand::BOARD_READ)] =
+            +[](ConsoleUiController* controller, void* data) { controller->uiBoardRead(); };
+    commandTable[static_cast<size_t>(ConsoleUiControllerCommand::BOARD_MODIFY)] =
+            +[](ConsoleUiController* controller, void* data) { controller->uiBoardModify(*reinterpret_cast<int*>(data)); };
+    commandTable[static_cast<size_t>(ConsoleUiControllerCommand::BOARD_REMOVE)] =
+            +[](ConsoleUiController* controller, void* data) { controller->uiBoardRemove(*reinterpret_cast<int*>(data)); };
+    commandTable[static_cast<size_t>(ConsoleUiControllerCommand::UI_EXIT)] =
+            +[](ConsoleUiController* controller, void* data) { controller->uiExit(); };
+}
+
+// 명령을 처리하는 함수
+void ConsoleUiController::executeCommand(ConsoleUiControllerCommand command, void* data) {
+    size_t index = static_cast<size_t>(command);
+
+    if (index < commandTable.size() && commandTable[index]) {
+        // 함수를 호출
+        commandTable[index](this, data);
+    } else {
+        // 유효하지 않은 명령에 대한 처리
+        std::cout << "Invalid command." << std::endl;
+    }
+}
+
+void ConsoleUiController::uiIntroduce(int sessionId)
+{
+    /*
+     * 로그인이 되어 있으면 로그아웃, 게시판 리스트 조회하기, 게시물 작성하기, 종료하기
+     * 로그인이 안되어 있으면 회원가입, 로그인, 게시판 리스트 조회하기, 종료하기         v
+     * 게시판 리스트 조회하기를 했다면 게시물 작성하기, 게시물 읽기, 종료하기
+     * 게시물을 읽고 있다면 게시물 수정하기, 게시물 삭제하기, 취소하기, 돌아가기
+     */
+
+    if (getCurrentState() == ConsoleUiControllerCommand::BOARD_LIST) {
+        std::cout << "1. 게시물 작성하기\n";
+        std::cout << "2. 게시물 읽기\n";
+        std::cout << "3. 종료\n";
+        return;
+    }
+
+    if (getCurrentState() == ConsoleUiControllerCommand::BOARD_READ) {
+        std::cout << "1. 게시물 수정하기\n";
+        std::cout << "2. 게시물 삭제하기\n";
+        std::cout << "3. 돌아가기\n";
+        std::cout << "4. 종료\n";
+        return;
+    }
+
+    if (sessionId == -1) {
+        std::cout << "1. 회원가입\n";
+        std::cout << "2. 로그인\n";
+        std::cout << "3. 게시물 리스트 조회\n";
+        std::cout << "4. 종료\n";
+        return;
+    }
+
+    std::cout << "1. 로그아웃\n";
+    std::cout << "2. 게시물 리스트 조회\n";
+    std::cout << "3. 종료\n";
+}
+
+int ConsoleUiController::getCurrentReadBoardNo()
+{
+    return currentReadBoardNo;
+}
+
+void ConsoleUiController::setCurrentReadBoardNo(int boardNo)
+{
+    currentReadBoardNo = boardNo;
+}
+
+ConsoleUiControllerCommand ConsoleUiController::getCurrentState() {
+    return currentState;
+}
+
+void ConsoleUiController::setCurrentState(ConsoleUiControllerCommand currentState) {
+    ConsoleUiController::currentState = currentState;
 }

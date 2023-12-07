@@ -64,3 +64,7 @@ void Board::setTitle(const std::string &title) {
 void Board::setContent(const std::string &content) {
     Board::content = content;
 }
+
+void Board::setId(int id) {
+    Board::id = id;
+}
