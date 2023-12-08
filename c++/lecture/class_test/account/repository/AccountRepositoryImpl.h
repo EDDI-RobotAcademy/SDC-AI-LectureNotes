@@ -7,8 +7,11 @@
 
 #include "AccountRepository.h"
 #include <optional>
+#include <memory>
 
 class AccountRepositoryImpl : public AccountRepository {
+private:
+    static std::shared_ptr<AccountRepositoryImpl> instance;
 
 public:
     Account *save(Account *account) override;
@@ -17,7 +20,9 @@ public:
     void deleteSession(int sessionId) override;
     std::optional<Account> findAccountIdBySessionId(int sessionId) override;
 
-    static AccountRepositoryImpl& getInstance();
+    AccountRepositoryImpl();
+
+    static std::shared_ptr<AccountRepositoryImpl> getInstance();
 };
 
 

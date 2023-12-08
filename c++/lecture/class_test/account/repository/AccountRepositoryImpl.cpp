@@ -5,9 +5,21 @@
 #include "AccountRepositoryImpl.h"
 #include "../../mysql/DbProcess.h"
 
-AccountRepositoryImpl& AccountRepositoryImpl::getInstance()
+std::shared_ptr<AccountRepositoryImpl> AccountRepositoryImpl::instance;
+
+AccountRepositoryImpl::AccountRepositoryImpl() {
+    std::cout << "AccountRepositoryImpl instance created!" << std::endl;
+}
+
+std::shared_ptr<AccountRepositoryImpl> AccountRepositoryImpl::getInstance()
 {
-    static AccountRepositoryImpl instance;
+    if (!instance) {
+        std::cout << "Creating new AccountRepositoryImpl instance" << std::endl;
+
+        instance = std::make_shared<AccountRepositoryImpl>();
+
+    }
+
     return instance;
 }
 
@@ -103,7 +115,7 @@ void AccountRepositoryImpl::deleteSession(int sessionId)
 std::optional<Account> AccountRepositoryImpl::findAccountIdBySessionId(int sessionId)
 {
     DbProcess* dbInstance = DbProcess::getInstance();
-    std::string queryString = "SELECT * FROM account WHERE account_id = '" + std::to_string(sessionId) + "'";
+    std::string queryString = "SELECT * FROM account WHERE id = '" + std::to_string(sessionId) + "'";
 
     MYSQL_ROW row = dbInstance->findRowData(queryString);
 
