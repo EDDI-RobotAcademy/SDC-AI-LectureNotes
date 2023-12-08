@@ -84,13 +84,25 @@ Board *BoardRepositoryImpl::save(Board *board)
     //dbInstance->insertData(queryString);
     //std::unique_ptr<Board> insertedBoardPtr = dbInstance->insertEntityData<Board>(queryString);
     //Board* insertedBoard = dbInstance->insertOldEntityData<Board>(queryString);
-    std::unique_ptr<Board> insertedBoardPtr = dbInstance->insertDataAfterReturnEntity<Board>(queryString);
+    //std::unique_ptr<Board> insertedBoardPtr = dbInstance->insertDataAfterReturnEntity<Board>(queryString);
 
-    return insertedBoardPtr.release();
+    //dbInstance->insertData(queryString);
+    if (mysql_query(dbInstance->getConn(), queryString.c_str()) == 0) {
+        // Query executed successfully
+
+        // Retrieve the last inserted ID
+        unsigned long long lastInsertedId = mysql_insert_id(dbInstance->getConn());
+        board->setId(lastInsertedId);
+    }
+
+    return board;
+    //return insertedBoardPtr.release();
     //return insertedBoard;
 }
 
 std::chrono::system_clock::time_point convertBoardStringToTimePoint(const std::string& str) {
+    std::cout << "Attempting to parse date string: " << str << std::endl;
+
     std::tm tm = {};
     std::istringstream ss(str);
     ss >> std::get_time(&tm, "%Y-%m-%d %H:%M:%S");
@@ -130,7 +142,7 @@ std::optional<Board> BoardRepositoryImpl::findById(int boardNo)
 {
     DbProcess* dbInstance = DbProcess::getInstance();
 
-    std::string queryString = "SELECT * FROM board WHERE board_id = '" + std::to_string(boardNo) + "'";
+    std::string queryString = "SELECT board_id, title, writer, content, reg_date, upd_date FROM board WHERE board_id = '" + std::to_string(boardNo) + "'";
 
     MYSQL_ROW row = dbInstance->findRowData(queryString);
 
