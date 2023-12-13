@@ -25,8 +25,33 @@ C Lectures Review
 - #define _CRT_SECURE_NO_WARNINGS
 - if, else if, else
 
-<dice game>
+5th class = <dice game basics>
 - init_object 
 
-<grammer problems>
+7th class = <board basics>
+- entity = information unit in real world (ex: post, account ...) 
+- object = programming unit that can be used by functions
+https://blog.naver.com/mshanda/221247981233
+
+8th class = <advanced dice game>
+- skillset functions applied with 
+- random seed config = for format
+
+9th class = <two dimensional array>
+- array name = the first address of the array
+- understanding pointer (*& usage)
+1) int *, char *
+2) double pointer (**)
+3) function pointer
+https://m.blog.naver.com/yhol98/221679205617
+
+10th class = <vector>
+- a textbook to make a project based on DDD
+- command, command table, command table mapper(matching with functions)
+- adding UI then it is possible to interact with users
+
+13th class = <file system management>
+- open, close
+- read, write, lseek
+- 
 
