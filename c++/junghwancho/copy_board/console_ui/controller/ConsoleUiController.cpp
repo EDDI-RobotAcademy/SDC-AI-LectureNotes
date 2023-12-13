@@ -235,7 +235,29 @@ void ConsoleUiController:uiEngineStart()
     // 함수포인터 테이블을 동적으로 생성하기 위해 선언
     initializeCommandTable();
 
+    // while (true) = 무한 루프
     while (true) {
-        int sessionId =
+        // session id 받아와서
+        int sessionId = consoleUiService->getSignInSession();
+        // uiIntroduce 뭔지 아직 모르지만 거기에 파라미터로 줘서
+        uiIntroduce(sessionId);
+        // key input으로 명령어 받아서 수행
+        get_user_keyboard_input_with_message("수행 할 명령을 입력하세요.", command);
+
+        // determineCommand 아직 뭔지 모르겠지만, sessionId, command 받아서 converted command 수행
+        ConsoleUiControllerCommand convertedCommand = consoleUiService->determineCommand(
+                sessionId,
+                std::stoi(command));
+        // void 포인터 convertedCommand를 int로 강제캐스팅해서 determineParameter에 넣은게 void* parameter
+        void* parameter = consoleUiService->determineParameter(static_cast<int>(convertedCommand));
+        std::cout << "parameter: " << parameter << std::endl;
+
+        // 여기 위의 convertedCommand와 parameter를 받아서 excuteCommand 수행
+        executeCommand(
+                convertedCommand,
+                parameter);
+
+        // int 강제캐스팅 한 parameter 해제
+        delete static_cast<int*>(parameter);
     }
-};
+}
