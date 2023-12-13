@@ -1,0 +1,1 @@
+clang++  -g -g CMakeFiles/every_unit_test.dir/tests/how_to_use/how_to_tdd.cpp.o CMakeFiles/every_unit_test.dir/tests/how_to_use/wanna_verify_some_functions.cpp.o CMakeFiles/every_unit_test.dir/tests/test_main.cpp.o CMakeFiles/every_unit_test.dir/sample/sample.c.o -o every_unit_test  /usr/lib/x86_64-linux-gnu/libgtest.a -lpthread liblogic_lib.a 
