@@ -5,6 +5,7 @@
 #include "vector/Vector.h"
 #include "array/Array.h"
 #include "order/Order.h"
+#include "Cartesian/Cartesian.h"
 
 int main() {
 
@@ -13,6 +14,9 @@ int main() {
     dice *Dice = new dice();
     Dice->rollDice();
     std::cout << "First Dice Number = " << Dice->getDiceNumber() << std::endl;
+    dice Dice2;
+    Dice2.rollDice();
+    std::cout << "Second Dice Number = " << Dice2.getDiceNumber() << std::endl; // no malloc
     delete Dice;
 
     // Q2. 사용자 클래스
@@ -70,6 +74,15 @@ int main() {
     testOrder->setCommandWithPlayer(testPlayer, testOrder->getRandomCommand());
     delete testPlayer;
     delete testOrder;
+
+    // Q7. 직교 좌표계 클래스
+    std::cout << "\n7번 문제" << std::endl;
+    float length;
+    Cartesian *testCartesian1 = new Cartesian();
+    Cartesian *testCartesian2 = new Cartesian();
+    testCartesian1->setCartesianCoordinate(2.1, -5.3);
+    testCartesian2->setCartesianCoordinate(4.9, 1.7);
+//    length = lengthBetweenTwoPoint(testCartesian1, testCartesian2);
 
     return 0;
 }
