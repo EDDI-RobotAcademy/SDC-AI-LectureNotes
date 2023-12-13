@@ -1,0 +1,32 @@
+C Lectures Review 
+
+1st class
+- basic concepts to include header files for functions
+
+2nd class
+- assembly function : getting a parameter to treat
+- assembly language and code (important for C, C++)
+1) https://over-stack.tistory.com/17
+2) https://www.inflearn.com/blogs/201
+
+3rd class
+- char *name = char name[];
+- for, if() -> execution with (true) condition
+- #define, extern variables
+- const = cannot be changed
+- generate random values
+
+4th class
+- stack, heap, data, text
+- malloc = memory allocation to heap and construction of dynamic array
+1) https://coding-factory.tistory.com/671
+- strncpy(location, thing, length)
+1) https://blockdmask.tistory.com/348
+- #define _CRT_SECURE_NO_WARNINGS
+- if, else if, else
+
+<dice game>
+- init_object 
+
+<grammer problems>
+
