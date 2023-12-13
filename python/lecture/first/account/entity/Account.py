@@ -1,4 +1,5 @@
 class Account:
+    # 생성자
     def __init__(self, accountId, password):
         self.__accountId = accountId
         self.__password = password
