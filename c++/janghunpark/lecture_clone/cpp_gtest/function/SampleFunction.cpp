@@ -10,3 +10,7 @@ bool SampleFunction::testFucntion(int a) {
     else
         return false;
 }
+
+bool SampleFunction::isRegisterSuccessed(char *id, char *pw) {
+    return true;
+}

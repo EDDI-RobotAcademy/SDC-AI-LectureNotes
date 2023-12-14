@@ -9,6 +9,7 @@
 class SampleFunction {
 public:
     bool testFucntion(int a);
+    bool isRegisterSuccessed(char *id, char *pw);
 };
 
 
