@@ -21,9 +21,7 @@ enable_testing()
 
 file(GLOB CPP_SOURCES
         "arithmetic/*.cpp"
-)
-
-file(GLOB CPP_TEST_SOURCES
+        "function/*.cpp"
         "tests/*.cpp"
         "tests/add/*.cpp"
 )
@@ -39,10 +37,14 @@ add_executable(
         tests/sub/sub_test.cpp
         arithmetic/Sub.cpp
         arithmetic/Sub.h
+        function/SampleFunction.cpp
+        function/SampleFunction.h
+        tests/function/fucntion_test.cpp
 )
 
 add_library(logic_lib ${CPP_SOURCES})
 
 add_executable(every_unit_test ${CPP_TEST_SOURCES} "tests/test_main.cpp" ${CPP_SOURCES}
-        tests/sub/sub_test.cpp)
+        tests/sub/sub_test.cpp
+        tests/function/fucntion_test.cpp)
 target_link_libraries(every_unit_test PRIVATE ${GTEST_LIBRARIES} pthread logic_lib)
