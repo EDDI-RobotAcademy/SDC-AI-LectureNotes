@@ -22,7 +22,7 @@ public:
     float getX();
     float getY();
     float getZ();
-    Vector operator+(const Vector& other);
+    Vector operator+(const Vector& other) const;
     Vector operator-(const Vector& other);
     friend std::ostream& operator<<(std::ostream& os, const Vector& vec);
     ~Vector();

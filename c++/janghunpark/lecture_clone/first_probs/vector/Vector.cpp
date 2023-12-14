@@ -22,7 +22,7 @@ float Vector::getZ()
     return z;
 }
 
-Vector Vector::operator+(const Vector& other)
+Vector Vector::operator+(const Vector& other) const
 {
     return Vector(x + other.x, y + other.y, z + other.z);
 }

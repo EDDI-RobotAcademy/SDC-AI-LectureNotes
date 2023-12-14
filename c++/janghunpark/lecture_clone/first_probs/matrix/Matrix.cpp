@@ -17,6 +17,7 @@ Matrix::~Matrix() {}
 
 Matrix::Matrix(const Matrix& other) : rows(other.rows), cols(other.cols), data(other.data) {}
 
+// copy의 개념
 Matrix& Matrix::operator=(const Matrix& other) {
     if (this != &other) {
         rows = other.rows;
