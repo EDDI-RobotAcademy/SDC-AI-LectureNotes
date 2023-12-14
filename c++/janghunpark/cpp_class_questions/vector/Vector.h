@@ -20,7 +20,7 @@ public:
     int getVectorYValue();
     int getVectorZValue();
     Vector *addVector(Vector *final, Vector *a, Vector *b);
-//    int subVector(Vector, Vector);
+//    Vector *radianAngle(Vector *a, Vector *b);
     ~Vector();
 };
 

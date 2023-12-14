@@ -37,4 +37,8 @@ Vector *Vector::addVector(Vector *final, Vector *a, Vector *b) {
     return final;
 }
 
+//Vector *getAngleBtwTwoVectors(Vector *a, Vector *b) {
+//
+//}
+
 Vector::~Vector() {}
