@@ -21,4 +21,7 @@ if __name__ == '__main__':
     account.setPassword("되냐")
     print(account)
 
+    if account:
+        print(account)
+
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
