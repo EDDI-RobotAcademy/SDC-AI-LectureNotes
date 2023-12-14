@@ -8,7 +8,11 @@
 
 #include <vector>
 #include <memory>
-#include "response/BoardResponse.h"
+
+#include "response/BoardRegisterResponse.h"
+
+#include "request/BoardRegisterRequest.h"
+
 #include "BoardService.h"
 #include "../repository/BoardRepository.h"
 
@@ -18,7 +22,11 @@ private:
 
 public:
     BoardServiceImpl(std::shared_ptr<BoardRepository> boardRepository);
-    std::vector<BoardResponse> list() override;
+    std::vector<BoardListResponseForm> list() override;
+    BoardRegisterResponse *create(BoardRegisterRequest *request) override;
+    BoardReadResponse *read(int boardNo) override;
+    BoardReadResponseForm *modify(BoardModifyRequest *request) override;
+    void remove(int boardNo) override;
 };
 
 
