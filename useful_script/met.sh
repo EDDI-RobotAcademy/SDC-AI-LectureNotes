@@ -16,10 +16,11 @@ fi
 tests_dir="tests"
 
 new_dir_name="$1"
+new_dir_name_uppercase=$(echo "$new_dir_name" | sed 's/\// /g' | awk '{for(i=1;i<=NF;i++) printf "%s%s", toupper(substr($i,1,1)), tolower(substr($i,2));}')
 new_dir_path="$tests_dir/$new_dir_name"
 
 # tests 디렉토리 하위에 입력받은 이름으로 디렉토리 생성
-mkdir "$new_dir_path"
+mkdir -p "$new_dir_path"
 
 echo "$new_dir_path 디렉토리를 생성했습니다."
 
@@ -35,7 +36,7 @@ echo "$new_dir_path/gtest_main.cpp 파일을 생성했습니다."
 
 # CMakeLists.txt 생성
 cmakelists_content="cmake_minimum_required(VERSION 3.10)
-project($new_dir_name)
+project($new_dir_name_uppercase)
 
 set(CMAKE_CXX_STANDARD 17)
 
