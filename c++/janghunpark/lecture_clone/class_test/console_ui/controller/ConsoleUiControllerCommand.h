@@ -1,0 +1,21 @@
+//
+// Created by eddi on 23. 12. 7.
+//
+
+#ifndef CLASS_TEST_CONSOLEUICOMMAND_H
+#define CLASS_TEST_CONSOLEUICOMMAND_H
+
+enum class ConsoleUiControllerCommand {
+    ACCOUNT_REGISTER,
+    SIGN_IN,
+    SIGN_OUT,
+    BOARD_LIST,
+    BOARD_REGISTER,
+    BOARD_READ,
+    BOARD_MODIFY,
+    BOARD_REMOVE,
+    UI_EXIT,
+    UI_COMMAND_END
+};
+
+#endif //CLASS_TEST_CONSOLEUICOMMAND_H
