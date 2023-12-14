@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "api/BoardApi.h"
-#include "api/BoardApiTable.h"
+//#include "api/BoardApi.h"
+//#include "api/BoardApiTable.h"
 
 #include "mysql_test/DbProcess.h"
 
