@@ -4,6 +4,15 @@
 
 #include "Board.h"
 
+Board::Board() { }
+
+Board::Board(const std::string& title, const std::string& writer, const std::string& content)
+        : title(title),
+          writer(writer),
+          content(content),
+          created_at(std::chrono::system_clock::now()),
+          updated_at(created_at) { }
+
 Board::Board(int id, const std::string& title, const std::string& writer, const std::string& content)
         : id(id),
           title(title),
@@ -30,4 +39,32 @@ void Board::printBoardInfo() const {
         << ", Content: " << content
         << ", Created At: " << std::chrono::system_clock::to_time_t(created_at)
         << ", Updated At: " << std::chrono::system_clock::to_time_t(updated_at) << std::endl;
+}
+
+const int &Board::getId() const {
+    return id;
+}
+
+const std::string &Board::getTitle() const {
+    return title;
+}
+
+const std::string &Board::getWriter() const {
+    return writer;
+}
+
+const std::string &Board::getContent() const {
+    return content;
+}
+
+void Board::setTitle(const std::string &title) {
+    Board::title = title;
+}
+
+void Board::setContent(const std::string &content) {
+    Board::content = content;
+}
+
+void Board::setId(int id) {
+    Board::id = id;
 }
