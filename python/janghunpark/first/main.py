@@ -19,7 +19,7 @@ def play_dice_game_with_computer():
     print(name, "님의 주사위 숫자는", your_dice_number)
     print("컴퓨터의 주사위 숫자는", computer_dice_number)
     if your_dice_number > computer_dice_number:
-        print("당신의 승리입니다.")
+        print(f'{name}님의 승리입니다.')
     if your_dice_number < computer_dice_number:
         print("컴퓨터의 승리입니다.")
     if your_dice_number == computer_dice_number:
@@ -32,8 +32,9 @@ def roll_dice():
 
 
 # Press the green button in the gutter to run the script.
-if __name__ == '__main__':
+if __name__ == '__main__': #int main(void) 와 같은 기능
     print_hi('Pycharm')
+    print_hi('I want to be a good programmer.')
     test_list = ['apple', 'banana', 'cherry']
     int_list = [1, 2, 3, 4, 5]
     print(test_list)
