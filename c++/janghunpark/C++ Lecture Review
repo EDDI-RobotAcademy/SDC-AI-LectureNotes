@@ -21,7 +21,14 @@ https://novlog.tistory.com/entry/C-tuple-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%98%88%E
 
 4. class_test
 - layered architecture
+1) API controller
+2) Application service
+3) Domain entity
+4) Infra repository
 - singleton
 https://hwan-shell.tistory.com/227
+- static (related with singleton)
+: announcing on the public site in a class -> individual variable in the program
+https://gloomystudy.tistory.com/34
 - optional
 https://linkmemo.tistory.com/162

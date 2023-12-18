@@ -3,6 +3,7 @@ import random
 
 from account.entity.Account import Account
 
+from class_practice.Student import Student
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -50,5 +51,9 @@ if __name__ == '__main__': #int main(void) 와 같은 기능
     print(account)
 
     play_dice_game_with_computer()
+
+    sampleStudent = Student("John", 17)
+    print(sampleStudent.name, "is", sampleStudent.age, "years old, and he should ")
+    sampleStudent.go_to_school()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
