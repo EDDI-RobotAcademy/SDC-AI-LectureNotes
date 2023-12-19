@@ -19,7 +19,7 @@ class TestServerSocketServiceImpl(unittest.TestCase):
         # patch.object의 경우 ServerSocketRepositoryImpl의 create 매서드를 Mock 매서드로 대체
         # ServerSocketRepositoryImpl의 create을 mock_create으로 대체하였다는 뜻
         with patch.object(ServerSocketRepositoryImpl, 'create') as mock_create:
-            service_impl = ServerSocketServiceImpl()
+            service_impl = ServerSocketServiceImpl.getInstance()
             service_impl.createServerSocket(host, port)
 
             mock_create.assert_called_once_with(host, port)
@@ -40,7 +40,7 @@ class TestServerSocketServiceImpl(unittest.TestCase):
         # 그러므로 그 결과값이 나왔다 가정 했을 때
         # 그것을 return_value=expected_server_socket 이라 가정한 것입니다.
         with patch.object(ServerSocketRepositoryImpl, 'create', return_value=expected_server_socket):
-            service_impl = ServerSocketServiceImpl()
+            service_impl = ServerSocketServiceImpl.getInstance()
             result = service_impl.createServerSocket(host, port)
 
             self.assertEqual(result, expected_server_socket)
@@ -60,7 +60,7 @@ class TestServerSocketServiceImpl(unittest.TestCase):
         # mockSocketRepository = ServerSocketRepositoryImpl()
         # mockSocketRepository._ServerSocketRepositoryImpl__serverSocket = mockServerSocket
         mockSocketRepository = Mock()
-        mockSocketService = ServerSocketServiceImpl()
+        mockSocketService = ServerSocketServiceImpl.getInstance()
         mockSocketService._ServerSocketServiceImpl__serverSocketRepository = mockSocketRepository
 
         mockSocketService.setSocketOption(socket.SOL_SOCKET, socket.SO_REUSEADDR)
