@@ -1,3 +1,6 @@
+import socket
+
+from server_socket.entitiy.ServerSocket import ServerSocket
 from server_socket.repository.ServerSocketRepository import ServerSocketRepository
 
 
