@@ -1,6 +1,9 @@
+from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
 from server_socket.service.ServerSocketServiceImpl import ServerSocketServiceImpl
 
 if __name__ == '__main__':
-    serverSocketService = ServerSocektServiceImpl()
+    serverSocketService = ServerSocketServiceImpl()
     serverSocketService.createServerSocket("localhost", 33333)
+
+
 
