@@ -4,6 +4,7 @@
 # exclude C++ config
 cmake-build-debug
 .idea
+.env
 
 # Don't add .vscode settings
 .vscode
