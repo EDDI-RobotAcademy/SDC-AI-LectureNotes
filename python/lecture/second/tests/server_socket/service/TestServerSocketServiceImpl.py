@@ -9,8 +9,10 @@ from server_socket.service.ServerSocketServiceImpl import ServerSocketServiceImp
 
 class TestServerSocketServiceImpl(unittest.TestCase):
     def testCreateServerSocketCallsRepositoryCreate(self):
+        print("Service: 서버 소켓 생성 시 Repository create 호출 테스트")
+
         host = "localhost"
-        port = 8080
+        port = 33333
 
         # patch.object의 경우 ServerSocketRepositoryImpl의 create 매서드를 Mock 매서드로 대체
         # ServerSocketRepositoryImpl의 create을 mock_create으로 대체하였다는 뜻
@@ -20,9 +22,13 @@ class TestServerSocketServiceImpl(unittest.TestCase):
 
             mock_create.assert_called_once_with(host, port)
 
-    def test_createServerSocket_returns_server_socket_instance(self):
+
+    def testCreateServerSocketReturnsServerSocketInstance(self):
+        print("Service: 서버 소켓 생성 이후 인스턴스 반환 테스트")
+
         host = "localhost"
-        port = 8080
+        port = 33333
+
         expected_server_socket = ServerSocket(host, port, Mock())
 
         # 위와 동일하게 patch.object를 사용하기 때문에 기본적인 형식은 동일합니다.
