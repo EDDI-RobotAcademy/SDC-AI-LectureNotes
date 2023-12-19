@@ -1,5 +1,5 @@
-from server_socket.service.ServerSocketService import ServerSocketService
 from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
+from server_socket.service.ServerSocketService import ServerSocketService
 
 
 class ServerSocketServiceImpl(ServerSocketService):
@@ -9,8 +9,19 @@ class ServerSocketServiceImpl(ServerSocketService):
         # self.__clientSocketRepository = ClientSocketRepositoryImpl()
 
     def createServerSocket(self, host, port):
-        pass
         return self.__serverSocketRepository.create(host, port)
 
-    def setSocketRepository(self, apiControlLevel, optionName):
-        pass
+    def setSocketOption(self, apiControlLevel, optionName):
+        self.__serverSocketRepository.setSocketOption(apiControlLevel, optionName)
+
+    def bindServerSocket(self):
+        self.__serverSocketRepository.bindServerSocket()
+
+    def setServerListenNumber(self, howManyConnections):
+        self.__serverSocketRepository.setServerListenNumber(howManyConnections)
+
+    def setBlockingOperation(self):
+        self.__serverSocketRepository.setBlockingOperation()
+
+    def acceptClientSocket(self):
+        clientSocket, clientAddress = self.__serverSocketRepository.acceptClientSocket()
