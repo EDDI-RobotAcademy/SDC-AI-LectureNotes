@@ -11,3 +11,5 @@ class ServerSocketServiceImpl(ServerSocketService):
     def createServerSocket(self, host, port):
         return self.__serverSocketRepository.create(host, port)
 
+    def setSocketOption(self, apiControlLevel, OptionName):
+        self.__serverSocketRepository.setSocketOption(apiControlLevel, OptionName)

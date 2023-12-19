@@ -43,6 +43,31 @@ class TestServerSocketServiceImpl(unittest.TestCase):
 
             self.assertEqual(result, expected_server_socket)
 
+    # 대소문자 주의 (시작이 대문자면 Class)
+    # 일단 만들면 아래처럼 터집니다
+    # 터지는 이유는 선 테스트 후 개발이기 때문 (TDD)
+    # AttributeError: 'ServerSocketServiceImpl' object has no attribute 'setSocketOption'
+    def testSetSocketOption(self):
+        print("Service: 서버 소켓 옵션 설정 테스트")
+        # apiControlLevel
+        # optionName
+        # mockSocket = Mock()
+        # mockServerSocket = Mock()
+        # mockServerSocket.getSocket.returnValue = mockSocket
+        #
+        # mockSocketRepository = ServerSocketRepositoryImpl()
+        # mockSocketRepository._ServerSocketRepositoryImpl__serverSocket = mockServerSocket
+        mockSocketRepository = Mock()
+        mockSocketService = ServerSocketServiceImpl()
+        mockSocketService._ServerSocketServiceImpl__serverSocketRepository = mockSocketRepository
+
+        mockSocketService.setSocketOption(socket.SOL_SOCKET, socket.SO_REUSEADDR)
+
+        # Repository가 내부적으로 사용할 API를 Mocking해야함
+        # 앞으로 아래와 같은 기능(setsockopt)을 사용 할 것인데
+        # 이거 SOL_SOCKET, SO_REUSEADDR 옵션을 가지고 한 번 실행되니 ?
+        mockSocketRepository.setSocketOption.assert_called_once_with(socket.SOL_SOCKET, socket.SO_REUSEADDR)
+
 
 if __name__ == '__main__':
     unittest.main()
