@@ -1,6 +1,5 @@
 import atexit
 
-
 class ServerSocket(object):
     def __init__(self, host, port, socket):
         self.__host = host
@@ -9,6 +8,15 @@ class ServerSocket(object):
 
         atexit.register(self.closeSocket)
 
+
+    def getHost(self):
+        return self.__host
+
+    def getPort(self):
+        return self.__port
+
+    def getSocket(self):
+        return self.__socket
 
     def closeSocket(self):
         print("서버 소켓 종료!")

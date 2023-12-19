@@ -9,5 +9,22 @@ class ServerSocketServiceImpl(ServerSocketService):
         # self.__clientSocketRepository = ClientSocketRepositoryImpl()
 
     def createServerSocket(self, host, port):
-        pass
         return self.__serverSocketRepository.create(host, port)
+
+    def setSocketOption(self, apiControlLevel, OptionName):
+        self.__serverSocketRepository.setSocketOption(apiControlLevel, OptionName)
+
+    def bindServerSocket(self):
+        self.__serverSocketRepository.bindServerSocket()
+
+    def setServerListenNumber(self, howManyAccessHere):
+        self.__serverSocketRepository.setListenNumber(howManyAccessHere)
+
+    def setBlockingOperation(self):
+        self.__serverSocketRepository.setBlockingOperation()
+
+    def acceptClientSocket(self):
+        clientSocket, clientAddress = self.__serverSocketRepository.acceptClientSocket()
+
+
+
