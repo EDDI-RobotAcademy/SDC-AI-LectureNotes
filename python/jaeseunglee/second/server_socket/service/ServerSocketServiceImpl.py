@@ -12,3 +12,20 @@ class ServerSocketServiceImpl(ServerSocketService):
         pass
         return self.__serverSocketRepository.create(host, post)
 
+    def setSocketOption(self, apiControlLevel, OptionName):
+        self.__serverSocketRepository.setSocketOption(apiControlLevel, OptionName)
+
+    def bindServerSocket(self):
+        self.__serverSocketRepository.bindServerSocket()
+
+    def setServerListenNumber(self, howManyAccessHere):
+        self.__serverSocketRepository.setListenNumber(howManyAccessHere)
+
+    def setBlockingOperation(self):
+        self.__serverSocketRepository.setBlockingOperation()
+
+    def acceptClientSocket(self):
+        self.__serverSocketRepository.acceptClientSocket()
+
+
+

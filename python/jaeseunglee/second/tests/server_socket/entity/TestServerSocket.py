@@ -16,6 +16,7 @@ class TestServerSocket(unittest.TestCase):
         self.assertEqual(server_socket.getPort(), port)
 
 
+
     def testCloseSocketCalledOnExit(self):
 
         host = 'localhost'
