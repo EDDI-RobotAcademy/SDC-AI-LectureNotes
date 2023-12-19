@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 import atexit
 from server_socket.entity.ServerSocket import ServerSocket
 
@@ -23,9 +23,11 @@ class TestServerSocket(unittest.TestCase):
 
         server_socket = ServerSocket(host, port, mock_socket)
 
-        self.addCleanup(server_socket.closeSocket)
+        with patch.object(server_socket, '_ServerSocket__socket') as mock_close:
+            atexit._run_exitfuncs()
 
-        #self.assertTrue(server_socket.getSocket().closeSocket.called, "closeSocket 이 exit 상황에서 안전하게 동작하였음")
+            # Assert
+            mock_close.close.assert_called_once()
 
 
 if __name__ == '__main__':
