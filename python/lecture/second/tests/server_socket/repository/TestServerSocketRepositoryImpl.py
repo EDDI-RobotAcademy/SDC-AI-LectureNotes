@@ -11,6 +11,8 @@ class TestServerSocketRepositoryImpl(unittest.TestCase):
 
     # 객체가 올바르게 1번만 생성되는지 확인
     def testCreateSocketInitialized(self):
+        print("Repository: 서버 소켓 생성 테스트")
+
         host = "localhost"
         port = 33333
 
@@ -25,6 +27,8 @@ class TestServerSocketRepositoryImpl(unittest.TestCase):
             mock_socket.assert_called_once_with(socket.AF_INET, socket.SOCK_STREAM)
 
     def testCreateReturnsServerSocketInstance(self):
+        print("Repository: 서버 소켓 생성 이후 인스턴스 반환 테스트")
+
         host = "localhost"
         port = 33333
 
