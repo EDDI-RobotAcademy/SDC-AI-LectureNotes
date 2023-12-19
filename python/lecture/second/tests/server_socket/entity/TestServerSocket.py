@@ -6,6 +6,8 @@ from server_socket.entity.ServerSocket import ServerSocket
 
 class TestServerSocket(unittest.TestCase):
     def testServerSocketInitialization(self):
+        print("Entity: 서버 소켓 생성 테스트")
+
         host = "localhost"
         port = 33333
         mock_socket = Mock()
@@ -17,6 +19,8 @@ class TestServerSocket(unittest.TestCase):
         self.assertEqual(server_socket.getSocket(), mock_socket)
 
     def testCloseSocketCalledOnExit(self):
+        print("Entity: 서버 소켓 소멸 테스트")
+
         host = "localhost"
         port = 33333
         mock_socket = Mock()
