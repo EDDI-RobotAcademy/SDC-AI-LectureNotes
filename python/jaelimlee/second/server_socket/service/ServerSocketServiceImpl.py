@@ -9,5 +9,4 @@ class ServerSocketServiceImpl(ServerSocketService):
         # self.__clientSocketRepository = ClientSocketRepositoryImpl()
 
     def createServerSocket(self, host, port):
-        pass
         return self.__serverSocketRepository.create(host, port)
