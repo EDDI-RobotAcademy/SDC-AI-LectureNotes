@@ -8,6 +8,7 @@ class ServerSocket(object):
 
         atexit.register(self.closeSocket)
 
+
     def getHost(self):
         return self.__host
 
