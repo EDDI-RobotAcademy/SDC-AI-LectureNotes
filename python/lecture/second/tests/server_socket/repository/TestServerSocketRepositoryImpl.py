@@ -14,9 +14,14 @@ class TestServerSocketRepositoryImpl(unittest.TestCase):
         host = "localhost"
         port = 33333
 
+        # patch('socket.socket') as mock_socket의 경우
+        # socket 모듈의 socket 클래스를 가상(mock) 객체로 대체
+        # 소위 Mocking 한다고 하는데 가상으로 만들어놓고 사용하는 것입니다.
+        # 결론적으로 실제 Repository에 있는 socket.socket을 Mocking 시킨것임
         with patch('socket.socket') as mock_socket:
             self.serverSocketRepository.create(host, port)
 
+            # 오직 한 번만 실행되는지 검증
             mock_socket.assert_called_once_with(socket.AF_INET, socket.SOCK_STREAM)
 
     def testCreateReturnsServerSocketInstance(self):
