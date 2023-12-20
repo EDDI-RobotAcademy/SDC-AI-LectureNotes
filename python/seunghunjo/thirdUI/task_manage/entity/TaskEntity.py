@@ -12,3 +12,4 @@ class TaskEntity:
 
     def getArgs(self):
         return self.__args
+
