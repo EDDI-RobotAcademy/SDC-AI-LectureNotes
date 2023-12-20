@@ -35,7 +35,7 @@ if __name__ == '__main__':
     clientSocketService.createClientSocket(config('TARGET_HOST'), int(config('PORT')))
     clientSocketService.connectToTargetHost()
 
-    clientSocketService.setBlockingOperation()
+    # clientSocketService.setBlockingOperation()
 
     # 현재 시나리오에서
     # 입력에 대한 요청을 처리하는 Transmitter
@@ -58,7 +58,7 @@ if __name__ == '__main__':
     while True:
         try:
             # serverSocketService.acceptClientSocket()
-            print("main: 나도 별개의 Task 야")
+            # print("main: 나도 별개의 Task 야")
             sleep(0.5)
 
         except socket.error:
