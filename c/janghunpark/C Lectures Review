@@ -1,0 +1,64 @@
+C Lectures Review 
+
+1st class
+- basic concepts to include header files for functions
+
+2nd class
+- assembly function : getting a parameter to treat
+- assembly language and code (important for C, C++)
+1) https://over-stack.tistory.com/17
+2) https://www.inflearn.com/blogs/201
+
+3rd class
+- char *name = char name[];
+- for, if() -> execution with (true) condition
+- #define, extern variables
+- const = cannot be changed
+- generate random values
+
+4th class
+- stack, heap, data, text
+- malloc = memory allocation to heap and construction of dynamic array
+1) https://coding-factory.tistory.com/671
+- strncpy(location, thing, length)
+1) https://blockdmask.tistory.com/348
+- #define _CRT_SECURE_NO_WARNINGS
+- if, else if, else
+
+5th class = <dice game basics>
+- init_object 
+
+7th class = <board basics>
+- entity = information unit in real world (ex: post, account ...) 
+- object = programming unit that can be used by functions
+https://blog.naver.com/mshanda/221247981233
+
+8th class = <advanced dice game>
+- skillset functions applied with 
+- random seed config = for format
+
+9th class = <two dimensional array>
+- array name = the first address of the array
+- understanding pointer (*& usage)
+1) int *, char *
+2) double pointer (**)
+3) function pointer
+https://m.blog.naver.com/yhol98/221679205617
+
+10th class = <vector>
+- a textbook to make a project based on DDD
+- command, command table, command table mapper(matching with functions)
+- adding UI then it is possible to interact with users
+
+13th class = <file system management>
+- open, close
+- read, write, lseek
+
+Topic lesson = <pointer>
+
+
+Topic lesson = <googletest>
+- how can I treat the function? 
+- TDD
+https://wooaoe.tistory.com/33
+https://growingdev.blog/entry/%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD-%EA%B5%AC%EA%B8%80-%ED%85%8C%EC%8A%A4%ED%8A%B8googletest-%EA%B0%9C%EB%85%90-%EB%B0%8F-%EC%98%88%EC%A0%9C

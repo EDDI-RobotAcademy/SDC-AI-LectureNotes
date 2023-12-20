@@ -1,0 +1,34 @@
+SRP Rule (single responsibility principle)
+- one object must be responsible for one method
+
+IoC (inversion of control)
+
+1. cpp_test
+- initiator, destructor
+
+2. first_prob
+- vector
+https://blockdmask.tistory.com/70
+- operator, friend
+- const
+https://easycoding91.tistory.com/entry/C-%EA%B0%95%EC%A2%8C-const-%EC%9C%84%EC%B9%98%EC%9D%98-%EC%9D%98%EB%AF%B8%EC%99%80-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95
+- ostream (...never mind)
+- tuple
+https://novlog.tistory.com/entry/C-tuple-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%98%88%EC%A0%9C
+
+3. cpp_gtest
+- ??????? now I can do only basic calculation, checking initiation..
+
+4. class_test
+- layered architecture
+1) API controller
+2) Application service
+3) Domain entity
+4) Infra repository
+- singleton
+https://hwan-shell.tistory.com/227
+- static (related with singleton)
+: announcing on the public site in a class -> individual variable in the program
+https://gloomystudy.tistory.com/34
+- optional
+https://linkmemo.tistory.com/162
