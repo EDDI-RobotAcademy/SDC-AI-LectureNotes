@@ -18,6 +18,12 @@ class ClientSocketRepositoryImpl(ClientSocketRepository):
         print("ClientSocketRepository 생성자 호출")
         self.__clientSocket = None
 
+    @classmethod
+    def getInstance(cls):
+        if cls.__instance is None:
+            cls.__instance = cls()
+        return cls.__instance
+
     def create(self, host, port):
         socketObject = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.__clientSocket = ClientSocket(host, port, socketObject)
