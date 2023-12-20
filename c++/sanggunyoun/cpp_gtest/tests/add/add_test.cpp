@@ -7,7 +7,6 @@
 
 TEST(AddTest, onePlusTwoGivesThree)
 {
-    std::cout << "Hello, World!" << std::endl;
     Add *add_object = new Add();
 
     EXPECT_EQ(3, add_object->sum(1, 2));
