@@ -1,3 +1,5 @@
+import socket
+from datetime import datetime
 from time import sleep
 
 from transmitter.repository.TransmitterRepository import TransmitterRepository
@@ -20,9 +22,24 @@ class TransmitterRepositoryImpl(TransmitterRepository):
             cls.__instance = cls()
         return cls.__instance
 
-    def transmitCommand(self):
+    def transmitCommand(self, clientSocketObject):
         while True:
-            print("정말 잘 되니 ?")
+            try:
+                sendMessage = "참 쉽죠 ?"
+                clientSocket = clientSocketObject.getSocket()
+                clientSocket.sendall(sendMessage.encode())
+                print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
+
+            except (socket.error, BrokenPipeError) as exception:
+                print(f"사용자 연결 종료")
+                return None
+
+            except socket.error as exception:
+                print(f"전송 중 에러 발생: str{exception}")
+                sleep(0.5)
+
+            except Exception as exception:
+                print("원인을 알 수 없는 에러가 발생하였습니다")
 
             sleep(2)
 
