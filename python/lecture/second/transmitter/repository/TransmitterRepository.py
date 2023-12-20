@@ -6,3 +6,6 @@ class TransmitterRepository(abc.ABC):
     def transmitCommand(self, clientSocketObject):
         pass
 
+    @abc.abstractmethod
+    def getTransmitQueue(self):
+        pass
