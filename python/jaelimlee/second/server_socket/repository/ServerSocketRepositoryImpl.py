@@ -57,14 +57,16 @@ class ServerSocketRepositoryImpl(ServerSocketRepository):
         try:
             serverSocketObject = self.__serverSocket.getSocket()
             clientSocket, clientAddress = serverSocketObject.accept()
-            print(f"사용자가 접속했습니다: {clientAddress}")
 
-            self.__clientSocketList.append(ClientSocket(clientSocket, clientAddress))
+            if clientSocket:
+                print(f"사용자가 접속했습니다: {clientAddress}")
 
-            return clientSocket, clientAddress
+                self.__clientSocketList.append(ClientSocket(clientSocket, clientAddress))
+
+                return clientSocket, clientAddress
 
         except BlockingIOError:
-            print("현재 출입을 시도하는 사용자가 없습니다!")
+            # print("현재 출입을 시도하는 사용자가 없습니다!")
             sleep(0.5)
             # 여태까지 다룬 언어들은 동시에 2개를 리턴하지 못하기 때문에
             # 구조체나 객체화하여 리턴해야했음
