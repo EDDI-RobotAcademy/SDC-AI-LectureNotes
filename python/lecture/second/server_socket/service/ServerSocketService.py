@@ -23,10 +23,6 @@ class ServerSocketService(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def setBlockingOperation(self):
-        pass
-
-    @abc.abstractmethod
     def acceptClientSocket(self):
         pass
 
