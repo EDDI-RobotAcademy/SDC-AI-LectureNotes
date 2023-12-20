@@ -1,12 +1,14 @@
 import socket
 from time import sleep
 
+from server_socket.entity.ClientSocket import ClientSocket
 from server_socket.entity.ServerSocket import ServerSocket
 from server_socket.repository.ServerSocketRepository import ServerSocketRepository
 
 
 class ServerSocketRepositoryImpl(ServerSocketRepository):
     __instance = None
+    __clientSocketList = []
 
     def __new__(cls):
         if cls.__instance is None:
@@ -16,6 +18,12 @@ class ServerSocketRepositoryImpl(ServerSocketRepository):
     def __init__(self):
         print("ServerSocketRepositoryImpl 생성자 호출")
         self.__serverSocket = None
+
+    @classmethod
+    def getInstance(cls):
+        if cls.__instance is None:
+            cls.__instance = cls()
+        return cls.__instance
 
     def create(self, host, port):
         socketObject = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -50,6 +58,9 @@ class ServerSocketRepositoryImpl(ServerSocketRepository):
             serverSocketObject = self.__serverSocket.getSocket()
             clientSocket, clientAddress = serverSocketObject.accept()
             print(f"사용자가 접속했습니다: {clientAddress}")
+
+            self.__clientSocketList.append(ClientSocket(clientSocket, clientAddress))
+
             return clientSocket, clientAddress
 
         except BlockingIOError:
@@ -65,4 +76,8 @@ class ServerSocketRepositoryImpl(ServerSocketRepository):
             print(f"사용자 승인 중 에러 발생: {exception}")
             return None, None
 
+    def getServerSocket(self):
+        return self.__serverSocket
 
+    def getClientSocketList(self):
+        return self.__clientSocketList

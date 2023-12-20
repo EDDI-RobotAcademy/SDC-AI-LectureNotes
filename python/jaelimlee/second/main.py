@@ -1,11 +1,15 @@
+import multiprocessing
 import socket
 from time import sleep
 from decouple import config
 
 from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
 from server_socket.service.ServerSocketServiceImpl import ServerSocketServiceImpl
+from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
+from task_manage.service.TaskManageServiceImpl import TaskManageServiceImpl
 from utility.IPAddressBindSupporter import IPAddressBindSupporter
 from mysql.MySQLProcess import DbProcess
+# pip3 install pymysql
 
 MYHOST = IPAddressBindSupporter.getIpAddressFromGoogle()
 
@@ -25,10 +29,16 @@ def initServerSocketDomain():
     ServerSocketServiceImpl(serverSocketRepository)
 
 
+def initTaskManageDomain():
+    taskManageRepository = TaskManageRepositoryImpl()
+    TaskManageServiceImpl(taskManageRepository)
+
+
 def initEachDomain():
     initMysqlInstance()
 
     initServerSocketDomain()
+    initTaskManageDomain()
 
 
 if __name__ == '__main__':
@@ -46,12 +56,20 @@ if __name__ == '__main__':
     serverSocketService.setServerListenNumber(1)
     serverSocketService.setBlockingOperation()
 
+    taskManageService = TaskManageServiceImpl.getInstance()
+
+    queue = multiprocessing.Queue()
+
     while True:
         try:
-            serverSocketService.acceptClientSocket()
+            serverSocketService.acceptClientSocket(queue)
+
+            if not queue.empty():
+                print("사용자가 접속했습니다!")
+                taskManageService.createReceiveTask()
 
         except socket.error:
-            sleep(0.5)
+            sleep(1.0)
 
 
 # 보편적으로 서비스를 제공하는 입장에 놓여 있으면 Server(서버)
