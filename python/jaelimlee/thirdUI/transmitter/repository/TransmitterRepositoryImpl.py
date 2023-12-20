@@ -22,25 +22,29 @@ class TransmitterRepositoryImpl(TransmitterRepository):
             cls.__instance = cls()
         return cls.__instance
 
-    def transmitCommand(self, clientSocketObject):
+    # 클라이언트 소켓에서 송신
+    def transmitCommand(self, clientSocketObject, lock):
         while True:
-            try:
-                sendMessage = "참 쉽죠 ?"
-                clientSocket = clientSocketObject.getSocket()
-                clientSocket.sendall(sendMessage.encode())
-                print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
+            with lock:
+                try:
+                    sendMessage = "참 쉽죠 ?"
+                    clientSocket = clientSocketObject.getSocket()
 
-            except (socket.error, BrokenPipeError) as exception:
-                print(f"사용자 연결 종료")
-                return None
+                    # 실제 연결된 클라이언트에 데이터 송신
+                    clientSocket.sendall(sendMessage.encode())
+                    print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
 
-            except socket.error as exception:
-                print(f"전송 중 에러 발생: str{exception}")
-                sleep(0.5)
+                except (socket.error, BrokenPipeError) as exception:
+                    print(f"사용자 연결 종료")
+                    return None
 
-            except Exception as exception:
-                print("원인을 알 수 없는 에러가 발생하였습니다")
+                except socket.error as exception:
+                    print(f"전송 중 에러 발생: str{exception}")
 
-            sleep(2)
+                except Exception as exception:
+                    print("원인을 알 수 없는 에러가 발생하였습니다")
+
+                finally:
+                    sleep(0.5)
 
 
