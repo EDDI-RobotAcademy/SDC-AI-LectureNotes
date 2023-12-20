@@ -27,8 +27,9 @@ class TaskManageServiceImpl(TaskManageService):
 
     def createTransmitTask(self):
         transmitterRepository = TransmitterRepositoryImpl.getInstance()
+        clientSocketRepository = ClientSocketRepositoryImpl.getInstance()
 
         self.__taskManageRepository.createTask(
             target=transmitterRepository.transmitCommand,
-            args=None
+            args=(clientSocketRepository.getClientSocket(), )
         )
