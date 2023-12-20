@@ -25,7 +25,7 @@ class TransmitterRepositoryImpl(TransmitterRepository):
     def transmitCommand(self, clientSocketObject):
         while True:
             try:
-                sendMessage = "파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며파이썬 쉽다며"
+                sendMessage = "참 쉽죠 ?"
                 clientSocket = clientSocketObject.getSocket()
                 clientSocket.sendall(sendMessage.encode())
                 print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
