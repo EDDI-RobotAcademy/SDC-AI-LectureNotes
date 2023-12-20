@@ -24,6 +24,6 @@ class ServerSocketService(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def acceptClientSocket(self):
+    def acceptClientSocket(self, queue):
         pass
 

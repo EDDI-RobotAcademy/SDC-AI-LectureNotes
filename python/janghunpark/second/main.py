@@ -1,41 +1,50 @@
 import socket
+import multiprocessing
 from time import sleep
-# from decouple import config
-#
-# from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
+from decouple import config
+
+from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
+from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
 from server_socket.service.ServerSocketServiceImpl import ServerSocketServiceImpl
+from task_manage.service.TaskManageServiceImpl import TaskManageServiceImpl
 from utility.IPAddressBindSupporter import IPAddressBindSupporter
-# from mysql.MySQLProcess import DbProcess
-#
-#
-# MYHOST = IPAddressBindSupporter.getIpAddressFromGoogle()
-#
-#
-# def initMysqlInstance():
-#     dbInstance = DbProcess(
-#         host=config('HOST'),
-#         user=config('DB_USER'),
-#         password=config('PASSWORD'),
-#         database=config('DATABASE')
-#     )
-#     dbInstance.connect()
-#
-#
-# def initServerSocketDomain():
-#     serverSocketRepository = ServerSocketRepositoryImpl()
-#     ServerSocketServiceImpl(serverSocketRepository)
-#
-#
-# def initEachDomain():
-#     initMysqlInstance()
-#
-#     initServerSocketDomain()
+from mysql.MySQLProcess import DbProcess
+
+
+MYHOST = IPAddressBindSupporter.getIpAddressFromGoogle()
+
+
+def initMysqlInstance():
+    dbInstance = DbProcess(
+        host=config('HOST'),
+        user=config('DB_USER'),
+        password=config('PASSWORD'),
+        database=config('DATABASE')
+    )
+    dbInstance.connect()
+
+
+def initServerSocketDomain():
+    serverSocketRepository = ServerSocketRepositoryImpl()
+    ServerSocketServiceImpl(serverSocketRepository)
+
+
+def initTaskManageDomain():
+    taskManageRepository = TaskManageRepositoryImpl()
+    TaskManageServiceImpl(taskManageRepository)
+
+
+def initEachDomain():
+    initMysqlInstance()
+    initServerSocketDomain()
+    initTaskManageDomain()
+
 
 # __init__py. = 이 파일은 기본적으로 python package 인 것을 인식
 if __name__ == '__main__':
     print(f'ip: {IPAddressBindSupporter.getIPAddress()}')
     print(f'ip: {IPAddressBindSupporter.getLocalIPAddress()}')
-    # print(f"ip: {IPAddressBindSupporter.getIpAddressFromGoogle()}")
+    print(f"ip: {IPAddressBindSupporter.getIpAddressFromGoogle()}")
     #
     # initEachDomain()
     # Server Socket : 컴퓨터 네트워크에서 프로세스 간 통신을 가능하게 하는 역할
@@ -49,7 +58,7 @@ if __name__ == '__main__':
     # serverSocketService = ServerSocketServiceImpl.getInstance()
 
     # host, port 정보를 바탕으로 서버 소켓 생성
-    serverSocketService.createServerSocket("localhost", 33333)
+    serverSocketService.createServerSocket(MYHOST, 33333)
     # 서버 소켓 옵션 설정 ; 필요한 이유는 아래와 같음
     # 예기치 못한 상황이 발생하여 서버가 꺼졌더라도 기존에 사용하던 IP 와 Port 번호를 재사용
     # 소켓 자체의 옵션을 제어 가능 - 추가적인 학습 필요
@@ -61,8 +70,18 @@ if __name__ == '__main__':
     # 일단 튕겨내는 접속 없이 blocking 을 막아 놓음 (false)
     serverSocketService.setBlockingOperation()
 
+    taskManageService = TaskManageServiceImpl.getInstance()
+
+    queue = multiprocessing.Queue()
+
     while True:
         try:
-            serverSocketService.acceptClientSocket()
+            serverSocketService.acceptClientSocket(queue)
+
+            if not queue.empty():
+                print("사용자가 접속했습니다!")
+                taskManageService.createReceiveTask()
+                taskManageService.createTransmitTask()
+
         except socket.error:
-            sleep(0.5)
+            sleep(1.0)

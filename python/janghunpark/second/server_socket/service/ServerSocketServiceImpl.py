@@ -23,5 +23,13 @@ class ServerSocketServiceImpl(ServerSocketService):
     def setBlockingOperation(self):
         self.__serverSocketRepository.setBlockingOperation()
 
-    def acceptClientSocket(self):
+    # 데이터 구조체 (queue)
+    # queue 에 socket 과 address 를 넣어서 보관
+    def acceptClientSocket(self, queue):
         clientSocket, clientAddress = self.__serverSocketRepository.acceptClientSocket()
+
+        if clientSocket is None:
+            return
+
+        print("clientSocket: {}, clientAddress: {}".format(clientSocket, clientAddress))
+        queue.put((clientSocket, clientAddress))
