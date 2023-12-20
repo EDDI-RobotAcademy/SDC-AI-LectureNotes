@@ -5,6 +5,8 @@ from decouple import config
 
 from client_socket.repository.ClientSocketRepositoryImpl import ClientSocketRepositoryImpl
 from client_socket.service.ClientSocketServiceImpl import ClientSocketServiceImpl
+from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
+from task_manage.service.TaskManageServiceImpl import TaskManageServiceImpl
 
 
 def initServerSocketDomain():
@@ -12,8 +14,14 @@ def initServerSocketDomain():
     ClientSocketServiceImpl(clientSocketRepository)
 
 
+def initTaskManageDomain():
+    taskManageRepository = TaskManageRepositoryImpl()
+    TaskManageServiceImpl(taskManageRepository)
+
+
 def initEachDomain():
     initServerSocketDomain()
+    initTaskManageDomain()
 
 
 if __name__ == '__main__':
@@ -25,17 +33,29 @@ if __name__ == '__main__':
     # 왜 이렇게 관리해야 할까요 ? 결국 외부에 위의 정보가 노출되면 보안에 취약해지기 때문임
     clientSocketService.createClientSocket(config('TARGET_HOST'), int(config('PORT')))
     clientSocketService.connectToTargetHost()
-    # serverSocketService.setSocketOption(socket.SOL_SOCKET, socket.SO_REUSEADDR)
-    # serverSocketService.bindServerSocket()
-    # serverSocketService.setServerListenNumber(1)
-    # serverSocketService.setBlockingOperation()
-    #
-    # while True:
-    #     try:
-    #         serverSocketService.acceptClientSocket()
-    #
-    #     except socket.error:
-    #         sleep(0.5)
+
+    clientSocketService.setBlockingOperation()
+
+    # 현재 시나리오에서
+    # 입력에 대한 요청을 처리하는 Transmitter
+    # 응답에 대한 출력을 처리하는 Receiver
+    # 위와 같은 태스크들을 작성합니다.
+    # 실제로는 더 조각조각 내는 것이 좋긴합니다.
+    taskManageService = TaskManageServiceImpl.getInstance()
+
+    # 1. Transmitter 태스크를 생성 요청
+    # 2. Transmitter 태스크 객체 구성
+    # 3. 구성된 객체의 특정 동작을 취하도록 Transmitter 구동
+    taskManageService.createTransmitTask()
+
+    while True:
+        try:
+            # serverSocketService.acceptClientSocket()
+            print("main: 나도 별개의 Task 야")
+            sleep(0.5)
+
+        except socket.error:
+            sleep(0.5)
 
 
 # 보편적으로 서비스를 제공하는 입장에 놓여 있으면 Server(서버)

@@ -6,6 +6,7 @@ from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepo
 from server_socket.service.ServerSocketServiceImpl import ServerSocketServiceImpl
 from utility.IPAddressBindSupporter import IPAddressBindSupporter
 from mysql.MySQLProcess import DbProcess
+# pip3 install pymysql
 
 MYHOST = IPAddressBindSupporter.getIpAddressFromGoogle()
 
