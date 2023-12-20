@@ -2,12 +2,15 @@ import unittest
 from unittest.mock import Mock, patch
 import atexit
 from server_socket.entity.ServerSocket import ServerSocket
+from decouple import config
 
 
 class TestServerSocket(unittest.TestCase):
     def testServerSocketInitialization(self):
-        host = "localhost"
-        port = 33333
+        print("Entity: 서버 소켓 생성 테스트")
+
+        host = config('HOST')
+        port = int(config('PORT'))
         mock_socket = Mock()
 
         server_socket = ServerSocket(host, port, mock_socket)
@@ -17,8 +20,10 @@ class TestServerSocket(unittest.TestCase):
         self.assertEqual(server_socket.getSocket(), mock_socket)
 
     def testCloseSocketCalledOnExit(self):
-        host = "localhost"
-        port = 33333
+        print("Entity: 서버 소켓 소멸 테스트")
+
+        host = config('HOST')
+        port = int(config('PORT'))
         mock_socket = Mock()
 
         server_socket = ServerSocket(host, port, mock_socket)
