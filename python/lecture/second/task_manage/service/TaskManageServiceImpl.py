@@ -25,14 +25,14 @@ class TaskManageServiceImpl(TaskManageService):
             cls.__instance = cls(repository)
         return cls.__instance
 
-    # def createTransmitTask(self):
-    #     transmitterRepository = TransmitterRepositoryImpl.getInstance()
-    #     clientSocketRepository = ClientSocketRepositoryImpl.getInstance()
-    #
-    #     self.__taskManageRepository.createTask(
-    #         target=transmitterRepository.transmitCommand,
-    #         args=(clientSocketRepository.getClientSocket(), )
-    #     )
+    def createTransmitTask(self):
+        transmitterRepository = TransmitterRepositoryImpl.getInstance()
+        serverSocketRepository = ServerSocketRepositoryImpl.getInstance()
+
+        self.__taskManageRepository.createTask(
+            target=transmitterRepository.transmitCommand,
+            args=(serverSocketRepository.getClientSocketList(), )
+        )
 
     def createReceiveTask(self):
         receiverRepository = ReceiverRepositoryImpl.getInstance()

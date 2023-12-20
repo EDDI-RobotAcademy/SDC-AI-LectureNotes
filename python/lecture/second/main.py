@@ -53,7 +53,7 @@ if __name__ == '__main__':
     serverSocketService.createServerSocket(MYHOST, int(config('PORT')))
     serverSocketService.setSocketOption(socket.SOL_SOCKET, socket.SO_REUSEADDR)
     serverSocketService.bindServerSocket()
-    serverSocketService.setServerListenNumber(1)
+    serverSocketService.setServerListenNumber(15)
     serverSocketService.setBlockingOperation()
 
     taskManageService = TaskManageServiceImpl.getInstance()
@@ -67,6 +67,7 @@ if __name__ == '__main__':
             if not queue.empty():
                 print("사용자가 접속했습니다!")
                 taskManageService.createReceiveTask()
+                taskManageService.createTransmitTask()
 
         except socket.error:
             sleep(1.0)
