@@ -3,7 +3,7 @@
 
 TEST(AddTest, onePlusTwoGivesThree)
 {
-    EXPECT_EQ(3, add(1, 2));
+    EXPECT_EQ(2, add(1, 2));
 }
 
 // ? 같은 특수 문자를 적지마세요.

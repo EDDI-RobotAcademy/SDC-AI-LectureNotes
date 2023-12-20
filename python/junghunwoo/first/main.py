@@ -18,6 +18,10 @@ if __name__ == '__main__':
     print(account)
 
     account.setPassword("이게 되네")
-    
+    account.setAccountId("fuck")
+
+    account.getAccountId()
+    account.getPassword()
+    print(account)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
