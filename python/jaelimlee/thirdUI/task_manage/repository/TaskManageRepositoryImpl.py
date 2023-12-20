@@ -26,8 +26,9 @@ class TaskManageRepositoryImpl(TaskManageRepository):
         return cls.__instance
 
     def createTask(self, target, args):
-        newTask = multiprocessing.Process(target=target, )
+        newTask = multiprocessing.Process(target=target, args=args)
         newTask.start()
 
         taskEntity = TaskEntity(newTask.pid, target, args)
         self.__taskEntityList.append(taskEntity)
+
