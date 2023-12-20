@@ -23,10 +23,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
             cls.__instance = cls()
         return cls.__instance
 
-    def receiveCommand(self, clientSocketListObject):
-        clientSocketObject = clientSocketListObject[0]
-        clientSocket = clientSocketObject.getClientSocket()
-
+    def receiveCommand(self, clientSocket):
         transmitterRepository = TransmitterRepositoryImpl.getInstance()
         transmitQueue = transmitterRepository.getTransmitQueue()
 
