@@ -53,12 +53,12 @@ if __name__ == '__main__':
     # 1. Transmitter 태스크를 생성 요청
     # 2. Transmitter 태스크 객체 구성
     # 3. 구성된 객체의 특정 동작을 취하도록 Transmitter 구동
-    taskManageService.createTransmitTask()
+    taskManageService.createTransmitTask(lock)
 
     while True:
         try:
             # serverSocketService.acceptClientSocket()
-            print("main: 나도 별개의 Task 야")
+            # print("main: 나도 별개의 Task 야")
             sleep(0.5)
 
         except socket.error:
