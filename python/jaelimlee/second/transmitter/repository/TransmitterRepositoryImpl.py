@@ -1,3 +1,4 @@
+import multiprocessing
 import socket
 from datetime import datetime
 from time import sleep
@@ -7,6 +8,7 @@ from transmitter.repository.TransmitterRepository import TransmitterRepository
 
 class TransmitterRepositoryImpl(TransmitterRepository):
     __instance = None
+    __transmitQueue = multiprocessing.Queue()
 
     def __new__(cls):
         if cls.__instance is None:
@@ -22,13 +24,22 @@ class TransmitterRepositoryImpl(TransmitterRepository):
             cls.__instance = cls()
         return cls.__instance
 
-    def transmitCommand(self, clientSocketObject):
+    def transmitCommand(self, clientSocketListObject):
+        clientSocketObject = clientSocketListObject[0]
+        clientSocket = clientSocketObject.getClientSocket()
+
         while True:
             try:
-                sendMessage = "참 쉽죠 ?"
-                clientSocket = clientSocketObject.getSocket()
-                clientSocket.sendall(sendMessage.encode())
-                print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
+                print("transmitter: 응답 준비")
+                response = self.__transmitQueue.get()
+
+                if response is not None:
+                    print(f"응답할 내용: {response}")
+                    clientSocket.sendall(response.encode())
+
+                # clientSocket = clientSocketObject.getSocket()
+                # clientSocket.sendall(sendMessage.encode())
+                # print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
 
             except (socket.error, BrokenPipeError) as exception:
                 print(f"사용자 연결 종료")
@@ -43,4 +54,5 @@ class TransmitterRepositoryImpl(TransmitterRepository):
 
             sleep(2)
 
-
+    def getTransmitQueue(self):
+        return self.__transmitQueue

@@ -31,4 +31,3 @@ class TaskManageRepositoryImpl(TaskManageRepository):
 
         taskEntity = TaskEntity(newTask.pid, target, args)
         self.__taskEntityList.append(taskEntity)
-
