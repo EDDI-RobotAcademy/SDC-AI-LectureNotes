@@ -94,3 +94,4 @@ class DbProcess:
                 print("MySQL 연결 종료")
         except Exception as e:
             print(f"MySQL 연결 종료 중 에러 발생: {e}")
+
