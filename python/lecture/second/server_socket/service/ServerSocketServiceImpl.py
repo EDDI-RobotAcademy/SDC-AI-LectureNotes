@@ -37,8 +37,15 @@ class ServerSocketServiceImpl(ServerSocketService):
     def setBlockingOperation(self):
         self.__serverSocketRepository.setBlockingOperation()
 
-    def acceptClientSocket(self):
+    def acceptClientSocket(self, queue):
         clientSocket, clientAddress = self.__serverSocketRepository.acceptClientSocket()
+
+        if clientSocket is None:
+            return
+
+        print("clientSocket: {}, clientAddress: {}".format(clientSocket, clientAddress))
+        queue.put((clientSocket, clientAddress))
+
 
 
 
