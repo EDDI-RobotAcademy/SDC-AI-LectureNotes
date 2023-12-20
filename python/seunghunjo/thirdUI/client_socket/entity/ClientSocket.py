@@ -1,13 +1,13 @@
 import atexit
 
-class ServerSocket(object):
+
+class ClientSocket(object):
     def __init__(self, host, port, socket):
         self.__host = host
         self.__port = port
         self.__socket = socket
 
         atexit.register(self.closeSocket)
-
 
     def getHost(self):
         return self.__host
