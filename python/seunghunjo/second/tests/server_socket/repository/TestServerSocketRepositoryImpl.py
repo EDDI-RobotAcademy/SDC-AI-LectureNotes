@@ -3,6 +3,7 @@ import unittest
 from unittest.mock import patch, Mock
 
 from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
+from decouple import config
 
 
 class TestServerSocketRepositoryImpl(unittest.TestCase):
@@ -13,8 +14,8 @@ class TestServerSocketRepositoryImpl(unittest.TestCase):
     def testCreateSocketInitialized(self):
         print("Repository: 서버 소켓 생성 테스트")
 
-        host = "localhost"
-        port = 33333
+        host = config('HOST')
+        port = int(config('PORT'))
 
         # patch('socket.socket') as mock_socket의 경우
         # socket 모듈의 socket 클래스를 가상(mock) 객체로 대체
@@ -29,8 +30,8 @@ class TestServerSocketRepositoryImpl(unittest.TestCase):
     def testCreateReturnsServerSocketInstance(self):
         print("Repository: 서버 소켓 생성 이후 인스턴스 반환 테스트")
 
-        host = "localhost"
-        port = 33333
+        host = config('HOST')
+        port = int(config('PORT'))
 
         with patch('socket.socket') as mock_socket:
             serverSocket = self.serverSocketRepository.create(host, port)
