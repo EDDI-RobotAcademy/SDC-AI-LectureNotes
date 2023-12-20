@@ -24,6 +24,7 @@ if __name__ == '__main__':
     # 하위에 보이는 config는 실제로 IP 주소, 비밀번호, PORT 번호를 환경 변수로 관리하기 위해 사용합니다.
     # 왜 이렇게 관리해야 할까요 ? 결국 외부에 위의 정보가 노출되면 보안에 취약해지기 때문임
     clientSocketService.createClientSocket(config('TARGET_HOST'), int(config('PORT')))
+    clientSocketService.connectToTargetHost()
     # serverSocketService.setSocketOption(socket.SOL_SOCKET, socket.SO_REUSEADDR)
     # serverSocketService.bindServerSocket()
     # serverSocketService.setServerListenNumber(1)

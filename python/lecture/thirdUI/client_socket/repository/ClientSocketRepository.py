@@ -7,5 +7,9 @@ class ClientSocketRepository(abc.ABC):
         pass
 
     @abc.abstractmethod
+    def connectionToTargetHost(self):
+        pass
+
+    @abc.abstractmethod
     def setBlockingOperation(self):
         pass
