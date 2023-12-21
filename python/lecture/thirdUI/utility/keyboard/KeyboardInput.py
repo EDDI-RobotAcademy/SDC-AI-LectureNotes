@@ -1,10 +1,13 @@
+import os
+
+
 class KeyboardInput:
     @staticmethod
     def getKeyboardIntegerInput():
         while True:
             try:
                 print("원하는 선택지를 입력하세요: ")
-                userInput = input()
+                userInput = os.read(0, 1024)
                 return int(userInput)
 
             except ValueError:
