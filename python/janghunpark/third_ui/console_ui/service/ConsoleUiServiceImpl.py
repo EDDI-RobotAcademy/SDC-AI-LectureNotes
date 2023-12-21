@@ -5,12 +5,19 @@ from utility.keyboard.KeyboardInput import KeyboardInput
 class ConsoleUiServiceImpl(ConsoleUiService):
     __instance = None
 
+    # new : allocator
+    # c++ 에서 new 와 같이 객체에 메모리 할당
     def __new__(cls, repository):
+        # instance 가 없다면
         if cls.__instance is None:
+            # super() : 클래스 상속
             cls.__instance = super().__new__(cls)
+            # 추후에 repository 를 service 에 귀속시키기 위한 방식
             cls.__instance.__repository = repository
         return cls.__instance
 
+    # init : constructor
+    # 메모리를 할당하지 않기 때문에 인스턴스를 생성할 수 없음
     def __init__(self, repository):
         print("ConsoleUiServiceImpl 생성자 호출")
 

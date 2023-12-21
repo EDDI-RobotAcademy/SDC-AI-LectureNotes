@@ -1,3 +1,4 @@
+from console_printer.repository.ConsolePrinterRepositoryImpl import ConsolePrinterRepositoryImpl
 from task_manage.service.TaskManageService import TaskManageService
 from receiver.repository.ReceiverRepositoryImpl import ReceiverRepositoryImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
@@ -25,7 +26,8 @@ class TaskManageServiceImpl(TaskManageService):
             cls.__instance = cls(repository)
         return cls.__instance
 
-    def createTransmitTask(self, lock):
+    # 결국 TransmitTask 를 만들기 위해서는 transmitQueue 가 필요함
+    def createTransmitTask(self, lock, transmitQueue):
         transmitterRepository = TransmitterRepositoryImpl.getInstance()
         clientSocketRepository = ClientSocketRepositoryImpl.getInstance()
 
@@ -33,7 +35,7 @@ class TaskManageServiceImpl(TaskManageService):
         # 신입 사원 뽑았다 생각하면 됨
         self.__taskManageRepository.createTask(
             target=transmitterRepository.transmitCommand,
-            args=(clientSocketRepository.getClientSocket(), lock)
+            args=(clientSocketRepository.getClientSocket(), lock, transmitQueue)
         )
 
     def createReceiveTask(self, lock):
@@ -52,3 +54,11 @@ class TaskManageServiceImpl(TaskManageService):
             args=(clientSocketRepository.getClientSocket(), lock)
         )
 
+    # 원래는 server 가 보내는 정보를 receiver 에서 받아서 receiverQueue 로 받아야 하는 것 아닌가 ?
+    def createPrinterTask(self, transmitQueue):
+        consolePrinterRepository = ConsolePrinterRepositoryImpl.getInstance()
+
+        self.__taskManageRepository.createTask(
+            target=consolePrinterRepository.printConsoleUi,
+            args=(transmitQueue, )
+        )

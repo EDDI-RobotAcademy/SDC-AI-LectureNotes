@@ -16,7 +16,7 @@ class TaskManageRepositoryImpl(TaskManageRepository):
         return cls.__instance
 
     def __init__(self):
-        print("TaskManageRepository Initiator Call")
+        print("TaskManageRepositoryImpl Initiator Call")
         self.__receiverTask = None
         self.__transmitterTask = None
 
@@ -33,7 +33,7 @@ class TaskManageRepositoryImpl(TaskManageRepository):
     # -f : 프로세스의 자세한 정보 출력
     # 고로 ps -ef : '현재 실행 중인 모든 프로세스의 자세한 정보 출력' 일 것으로 예상
     def createTask(self, target, args):
-        print(f"createTask: args={args}")
+        # print(f"createTask: args={args}")
         # Task 가 실행할 함수 -> target
         # Target 이 사용할 인자 -> args
         newTask = multiprocessing.Process(target=target, args=args)

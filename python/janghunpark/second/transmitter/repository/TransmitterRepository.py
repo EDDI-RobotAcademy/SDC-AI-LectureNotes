@@ -3,7 +3,7 @@ import abc
 
 class TransmitterRepository(abc.ABC):
     @abc.abstractmethod
-    def transmitCommand(self, clientSocketObject):
+    def transmitCommand(self, clientSocket):
         pass
 
     @abc.abstractmethod

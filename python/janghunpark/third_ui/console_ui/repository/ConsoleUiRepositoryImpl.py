@@ -11,8 +11,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         return cls.__instance
 
     def __init__(self):
-        print("ConsoleUiRepository 초기화 동작")
-
+        print("ConsoleUiRepositoryImpl Initiator Call")
         self.__consoleUiState = ConsoleUiState()
 
     @classmethod

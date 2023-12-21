@@ -14,7 +14,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
         return cls.__instance
 
     def __init__(self):
-        print("ReceiverRepositoryImpl 생성자 호출")
+        print("ReceiverRepositoryImpl Initiator Call")
 
     @classmethod
     def getInstance(cls):
@@ -25,7 +25,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
     # 클라이언트 소켓에 수신
     def receiveCommand(self, clientSocketObject, lock):
         clientSocket = clientSocketObject.getSocket()
-        print(f"receiver: is it exist -> {clientSocket}")
+        # print(f"receiver: is it exist -> {clientSocket}")
 
         while True:
             try:
