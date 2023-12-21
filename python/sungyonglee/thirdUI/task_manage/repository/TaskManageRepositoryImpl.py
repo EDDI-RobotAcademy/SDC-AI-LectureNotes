@@ -25,8 +25,12 @@ class TaskManageRepositoryImpl(TaskManageRepository):
             cls.__instance = cls()
         return cls.__instance
 
+    # ps -ef 했을 때 나타나는 Task 생성
     def createTask(self, target, args):
-        newTask = multiprocessing.Process(target=target, )
+        print(f"createTask: args={args}")
+        # Task가 실행할 함수 -> target
+        # target이 사용할 인자 -> args
+        newTask = multiprocessing.Process(target=target, args=args)
         newTask.start()
 
         taskEntity = TaskEntity(newTask.pid, target, args)
