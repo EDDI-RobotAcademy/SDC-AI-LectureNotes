@@ -5,3 +5,5 @@ class TaskManageService(abc.ABC):
     def createTransmitTask(self, lock):
         pass
 
+    def createReceiveTask(self, lock):
+        pass

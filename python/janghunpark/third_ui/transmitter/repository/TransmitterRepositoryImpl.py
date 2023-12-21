@@ -1,4 +1,3 @@
-import multiprocessing
 import socket
 from datetime import datetime
 from time import sleep
@@ -15,7 +14,7 @@ class TransmitterRepositoryImpl(TransmitterRepository):
         return cls.__instance
 
     def __init__(self):
-        print("TransmitterRepositoryImpl 생성자 호출")
+        print("TransmitterRepositoryImpl Initiator Call")
 
     @classmethod
     def getInstance(cls):

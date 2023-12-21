@@ -41,7 +41,7 @@ if __name__ == '__main__':
     clientSocketService.createClientSocket(config('TARGET_HOST'), int(config('PORT')))
     clientSocketService.connectToTargetHost()
 
-    clientSocketService.setBlockingOperation()
+    # clientSocketService.setBlockingOperation()
 
     # 실제 작업을 할 때 명확하게 역할을 분리하여
     # 입력에 대한 요청을 처리하는 Transmitter
@@ -49,11 +49,19 @@ if __name__ == '__main__':
     # 위와 같은 Task 들을 작성합니다.
     # 실제로는 더 조각조각 내는 것이 좋습니다.
     taskManageService = TaskManageServiceImpl.getInstance()
+
+    # 공유 자원에 대한 혼선이 생기지 않도록 하기 위한 장치
     lock = multiprocessing.Lock()
+
     # 1. Transmitter 태스크를 생성 요청
     # 2. Transmitter 태스크 객체 구성
     # 3. 구성된 객체의 특정 동작을 취하도록 Transmitter 구동
     taskManageService.createTransmitTask(lock)
+
+    # 1. Receiver 태스크를 생성 요청
+    # 2. Receiver 태스크 객체 구성
+    # 3. 구성된 객체의 특정 동작을 취하도록 Receiver 구동
+    taskManageService.createReceiveTask(lock)
 
     while True:
         try:
