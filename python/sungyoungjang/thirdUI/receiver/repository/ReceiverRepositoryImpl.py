@@ -28,22 +28,21 @@ class ReceiverRepositoryImpl(ReceiverRepository):
         print(f"receiver: is it exist -> {clientSocket}")
 
         while True:
-            with lock:
-                try:
-                    # 소켓으로 전송된 데이터 수신
-                    data = clientSocket.recv(1024)
+            try:
+                # 소켓으로 전송된 데이터 수신
+                data = clientSocket.recv(1024)
 
-                    if not data:
-                        clientSocket.closeSocket()
-                        break
+                if not data:
+                    clientSocket.closeSocket()
+                    break
 
-                    print(f'수신된 정보: {data.decode()}')
+                print(f'수신된 정보: {data.decode()}')
 
-                except socket.error as exception:
-                    if exception.errno == errno.EWOULDBLOCK:
-                        pass
+            except socket.error as exception:
+                if exception.errno == errno.EWOULDBLOCK:
+                    pass
 
-                finally:
-                    sleep(0.5)
+            finally:
+                sleep(0.5)
 
 
