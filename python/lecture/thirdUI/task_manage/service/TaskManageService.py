@@ -8,3 +8,7 @@ class TaskManageService(abc.ABC):
     @abc.abstractmethod
     def createReceiveTask(self, lock):
         pass
+
+    @abc.abstractmethod
+    def createPrinterTask(self):
+        pass

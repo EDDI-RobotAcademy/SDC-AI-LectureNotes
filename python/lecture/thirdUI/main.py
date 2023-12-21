@@ -65,6 +65,7 @@ if __name__ == '__main__':
     # 2. Receiver 태스크 객체 구성
     # 3. Receiver 객체의 특정 동작을 취하도록 만듬
     taskManageService.createReceiveTask(lock)
+    taskManageService.createPrinterTask()
 
     while True:
         try:
