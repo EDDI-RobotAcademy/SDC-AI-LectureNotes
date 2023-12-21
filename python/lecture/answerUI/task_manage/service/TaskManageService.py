@@ -6,9 +6,9 @@ class TaskManageService(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def createReceiveTask(self, lock):
+    def createReceiveTask(self, lock, receiveQueue):
         pass
 
     @abc.abstractmethod
-    def createPrinterTask(self, transmitQueue):
+    def createPrinterTask(self, transmitQueue, receiveQueue):
         pass
