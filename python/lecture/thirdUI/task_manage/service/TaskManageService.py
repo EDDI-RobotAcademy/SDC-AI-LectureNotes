@@ -2,7 +2,7 @@ import abc
 
 class TaskManageService(abc.ABC):
     @abc.abstractmethod
-    def createTransmitTask(self, lock):
+    def createTransmitTask(self, lock, transmitQueue):
         pass
 
     @abc.abstractmethod
@@ -10,5 +10,5 @@ class TaskManageService(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def createPrinterTask(self):
+    def createPrinterTask(self, transmitQueue):
         pass
