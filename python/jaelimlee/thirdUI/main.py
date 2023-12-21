@@ -6,6 +6,7 @@ from decouple import config
 
 from client_socket.repository.ClientSocketRepositoryImpl import ClientSocketRepositoryImpl
 from client_socket.service.ClientSocketServiceImpl import ClientSocketServiceImpl
+from custom_protocol.service.CustomProtocolServiceImpl import CustomProtocolServiceImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
 from task_manage.service.TaskManageServiceImpl import TaskManageServiceImpl
 
@@ -25,8 +26,18 @@ def initEachDomain():
     initTaskManageDomain()
 
 
+# 시나리오:
+# 강아지 구매하고 싶은데 리스트 좀 보여줘! -> 전송
+# 가지고 있는 강아지 리스트 응답         <- 수신
+def registerProtocol():
+    customProtocolService = CustomProtocolServiceImpl.getInstance()
+
+    # customProtocolService.registerCustomProtocol(0, )
+
+
 if __name__ == '__main__':
     initEachDomain()
+    registerProtocol()
 
     clientSocketService = ClientSocketServiceImpl.getInstance()
 
