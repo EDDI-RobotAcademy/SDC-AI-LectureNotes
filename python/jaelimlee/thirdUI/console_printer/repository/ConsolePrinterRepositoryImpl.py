@@ -26,12 +26,12 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
 
 
 
-    def printConsoleUi(self):
+    def printConsoleUi(self, transmitQueue):
 
         consoleUiService = ConsoleUiServiceImpl.getInstance()
 
         while True:
-            consoleUiService.processUserInput()
+            consoleUiService.processUserInput(transmitQueue)
 
 
 

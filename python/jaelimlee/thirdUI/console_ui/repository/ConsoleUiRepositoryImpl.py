@@ -27,4 +27,6 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
     def acquireCurrentRoutingState(self):
         return self.__consoleUiState.getCurrentRoutingState()
 
-
+    # 현재 시점에 약간 애매함
+    def saveRequestFormToTransmitQueue(self):
+        pass
