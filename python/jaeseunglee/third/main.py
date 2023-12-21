@@ -25,15 +25,21 @@ def initEachDomain():
     initServerSocketDomain()
     initTaskManageDomain()
 
+
 # 시나리오:
-# 강아지를 구매하고 싶은데 좀 보여줘! -> 전송
-# 가지고 있는 강아지 리스트 응답     <- 수신
+# 강아지 구매하고 싶은데 리스트 좀 보여줘! -> 전송
+# 가지고 있는 강아지 리스트 응답         <- 수신
 def registerProtocol():
     customProtocolService = CustomProtocolServiceImpl.getInstance()
+
     # customProtocolService.registerCustomProtocol(0, )
 
+
 if __name__ == '__main__':
+
+
     initEachDomain()
+    registerProtocol()
 
     clientSocketService = ClientSocketServiceImpl.getInstance()
 
@@ -61,6 +67,7 @@ if __name__ == '__main__':
     # 2. Receiver 태스크 객체 구성
     # 3. Receiver 객체의 특정 동작을 취하도록 만듬
     taskManageService.createReceiveTask(lock)
+    taskManageService.createPrinterTask()
 
     while True:
         try:

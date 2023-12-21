@@ -27,12 +27,16 @@ class TransmitterRepositoryImpl(TransmitterRepository):
         while True:
             with lock:
                 try:
-                    sendMessage = "참 쉽죠 ?"
-                    clientSocket = clientSocketObject.getSocket()
+                    pass
+                    # protocol
 
-                    # 실제 연결된 클라이언트에 데이터 송신
-                    clientSocket.sendall(sendMessage.encode())
-                    print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
+                    # sendMessage = "참 쉽죠 ?"
+                    # clientSocket = clientSocketObject.getSocket()
+                    #
+                    # # 실제 연결된 클라이언트에 데이터 송신
+                    # clientSocket.sendall(sendMessage.encode())
+                    #
+                    # print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
 
                 except (socket.error, BrokenPipeError) as exception:
                     print(f"사용자 연결 종료")
