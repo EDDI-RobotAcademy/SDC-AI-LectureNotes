@@ -1,11 +1,8 @@
-import multiprocessing
-
 from client_socket.repository.ClientSocketRepositoryImpl import ClientSocketRepositoryImpl
-from receiver.repository.ReceiverRepositoryImpl import ReceiverRepositoryImpl
+from task_manage.repository.ReceiverRepositoryImpl import ReceiverRepositoryImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
 from task_manage.service.TaskManageService import TaskManageService
-from transmitter.repository.TransmitterRepository import TransmitterRepository
-from transmitter.repository.TransmitterRepositoryImpl import TransmitterRepositoryImpl
+from task_manage.repository.TransmitterRepositoryImpl import TransmitterRepositoryImpl
 
 
 class TaskManageServiceImpl(TaskManageService):

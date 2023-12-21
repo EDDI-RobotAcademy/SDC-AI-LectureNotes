@@ -1,4 +1,5 @@
 from console_ui.service.ConsoleUiService import ConsoleUiService
+from utility.keyboard.KeyboardInput import KeyboardInput
 
 
 class ConsoleUiServiceImpl(ConsoleUiService):
@@ -7,7 +8,7 @@ class ConsoleUiServiceImpl(ConsoleUiService):
     def __new__(cls, repository):
         if cls.__instance is None:
             cls.__instance = super().__new__(cls)
-            cls.__instance.repository = repository
+            cls.__instance.__repository = repository
         return cls.__instance
 
     def __init__(self, repository):
@@ -24,5 +25,6 @@ class ConsoleUiServiceImpl(ConsoleUiService):
         print("0. 강아지 리스트 보기")
         print("1. 프로그램 종료")
 
-        
+        userChoice = KeyboardInput.getKeyboardIntegerInput()
+        self.__repository.saveCurrentRoutingState(userChoice)
 
