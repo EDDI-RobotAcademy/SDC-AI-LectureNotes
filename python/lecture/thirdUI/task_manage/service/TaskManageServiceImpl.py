@@ -28,7 +28,7 @@ class TaskManageServiceImpl(TaskManageService):
             cls.__instance = cls(repository)
         return cls.__instance
 
-    def createTransmitTask(self, lock):
+    def createTransmitTask(self, lock, transmitQueue):
         transmitterRepository = TransmitterRepositoryImpl.getInstance()
         clientSocketRepository = ClientSocketRepositoryImpl.getInstance()
 
@@ -36,7 +36,7 @@ class TaskManageServiceImpl(TaskManageService):
         # 신입 사원 뽑았다 생각하면 됨
         self.__taskManageRepository.createTask(
             target=transmitterRepository.transmitCommand,
-            args=(clientSocketRepository.getClientSocket(), lock)
+            args=(clientSocketRepository.getClientSocket(), lock, transmitQueue)
         )
 
     def createReceiveTask(self, lock):
@@ -55,10 +55,10 @@ class TaskManageServiceImpl(TaskManageService):
             args=(clientSocketRepository.getClientSocket(), lock)
         )
 
-    def createPrinterTask(self):
+    def createPrinterTask(self, transmitQueue):
         consolePrinterRepository = ConsolePrinterRepositoryImpl.getInstance()
 
         self.__taskManageRepository.createTask(
             target=consolePrinterRepository.printConsoleUi,
-            args=()
+            args=(transmitQueue, )
         )
