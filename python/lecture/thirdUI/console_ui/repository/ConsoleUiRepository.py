@@ -11,4 +11,8 @@ class ConsoleUiRepository(abc.ABC):
     def acquireCurrentRoutingState(self):
         pass
 
+    @abc.abstractmethod
+    def saveRequestFormToTransmitQueue(self):
+        pass
+
 

@@ -3,6 +3,6 @@ import abc
 
 class ConsolePrinterRepository(abc.ABC):
     @abc.abstractmethod
-    def printConsoleUi(self):
+    def printConsoleUi(self, transmitQueue):
         pass
 
