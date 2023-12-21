@@ -4,7 +4,6 @@ from console_ui.repository.ConsoleUiRepository import ConsoleUiRepository
 
 class ConsoleUiRepositoryImpl(ConsoleUiRepository):
     __instance = None
-    __consoleUiState = None
 
     def __new__(cls):
         if cls.__instance is None:
