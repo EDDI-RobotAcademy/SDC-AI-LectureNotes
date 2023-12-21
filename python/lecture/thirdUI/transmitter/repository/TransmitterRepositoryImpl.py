@@ -2,7 +2,7 @@ import socket
 from datetime import datetime
 from time import sleep
 
-from task_manage.repository.TransmitterRepository import TransmitterRepository
+from transmitter.repository.TransmitterRepository import TransmitterRepository
 
 
 class TransmitterRepositoryImpl(TransmitterRepository):
@@ -30,13 +30,13 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     pass
                     # protocol
 
-                    sendMessage = "참 쉽죠 ?"
-                    clientSocket = clientSocketObject.getSocket()
-
-                    # 실제 연결된 클라이언트에 데이터 송신
-                    clientSocket.sendall(sendMessage.encode())
-
-                    print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
+                    # sendMessage = "참 쉽죠 ?"
+                    # clientSocket = clientSocketObject.getSocket()
+                    #
+                    # # 실제 연결된 클라이언트에 데이터 송신
+                    # clientSocket.sendall(sendMessage.encode())
+                    #
+                    # print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
 
                 except (socket.error, BrokenPipeError) as exception:
                     print(f"사용자 연결 종료")
