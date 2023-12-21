@@ -1,12 +1,13 @@
 import abc
 
+
 class ServerSocketRepository(abc.ABC):
     @abc.abstractmethod
     def create(self, host, port):
         pass
 
     @abc.abstractmethod
-    def setSocketOption(self, apiControlLevel, optionName):
+    def setSocketOption(self, apiControlLevel, OptionName):
         pass
 
     @abc.abstractmethod
@@ -18,9 +19,13 @@ class ServerSocketRepository(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def setBlockingOperation(self):
+    def acceptClientSocket(self):
         pass
 
     @abc.abstractmethod
-    def acceptClientSocket(self):
+    def getServerSocket(self):
+        pass
+
+    @abc.abstractmethod
+    def getClientSocketList(self):
         pass
