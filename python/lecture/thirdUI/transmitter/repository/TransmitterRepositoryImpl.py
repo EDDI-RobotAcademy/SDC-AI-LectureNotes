@@ -32,7 +32,7 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     # protocol
                     # 현재는 1대1 통신이므로 Blocking 으로 사용자 입력을 대기
                     sendProtocol = transmitQueue.get(block=True)
-                    clientSocket.sendall(sendProtocol.encode())
+                    clientSocket.sendall(str(sendProtocol).encode())
 
                     # sendMessage = "참 쉽죠 ?"
                     # clientSocket = clientSocketObject.getSocket()
@@ -50,7 +50,7 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     print(f"전송 중 에러 발생: str{exception}")
 
                 except Exception as exception:
-                    print("transmitter: 원인을 알 수 없는 에러가 발생하였습니다")
+                    print(f"transmitter: 원인을 알 수 없는 에러가 발생하였습니다: str{exception}")
 
                 finally:
                     sleep(0.5)
