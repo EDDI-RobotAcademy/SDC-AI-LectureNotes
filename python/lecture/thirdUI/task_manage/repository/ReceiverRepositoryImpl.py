@@ -2,7 +2,7 @@ import errno
 from socket import socket
 from time import sleep
 
-from receiver.repository.ReceiverRepository import ReceiverRepository
+from task_manage.repository.ReceiverRepository import ReceiverRepository
 
 
 class ReceiverRepositoryImpl(ReceiverRepository):
