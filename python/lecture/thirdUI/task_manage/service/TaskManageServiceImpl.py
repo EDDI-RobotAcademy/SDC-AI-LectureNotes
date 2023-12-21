@@ -1,8 +1,10 @@
 from client_socket.repository.ClientSocketRepositoryImpl import ClientSocketRepositoryImpl
-from task_manage.repository.ReceiverRepositoryImpl import ReceiverRepositoryImpl
+from console_printer.repository.ConsolePrinterRepositoryImpl import ConsolePrinterRepositoryImpl
+from receiver.repository.ReceiverRepositoryImpl import ReceiverRepositoryImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
 from task_manage.service.TaskManageService import TaskManageService
-from task_manage.repository.TransmitterRepositoryImpl import TransmitterRepositoryImpl
+from transmitter.repository.TransmitterRepository import TransmitterRepository
+from transmitter.repository.TransmitterRepositoryImpl import TransmitterRepositoryImpl
 
 
 class TaskManageServiceImpl(TaskManageService):
@@ -51,4 +53,12 @@ class TaskManageServiceImpl(TaskManageService):
         self.__taskManageRepository.createTask(
             target=receiverRepository.receiveCommand,
             args=(clientSocketRepository.getClientSocket(), lock)
+        )
+
+    def createPrinterTask(self):
+        consolePrinterRepository = ConsolePrinterRepositoryImpl.getInstance()
+
+        self.__taskManageRepository.createTask(
+            target=consolePrinterRepository.printConsoleUi,
+            args=()
         )
