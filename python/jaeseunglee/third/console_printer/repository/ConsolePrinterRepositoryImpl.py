@@ -24,12 +24,12 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
         return cls.__instance
 
     # 클라이언트 소켓에서 송신
-    def printConsoleUi(self):
+    def printConsoleUi(self, transmitQueue):
 
         consoleUiService = ConsoleUiServiceImpl.getInstance()
 
         while True:
-            consoleUiService.processUserInput()
+            consoleUiService.processUserInput(transmitQueue)
 
 
 

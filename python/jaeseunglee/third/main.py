@@ -58,16 +58,17 @@ if __name__ == '__main__':
     taskManageService = TaskManageServiceImpl.getInstance()
 
     lock = multiprocessing.Lock()
+    transmitQueue = multiprocessing.Queue()
     # 1. Transmitter 태스크를 생성 요청
     # 2. Transmitter 태스크 객체 구성
     # 3. 구성된 객체의 특정 동작을 취하도록 Transmitter 구동
-    taskManageService.createTransmitTask(lock)
+    taskManageService.createTransmitTask(lock, transmitQueue)
 
     # 1. Receiver 태스크 생성 요청
     # 2. Receiver 태스크 객체 구성
     # 3. Receiver 객체의 특정 동작을 취하도록 만듬
     taskManageService.createReceiveTask(lock)
-    taskManageService.createPrinterTask()
+    taskManageService.createPrinterTask(transmitQueue)
 
     while True:
         try:

@@ -28,4 +28,8 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
     def acquireCurrentRoutingState(self):
         return self.__consoleUiState.getCurrentRoutingState()
 
+    def saveRequestFormToTransmitQueue(self):
+        pass
+
+
 
