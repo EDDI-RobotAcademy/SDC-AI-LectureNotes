@@ -1,8 +1,14 @@
+import atexit
 import multiprocessing
 import socket
 from time import sleep
-from decouple import config
 
+import sqlalchemy
+
+from account.service.AccountServiceImpl import AccountServiceImpl
+from custom_protocol.entity.CustomProtocol import CustomProtocol
+from custom_protocol.service.CustomProtocolServiceImpl import CustomProtocolServiceImpl
+from mysql.MySQLDatabase import MySQLDatabase
 from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
 from server_socket.service.ServerSocketServiceImpl import ServerSocketServiceImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
@@ -10,6 +16,11 @@ from task_manage.service.TaskManageServiceImpl import TaskManageServiceImpl
 from utility.IPAddressBindSupporter import IPAddressBindSupporter
 from mysql.MySQLProcess import DbProcess
 # pip3 install pymysql
+
+from sqlalchemy import create_engine
+# pip3 install sqlalchemy
+# pip install mysql-connector-python
+from decouple import config
 
 MYHOST = IPAddressBindSupporter.getIpAddressFromGoogle()
 
@@ -24,6 +35,11 @@ def initMysqlInstance():
     dbInstance.connect()
 
 
+def initMysqlInstanceAlternatives():
+    mysqlDatabase = MySQLDatabase.getInstance()
+    mysqlDatabase.connect()
+
+
 def initServerSocketDomain():
     serverSocketRepository = ServerSocketRepositoryImpl()
     ServerSocketServiceImpl(serverSocketRepository)
@@ -34,11 +50,24 @@ def initTaskManageDomain():
     TaskManageServiceImpl(taskManageRepository)
 
 
+def initCustomProtocol():
+    customProtocolService = CustomProtocolServiceImpl.getInstance()
+    accountService = AccountServiceImpl.getInstance()
+
+    print(f"enum value test: {CustomProtocol.ACCOUNT_REGISTER.value}")
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_REGISTER.value,
+        accountService.registerAccount
+    )
+
+
 def initEachDomain():
-    initMysqlInstance()
+    # initMysqlInstance()
+    initMysqlInstanceAlternatives()
 
     initServerSocketDomain()
     initTaskManageDomain()
+    initCustomProtocol()
 
 
 if __name__ == '__main__':

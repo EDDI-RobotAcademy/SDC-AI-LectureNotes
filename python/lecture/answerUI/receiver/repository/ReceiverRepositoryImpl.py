@@ -23,7 +23,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
         return cls.__instance
 
     # 클라이언트 소켓에 수신
-    def receiveCommand(self, clientSocketObject, lock):
+    def receiveCommand(self, clientSocketObject, lock, receiveQueue):
         clientSocket = clientSocketObject.getSocket()
         print(f"receiver: is it exist -> {clientSocket}")
 
@@ -37,6 +37,8 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                     break
 
                 print(f'수신된 정보: {data.decode()}')
+
+                receiveQueue.put(data.decode())
 
             except socket.error as exception:
                 if exception.errno == errno.EWOULDBLOCK:

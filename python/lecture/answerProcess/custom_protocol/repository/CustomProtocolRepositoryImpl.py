@@ -62,7 +62,7 @@ class CustomProtocolRepositoryImpl(CustomProtocolRepository):
         # for key, value in mapArguments.items():
         #     print(f"{key}: {value}")
 
-        return self.__protocolTableExecution(protocolNumber, *arguments, **mapArguments)
+        self.__protocolTableExecution(protocolNumber, *arguments, **mapArguments)
 
 
 

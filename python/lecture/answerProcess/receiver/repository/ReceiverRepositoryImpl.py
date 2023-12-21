@@ -2,6 +2,7 @@ import errno
 from socket import socket
 from time import sleep
 
+from custom_protocol.repository.CustomProtocolRepositoryImpl import CustomProtocolRepositoryImpl
 from receiver.repository.ReceiverRepository import ReceiverRepository
 from transmitter.repository.TransmitterRepositoryImpl import TransmitterRepositoryImpl
 
@@ -26,16 +27,34 @@ class ReceiverRepositoryImpl(ReceiverRepository):
     def receiveCommand(self, clientSocket):
         transmitterRepository = TransmitterRepositoryImpl.getInstance()
         transmitQueue = transmitterRepository.getTransmitQueue()
+        customProtocolRepository = CustomProtocolRepositoryImpl.getInstance()
 
         while True:
             try:
-                data = clientSocket.recv(1024)
+                receivedRequest = clientSocket.recv(1024)
 
-                if not data:
+                if not receivedRequest:
                     clientSocket.closeSocket()
                     break
 
-                print(f'수신된 정보: {data.decode()}')
+                decodedRequest = receivedRequest.decode('utf-8')
+                print(f'수신된 정보: {decodedRequest}')
+
+                requestComponents = decodedRequest.split(',')
+
+                receivedRequestProtocolNumber = requestComponents[0]
+                print(f"프로토콜 번호: {receivedRequestProtocolNumber}")
+
+                cleanedElementList = []
+
+                if len(requestComponents) > 1:
+                    for i, element in enumerate(requestComponents[1:]):
+                        cleanedElement = element.strip().strip("(b'").strip("', )").rstrip("\\n")
+                        print(f"후속 정보 {i + 1}: {cleanedElement}")
+                        cleanedElementList.append(cleanedElement)
+
+                customProtocolRepository.execute(int(receivedRequestProtocolNumber), cleanedElementList)
+
                 transmitQueue.put('안 쉽죠 !')
 
             except socket.error as exception:
