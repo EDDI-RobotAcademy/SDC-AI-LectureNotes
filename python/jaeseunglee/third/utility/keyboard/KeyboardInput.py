@@ -2,7 +2,6 @@ import os
 
 
 class KeyboardInput:
-
     @staticmethod
     def getKeyboardIntegerInput():
         while True:
@@ -16,3 +15,4 @@ class KeyboardInput:
 
             except EOFError:
                 pass
+

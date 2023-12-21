@@ -38,8 +38,9 @@ class ReceiverRepositoryImpl(ReceiverRepository):
 
                 print(f'수신된 정보: {data.decode()}')
 
-            except socket.error as exception:
-                if exception.errno == errno.EWOULDBLOCK:
+            # except socket.error as exception:
+            except Exception as exception:
+                # if exception.errno == errno.EWOULDBLOCK:
                     pass
 
             finally:

@@ -15,3 +15,4 @@ class ConsoleUiRepository(abc.ABC):
     def saveRequestFormToTransmitQueue(self):
         pass
 
+
