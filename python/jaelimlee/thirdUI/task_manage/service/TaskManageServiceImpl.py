@@ -1,6 +1,5 @@
-import multiprocessing
-
 from client_socket.repository.ClientSocketRepositoryImpl import ClientSocketRepositoryImpl
+from console_printer.repository.ConsolePrinterRepositoryImpl import ConsolePrinterRepositoryImpl
 from receiver.repository.ReceiverRepositoryImpl import ReceiverRepositoryImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
 from task_manage.service.TaskManageService import TaskManageService
@@ -54,4 +53,12 @@ class TaskManageServiceImpl(TaskManageService):
         self.__taskManageRepository.createTask(
             target=receiverRepository.receiveCommand,
             args=(clientSocketRepository.getClientSocket(), lock)
+        )
+
+    def createPrinterTask(self):
+        consolePrinterRepository = ConsolePrinterRepositoryImpl.getInstance()
+
+        self.__taskManageRepository.createTask(
+            target=consolePrinterRepository.printConsoleUi,
+            args=()
         )
