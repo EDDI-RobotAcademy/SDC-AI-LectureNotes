@@ -28,6 +28,9 @@ class MySQLDatabase:
             cls.__instance = cls()
         return cls.__instance
 
+    def getMySQLEngine(self):
+        return self.__mysqlEngine
+
     def connect(self):
         mysqlUrl = url = sqlalchemy.engine.URL.create(
             drivername="mysql",

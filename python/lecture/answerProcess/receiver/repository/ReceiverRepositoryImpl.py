@@ -53,9 +53,10 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                         print(f"후속 정보 {i + 1}: {cleanedElement}")
                         cleanedElementList.append(cleanedElement)
 
-                customProtocolRepository.execute(int(receivedRequestProtocolNumber), cleanedElementList)
+                response = customProtocolRepository.execute(int(receivedRequestProtocolNumber), cleanedElementList)
+                print(f"response: {response}")
 
-                transmitQueue.put('안 쉽죠 !')
+                transmitQueue.put(response)
 
             except socket.error as exception:
                 if exception.errno == errno.EWOULDBLOCK:

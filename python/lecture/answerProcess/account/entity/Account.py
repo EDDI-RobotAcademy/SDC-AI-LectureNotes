@@ -11,20 +11,26 @@ Base = declarative_base()
 class Account(Base):
     __tablename__ = 'account'
 
-    id: int = Column(Integer, primary_key=True, autoincrement=True)
-    accountId: str = Column(String)
-    password: str = Column(String)
+    __id: int = Column(Integer, primary_key=True, autoincrement=True, name="id")
+    __accountId: str = Column(String, name="account_id")
+    __password: str = Column(String, name="password")
 
     def __init__(self, accountId: str, password: str):
         self.__accountId = accountId
         self.__password = pbkdf2_sha256.hash(password)
 
-    def check_password(self, password):
-        return pbkdf2_sha256.verify(password, self.password_hash)
+    def checkPassword(self, password):
+        return pbkdf2_sha256.verify(password, self.__password)
+
+    def getId(self):
+        return self.__id
 
     def getAccountId(self):
         return self.__accountId
 
     def getPassword(self):
         return self.__password
+
+    def setPassword(self, password):
+        self.__password = password
 

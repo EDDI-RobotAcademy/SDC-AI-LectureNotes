@@ -1,5 +1,7 @@
 from account.repository.AccountRepositoryImpl import AccountRepositoryImpl
 from account.service.AccountService import AccountService
+from account.service.request.AccountRegisterRequest import AccountRegisterRequest
+from account.service.response.AccountRegisterResponse import AccountRegisterResponse
 
 
 class AccountServiceImpl(AccountService):
@@ -24,7 +26,12 @@ class AccountServiceImpl(AccountService):
     def registerAccount(self, *args, **kwargs):
         cleanedElements = args[0]
 
-        for i, element in enumerate(cleanedElements):
-            print(f"각각의 요소 {i + 1}: {element}")
+        # for i, element in enumerate(cleanedElements):
+        #     print(f"각각의 요소 {i + 1}: {element}")
+
+        accountRegisterRequest = AccountRegisterRequest(cleanedElements[0], cleanedElements[1])
+        storedAccount = self.__accountRepository.save(accountRegisterRequest.toAccount())
+
+        return AccountRegisterResponse(storedAccount.getId())
 
     

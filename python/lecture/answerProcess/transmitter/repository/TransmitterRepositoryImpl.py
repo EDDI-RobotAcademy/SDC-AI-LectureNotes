@@ -31,12 +31,9 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                 response = self.__transmitQueue.get()
 
                 if response is not None:
+                    responseStr = str(response)
                     print(f"응답할 내용: {response}")
-                    clientSocket.sendall(response.encode())
-
-                # clientSocket = clientSocketObject.getSocket()
-                # clientSocket.sendall(sendMessage.encode())
-                # print('{} command 전송 [{}]'.format(datetime.now(), sendMessage))
+                    clientSocket.sendall(responseStr.encode())
 
             except (socket.error, BrokenPipeError) as exception:
                 print(f"사용자 연결 종료")
