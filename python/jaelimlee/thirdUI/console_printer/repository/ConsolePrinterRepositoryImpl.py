@@ -1,4 +1,5 @@
 import socket
+import sys
 from datetime import datetime
 from time import sleep
 
@@ -23,11 +24,14 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
             cls.__instance = cls()
         return cls.__instance
 
-    # 클라이언트 소켓에서 송신
+
+
     def printConsoleUi(self):
 
         consoleUiService = ConsoleUiServiceImpl.getInstance()
 
         while True:
             consoleUiService.processUserInput()
+
+
 

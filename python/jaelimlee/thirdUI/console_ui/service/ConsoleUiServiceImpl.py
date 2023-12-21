@@ -26,4 +26,7 @@ class ConsoleUiServiceImpl(ConsoleUiService):
         print("1. 프로그램 종료")
 
         userChoice = KeyboardInput.getKeyboardIntegerInput()
+        print(f"userChoice: {userChoice}")
         self.__repository.saveCurrentRoutingState(userChoice)
+
+
