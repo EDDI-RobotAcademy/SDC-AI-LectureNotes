@@ -59,8 +59,8 @@ class CustomProtocolRepositoryImpl(CustomProtocolRepository):
     def execute(self, protocolNumber, *arguments, **mapArguments):
         print(f"{protocolNumber} 를 실행합니다!")
 
-        for key, value in mapArguments.items():
-            print(f"{key}: {value}")
+        # for key, value in mapArguments.items():
+        #     print(f"{key}: {value}")
 
         self.__protocolTableExecution(protocolNumber, *arguments, **mapArguments)
 
