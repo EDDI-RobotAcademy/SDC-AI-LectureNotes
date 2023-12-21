@@ -12,6 +12,18 @@ class IPAddressBindSupporter:
             return None
 
     @staticmethod
+    def getIpAddressFromGoogle():
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+                s.connect(('8.8.8.8', 80))
+                ip_address = s.getsockname()[0]
+                return ip_address
+        except socket.error:
+            pass
+
+        return None
+
+    @staticmethod
     def getLocalIPAddress():
         process = subprocess.Popen(["ifconfig"], stdout=subprocess.PIPE)
         output, _ = process.communicate()
