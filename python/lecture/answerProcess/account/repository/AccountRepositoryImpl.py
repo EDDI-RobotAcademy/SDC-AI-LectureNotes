@@ -46,6 +46,7 @@ class AccountRepositoryImpl(AccountRepository):
         dbSession = sessionmaker(bind=self.__instance.engine)
         session = dbSession()
 
+        # protected 키워드는 이런데서 사용합니다.
         existingAccount = session.query(Account).filter_by(_Account__accountId=account.getAccountId()).first()
         if existingAccount:
             existingAccount.setPassword(account.getPassword())

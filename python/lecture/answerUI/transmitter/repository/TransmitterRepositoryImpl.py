@@ -1,8 +1,10 @@
+import json
 import socket
 from datetime import datetime
 from time import sleep
 
 from custom_protocol.repository.CustomProtocolRepositoryImpl import CustomProtocolRepositoryImpl
+from request_generator.service.RequestGeneratorServiceImpl import RequestGeneratorServiceImpl
 from transmitter.repository.TransmitterRepository import TransmitterRepository
 
 
@@ -26,6 +28,7 @@ class TransmitterRepositoryImpl(TransmitterRepository):
     def transmitCommand(self, clientSocketObject, lock, transmitQueue):
         clientSocket = clientSocketObject.getSocket()
         customProtocolRepository = CustomProtocolRepositoryImpl.getInstance()
+        requestGeneratorService = RequestGeneratorServiceImpl.getInstance()
 
         while True:
             with lock:
@@ -34,11 +37,21 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     request = customProtocolRepository.execute(sendProtocol)
                     print(f"Request from repository: {request}")
 
-                    combinedRequest = f"{sendProtocol},{request}"
-                    print(f"transmitter: will be send - {combinedRequest}")
+                    requestGenerator = requestGeneratorService.findRequestGenerator(sendProtocol)
+                    print(f"Request Generator: {requestGenerator}")
+                    sendingRequest = requestGenerator(request)
+                    print(f"finish to generate request: {sendingRequest}")
 
-                    clientSocket.sendall(combinedRequest.encode())
+                    combinedRequestData = {
+                        'protocol': sendProtocol,
+                        'data': sendingRequest,
+                    }
 
+                    combinedRequestDataString = json.dumps(combinedRequestData)
+
+                    print(f"transmitter: will be send - {combinedRequestDataString}")
+
+                    clientSocket.sendall(combinedRequestDataString.encode())
 
                     print('{} command 전송 [{}]'.format(datetime.now(), sendProtocol))
 
@@ -50,7 +63,7 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     print(f"전송 중 에러 발생: str{exception}")
 
                 except Exception as exception:
-                    print(f"transmitter: 원인을 알 수 없는 에러가 발생하였습니다: str{exception}")
+                    print(f"transmitter: 원인을 알 수 없는 에러가 발생하였습니다: {str(exception)}")
 
                 finally:
                     sleep(0.5)
