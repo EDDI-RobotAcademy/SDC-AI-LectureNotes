@@ -36,6 +36,9 @@ class AccountServiceImpl(AccountService):
         accountRegisterRequest = AccountRegisterRequest(*cleanedElements)
         storedAccount = self.__accountRepository.save(accountRegisterRequest.toAccount())
 
-        return AccountRegisterResponse(storedAccount.getId())
+        if storedAccount.getId() is not None:
+            return AccountRegisterResponse(True)
+
+        return AccountRegisterResponse(False)
 
     
