@@ -53,10 +53,10 @@ if __name__ == '__main__':
     serverSocketService.createServerSocket(MYHOST, int(config('PORT')))
     serverSocketService.setSocketOption(socket.SOL_SOCKET, socket.SO_REUSEADDR)
     serverSocketService.bindServerSocket()
-    serverSocketService.setServerListenNumber(1)
+    serverSocketService.setServerListenNumber(15)
     serverSocketService.setBlockingOperation()
 
-    taskManageService = TaskManageServiceImpl.getInstance()
+    # taskManageService = TaskManageServiceImpl.getInstance()
 
     queue = multiprocessing.Queue()
 
@@ -64,9 +64,10 @@ if __name__ == '__main__':
         try:
             serverSocketService.acceptClientSocket(queue)
 
-            if not queue.empty():
-                print("사용자가 접속했습니다!")
-                taskManageService.createReceiveTask()
+            # if not queue.empty():
+            #     print("main: 사용자가 접속했습니다!")
+            #     taskManageService.createReceiveTask()
+            #     taskManageService.createTransmitTask()
 
         except socket.error:
             sleep(1.0)
