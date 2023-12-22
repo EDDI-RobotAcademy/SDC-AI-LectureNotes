@@ -6,6 +6,9 @@ from decouple import config
 
 from client_socket.repository.ClientSocketRepositoryImpl import ClientSocketRepositoryImpl
 from client_socket.service.ClientSocketServiceImpl import ClientSocketServiceImpl
+from console_printer.repository.ConsolePrinterRepositoryImpl import ConsolePrinterRepositoryImpl
+from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImpl
+from console_ui.service.ConsoleUiServiceImpl import ConsoleUiServiceImpl
 from custom_protocol.service.CustomProtocolServiceImpl import CustomProtocolServiceImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
 from task_manage.service.TaskManageServiceImpl import TaskManageServiceImpl
@@ -21,9 +24,15 @@ def initTaskManageDomain():
     TaskManageServiceImpl(taskManageRepository)
 
 
+def initConsolePrinterDomain():
+    consoleUiRepository = ConsoleUiRepositoryImpl()
+    ConsoleUiServiceImpl(consoleUiRepository)
+
+
 def initEachDomain():
     initServerSocketDomain()
     initTaskManageDomain()
+    initConsolePrinterDomain()
 
 
 # 시나리오:
@@ -56,21 +65,23 @@ if __name__ == '__main__':
     taskManageService = TaskManageServiceImpl.getInstance()
 
     lock = multiprocessing.Lock()
+    transmitQueue = multiprocessing.Queue()
     # 1. Transmitter 태스크를 생성 요청
     # 2. Transmitter 태스크 객체 구성
     # 3. 구성된 객체의 특정 동작을 취하도록 Transmitter 구동
-    taskManageService.createTransmitTask(lock)
+    taskManageService.createTransmitTask(lock, transmitQueue)
 
     # 1. Receiver 태스크 생성 요청
     # 2. Receiver 태스크 객체 구성
     # 3. Receiver 객체의 특정 동작을 취하도록 만듬
     taskManageService.createReceiveTask(lock)
+    taskManageService.createPrinterTask(transmitQueue)
 
     while True:
         try:
             # serverSocketService.acceptClientSocket()
             # print("main: 나도 별개의 Task 야")
-            sleep(0.5)
+            sleep(5.0)
 
         except socket.error:
             sleep(0.5)
