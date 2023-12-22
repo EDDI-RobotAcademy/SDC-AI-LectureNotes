@@ -33,6 +33,21 @@ class TestUlgyCode(unittest.TestCase):
         self.assertIn('"protocol":', combinedRequestDataString)
         self.assertIn('"data":', combinedRequestDataString)
 
+    def testEvalClassGeneration(self):
+        class TestAccountRegisterResponse:
+            def __init__(self, __isSuccess):
+                self.__isSuccess = __isSuccess
+
+            def getIsSuccess(self):
+                return self.__isSuccess
+
+        data = "TestAccountRegisterResponse(_TestAccountRegisterResponse__isSuccess=True)"
+        responseBbject = eval(data)
+
+        isSuccessValue = responseBbject.getIsSuccess()
+
+        print(f'Extracted __isSuccess value: {isSuccessValue}')
+
 
 if __name__ == '__main__':
     unittest.main()
