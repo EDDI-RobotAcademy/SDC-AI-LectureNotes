@@ -7,7 +7,7 @@ class ServerSocketRepository(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def setSocketOption(self, apiControlLevel, optionName):
+    def setSocketOption(self, apiControlLevel, OptionName):
         pass
 
     @abc.abstractmethod
@@ -15,12 +15,8 @@ class ServerSocketRepository(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def setServerListenNumber(self, howManyConnections):
+    def setListenNumber(self, howManyAccessHere):
         pass
-
-    # @abc.abstractmethod
-    # def setBlockingOperation(self):
-    #     pass
 
     @abc.abstractmethod
     def acceptClientSocket(self):
