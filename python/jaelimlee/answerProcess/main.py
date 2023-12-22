@@ -19,7 +19,7 @@ from mysql.MySQLProcess import DbProcess
 
 from sqlalchemy import create_engine
 # pip3 install sqlalchemy
-# pip install mysql-connector-python
+# pip3 install mysql-connector-python
 from decouple import config
 
 MYHOST = IPAddressBindSupporter.getIpAddressFromGoogle()
