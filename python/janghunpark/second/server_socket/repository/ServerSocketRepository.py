@@ -18,10 +18,18 @@ class ServerSocketRepository(abc.ABC):
     def setServerListenNumber(self, howManyConnections):
         pass
 
-    @abc.abstractmethod
-    def setBlockingOperation(self):
-        pass
+    # @abc.abstractmethod
+    # def setBlockingOperation(self):
+    #     pass
 
     @abc.abstractmethod
     def acceptClientSocket(self):
+        pass
+
+    @abc.abstractmethod
+    def getServerSocket(self):
+        pass
+
+    @abc.abstractmethod
+    def getClientSocketList(self):
         pass
