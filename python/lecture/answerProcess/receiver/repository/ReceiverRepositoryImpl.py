@@ -6,6 +6,8 @@ from custom_protocol.repository.CustomProtocolRepositoryImpl import CustomProtoc
 from receiver.repository.ReceiverRepository import ReceiverRepository
 from transmitter.repository.TransmitterRepositoryImpl import TransmitterRepositoryImpl
 
+import re
+
 
 class ReceiverRepositoryImpl(ReceiverRepository):
     __instance = None
@@ -49,9 +51,15 @@ class ReceiverRepositoryImpl(ReceiverRepository):
 
                 if len(requestComponents) > 1:
                     for i, element in enumerate(requestComponents[1:]):
-                        cleanedElement = element.strip().strip("(b'").strip("', )").rstrip("\\n")
-                        print(f"후속 정보 {i + 1}: {cleanedElement}")
-                        cleanedElementList.append(cleanedElement)
+                        byteLiteralMatch = re.search(r"b'(.+)'", element)
+
+                        if byteLiteralMatch:
+                            byteLiteral = byteLiteralMatch.group(1)
+                            decodedElement = byteLiteral.encode('utf-8').decode('unicode_escape')
+                            cleanedElement = decodedElement.strip()
+                            print(f"후속 정보 {i + 1}: {cleanedElement}")
+
+                            cleanedElementList.append(cleanedElement)
 
                 response = customProtocolRepository.execute(int(receivedRequestProtocolNumber), cleanedElementList)
                 print(f"response: {response}")
