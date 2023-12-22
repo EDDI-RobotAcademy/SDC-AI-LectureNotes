@@ -26,12 +26,19 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
 
 
 
-    def printConsoleUi(self, transmitQueue):
+    def printConsoleUi(self, transmitQueue, receiveQueue):
 
         consoleUiService = ConsoleUiServiceImpl.getInstance()
+        consoleUiService.processUserInput(transmitQueue)
 
         while True:
-            consoleUiService.processUserInput(transmitQueue)
+            if not receiveQueue.empty():
+                response = receiveQueue.get()
+                print(f"Received response: {response}")
+
+                consoleUiService.processUserInput(transmitQueue)
+            else:
+                sleep(0.5)
 
 
 

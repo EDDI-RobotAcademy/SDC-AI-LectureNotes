@@ -30,3 +30,5 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
     # 현재 시점에 약간 애매함
     def saveRequestFormToTransmitQueue(self):
         pass
+
+

@@ -3,6 +3,6 @@ import abc
 
 class TransmitterRepository(abc.ABC):
     @abc.abstractmethod
-    def transmitCommand(self):
+    def transmitCommand(self, clientSocketObject, lock, transmitQueue):
         pass
 

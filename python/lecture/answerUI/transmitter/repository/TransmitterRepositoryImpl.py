@@ -2,6 +2,7 @@ import socket
 from datetime import datetime
 from time import sleep
 
+from custom_protocol.repository.CustomProtocolRepositoryImpl import CustomProtocolRepositoryImpl
 from transmitter.repository.TransmitterRepository import TransmitterRepository
 
 
@@ -22,23 +23,22 @@ class TransmitterRepositoryImpl(TransmitterRepository):
             cls.__instance = cls()
         return cls.__instance
 
-    # 클라이언트 소켓에서 송신
     def transmitCommand(self, clientSocketObject, lock, transmitQueue):
         clientSocket = clientSocketObject.getSocket()
+        customProtocolRepository = CustomProtocolRepositoryImpl.getInstance()
 
         while True:
             with lock:
                 try:
-                    # protocol
-                    # 현재는 1대1 통신이므로 Blocking 으로 사용자 입력을 대기
                     sendProtocol = transmitQueue.get(block=True)
-                    clientSocket.sendall(str(sendProtocol).encode())
+                    request = customProtocolRepository.execute(sendProtocol)
+                    print(f"Request from repository: {request}")
 
-                    # sendMessage = "참 쉽죠 ?"
-                    # clientSocket = clientSocketObject.getSocket()
-                    #
-                    # # 실제 연결된 클라이언트에 데이터 송신
-                    # clientSocket.sendall(sendMessage.encode())
+                    combinedRequest = f"{sendProtocol},{request}"
+                    print(f"transmitter: will be send - {combinedRequest}")
+
+                    clientSocket.sendall(combinedRequest.encode())
+
 
                     print('{} command 전송 [{}]'.format(datetime.now(), sendProtocol))
 
