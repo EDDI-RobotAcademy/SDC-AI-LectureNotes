@@ -1,5 +1,8 @@
+from receiver.repository.ReceiverRepositoryImpl import ReceiverRepositoryImpl
 from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
 from server_socket.service.ServerSocketService import ServerSocketService
+from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
+from transmitter.repository.TransmitterRepositoryImpl import TransmitterRepositoryImpl
 
 
 class ServerSocketServiceImpl(ServerSocketService):
@@ -23,5 +26,25 @@ class ServerSocketServiceImpl(ServerSocketService):
     def setBlockingOperation(self):
         self.__serverSocketRepository.setBlockingOperation()
 
-    def acceptClientSocket(self):
+    # 데이터 구조체 (queue)
+    # queue 에 socket 과 address 를 넣어서 보관
+    def acceptClientSocket(self, queue):
         clientSocket, clientAddress = self.__serverSocketRepository.acceptClientSocket()
+
+        if clientSocket is not None:
+            taskManageRepository = TaskManageRepositoryImpl.getInstance()
+            transmitterRepository = TransmitterRepositoryImpl.getInstance()
+            receiverRepository = ReceiverRepositoryImpl.getInstance()
+
+            taskManageRepository.createTask(
+                target=transmitterRepository.transmitCommand,
+                args=(clientSocket,)
+            )
+
+            taskManageRepository.createTask(
+                target=receiverRepository.receiveCommand,
+                args=(clientSocket,)
+            )
+
+            print("clientSocket: {}, clientAddress: {}".format(clientSocket, clientAddress))
+            queue.put((clientSocket, clientAddress))

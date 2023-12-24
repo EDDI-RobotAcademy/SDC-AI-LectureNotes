@@ -1,3 +1,4 @@
+import multiprocessing
 import socket
 from time import sleep
 from decouple import config
@@ -34,7 +35,7 @@ if __name__ == '__main__':
     clientSocketService.createClientSocket(config('TARGET_HOST'), int(config('PORT')))
     clientSocketService.connectToTargetHost()
 
-    clientSocketService.setBlockingOperation()
+    # clientSocketService.setBlockingOperation()
 
     # 현재 시나리오에서
     # 입력에 대한 요청을 처리하는 Transmitter
@@ -43,15 +44,21 @@ if __name__ == '__main__':
     # 실제로는 더 조각조각 내는 것이 좋긴합니다.
     taskManageService = TaskManageServiceImpl.getInstance()
 
+    lock = multiprocessing.Lock()
     # 1. Transmitter 태스크를 생성 요청
     # 2. Transmitter 태스크 객체 구성
     # 3. 구성된 객체의 특정 동작을 취하도록 Transmitter 구동
-    taskManageService.createTransmitTask()
+    taskManageService.createTransmitTask(lock)
+
+    # 1. Receiver 태스크 생성 요청
+    # 2. Receiver 태스크 객체 구성
+    # 3. Receiver 객체의 특정 동작을 취하도록 만듬
+    taskManageService.createReceiveTask(lock)
 
     while True:
         try:
             # serverSocketService.acceptClientSocket()
-            print("main: 나도 별개의 Task 야")
+            # print("main: 나도 별개의 Task 야")
             sleep(0.5)
 
         except socket.error:
