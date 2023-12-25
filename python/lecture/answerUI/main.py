@@ -47,6 +47,11 @@ def registerProtocol():
         accountFormRepository.createAccountRegisterForm
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_REGISTER.value,
+        accountFormRepository.createAccountLoginForm
+    )
+
 
 if __name__ == '__main__':
     initEachDomain()
