@@ -1,7 +1,10 @@
+from console_ui.entity.ConsoleUiRoutingState import ConsoleUiRoutingState
+
+
 class ConsoleUiState():
 
     def __init__(self):
-        self.__currentRoutingState = None
+        self.__currentRoutingState = ConsoleUiRoutingState.NOTHING
         # self.__currentReadNumber = None
 
     def setCurrentRoutingState(self, currentState):
