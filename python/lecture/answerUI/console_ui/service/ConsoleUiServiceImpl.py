@@ -27,7 +27,7 @@ class ConsoleUiServiceImpl(ConsoleUiService):
 
     def processUserInput(self, transmitQueue):
         userChoice = KeyboardInput.getKeyboardIntegerInput()
-        print(f"입력된 숫자: {userChoice}")
+        print(f"ConsoleUiService - 입력된 숫자: {userChoice}")
         # selectedRoutingState = self.__repository.findRoutingStateFromUserChoice(userChoice)
         # print(f"처리된 상태값: {selectedRoutingState}")
         # self.__repository.saveCurrentRoutingState(selectedRoutingState)
