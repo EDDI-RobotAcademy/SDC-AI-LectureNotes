@@ -15,4 +15,12 @@ class ConsoleUiRepository(abc.ABC):
     def saveRequestFormToTransmitQueue(self):
         pass
 
+    @abc.abstractmethod
+    def printMenu(self):
+        pass
+
+    @abc.abstractmethod
+    def findRoutingStateFromUserChoice(self, userChoice):
+        pass
+
 
