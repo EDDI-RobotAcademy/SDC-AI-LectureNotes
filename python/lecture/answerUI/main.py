@@ -48,7 +48,7 @@ def registerProtocol():
     )
 
     customProtocolService.registerCustomProtocol(
-        CustomProtocol.ACCOUNT_REGISTER.value,
+        CustomProtocol.ACCOUNT_LOGIN.value,
         accountFormRepository.createAccountLoginForm
     )
 

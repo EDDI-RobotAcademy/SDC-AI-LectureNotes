@@ -34,6 +34,8 @@ class TransmitterRepositoryImpl(TransmitterRepository):
             with lock:
                 try:
                     sendProtocol = transmitQueue.get(block=True)
+                    print(f"typeof(sendProtocol) = {type(sendProtocol)}")
+                    print(f"sendProtocol = {sendProtocol}")
                     request = customProtocolRepository.execute(sendProtocol)
                     print(f"Request from repository: {request}")
 

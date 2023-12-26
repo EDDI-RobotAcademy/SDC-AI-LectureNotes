@@ -38,7 +38,7 @@ class CustomProtocolRepositoryImpl(CustomProtocolRepository):
                 self.__customProtocolTable[protocolNumber] = pointerOfFunction
 
             else:
-                self.__customProtocolTable = [0] * (protocolNumber + 1)
+                self.__customProtocolTable += [0] * (protocolNumber + 1 - customProtocolTableLength)
                 self.__customProtocolTable[protocolNumber] = pointerOfFunction
         else:
             print("실행 할 수 없는 형태입니다.")

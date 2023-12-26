@@ -60,6 +60,11 @@ def initCustomProtocol():
         accountService.registerAccount
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_LOGIN.value,
+        accountService.loginAccount
+    )
+
 
 def initEachDomain():
     # initMysqlInstance()

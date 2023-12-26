@@ -1,6 +1,8 @@
 from account.repository.AccountRepositoryImpl import AccountRepositoryImpl
 from account.service.AccountService import AccountService
+from account.service.request.AccountLoginRequest import AccountLoginRequest
 from account.service.request.AccountRegisterRequest import AccountRegisterRequest
+from account.service.response.AccountLoginResponse import AccountLoginResponse
 from account.service.response.AccountRegisterResponse import AccountRegisterResponse
 
 
@@ -40,5 +42,22 @@ class AccountServiceImpl(AccountService):
             return AccountRegisterResponse(True)
 
         return AccountRegisterResponse(False)
+
+    def loginAccount(self, *args, **kwargs):
+        print("loginAccount()")
+        print(f"args: {args}")
+
+        cleanedElements = args[0]
+        print(f"cleanedElements: {cleanedElements}")
+
+        accountLoginRequest = AccountLoginRequest(*cleanedElements)
+        foundAccount = self.__accountRepository.findByAccountId(accountLoginRequest.getAccountId())
+        if foundAccount is None:
+            return AccountLoginResponse(-1)
+
+        if foundAccount.checkPassword(accountLoginRequest.getPassword()):
+            return AccountLoginResponse(foundAccount.getId())
+
+        return AccountLoginResponse(-1)
 
     

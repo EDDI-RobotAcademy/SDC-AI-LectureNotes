@@ -1,5 +1,6 @@
 from console_ui.entity.ConsoleUiRoutingState import ConsoleUiRoutingState
 from console_ui.entity.ConsoleUiState import ConsoleUiState
+from console_ui.entity.Session import Session
 from console_ui.repository.ConsoleUiRepository import ConsoleUiRepository
 
 
@@ -37,6 +38,9 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
     # 현재 시점에 약간 애매함
     def saveRequestFormToTransmitQueue(self):
         pass
+
+    def setUserSession(self, sessionId):
+        self.__session = Session(sessionId)
 
     def findRoutingStateFromUserChoice(self, userChoice):
         currentRoutingState = self.__consoleUiState.getCurrentRoutingState()
