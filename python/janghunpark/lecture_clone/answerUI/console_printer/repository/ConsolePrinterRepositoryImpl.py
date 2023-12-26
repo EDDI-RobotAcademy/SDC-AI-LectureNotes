@@ -25,7 +25,8 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
         return cls.__instance
 
 
-
+    # 사용자의 입력을 받아서 transmitQueue 처리를 한 뒤에
+    # receive 한 정보가 없을 때까지 무한 반복
     def printConsoleUi(self, transmitQueue, receiveQueue):
 
         consoleUiService = ConsoleUiServiceImpl.getInstance()
