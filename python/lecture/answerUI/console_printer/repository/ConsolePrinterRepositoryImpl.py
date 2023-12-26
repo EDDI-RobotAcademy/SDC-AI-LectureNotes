@@ -54,6 +54,11 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
 
         class_name = response.__class__.__name__
 
+        if class_name == "AccountRegisterResponse":
+            if response.get_is_success() == False:
+                print("회원 가입에 실패하였습니다: (중복된 사용자)")
+                return
+
         if class_name == "AccountLoginResponse":
             print("Detect Login Response")
 

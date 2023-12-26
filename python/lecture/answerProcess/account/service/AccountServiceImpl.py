@@ -38,6 +38,11 @@ class AccountServiceImpl(AccountService):
         #     print(f"각각의 요소 {i + 1}: {element}")
 
         accountRegisterRequest = AccountRegisterRequest(*cleanedElements)
+        accountId = accountRegisterRequest.getAccountId()
+        foundAccount = self.__accountRepository.findByAccountId(accountId)
+        if foundAccount is not None:
+            return AccountRegisterResponse(False)
+
         storedAccount = self.__accountRepository.save(accountRegisterRequest.toAccount())
 
         if storedAccount.getId() is not None:
@@ -54,6 +59,7 @@ class AccountServiceImpl(AccountService):
 
         accountLoginRequest = AccountLoginRequest(*cleanedElements)
         foundAccount = self.__accountRepository.findByAccountId(accountLoginRequest.getAccountId())
+        print(f"foundAccount: {foundAccount}")
         if foundAccount is None:
             return AccountLoginResponse(-1)
 
