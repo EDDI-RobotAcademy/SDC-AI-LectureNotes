@@ -5,6 +5,8 @@ from time import sleep
 
 import sqlalchemy
 
+from account.repository.AccountRepositoryImpl import AccountRepositoryImpl
+from account.repository.SessionRepositoryImpl import SessionRepositoryImpl
 from account.service.AccountServiceImpl import AccountServiceImpl
 from custom_protocol.entity.CustomProtocol import CustomProtocol
 from custom_protocol.service.CustomProtocolServiceImpl import CustomProtocolServiceImpl
@@ -66,13 +68,24 @@ def initCustomProtocol():
     )
 
 
+def initAccountDomain():
+    accountRepository = AccountRepositoryImpl()
+    sessionRepository = SessionRepositoryImpl()
+
+    AccountServiceImpl(accountRepository, sessionRepository)
+
+
 def initEachDomain():
     # initMysqlInstance()
     initMysqlInstanceAlternatives()
 
+    initAccountDomain();
+
     initServerSocketDomain()
     initTaskManageDomain()
     initCustomProtocol()
+
+
 
 
 if __name__ == '__main__':

@@ -4,3 +4,4 @@ class Session:
 
     def get_session_id(self):
         return self.__sessionId
+
