@@ -46,20 +46,20 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                 receivedForm = json.loads(receivedRequest)
 
                 protocolNumber = receivedForm["protocol"]
-                receivedRequestForm = receivedForm["data"]
-
                 print(f"Receiver - typeof protocolNumber: {type(protocolNumber)}")
                 print(f"Receiver - protocolNumber: {protocolNumber}")
-                print(f"Receiver - typeof requestForm: {type(receivedRequestForm)}")
-                print(f"Receiver - requestForm: {receivedRequestForm}")
 
-                requestGenerator = requestGeneratorService.findRequestGenerator(protocolNumber)
-                requestForm = requestGenerator(receivedRequestForm)
+                if "data" in receivedForm:
+                    receivedRequestForm = receivedForm["data"]
+                    print(f"Receiver - typeof requestForm: {type(receivedRequestForm)}")
+                    print(f"Receiver - requestForm: {receivedRequestForm}")
 
-                if requestForm is not None:
+                    requestGenerator = requestGeneratorService.findRequestGenerator(protocolNumber)
+                    requestForm = requestGenerator(receivedRequestForm)
+
                     response = customProtocolRepository.execute(int(protocolNumber), tuple(requestForm.__dict__.values()))
 
-                if requestForm is None:
+                else:
                     response = customProtocolRepository.execute(int(protocolNumber))
 
                 print(f"Receiver - response: {response}")

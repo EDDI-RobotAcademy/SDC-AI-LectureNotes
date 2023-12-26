@@ -1,4 +1,5 @@
 from account_form.repository.AccountFormRepository import AccountFormRepository
+from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImpl
 
 from utility.keyboard.KeyboardInput import KeyboardInput
 
@@ -39,3 +40,9 @@ class AccountFormRepositoryImpl(AccountFormRepository):
     def createAccountDeleteForm(self):
         print("회원 탈퇴를 진행합니다")
         return
+
+    def createProductListForm(self):
+        print("상품 리스트를 출력합니다")
+        return
+
+

@@ -55,6 +55,7 @@ def initTaskManageDomain():
 def initCustomProtocol():
     customProtocolService = CustomProtocolServiceImpl.getInstance()
     accountService = AccountServiceImpl.getInstance()
+    # productService = ProductServiceImpl.getInstance()
 
     print(f"enum value test: {CustomProtocol.ACCOUNT_REGISTER.value}")
     customProtocolService.registerCustomProtocol(
@@ -71,6 +72,16 @@ def initCustomProtocol():
         CustomProtocol.ACCOUNT_LOGOUT.value,
         accountService.logoutAccount
     )
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_DELETE.value,
+        accountService.deleteAccount
+    )
+
+    # customProtocolService.registerCustomProtocol(
+    #     CustomProtocol.PRODUCT_LIST.value,
+    #     productService.listProduct
+    # )
 
 
 def initAccountDomain():

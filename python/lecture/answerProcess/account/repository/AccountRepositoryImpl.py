@@ -75,3 +75,11 @@ class AccountRepositoryImpl(AccountRepository):
             session.delete(account)
             session.commit()
 
+    def deleteById(self, id):
+        dbSession = sessionmaker(bind=self.__instance.engine)
+        session = dbSession()
+
+        account = session.query(Account).filter_by(_Account__id=id).first()
+        if account:
+            session.delete(account)
+            session.commit()

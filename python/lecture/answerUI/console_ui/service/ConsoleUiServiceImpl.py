@@ -22,6 +22,7 @@ class ConsoleUiServiceImpl(ConsoleUiService):
 
     def printMenu(self):
         print("현재 상태에 따른 메시지를 출력합니다")
+        print(f"ConsoleUiService - consoleUiRepository: {self.__repository}")
 
         self.__repository.printMenu()
 
@@ -36,6 +37,17 @@ class ConsoleUiServiceImpl(ConsoleUiService):
         convertedUserChoice = self.__repository.convertUserChoiceToProperRouting(userChoice)
         print(f"ConsoleUiService - convertedUserChoice: {convertedUserChoice}")
 
-        transmitQueue.put(convertedUserChoice)
+        sessionId = None
+        sessionObject = self.__repository.acquireSession()
+        if sessionObject:
+            sessionId = sessionObject.get_session_id()
+            print(f"ConsoleUiService - sessionObject: {sessionObject}, sessionId: {sessionId}")
+
+        if userChoice == 1 or userChoice == 5:
+            self.__repository.clearUserSession()
+
+        transmitData = {'protocolNumber': convertedUserChoice, 'sessionId': sessionId}
+
+        transmitQueue.put(transmitData)
 
 

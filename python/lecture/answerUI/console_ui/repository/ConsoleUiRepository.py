@@ -27,4 +27,23 @@ class ConsoleUiRepository(abc.ABC):
     def convertUserChoiceToProperRouting(self, userChoice):
         pass
 
+    @abc.abstractmethod
+    def acquireSession(self):
+        pass
+
+    @abc.abstractmethod
+    def acquireAccountSessionId(self):
+        pass
+
+    @abc.abstractmethod
+    def convertUserChoiceToProperRouting(self, userChoice):
+        pass
+
+    @abc.abstractmethod
+    def setUserSession(self, sessionId):
+        pass
+
+    @abc.abstractmethod
+    def clearUserSession(self):
+        pass
 

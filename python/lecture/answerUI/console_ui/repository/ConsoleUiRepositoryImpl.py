@@ -51,7 +51,11 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
     def saveRequestFormToTransmitQueue(self):
         pass
 
+    def acquireSession(self):
+        return self.__session
+
     def acquireAccountSessionId(self):
+        print(f"ConsoleUiRepository - acquireAccountSessionId session: {self.__session}")
         return self.__session.get_session_id()
 
     def findRoutingStateFromUserChoice(self, userChoice):
@@ -80,6 +84,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
     def printMenu(self):
         currentRoutingState = self.__consoleUiState.getCurrentRoutingState()
+        print(f"ConsoleUiRepository - currentRoutingState: {currentRoutingState}, __session: {self.__session}")
 
         menuPrinter = self.__uiMenuTable[currentRoutingState.value]
         menuPrinter()
@@ -118,31 +123,43 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
                 print("ACCOUNT_LOGIN")
                 return CustomProtocol.ACCOUNT_LOGIN.value
 
+            if userChoice == 3:
+                print("PRODUCT_LIST")
+                return CustomProtocol.PRODUCT_LIST.value
+
         if userChoice == 1:
             print("ACCOUNT_LOGOUT")
             return CustomProtocol.ACCOUNT_LOGOUT.value
+
+        if userChoice == 2:
+            print("PRODUCT_LIST")
+            return CustomProtocol.PRODUCT_LIST.value
 
         if userChoice == 5:
             print("ACCOUNT_DELETE")
             return CustomProtocol.ACCOUNT_DELETE.value
 
     def __readSessionInfoFromFile(self):
-        info_file_path = os.path.join(os.getcwd(), self.INFO_FILE_PATH)
+        print("ConsoleUiRepository: __readSessionInfoFromFile()")
+        infoFilePath = os.path.join(os.getcwd(), self.INFO_FILE_PATH)
+        print(f"ConsoleUiRepository - infoFilePath: {infoFilePath}")
 
-        if os.path.exists(info_file_path):
-            with open(info_file_path, 'r') as file:
+        if os.path.exists(infoFilePath):
+            with open(infoFilePath, 'r') as file:
                 content = file.read().strip()
 
             if content.isdigit():
                 sessionId = int(content)
                 self.__session = Session(sessionId)
         else:
-            with open(info_file_path, 'w') as file:
+            with open(infoFilePath, 'w') as file:
                 file.write("")
 
     def setUserSession(self, sessionId):
+        print(f"ConsoleUiRepository - setUserSession() sessionId: {sessionId}")
         self.__session = Session(sessionId)
         self.__writeSessionInfoToFile(sessionId)
+        print(f"ConsoleUiRepository: current session: {self.__session}")
 
     def __writeSessionInfoToFile(self, sessionId):
         try:
