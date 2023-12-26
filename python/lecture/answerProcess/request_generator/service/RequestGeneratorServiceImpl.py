@@ -1,5 +1,6 @@
 import ast
 
+from account.service.request.AccountLoginRequest import AccountLoginRequest
 from account.service.request.AccountRegisterRequest import AccountRegisterRequest
 from custom_protocol.entity.CustomProtocol import CustomProtocol
 from request_generator.service.RequestGeneratorService import RequestGeneratorService
@@ -15,6 +16,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
 
             cls.__requestFormGenerationTable[
                 CustomProtocol.ACCOUNT_REGISTER.value] = cls.__instance.generateAccountRegisterRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.ACCOUNT_LOGIN.value] = cls.__instance.generateAccountLoginRequest
 
         return cls.__instance
 
@@ -38,6 +41,13 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
     def generateAccountRegisterRequest(self, arguments):
         print("AccountRegisterRequest 생성")
         return AccountRegisterRequest(
+            __accountId=arguments["__accountId"],
+            __password=arguments["__password"]
+        )
+
+    def generateAccountLoginRequest(self, arguments):
+        print("AccountLoginRequest 생성")
+        return AccountLoginRequest(
             __accountId=arguments["__accountId"],
             __password=arguments["__password"]
         )
