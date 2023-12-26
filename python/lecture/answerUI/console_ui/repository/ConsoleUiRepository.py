@@ -23,4 +23,8 @@ class ConsoleUiRepository(abc.ABC):
     def findRoutingStateFromUserChoice(self, userChoice):
         pass
 
+    @abc.abstractmethod
+    def convertUserChoiceToProperRouting(self, userChoice):
+        pass
+
 

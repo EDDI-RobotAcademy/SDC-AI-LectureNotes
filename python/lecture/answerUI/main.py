@@ -52,6 +52,11 @@ def registerProtocol():
         accountFormRepository.createAccountLoginForm
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_LOGOUT.value,
+        accountFormRepository.createAccountLogoutForm
+    )
+
 
 if __name__ == '__main__':
     initEachDomain()

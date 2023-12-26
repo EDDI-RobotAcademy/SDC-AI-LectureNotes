@@ -1,7 +1,11 @@
+import os
+from datetime import datetime, timedelta
+
 from console_ui.entity.ConsoleUiRoutingState import ConsoleUiRoutingState
 from console_ui.entity.ConsoleUiState import ConsoleUiState
 from console_ui.entity.Session import Session
 from console_ui.repository.ConsoleUiRepository import ConsoleUiRepository
+from custom_protocol.entity.CustomProtocol import CustomProtocol
 
 
 class ConsoleUiRepositoryImpl(ConsoleUiRepository):
@@ -11,11 +15,19 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
     __uiMenuTable = {}
     __uiSelectDecisionTable = {}
 
+    __uiProperCommandConvertTable = {}
+
+    INFO_FILE_PATH = 'localStorage/info.txt'
+
     def __new__(cls):
         if cls.__instance is None:
             cls.__instance = super().__new__(cls)
+
+            cls.__instance.__readSessionInfoFromFile()
+
             cls.__instance.__uiMenuTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__printDefaultMenu
             cls.__instance.__uiSelectDecisionTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__selectDecisionFromUserChoice
+            cls.__instance.__uiProperCommandConvertTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__routingStateNothingConverter
         return cls.__instance
 
     def __init__(self):
@@ -38,9 +50,6 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
     # 현재 시점에 약간 애매함
     def saveRequestFormToTransmitQueue(self):
         pass
-
-    def setUserSession(self, sessionId):
-        self.__session = Session(sessionId)
 
     def findRoutingStateFromUserChoice(self, userChoice):
         currentRoutingState = self.__consoleUiState.getCurrentRoutingState()
@@ -73,6 +82,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         menuPrinter()
 
     def __printDefaultMenu(self):
+
         if self.__session is None:
             print("1. 회원 가입")
             print("2. 로그인")
@@ -84,5 +94,54 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         print("2. 상품 리스트 조회")
         print("3. 주문 내역 조회")
         print("4. 종료")
+
+    def convertUserChoiceToProperRouting(self, userChoice):
+        currentRoutingState = self.__consoleUiState.getCurrentRoutingState()
+        print(f"ConsoleUiRepository currentRoutingState: {currentRoutingState}")
+
+        properCommandConverter = self.__uiProperCommandConvertTable[currentRoutingState.value]
+        return properCommandConverter(userChoice)
+
+
+    def __routingStateNothingConverter(self, userChoice):
+        print(f"ConsoleUiRepository __routingStateNothingConverter(): userChoice: {userChoice}")
+        if self.__session is None:
+            if userChoice == 1:
+                print("ACCOUNT_REGISTER")
+                return CustomProtocol.ACCOUNT_REGISTER.value
+
+            if userChoice == 2:
+                print("ACCOUNT_LOGIN")
+                return CustomProtocol.ACCOUNT_LOGIN.value
+
+        if userChoice == 1:
+            print("ACCOUNT_LOGOUT")
+            return CustomProtocol.ACCOUNT_LOGOUT.value
+
+    def __readSessionInfoFromFile(self):
+        info_file_path = os.path.join(os.getcwd(), self.INFO_FILE_PATH)
+
+        if os.path.exists(info_file_path):
+            with open(info_file_path, 'r') as file:
+                content = file.read().strip()
+
+            if content.isdigit():
+                sessionId = int(content)
+                self.__session = Session(sessionId)
+        else:
+            with open(info_file_path, 'w') as file:
+                file.write("")
+
+    def setUserSession(self, sessionId):
+        self.__session = Session(sessionId)
+        self.__writeSessionInfoToFile(sessionId)
+
+    def __writeSessionInfoToFile(self, sessionId):
+        try:
+            with open(self.INFO_FILE_PATH, 'w') as file:
+                file.write(str(sessionId))
+        except Exception as e:
+            print(f"파일에 세션 작성 중 에러 발생: {e}")
+
 
 

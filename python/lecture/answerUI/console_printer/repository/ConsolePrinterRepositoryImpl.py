@@ -39,7 +39,7 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
         while True:
             if not receiveQueue.empty():
                 response = receiveQueue.get()
-                print(f"Received response: {response}")
+                print(f"ConsolePrinterRepository Received response: {response}")
 
                 self.__responseProcessor(response)
                 # sessionAccountId = self.__checkUserSession()
@@ -53,6 +53,11 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
         print(f"ConsolePrinterRepository - response: {response}")
 
         class_name = response.__class__.__name__
+
+        if class_name == "AccountRegisterResponse":
+            if response.get_is_success() == False:
+                print("회원 가입에 실패하였습니다: (중복된 사용자)")
+                return
 
         if class_name == "AccountLoginResponse":
             print("Detect Login Response")

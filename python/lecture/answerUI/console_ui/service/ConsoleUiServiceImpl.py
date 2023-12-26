@@ -33,6 +33,9 @@ class ConsoleUiServiceImpl(ConsoleUiService):
         # self.__repository.saveCurrentRoutingState(selectedRoutingState)
 
         # 필요하다면 여기 중간에 몇 가지 작업들이 더 처리 될 수 있습니다.
-        transmitQueue.put(userChoice)
+        convertedUserChoice = self.__repository.convertUserChoiceToProperRouting(userChoice)
+        print(f"ConsoleUiService - convertedUserChoice: {convertedUserChoice}")
+
+        transmitQueue.put(convertedUserChoice)
 
 
