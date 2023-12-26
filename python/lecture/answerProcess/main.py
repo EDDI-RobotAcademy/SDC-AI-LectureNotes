@@ -67,10 +67,10 @@ def initCustomProtocol():
         accountService.loginAccount
     )
 
-    # customProtocolService.registerCustomProtocol(
-    #     CustomProtocol.ACCOUNT_LOGOUT.value,
-    #     accountService.logoutAccount
-    # )
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_LOGOUT.value,
+        accountService.logoutAccount
+    )
 
 
 def initAccountDomain():

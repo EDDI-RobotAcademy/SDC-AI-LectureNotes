@@ -1,5 +1,6 @@
 import ast
 
+from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImpl
 from custom_protocol.entity.CustomProtocol import CustomProtocol
 from request_generator.service.RequestGeneratorService import RequestGeneratorService
 
@@ -70,5 +71,13 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
 
     def generateAccountLogoutRequest(self, arguments):
         print("RequestGeneratorService: logout form")
-        return None
+
+        consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+
+        accountRequestData = {
+            '__accountSessionId': consoleUiRepository.acquireAccountSessionId(),
+        }
+
+        return accountRequestData
+
 

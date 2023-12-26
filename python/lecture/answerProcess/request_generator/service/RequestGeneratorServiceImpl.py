@@ -1,6 +1,7 @@
 import ast
 
 from account.service.request.AccountLoginRequest import AccountLoginRequest
+from account.service.request.AccountLogoutRequest import AccountLogoutRequest
 from account.service.request.AccountRegisterRequest import AccountRegisterRequest
 from custom_protocol.entity.CustomProtocol import CustomProtocol
 from request_generator.service.RequestGeneratorService import RequestGeneratorService
@@ -55,4 +56,6 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         )
 
     def generateAccountLogoutRequest(self, arguments):
-        return None
+        return AccountLogoutRequest(
+            __accountSessionId=arguments["__accountSessionId"]
+        )

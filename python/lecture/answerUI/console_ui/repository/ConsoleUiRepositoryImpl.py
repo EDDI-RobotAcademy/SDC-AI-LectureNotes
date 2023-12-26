@@ -51,6 +51,9 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
     def saveRequestFormToTransmitQueue(self):
         pass
 
+    def acquireAccountSessionId(self):
+        return self.__session.get_session_id()
+
     def findRoutingStateFromUserChoice(self, userChoice):
         currentRoutingState = self.__consoleUiState.getCurrentRoutingState()
         print(f"currentRoutingState: {currentRoutingState}")
@@ -142,6 +145,20 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
                 file.write(str(sessionId))
         except Exception as e:
             print(f"파일에 세션 작성 중 에러 발생: {e}")
+
+    def clearUserSession(self):
+        self.__deleteSessionInfoFile()
+
+    def __deleteSessionInfoFile(self):
+
+        try:
+            os.remove(self.INFO_FILE_PATH)
+            print("Session information file deleted successfully.")
+            self.__session = None
+        except FileNotFoundError:
+            print("Session information file not found.")
+        except Exception as e:
+            print(f"An error occurred while deleting the session information file: {e}")
 
 
 

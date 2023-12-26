@@ -68,6 +68,15 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
             consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
             consoleUiRepository.setUserSession(response.getSessionAccountId())
 
+        if class_name == "AccountLogoutResponse":
+            print("Detect Logout Response")
+
+            if response.getIsSuccess() is False:
+                return
+
+            consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+            consoleUiRepository.clearUserSession()
+
     def __checkUserSession(self):
         consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
         consoleUiRepository.getUserSession()
