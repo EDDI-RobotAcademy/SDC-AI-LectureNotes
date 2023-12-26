@@ -64,12 +64,18 @@ class AccountServiceImpl(AccountService):
             return AccountLoginResponse(-1)
 
         if foundAccount.checkPassword(accountLoginRequest.getPassword()):
-            sessionRepository = SessionRepositoryImpl.getInstance()
+            # sessionRepository = SessionRepositoryImpl.getInstance()
             accountSession = Session(foundAccount.getId())
-            sessionRepository.save(accountSession)
+            # sessionRepository.save(accountSession)
+            self.__sessionRepository.save(accountSession)
 
             return AccountLoginResponse(foundAccount.getId())
 
         return AccountLoginResponse(-1)
+
+    # def logoutAccount(self, *args, **kwargs):
+    #     pass
+    #     self.__sessionRepository.deleteById
+
 
     

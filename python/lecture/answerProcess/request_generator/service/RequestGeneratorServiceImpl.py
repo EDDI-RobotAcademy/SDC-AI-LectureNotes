@@ -18,6 +18,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.ACCOUNT_REGISTER.value] = cls.__instance.generateAccountRegisterRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.ACCOUNT_LOGIN.value] = cls.__instance.generateAccountLoginRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.ACCOUNT_LOGOUT.value] = cls.__instance.generateAccountLogoutRequest
 
         return cls.__instance
 
@@ -31,7 +33,7 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         return cls.__instance
 
     def findRequestGenerator(self, protocolNumber):
-        print("request generator를 찾아옵니다")
+        print("RequestGeneratorService - request generator를 찾아옵니다")
         if self.__requestFormGenerationTable[protocolNumber] is not None:
             return self.__requestFormGenerationTable[protocolNumber]
 
@@ -39,15 +41,18 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
             print(f"이 프로토콜 번호({protocolNumber}) 를 처리 할 수 있는 함수가 없습니다.")
 
     def generateAccountRegisterRequest(self, arguments):
-        print("AccountRegisterRequest 생성")
+        print("RequestGeneratorService - AccountRegisterRequest 생성")
         return AccountRegisterRequest(
             __accountId=arguments["__accountId"],
             __password=arguments["__password"]
         )
 
     def generateAccountLoginRequest(self, arguments):
-        print("AccountLoginRequest 생성")
+        print("RequestGeneratorService - AccountLoginRequest 생성")
         return AccountLoginRequest(
             __accountId=arguments["__accountId"],
             __password=arguments["__password"]
         )
+
+    def generateAccountLogoutRequest(self, arguments):
+        return None
