@@ -34,7 +34,7 @@ class ConsoleUiServiceImpl(ConsoleUiService):
 
         # 필요하다면 여기 중간에 몇 가지 작업들이 더 처리 될 수 있습니다.
         convertedUserChoice = self.__repository.convertUserChoiceToProperRouting(userChoice)
-        print(f"convertedUserChoice: {convertedUserChoice}")
+        print(f"ConsoleUiService - convertedUserChoice: {convertedUserChoice}")
 
         transmitQueue.put(convertedUserChoice)
 

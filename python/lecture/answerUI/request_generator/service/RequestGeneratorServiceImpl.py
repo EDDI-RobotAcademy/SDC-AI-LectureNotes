@@ -15,6 +15,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
             cls.__requestFormGenerationTable[CustomProtocol.ACCOUNT_REGISTER.value] = cls.__instance.generateAccountRegisterRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.ACCOUNT_LOGIN.value] = cls.__instance.generateAccountLoginRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.ACCOUNT_LOGOUT.value] = cls.__instance.generateAccountLogoutRequest
 
         return cls.__instance
 
@@ -66,5 +68,7 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
 
         return accountRequestData
 
-
+    def generateAccountLogoutRequest(self, arguments):
+        print("RequestGeneratorService: logout form")
+        return None
 

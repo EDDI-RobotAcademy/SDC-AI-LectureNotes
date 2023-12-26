@@ -39,7 +39,7 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
         while True:
             if not receiveQueue.empty():
                 response = receiveQueue.get()
-                print(f"Received response: {response}")
+                print(f"ConsolePrinterRepository Received response: {response}")
 
                 self.__responseProcessor(response)
                 # sessionAccountId = self.__checkUserSession()

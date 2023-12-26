@@ -34,15 +34,15 @@ class TransmitterRepositoryImpl(TransmitterRepository):
             with lock:
                 try:
                     sendProtocol = transmitQueue.get(block=True)
-                    print(f"typeof(sendProtocol) = {type(sendProtocol)}")
-                    print(f"sendProtocol = {sendProtocol}")
+                    print(f"Transmitter typeof(sendProtocol) = {type(sendProtocol)}")
+                    print(f"Transmitter sendProtocol = {sendProtocol}")
                     request = customProtocolRepository.execute(sendProtocol)
-                    print(f"Request from repository: {request}")
+                    print(f"Transmitter Request from repository: {request}")
 
                     requestGenerator = requestGeneratorService.findRequestGenerator(sendProtocol)
-                    print(f"Request Generator: {requestGenerator}")
+                    print(f"Transmitter Request Generator: {requestGenerator}")
                     sendingRequest = requestGenerator(request)
-                    print(f"finish to generate request: {sendingRequest}")
+                    print(f"Transmitter finish to generate request: {sendingRequest}")
 
                     combinedRequestData = {
                         'protocol': sendProtocol,
