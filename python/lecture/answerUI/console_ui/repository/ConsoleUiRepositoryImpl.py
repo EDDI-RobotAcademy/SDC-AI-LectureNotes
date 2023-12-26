@@ -10,6 +10,7 @@ from custom_protocol.entity.CustomProtocol import CustomProtocol
 
 class ConsoleUiRepositoryImpl(ConsoleUiRepository):
     __instance = None
+    __session = None
 
     __uiMenuTable = {}
     __uiSelectDecisionTable = {}
@@ -31,10 +32,6 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
     def __init__(self):
         print("ConsoleUiRepository 초기화 동작")
-
-        if not hasattr(self, '__initialized'):
-            self.__initialized = True
-            self.__session = None
 
         self.__consoleUiState = ConsoleUiState()
 
@@ -126,9 +123,17 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
                 print("ACCOUNT_LOGIN")
                 return CustomProtocol.ACCOUNT_LOGIN.value
 
+            if userChoice == 3:
+                print("PRODUCT_LIST")
+                return CustomProtocol.PRODUCT_LIST.value
+
         if userChoice == 1:
             print("ACCOUNT_LOGOUT")
             return CustomProtocol.ACCOUNT_LOGOUT.value
+
+        if userChoice == 2:
+            print("PRODUCT_LIST")
+            return CustomProtocol.PRODUCT_LIST.value
 
         if userChoice == 5:
             print("ACCOUNT_DELETE")

@@ -7,3 +7,5 @@ class CustomProtocol(Enum):
     ACCOUNT_LOGOUT = 3
     ACCOUNT_DELETE = 4
 
+    PRODUCT_LIST = 5
+

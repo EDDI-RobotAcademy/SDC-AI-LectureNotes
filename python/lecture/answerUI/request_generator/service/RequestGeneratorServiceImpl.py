@@ -22,6 +22,9 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
             cls.__requestFormGenerationTable[
                 CustomProtocol.ACCOUNT_DELETE.value] = cls.__instance.generateAccountDeleteRequest
 
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PRODUCT_LIST.value] = cls.__instance.generateAccountDeleteRequest
+
         return cls.__instance
 
     def __init__(self):
@@ -90,4 +93,6 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
 
         return accountRequestData
 
-
+    def generateProductListRequest(self, arguments):
+        print("RequestGeneratorService - generateProductListRequest()")
+        return

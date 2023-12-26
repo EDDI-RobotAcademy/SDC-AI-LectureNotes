@@ -40,3 +40,9 @@ class AccountFormRepositoryImpl(AccountFormRepository):
     def createAccountDeleteForm(self):
         print("회원 탈퇴를 진행합니다")
         return
+
+    def createProductListForm(self):
+        print("상품 리스트를 출력합니다")
+        return
+
+
