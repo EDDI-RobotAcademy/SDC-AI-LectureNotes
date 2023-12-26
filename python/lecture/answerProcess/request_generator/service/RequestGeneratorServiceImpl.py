@@ -1,5 +1,6 @@
 import ast
 
+from account.service.request.AccountDeleteRequest import AccountDeleteRequest
 from account.service.request.AccountLoginRequest import AccountLoginRequest
 from account.service.request.AccountLogoutRequest import AccountLogoutRequest
 from account.service.request.AccountRegisterRequest import AccountRegisterRequest
@@ -21,6 +22,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.ACCOUNT_LOGIN.value] = cls.__instance.generateAccountLoginRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.ACCOUNT_LOGOUT.value] = cls.__instance.generateAccountLogoutRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.ACCOUNT_DELETE.value] = cls.__instance.generateAccountDeleteRequest
 
         return cls.__instance
 
@@ -59,3 +62,9 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         return AccountLogoutRequest(
             __accountSessionId=arguments["__accountSessionId"]
         )
+
+    def generateAccountDeleteRequest(self, arguments):
+        return AccountDeleteRequest(
+            __accountSessionId=arguments["__accountSessionId"]
+        )
+

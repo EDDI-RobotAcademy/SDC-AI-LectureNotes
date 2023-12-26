@@ -73,23 +73,19 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         return accountRequestData
 
     def generateAccountLogoutRequest(self, arguments):
-        print("RequestGeneratorService: logout form")
-
-        consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+        print(f"RequestGeneratorService: logout form sessionId: {arguments}")
 
         accountRequestData = {
-            '__accountSessionId': consoleUiRepository.acquireAccountSessionId(),
+            '__accountSessionId': arguments,
         }
 
         return accountRequestData
 
     def generateAccountDeleteRequest(self, arguments):
-        print("RequestGeneratorService: logout form")
-
-        consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+        print("RequestGeneratorService: delete form")
 
         accountRequestData = {
-            '__accountSessionId': consoleUiRepository.acquireAccountSessionId(),
+            '__accountSessionId': arguments,
         }
 
         return accountRequestData

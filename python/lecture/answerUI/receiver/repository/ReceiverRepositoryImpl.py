@@ -6,6 +6,7 @@ from receiver.repository.ReceiverRepository import ReceiverRepository
 from account.service.response.AccountRegisterResponse import AccountRegisterResponse
 from account.service.response.AccountLoginResponse import AccountLoginResponse
 from account.service.response.AccountLogoutResponse import AccountLogoutResponse
+from account.service.response.AccountDeleteResponse import AccountDeleteResponse
 
 
 class ReceiverRepositoryImpl(ReceiverRepository):

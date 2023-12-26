@@ -3,6 +3,7 @@ import socket
 from datetime import datetime
 from time import sleep
 
+from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImpl
 from custom_protocol.repository.CustomProtocolRepositoryImpl import CustomProtocolRepositoryImpl
 from request_generator.service.RequestGeneratorServiceImpl import RequestGeneratorServiceImpl
 from transmitter.repository.TransmitterRepository import TransmitterRepository
@@ -29,19 +30,31 @@ class TransmitterRepositoryImpl(TransmitterRepository):
         clientSocket = clientSocketObject.getSocket()
         customProtocolRepository = CustomProtocolRepositoryImpl.getInstance()
         requestGeneratorService = RequestGeneratorServiceImpl.getInstance()
+        # ConsoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
 
         while True:
             with lock:
                 try:
-                    sendProtocol = transmitQueue.get(block=True)
+                    protocolAndSessionId = transmitQueue.get(block=True)
+                    sendProtocol = protocolAndSessionId['protocolNumber']
+                    sessionId = protocolAndSessionId['sessionId']
                     print(f"Transmitter typeof(sendProtocol) = {type(sendProtocol)}")
                     print(f"Transmitter sendProtocol = {sendProtocol}")
+                    print(f"Transmitter sessionId = {sessionId}")
                     request = customProtocolRepository.execute(sendProtocol)
                     print(f"Transmitter Request from repository: {request}")
 
+                    # sessionId = ConsoleUiRepository.acquireAccountSessionId()
+                    # print(f"Transmitter sessionId: {sessionId}")
+
                     requestGenerator = requestGeneratorService.findRequestGenerator(sendProtocol)
                     print(f"Transmitter Request Generator: {requestGenerator}")
-                    sendingRequest = requestGenerator(request)
+
+                    if sessionId is None:
+                        sendingRequest = requestGenerator(request)
+                    else:
+                        sendingRequest = requestGenerator(sessionId)
+
                     print(f"Transmitter finish to generate request: {sendingRequest}")
 
                     combinedRequestData = {

@@ -72,6 +72,11 @@ def initCustomProtocol():
         accountService.logoutAccount
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_DELETE.value,
+        accountService.deleteAccount
+    )
+
 
 def initAccountDomain():
     accountRepository = AccountRepositoryImpl()

@@ -63,6 +63,7 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
             print("Detect Login Response")
 
             if response.getSessionAccountId() == -1:
+                print("로그인에 실패하였습니다: 올바른 정보를 입력하세요!")
                 return
 
             consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
@@ -76,6 +77,15 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
 
             consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
             consoleUiRepository.clearUserSession()
+
+        if class_name == "AccountDeleteResponse":
+            print("Detect Delete Response")
+
+            if response.getIsSuccess() is False:
+                return
+
+            # consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+            # consoleUiRepository.clearUserSession()
 
     def __checkUserSession(self):
         consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()

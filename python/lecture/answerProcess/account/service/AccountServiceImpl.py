@@ -2,9 +2,11 @@ from account.entity.Session import Session
 from account.repository.AccountRepositoryImpl import AccountRepositoryImpl
 from account.repository.SessionRepositoryImpl import SessionRepositoryImpl
 from account.service.AccountService import AccountService
+from account.service.request.AccountDeleteRequest import AccountDeleteRequest
 from account.service.request.AccountLoginRequest import AccountLoginRequest
 from account.service.request.AccountLogoutRequest import AccountLogoutRequest
 from account.service.request.AccountRegisterRequest import AccountRegisterRequest
+from account.service.response.AccountDeleteResponse import AccountDeleteResponse
 from account.service.response.AccountLoginResponse import AccountLoginResponse
 from account.service.response.AccountLogoutResponse import AccountLogoutResponse
 from account.service.response.AccountRegisterResponse import AccountRegisterResponse
@@ -91,6 +93,22 @@ class AccountServiceImpl(AccountService):
         self.__sessionRepository.deleteBySessionId(foundAccount.getId())
 
         return AccountLogoutResponse(True)
+
+    def deleteAccount(self, *args, **kwargs):
+        print("AccountService - deleteAccount()")
+
+        cleanedElements = args[0]
+
+        accountLoginRequest = AccountDeleteRequest(*cleanedElements)
+        foundAccount = self.__accountRepository.findById(accountLoginRequest.getAccountSessionId())
+        print(f"foundAccount: {foundAccount}")
+        if foundAccount is None:
+            return AccountDeleteResponse(False)
+
+        self.__sessionRepository.deleteBySessionId(foundAccount.getId())
+        self.__accountRepository.deleteById(foundAccount.getId())
+
+        return AccountDeleteResponse(True)
 
 
     

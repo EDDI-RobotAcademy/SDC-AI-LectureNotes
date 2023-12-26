@@ -1,4 +1,5 @@
 from account_form.repository.AccountFormRepository import AccountFormRepository
+from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImpl
 
 from utility.keyboard.KeyboardInput import KeyboardInput
 
