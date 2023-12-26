@@ -13,11 +13,14 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         if cls.__instance is None:
             cls.__instance = super().__new__(cls)
 
-            cls.__requestFormGenerationTable[CustomProtocol.ACCOUNT_REGISTER.value] = cls.__instance.generateAccountRegisterRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.ACCOUNT_REGISTER.value] = cls.__instance.generateAccountRegisterRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.ACCOUNT_LOGIN.value] = cls.__instance.generateAccountLoginRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.ACCOUNT_LOGOUT.value] = cls.__instance.generateAccountLogoutRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.ACCOUNT_DELETE.value] = cls.__instance.generateAccountDeleteRequest
 
         return cls.__instance
 
@@ -70,6 +73,17 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         return accountRequestData
 
     def generateAccountLogoutRequest(self, arguments):
+        print("RequestGeneratorService: logout form")
+
+        consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+
+        accountRequestData = {
+            '__accountSessionId': consoleUiRepository.acquireAccountSessionId(),
+        }
+
+        return accountRequestData
+
+    def generateAccountDeleteRequest(self, arguments):
         print("RequestGeneratorService: logout form")
 
         consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()

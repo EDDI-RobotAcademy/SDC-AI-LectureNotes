@@ -97,6 +97,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         print("2. 상품 리스트 조회")
         print("3. 주문 내역 조회")
         print("4. 종료")
+        print("5. 회원 탈퇴")
 
     def convertUserChoiceToProperRouting(self, userChoice):
         currentRoutingState = self.__consoleUiState.getCurrentRoutingState()
@@ -120,6 +121,10 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         if userChoice == 1:
             print("ACCOUNT_LOGOUT")
             return CustomProtocol.ACCOUNT_LOGOUT.value
+
+        if userChoice == 5:
+            print("ACCOUNT_DELETE")
+            return CustomProtocol.ACCOUNT_DELETE.value
 
     def __readSessionInfoFromFile(self):
         info_file_path = os.path.join(os.getcwd(), self.INFO_FILE_PATH)

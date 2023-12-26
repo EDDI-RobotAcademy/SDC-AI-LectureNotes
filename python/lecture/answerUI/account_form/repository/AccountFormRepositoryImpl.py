@@ -35,3 +35,7 @@ class AccountFormRepositoryImpl(AccountFormRepository):
     def createAccountLogoutForm(self):
         print("로그아웃을 진행합니다")
         return
+
+    def createAccountDeleteForm(self):
+        print("회원 탈퇴를 진행합니다")
+        return
