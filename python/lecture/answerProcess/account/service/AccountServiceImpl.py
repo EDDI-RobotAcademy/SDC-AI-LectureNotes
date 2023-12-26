@@ -3,8 +3,10 @@ from account.repository.AccountRepositoryImpl import AccountRepositoryImpl
 from account.repository.SessionRepositoryImpl import SessionRepositoryImpl
 from account.service.AccountService import AccountService
 from account.service.request.AccountLoginRequest import AccountLoginRequest
+from account.service.request.AccountLogoutRequest import AccountLogoutRequest
 from account.service.request.AccountRegisterRequest import AccountRegisterRequest
 from account.service.response.AccountLoginResponse import AccountLoginResponse
+from account.service.response.AccountLogoutResponse import AccountLogoutResponse
 from account.service.response.AccountRegisterResponse import AccountRegisterResponse
 
 
@@ -73,9 +75,22 @@ class AccountServiceImpl(AccountService):
 
         return AccountLoginResponse(-1)
 
-    # def logoutAccount(self, *args, **kwargs):
-    #     pass
-    #     self.__sessionRepository.deleteById
+    def logoutAccount(self, *args, **kwargs):
+        print("AccountService - logoutAccount()")
+        print(f"args: {args}")
+
+        cleanedElements = args[0]
+        print(f"cleanedElements: {cleanedElements}")
+
+        accountLoginRequest = AccountLogoutRequest(*cleanedElements)
+        foundAccount = self.__accountRepository.findById(accountLoginRequest.getAccountSessionId())
+        print(f"foundAccount: {foundAccount}")
+        if foundAccount is None:
+            return AccountLogoutResponse(False)
+
+        self.__sessionRepository.deleteBySessionId(foundAccount.getId())
+
+        return AccountLogoutResponse(True)
 
 
     

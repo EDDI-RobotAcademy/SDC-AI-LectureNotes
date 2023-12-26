@@ -49,11 +49,11 @@ class SessionRepositoryImpl(SessionRepository):
 
         return session.query(Session).filter_by(_Session__id=id).first()
 
-    def deleteById(self, id):
+    def deleteBySessionId(self, sessionId):
         dbSession = sessionmaker(bind=self.__instance.engine)
         session = dbSession()
 
-        accountSession = session.query(Session).filter_by(_Session__id=id).first()
+        accountSession = session.query(Session).filter_by(_Session__sessionId=sessionId).first()
         if accountSession:
             session.delete(accountSession)
             session.commit()
