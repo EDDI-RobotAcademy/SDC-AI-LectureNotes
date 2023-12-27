@@ -50,7 +50,10 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     requestGenerator = requestGeneratorService.findRequestGenerator(sendProtocol)
                     print(f"Transmitter Request Generator: {requestGenerator}")
 
-                    if sendProtocol == 5:
+                    # TODO: 이 부분을 별도의 Domain으로 빼놓는 것이 더 깔끔함
+                    if sendProtocol == 6:
+                        sendingRequest = requestGenerator(request, sessionId)
+                    elif sendProtocol == 5:
                         sendingRequest = requestGenerator(None)
                     elif sessionId is None:
                         sendingRequest = requestGenerator(request)
