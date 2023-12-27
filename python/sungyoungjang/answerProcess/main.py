@@ -5,10 +5,14 @@ from time import sleep
 
 import sqlalchemy
 
+from account.repository.AccountRepositoryImpl import AccountRepositoryImpl
+from account.repository.SessionRepositoryImpl import SessionRepositoryImpl
 from account.service.AccountServiceImpl import AccountServiceImpl
 from custom_protocol.entity.CustomProtocol import CustomProtocol
 from custom_protocol.service.CustomProtocolServiceImpl import CustomProtocolServiceImpl
 from mysql.MySQLDatabase import MySQLDatabase
+from product.repository.ProductRepositoryImpl import ProductRepositoryImpl
+from product.service.ProductServiceImpl import ProductServiceImpl
 from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
 from server_socket.service.ServerSocketServiceImpl import ServerSocketServiceImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
@@ -21,6 +25,9 @@ from sqlalchemy import create_engine
 # pip3 install sqlalchemy
 # pip3 install mysql-connector-python
 from decouple import config
+
+# from account.entity.Account import Account
+# from product.entity.Product import Product
 
 MYHOST = IPAddressBindSupporter.getIpAddressFromGoogle()
 
@@ -53,6 +60,7 @@ def initTaskManageDomain():
 def initCustomProtocol():
     customProtocolService = CustomProtocolServiceImpl.getInstance()
     accountService = AccountServiceImpl.getInstance()
+    productService = ProductServiceImpl.getInstance()
 
     print(f"enum value test: {CustomProtocol.ACCOUNT_REGISTER.value}")
     customProtocolService.registerCustomProtocol(
@@ -60,14 +68,52 @@ def initCustomProtocol():
         accountService.registerAccount
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_LOGIN.value,
+        accountService.loginAccount
+    )
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_LOGOUT.value,
+        accountService.logoutAccount
+    )
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_DELETE.value,
+        accountService.deleteAccount
+    )
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PRODUCT_LIST.value,
+        productService.listProduct
+    )
+
+
+def initAccountDomain():
+    accountRepository = AccountRepositoryImpl()
+    sessionRepository = SessionRepositoryImpl()
+
+    AccountServiceImpl(accountRepository, sessionRepository)
+
+
+def initProductDomain():
+    accountRepository = AccountRepositoryImpl.getInstance()
+    productRepository = ProductRepositoryImpl()
+    ProductServiceImpl(accountRepository, productRepository)
+
 
 def initEachDomain():
     # initMysqlInstance()
     initMysqlInstanceAlternatives()
 
+    initAccountDomain()
+    initProductDomain()
+
     initServerSocketDomain()
     initTaskManageDomain()
     initCustomProtocol()
+
+
 
 
 if __name__ == '__main__':

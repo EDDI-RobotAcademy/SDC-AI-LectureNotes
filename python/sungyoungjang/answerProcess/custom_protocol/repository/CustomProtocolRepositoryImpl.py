@@ -38,7 +38,7 @@ class CustomProtocolRepositoryImpl(CustomProtocolRepository):
                 self.__customProtocolTable[protocolNumber] = pointerOfFunction
 
             else:
-                self.__customProtocolTable = [0] * (protocolNumber + 1)
+                self.__customProtocolTable += [0] * (protocolNumber + 1 - customProtocolTableLength)
                 self.__customProtocolTable[protocolNumber] = pointerOfFunction
         else:
             print("실행 할 수 없는 형태입니다.")
@@ -57,7 +57,7 @@ class CustomProtocolRepositoryImpl(CustomProtocolRepository):
         print(f"{protocolNumber} 프로토콜은 등록된 적이 없습니다.")
 
     def execute(self, protocolNumber, *arguments, **mapArguments):
-        print(f"{protocolNumber} 를 실행합니다!")
+        print(f"CustomProtocolRepository: {protocolNumber} 를 실행합니다!")
 
         # for key, value in mapArguments.items():
         #     print(f"{key}: {value}")
