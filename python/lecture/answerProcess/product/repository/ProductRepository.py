@@ -4,7 +4,7 @@ import abc
 class ProductRepository(abc.ABC):
 
     @abc.abstractmethod
-    def save(self, account):
+    def findAll(self):
         pass
 
 

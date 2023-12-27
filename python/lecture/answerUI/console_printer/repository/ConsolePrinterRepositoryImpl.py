@@ -84,8 +84,23 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
             if response.getIsSuccess() is False:
                 return
 
+            print("회원 탈퇴가 완료되었습니다")
+
             # consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
             # consoleUiRepository.clearUserSession()
+
+        if class_name == "ProductListResponse":
+            print("Detect Product List Response")
+
+            productList = response.getProductList()
+
+            if productList is None:
+                print("현재 등록된 상품이 존재하지 않습니다")
+                return
+
+            for product in productList:
+                print(
+                    f"{product['productId']:<20} {product['name']:<20} {product['price']:<20} {product['registeredAccountId']}")
 
     def __checkUserSession(self):
         consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
