@@ -22,7 +22,9 @@ class ConsoleUiServiceImpl(ConsoleUiService):
         return cls.__instance
 
     def printMenu(self):
-        print("현재 상태에 따른 메시지를 출력합니다")
+        print("\033[91m현재 상태에 따른 메시지를 출력합니다\033[0m\033[92m")
+
+        print("")
         print(f"ConsoleUiService - consoleUiRepository: {self.__repository}")
 
         self.__repository.printMenu()

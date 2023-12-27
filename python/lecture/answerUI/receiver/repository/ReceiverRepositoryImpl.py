@@ -44,7 +44,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                     break
 
                 decodedData = data.decode()
-                print(f'수신된 정보: {decodedData}')
+                print("\033[91m수신된 정보:\033[0m\033[92m", decodedData)
                 responseObject = eval(decodedData)
 
                 receiveQueue.put(responseObject)

@@ -122,6 +122,8 @@ def initEachDomain():
 
 
 if __name__ == '__main__':
+    print("\033[92m데이터 처리 서버가 구동되었습니다.")
+
     print(f"ip: {IPAddressBindSupporter.getIpAddress()}")
     print(f"ip: {IPAddressBindSupporter.getLocalIPAddress()}")
     print(f"ip: {IPAddressBindSupporter.getIpAddressFromGoogle()}")
