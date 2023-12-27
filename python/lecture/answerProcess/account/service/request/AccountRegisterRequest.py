@@ -23,3 +23,6 @@ class AccountRegisterRequest:
     def createFromTuple(cls, inputTuple):
         return cls(*inputTuple)
 
+    def getAccountId(self):
+        return self.__accountId
+

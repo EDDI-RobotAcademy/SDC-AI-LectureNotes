@@ -1,9 +1,11 @@
 import errno
+import json
 from socket import socket
 from time import sleep
 
 from custom_protocol.repository.CustomProtocolRepositoryImpl import CustomProtocolRepositoryImpl
 from receiver.repository.ReceiverRepository import ReceiverRepository
+from request_generator.service.RequestGeneratorServiceImpl import RequestGeneratorServiceImpl
 from transmitter.repository.TransmitterRepositoryImpl import TransmitterRepositoryImpl
 
 import re
@@ -29,7 +31,9 @@ class ReceiverRepositoryImpl(ReceiverRepository):
     def receiveCommand(self, clientSocket):
         transmitterRepository = TransmitterRepositoryImpl.getInstance()
         transmitQueue = transmitterRepository.getTransmitQueue()
+
         customProtocolRepository = CustomProtocolRepositoryImpl.getInstance()
+        requestGeneratorService = RequestGeneratorServiceImpl.getInstance()
 
         while True:
             try:
@@ -39,30 +43,26 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                     clientSocket.closeSocket()
                     break
 
-                decodedRequest = receivedRequest.decode('utf-8')
-                print(f'수신된 정보: {decodedRequest}')
+                receivedForm = json.loads(receivedRequest)
 
-                requestComponents = decodedRequest.split(',')
+                protocolNumber = receivedForm["protocol"]
+                print(f"Receiver - typeof protocolNumber: {type(protocolNumber)}")
+                print(f"Receiver - protocolNumber: {protocolNumber}")
 
-                receivedRequestProtocolNumber = requestComponents[0]
-                print(f"프로토콜 번호: {receivedRequestProtocolNumber}")
+                if "data" in receivedForm:
+                    receivedRequestForm = receivedForm["data"]
+                    print(f"Receiver - typeof requestForm: {type(receivedRequestForm)}")
+                    print(f"Receiver - requestForm: {receivedRequestForm}")
 
-                cleanedElementList = []
+                    requestGenerator = requestGeneratorService.findRequestGenerator(protocolNumber)
+                    requestForm = requestGenerator(receivedRequestForm)
 
-                if len(requestComponents) > 1:
-                    for i, element in enumerate(requestComponents[1:]):
-                        byteLiteralMatch = re.search(r"b'(.+)'", element)
+                    response = customProtocolRepository.execute(int(protocolNumber), tuple(requestForm.__dict__.values()))
 
-                        if byteLiteralMatch:
-                            byteLiteral = byteLiteralMatch.group(1)
-                            decodedElement = byteLiteral.encode('utf-8').decode('unicode_escape')
-                            cleanedElement = decodedElement.strip()
-                            print(f"후속 정보 {i + 1}: {cleanedElement}")
+                else:
+                    response = customProtocolRepository.execute(int(protocolNumber))
 
-                            cleanedElementList.append(cleanedElement)
-
-                response = customProtocolRepository.execute(int(receivedRequestProtocolNumber), cleanedElementList)
-                print(f"response: {response}")
+                print(f"Receiver - response: {response}")
 
                 transmitQueue.put(response)
 

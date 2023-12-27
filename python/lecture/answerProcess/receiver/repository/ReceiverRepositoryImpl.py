@@ -46,40 +46,23 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                 receivedForm = json.loads(receivedRequest)
 
                 protocolNumber = receivedForm["protocol"]
-                receivedRequestForm = receivedForm["data"]
+                print(f"Receiver - typeof protocolNumber: {type(protocolNumber)}")
+                print(f"Receiver - protocolNumber: {protocolNumber}")
 
-                print(f"typeof protocolNumber: {type(protocolNumber)}")
-                print(f"protocolNumber: {protocolNumber}")
-                print(f"typeof requestForm: {type(receivedRequestForm)}")
-                print(f"requestForm: {receivedRequestForm}")
+                if "data" in receivedForm:
+                    receivedRequestForm = receivedForm["data"]
+                    print(f"Receiver - typeof requestForm: {type(receivedRequestForm)}")
+                    print(f"Receiver - requestForm: {receivedRequestForm}")
 
-                requestGenerator = requestGeneratorService.findRequestGenerator(protocolNumber)
-                requestForm = requestGenerator(receivedRequestForm)
+                    requestGenerator = requestGeneratorService.findRequestGenerator(protocolNumber)
+                    requestForm = requestGenerator(receivedRequestForm)
 
-                # decodedRequest = receivedRequest.decode('utf-8')
-                # print(f'수신된 정보: {decodedRequest}')
-                #
-                # requestComponents = decodedRequest.split(',')
-                #
-                # receivedRequestProtocolNumber = requestComponents[0]
-                # print(f"프로토콜 번호: {receivedRequestProtocolNumber}")
-                #
-                # cleanedElementList = []
-                #
-                # if len(requestComponents) > 1:
-                #     for i, element in enumerate(requestComponents[1:]):
-                #         byteLiteralMatch = re.search(r"b'(.+)'", element)
-                #
-                #         if byteLiteralMatch:
-                #             byteLiteral = byteLiteralMatch.group(1)
-                #             decodedElement = byteLiteral.encode('utf-8').decode('unicode_escape')
-                #             cleanedElement = decodedElement.strip()
-                #             print(f"후속 정보 {i + 1}: {cleanedElement}")
-                #
-                #             cleanedElementList.append(cleanedElement)
+                    response = customProtocolRepository.execute(int(protocolNumber), tuple(requestForm.__dict__.values()))
 
-                response = customProtocolRepository.execute(int(protocolNumber), tuple(requestForm.__dict__.values()))
-                print(f"response: {response}")
+                else:
+                    response = customProtocolRepository.execute(int(protocolNumber))
+
+                print(f"Receiver - response: {response}")
 
                 transmitQueue.put(response)
 

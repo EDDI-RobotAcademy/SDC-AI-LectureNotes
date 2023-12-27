@@ -1,3 +1,4 @@
+from console_ui.entity.ConsoleUiRoutingState import ConsoleUiRoutingState
 from console_ui.service.ConsoleUiService import ConsoleUiService
 from utility.keyboard.KeyboardInput import KeyboardInput
 
@@ -20,15 +21,38 @@ class ConsoleUiServiceImpl(ConsoleUiService):
             cls.__instance = cls(repository)
         return cls.__instance
 
-    def processUserInput(self, transmitQueue):
-        print("우리 보호소는 리스트만 볼 수 있습니다!")
-        print("0. 강아지 리스트 보기")
-        print("1. 프로그램 종료")
+    def printMenu(self):
+        print("현재 상태에 따른 메시지를 출력합니다")
+        print(f"ConsoleUiService - consoleUiRepository: {self.__repository}")
 
+        self.__repository.printMenu()
+
+    def processUserInput(self, transmitQueue):
         userChoice = KeyboardInput.getKeyboardIntegerInput()
-        self.__repository.saveCurrentRoutingState(userChoice)
+        print(f"ConsoleUiService - 입력된 숫자: {userChoice}")
+        # selectedRoutingState = self.__repository.findRoutingStateFromUserChoice(userChoice)
+        # print(f"처리된 상태값: {selectedRoutingState}")
+        # self.__repository.saveCurrentRoutingState(selectedRoutingState)
 
         # 필요하다면 여기 중간에 몇 가지 작업들이 더 처리 될 수 있습니다.
-        transmitQueue.put(userChoice)
+        convertedUserChoice = self.__repository.convertUserChoiceToProperRouting(userChoice)
+        print(f"ConsoleUiService - convertedUserChoice: {convertedUserChoice}")
+
+        sessionId = None
+        sessionObject = self.__repository.acquireSession()
+        if sessionObject:
+            sessionId = sessionObject.get_session_id()
+            print(f"ConsoleUiService - sessionObject: {sessionObject}, sessionId: {sessionId}")
+
+        currentRoutingState = self.__repository.acquireCurrentRoutingState()
+        if currentRoutingState is ConsoleUiRoutingState.NOTHING:
+            print(f"RoutingState Nothing: {currentRoutingState}")
+            if userChoice == 1 or userChoice == 5:
+                self.__repository.clearUserSession()
+
+        transmitData = {'protocolNumber': convertedUserChoice, 'sessionId': sessionId}
+        self.__repository.decisionRoutingState(convertedUserChoice)
+
+        transmitQueue.put(transmitData)
 
 

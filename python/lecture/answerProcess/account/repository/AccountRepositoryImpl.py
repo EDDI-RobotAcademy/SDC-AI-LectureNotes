@@ -16,7 +16,7 @@ class AccountRepositoryImpl(AccountRepository):
         return cls.__instance
 
     def __init__(self):
-        print("TaskManageRepository 생성자 호출")
+        print("AccountRepositoryImpl 생성자 호출")
         self.__receiverTask = None
         self.__transmitterTask = None
 
@@ -75,3 +75,11 @@ class AccountRepositoryImpl(AccountRepository):
             session.delete(account)
             session.commit()
 
+    def deleteById(self, id):
+        dbSession = sessionmaker(bind=self.__instance.engine)
+        session = dbSession()
+
+        account = session.query(Account).filter_by(_Account__id=id).first()
+        if account:
+            session.delete(account)
+            session.commit()
