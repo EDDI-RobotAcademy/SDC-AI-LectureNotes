@@ -29,7 +29,10 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
             cls.__instance.__uiMenuTable[ConsoleUiRoutingState.PRODUCT_LIST.value] = cls.__instance.__printProductListMenu
 
             cls.__instance.__uiSelectDecisionTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__selectDecisionFromUserChoice
+
             cls.__instance.__uiProperCommandConvertTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__routingStateNothingConverter
+            cls.__instance.__uiProperCommandConvertTable[
+                ConsoleUiRoutingState.PRODUCT_LIST.value] = cls.__instance.__routingStateProductListConverter
         return cls.__instance
 
     def __init__(self):
@@ -154,6 +157,37 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         if userChoice == 5:
             print("ACCOUNT_DELETE")
             return CustomProtocol.ACCOUNT_DELETE.value
+
+    def __routingStateProductListConverter(self, userChoice):
+        print(f"ConsoleUiRepository __routingStateProductListConverter(): userChoice: {userChoice}")
+
+        if userChoice == 1:
+            print("PRODUCT_LIST")
+            return CustomProtocol.PRODUCT_LIST.value
+
+        if userChoice == 2:
+            print("PRODUCT_REGISTER")
+            return
+
+        if userChoice == 3:
+            print("PRODUCT_READ")
+            return
+
+        if userChoice == 4:
+            print("PRODUCT_UPDATE")
+            return
+
+        if userChoice == 5:
+            print("PRODUCT_DELETE")
+            return
+
+        if userChoice == 6:
+            print("PRODUCT_SEARCH")
+            return
+
+        if userChoice == 7:
+            print("PROGRAM_EXIT")
+            return
 
     def __readSessionInfoFromFile(self):
         print("ConsoleUiRepository: __readSessionInfoFromFile()")
