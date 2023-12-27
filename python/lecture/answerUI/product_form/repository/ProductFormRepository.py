@@ -14,4 +14,8 @@ class ProductFormRepository(abc.ABC):
     def createProductReadForm(self):
         pass
 
+    @abc.abstractmethod
+    def createProductUpdateForm(self):
+        pass
+
 

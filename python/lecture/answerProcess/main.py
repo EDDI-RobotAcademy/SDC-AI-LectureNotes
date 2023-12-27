@@ -98,6 +98,11 @@ def initCustomProtocol():
         productService.readProduct
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PRODUCT_UPDATE.value,
+        productService.updateProduct
+    )
+
 
 def initAccountDomain():
     accountRepository = AccountRepositoryImpl()

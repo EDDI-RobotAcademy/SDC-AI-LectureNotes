@@ -15,5 +15,9 @@ class ProductService(abc.ABC):
     def readProduct(self):
         pass
 
+    @abc.abstractmethod
+    def updateProduct(self):
+        pass
+
 
 

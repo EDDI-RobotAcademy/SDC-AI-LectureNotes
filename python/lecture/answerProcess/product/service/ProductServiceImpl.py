@@ -14,9 +14,11 @@ from account.service.response.AccountRegisterResponse import AccountRegisterResp
 from product.service.ProductService import ProductService
 from product.service.request.ProductReadRequest import ProductReadRequest
 from product.service.request.ProductRegisterRequest import ProductRegisterRequest
+from product.service.request.ProductUpdateRequest import ProductUpdateRequest
 from product.service.response.ProductListResponse import ProductListResponse
 from product.service.response.ProductReadResponse import ProductReadResponse
 from product.service.response.ProductRegisterResponse import ProductRegisterResponse
+from product.service.response.ProductUpdateResponse import ProductUpdateResponse
 
 
 class ProductServiceImpl(ProductService):
@@ -104,7 +106,40 @@ class ProductServiceImpl(ProductService):
 
         return ProductReadResponse(-1, None, 0, None, None)
 
-    #
+    def updateProduct(self, *args, **kwargs):
+        print("updateProduct()")
+
+        cleanedElements = args[0]
+        print(f"cleanedElements: {cleanedElements}")
+
+        productUpdateRequest = ProductUpdateRequest(*cleanedElements)
+
+        sessionId = productUpdateRequest.getSessionId()
+        accountSession = self.__sessionRepository.findBySessionId(sessionId)
+        if accountSession is not None:
+            foundProduct = self.__productRepository.findById(productUpdateRequest.getId())
+        else:
+            return ProductUpdateResponse(-1, None, 0, None, None)
+
+        if foundProduct is not None:
+            foundProduct.setName(productUpdateRequest.getName())
+            foundProduct.setPrice(productUpdateRequest.getPrice())
+            foundProduct.setDetails(productUpdateRequest.getDetails())
+
+            savedProduct = self.__productRepository.save(foundProduct)
+            foundAccount = self.__accountRepository.findById(sessionId)
+
+            return ProductUpdateResponse(
+                savedProduct.getId(),
+                savedProduct.getName(),
+                savedProduct.getPrice(),
+                savedProduct.getDetails(),
+                foundAccount.getAccountId()
+            )
+
+        return ProductUpdateResponse(-1, None, 0, None, None)
+
+
     # def deleteAccount(self, *args, **kwargs):
     #     print("AccountService - deleteAccount()")
     #

@@ -55,6 +55,12 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
             cls.__instance = cls()
         return cls.__instance
 
+    def getConsoleUiState(self):
+        return self.__consoleUiState
+
+    def setConsoleUiStateCurrentReadNumber(self, readNumber):
+        self.__consoleUiState.setCurrentReadNumber(readNumber)
+
     def saveCurrentRoutingState(self, currentState):
         self.__consoleUiState.setCurrentRoutingState(currentState)
 
@@ -196,7 +202,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
         if userChoice == 4:
             print("PRODUCT_UPDATE")
-            return
+            return CustomProtocol.PRODUCT_UPDATE.value
 
         if userChoice == 5:
             print("PRODUCT_DELETE")
@@ -220,8 +226,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
         if userChoice == 1:
             print("PRODUCT_UPDATE")
-            return
-            # return CustomProtocol.PRODUCT_LIST.value
+            return CustomProtocol.PRODUCT_UPDATE.value
 
         if userChoice == 2:
             print("PRODUCT_DELETE")
@@ -245,8 +250,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
         if userChoice == 1:
             print("PRODUCT_UPDATE")
-            return
-            # return CustomProtocol.PRODUCT_LIST.value
+            return CustomProtocol.PRODUCT_UPDATE.value
 
         if userChoice == 2:
             print("PRODUCT_DELETE")
@@ -323,4 +327,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
             self.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_REGISTER)
 
         elif convertedUserChoice == CustomProtocol.PRODUCT_READ.value:
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_READ)
+
+        elif convertedUserChoice == CustomProtocol.PRODUCT_UPDATE.value:
             self.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_READ)

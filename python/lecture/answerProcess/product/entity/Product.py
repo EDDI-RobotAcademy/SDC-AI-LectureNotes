@@ -45,3 +45,13 @@ class Product(Base):
     def getRegisteredBy(self):
         return self.__registeredBy
 
+    def setName(self, name: str):
+        self.__name = name
+
+    def setPrice(self, price: int):
+        self.__price = price
+
+    def setDetails(self, details: str):
+        self.__details = details
+
+

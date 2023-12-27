@@ -10,3 +10,4 @@ class CustomProtocol(Enum):
     PRODUCT_LIST = 5
     PRODUCT_REGISTER = 6
     PRODUCT_READ = 7
+    PRODUCT_UPDATE = 8
