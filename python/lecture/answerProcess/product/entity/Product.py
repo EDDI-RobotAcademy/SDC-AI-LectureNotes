@@ -23,13 +23,12 @@ class Product(Base):
     # account = relationship(Account, foreign_keys=[__registeredBy])
     __registeredBy: int = Column(Integer, nullable=False, name="registered_by")
 
-    def __init__(self, name: str, price: int, details: str, registeredBy: Account):
+    def __init__(self, name: str, price: int, details: str, registeredBy: int):
         print(f"Product Initialization: {name}, {price}, {details}, {registeredBy}")
         self.__name = name
         self.__price = price
         self.__details = details
-        self.__registeredBy = registeredBy.getId()
-        print(self.__registeredBy)
+        self.__registeredBy = registeredBy
 
     def getId(self):
         return self.__id

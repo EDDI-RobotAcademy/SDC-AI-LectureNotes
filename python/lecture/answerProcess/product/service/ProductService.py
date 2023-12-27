@@ -7,5 +7,9 @@ class ProductService(abc.ABC):
     def listProduct(self):
         pass
 
+    @abc.abstractmethod
+    def registerProduct(self):
+        pass
+
 
 

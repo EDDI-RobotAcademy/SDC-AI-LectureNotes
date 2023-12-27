@@ -4,7 +4,9 @@ from account.service.request.AccountDeleteRequest import AccountDeleteRequest
 from account.service.request.AccountLoginRequest import AccountLoginRequest
 from account.service.request.AccountLogoutRequest import AccountLogoutRequest
 from account.service.request.AccountRegisterRequest import AccountRegisterRequest
+
 from custom_protocol.entity.CustomProtocol import CustomProtocol
+from product.service.request.ProductRegisterRequest import ProductRegisterRequest
 from request_generator.service.RequestGeneratorService import RequestGeneratorService
 
 
@@ -24,6 +26,9 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.ACCOUNT_LOGOUT.value] = cls.__instance.generateAccountLogoutRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.ACCOUNT_DELETE.value] = cls.__instance.generateAccountDeleteRequest
+
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PRODUCT_REGISTER.value] = cls.__instance.generateProductRegisterRequest
 
         return cls.__instance
 
@@ -66,5 +71,13 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
     def generateAccountDeleteRequest(self, arguments):
         return AccountDeleteRequest(
             __accountSessionId=arguments["__accountSessionId"]
+        )
+
+    def generateProductRegisterRequest(self, arguments):
+        return ProductRegisterRequest(
+            __name=arguments["__name"],
+            __price=arguments["__price"],
+            __details=arguments["__details"],
+            __sessionId=arguments["__sessionId"]
         )
 
