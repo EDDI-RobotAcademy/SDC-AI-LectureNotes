@@ -8,3 +8,4 @@ class CustomProtocol(Enum):
     ACCOUNT_DELETE = 4
 
     PRODUCT_LIST = 5
+    PRODUCT_REGISTER = 6

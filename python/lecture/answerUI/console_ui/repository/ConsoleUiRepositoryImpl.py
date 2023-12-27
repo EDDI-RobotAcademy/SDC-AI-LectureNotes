@@ -167,7 +167,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
         if userChoice == 2:
             print("PRODUCT_REGISTER")
-            return
+            return CustomProtocol.PRODUCT_REGISTER.value
 
         if userChoice == 3:
             print("PRODUCT_READ")
