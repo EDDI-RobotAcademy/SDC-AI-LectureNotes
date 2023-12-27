@@ -52,7 +52,11 @@ class ConsoleUiServiceImpl(ConsoleUiService):
             if userChoice == 1 or userChoice == 5:
                 self.__repository.clearUserSession()
 
-        transmitData = {'protocolNumber': convertedUserChoice, 'sessionId': sessionId, 'productReadNo': self.__repository.getConsoleUiState().getCurrentReadNumber()}
+        productReadNo = self.__repository.getConsoleUiState().getCurrentReadNumber()
+        print("\033[91mConsoleUiService - productReadNo: ",productReadNo)
+        print("\033[92m", end="")
+
+        transmitData = {'protocolNumber': convertedUserChoice, 'sessionId': sessionId, 'productReadNo': productReadNo}
         self.__repository.decisionRoutingState(convertedUserChoice)
 
         transmitQueue.put(transmitData)
