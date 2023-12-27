@@ -10,6 +10,7 @@ from account.service.response.AccountDeleteResponse import AccountDeleteResponse
 
 from product.service.response.ProductListResponse import ProductListResponse
 from product.service.response.ProductRegisterResponse import ProductRegisterResponse
+from product.service.response.ProductReadResponse import ProductReadResponse
 
 
 class ReceiverRepositoryImpl(ReceiverRepository):

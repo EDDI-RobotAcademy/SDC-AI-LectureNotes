@@ -115,6 +115,19 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
             print("\033[92m상품 상세 정보:\033[93m {}\033[0m".format(response.getDetails()))
             print("\033[92m상품 등록자 계정:\033[93m {}\033[0m\033[92m".format(response.getAccountId()))
 
+        if class_name == "ProductReadResponse":
+            print("Detect Product Read Response")
+
+            if response.getId() == -1:
+                print("상품 상세 정보 조회 중 문제가 발생하였습니다")
+                return
+
+            print("\033[92m\n상품 정보:\033[0m")
+            print("\033[92m상품명:\033[93m {}\033[0m".format(response.getName()))
+            print("\033[92m상품 가격:\033[93m {} 원\033[0m".format(f"{response.getPrice():,}"))
+            print("\033[92m상품 상세 정보:\033[93m {}\033[0m".format(response.getDetails()))
+            print("\033[92m상품 등록자 계정:\033[93m {}\033[0m\033[92m".format(response.getAccountId()))
+
 
 def __checkUserSession(self):
         consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()

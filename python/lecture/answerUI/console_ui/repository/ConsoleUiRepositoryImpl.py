@@ -29,6 +29,8 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
             cls.__instance.__uiMenuTable[ConsoleUiRoutingState.PRODUCT_LIST.value] = cls.__instance.__printProductListMenu
             cls.__instance.__uiMenuTable[
                 ConsoleUiRoutingState.PRODUCT_REGISTER.value] = cls.__instance.__printProductRegisterMenu
+            cls.__instance.__uiMenuTable[
+                ConsoleUiRoutingState.PRODUCT_READ.value] = cls.__instance.__printProductReadMenu
 
             cls.__instance.__uiSelectDecisionTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__selectDecisionFromUserChoice
 
@@ -37,6 +39,8 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
                 ConsoleUiRoutingState.PRODUCT_LIST.value] = cls.__instance.__routingStateProductListConverter
             cls.__instance.__uiProperCommandConvertTable[
                 ConsoleUiRoutingState.PRODUCT_REGISTER.value] = cls.__instance.__routingStateProductRegisterConverter
+            cls.__instance.__uiProperCommandConvertTable[
+                ConsoleUiRoutingState.PRODUCT_READ.value] = cls.__instance.__routingStateProductReadConverter
 
         return cls.__instance
 
@@ -134,6 +138,12 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         print("3. 상품 리스트 보기")
         print("4. 종료")
 
+    def __printProductReadMenu(self):
+        print("1. 상품 정보 수정")
+        print("2. 등록된 상품 정보 삭제")
+        print("3. 상품 리스트 보기")
+        print("4. 종료")
+
     def convertUserChoiceToProperRouting(self, userChoice):
         currentRoutingState = self.__consoleUiState.getCurrentRoutingState()
         print(f"ConsoleUiRepository currentRoutingState: {currentRoutingState}")
@@ -202,6 +212,31 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
     def __routingStateProductRegisterConverter(self, userChoice):
         print(f"ConsoleUiRepository __routingStateProductRegisterConverter(): userChoice: {userChoice}")
+
+        print("1. 상품 정보 수정")
+        print("2. 등록된 상품 정보 삭제")
+        print("3. 상품 리스트 보기")
+        print("4. 종료")
+
+        if userChoice == 1:
+            print("PRODUCT_UPDATE")
+            return
+            # return CustomProtocol.PRODUCT_LIST.value
+
+        if userChoice == 2:
+            print("PRODUCT_DELETE")
+            return
+
+        if userChoice == 3:
+            print("PRODUCT_LIST")
+            return CustomProtocol.PRODUCT_LIST.value
+
+        if userChoice == 4:
+            print("PROGRAM_EXIT")
+            return
+
+    def __routingStateProductReadConverter(self, userChoice):
+        print(f"ConsoleUiRepository __routingStateProductReadConverter(): userChoice: {userChoice}")
 
         print("1. 상품 정보 수정")
         print("2. 등록된 상품 정보 삭제")

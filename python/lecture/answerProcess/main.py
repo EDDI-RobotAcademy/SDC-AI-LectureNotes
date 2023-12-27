@@ -93,6 +93,11 @@ def initCustomProtocol():
         productService.registerProduct
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PRODUCT_READ.value,
+        productService.readProduct
+    )
+
 
 def initAccountDomain():
     accountRepository = AccountRepositoryImpl()
@@ -103,8 +108,9 @@ def initAccountDomain():
 
 def initProductDomain():
     accountRepository = AccountRepositoryImpl.getInstance()
+    sessionRepository = SessionRepositoryImpl.getInstance()
     productRepository = ProductRepositoryImpl()
-    ProductServiceImpl(accountRepository, productRepository)
+    ProductServiceImpl(accountRepository, sessionRepository, productRepository)
 
 
 def initEachDomain():
