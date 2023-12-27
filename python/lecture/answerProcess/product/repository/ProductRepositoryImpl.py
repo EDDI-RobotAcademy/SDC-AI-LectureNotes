@@ -26,6 +26,12 @@ class ProductRepositoryImpl(ProductRepository):
             cls.__instance = cls()
         return cls.__instance
 
+    def findAll(self):
+        dbSession = sessionmaker(bind=self.__instance.engine)
+        session = dbSession()
+
+        return session.query(Product).all()
+
     def save(self, product):
         dbSession = sessionmaker(bind=self.__instance.engine)
         session = dbSession()
