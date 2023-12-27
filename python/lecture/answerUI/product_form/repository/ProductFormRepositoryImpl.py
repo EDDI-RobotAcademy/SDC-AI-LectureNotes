@@ -30,4 +30,9 @@ class ProductFormRepositoryImpl(ProductFormRepository):
         userInputProductDetails = KeyboardInput.getKeyboardInput("상품 상세 정보를 입력하세요:")
         return userInputProductName, userInputProductPrice, userInputProductDetails
 
+    def createProductReadForm(self):
+        print("등록된 상품의 상세 정보를 살펴봅니다")
+        userInputSelectedProductNumber = KeyboardInput.getKeyboardIntegerInput("어떤 상품의 상세 정보를 볼까요 ? (상품 번호 입력)")
+
+        return userInputSelectedProductNumber
 

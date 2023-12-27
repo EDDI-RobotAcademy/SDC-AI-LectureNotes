@@ -48,10 +48,12 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     # print(f"Transmitter sessionId: {sessionId}")
 
                     requestGenerator = requestGeneratorService.findRequestGenerator(sendProtocol)
-                    print(f"Transmitter Request Generator: {requestGenerator}")
+                    print("\033[91mTransmitter Request Generator:\033[0m\033[92m", requestGenerator)
 
                     # TODO: 이 부분을 별도의 Domain으로 빼놓는 것이 더 깔끔함
-                    if sendProtocol == 6:
+                    if sendProtocol == 7:
+                        sendingRequest = requestGenerator(request, sessionId)
+                    elif sendProtocol == 6:
                         sendingRequest = requestGenerator(request, sessionId)
                     elif sendProtocol == 5:
                         sendingRequest = requestGenerator(None)
@@ -60,7 +62,7 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     else:
                         sendingRequest = requestGenerator(sessionId)
 
-                    print(f"Transmitter finish to generate request: {sendingRequest}")
+                    print("\033[91mTransmitter finish to generate request:\033[0m\033[92m", sendingRequest)
 
                     if sendProtocol == 5:
                         combinedRequestData = {
@@ -74,7 +76,7 @@ class TransmitterRepositoryImpl(TransmitterRepository):
 
                     combinedRequestDataString = json.dumps(combinedRequestData)
 
-                    print(f"transmitter: will be send - {combinedRequestDataString}")
+                    print("\033[91mtransmitter: will be send -\033[0m\033[92m", combinedRequestDataString)
 
                     clientSocket.sendall(combinedRequestDataString.encode())
 
