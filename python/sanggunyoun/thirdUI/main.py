@@ -1,3 +1,4 @@
+import multiprocessing
 import socket
 from time import sleep
 from decouple import config
@@ -5,6 +6,10 @@ from decouple import config
 
 from client_socket.repository.ClientSocketRepositoryImpl import ClientSocketRepositoryImpl
 from client_socket.service.ClientSocketServiceImpl import ClientSocketServiceImpl
+from console_printer.repository.ConsolePrinterRepositoryImpl import ConsolePrinterRepositoryImpl
+from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImpl
+from console_ui.service.ConsoleUiServiceImpl import ConsoleUiServiceImpl
+from custom_protocol.service.CustomProtocolServiceImpl import CustomProtocolServiceImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
 from task_manage.service.TaskManageServiceImpl import TaskManageServiceImpl
 
@@ -19,13 +24,29 @@ def initTaskManageDomain():
     TaskManageServiceImpl(taskManageRepository)
 
 
+def initConsolePrinterDomain():
+    consoleUiRepository = ConsoleUiRepositoryImpl()
+    ConsoleUiServiceImpl(consoleUiRepository)
+
+
 def initEachDomain():
     initServerSocketDomain()
     initTaskManageDomain()
+    initConsolePrinterDomain()
+
+
+# 시나리오:
+# 강아지 구매하고 싶은데 리스트 좀 보여줘! -> 전송
+# 가지고 있는 강아지 리스트 응답         <- 수신
+def registerProtocol():
+    customProtocolService = CustomProtocolServiceImpl.getInstance()
+
+    # customProtocolService.registerCustomProtocol(0, )
 
 
 if __name__ == '__main__':
     initEachDomain()
+    registerProtocol()
 
     clientSocketService = ClientSocketServiceImpl.getInstance()
 
@@ -34,7 +55,7 @@ if __name__ == '__main__':
     clientSocketService.createClientSocket(config('TARGET_HOST'), int(config('PORT')))
     clientSocketService.connectToTargetHost()
 
-    clientSocketService.setBlockingOperation()
+    # clientSocketService.setBlockingOperation()
 
     # 현재 시나리오에서
     # 입력에 대한 요청을 처리하는 Transmitter
@@ -43,16 +64,24 @@ if __name__ == '__main__':
     # 실제로는 더 조각조각 내는 것이 좋긴합니다.
     taskManageService = TaskManageServiceImpl.getInstance()
 
+    lock = multiprocessing.Lock()
+    transmitQueue = multiprocessing.Queue()
     # 1. Transmitter 태스크를 생성 요청
     # 2. Transmitter 태스크 객체 구성
     # 3. 구성된 객체의 특정 동작을 취하도록 Transmitter 구동
-    taskManageService.createTransmitTask()
+    taskManageService.createTransmitTask(lock, transmitQueue)
+
+    # 1. Receiver 태스크 생성 요청
+    # 2. Receiver 태스크 객체 구성
+    # 3. Receiver 객체의 특정 동작을 취하도록 만듬
+    taskManageService.createReceiveTask(lock)
+    taskManageService.createPrinterTask(transmitQueue)
 
     while True:
         try:
             # serverSocketService.acceptClientSocket()
-            print("main: 나도 별개의 Task 야")
-            sleep(0.5)
+            # print("main: 나도 별개의 Task 야")
+            sleep(5.0)
 
         except socket.error:
             sleep(0.5)
