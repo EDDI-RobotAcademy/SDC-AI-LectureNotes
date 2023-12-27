@@ -1,3 +1,5 @@
+import json
+
 from account.entity.Session import Session
 from account.repository.AccountRepositoryImpl import AccountRepositoryImpl
 
@@ -10,6 +12,7 @@ from account.service.response.AccountLoginResponse import AccountLoginResponse
 from account.service.response.AccountLogoutResponse import AccountLogoutResponse
 from account.service.response.AccountRegisterResponse import AccountRegisterResponse
 from product.service.ProductService import ProductService
+from product.service.response.ProductListResponse import ProductListResponse
 
 
 class ProductServiceImpl(ProductService):
@@ -32,9 +35,22 @@ class ProductServiceImpl(ProductService):
             cls.__instance = cls()
         return cls.__instance
 
-    def listProducts(self):
+    def listProduct(self):
         productList = self.__productRepository.findAll()
-        print(productList)
+        productConvertedList = []
+
+        for product in productList:
+            productConvertedList.append({
+                'productId': product.getId(),
+                'name': product.getName(),
+                'price': product.getPrice(),
+                'registeredAccountId': self.__accountRepository.findById(product.getRegisteredBy()).getAccountId()
+            })
+
+        productListResponse = ProductListResponse(productConvertedList)
+        print(f"Listing products: {productListResponse.getProductList()}")
+
+        return productListResponse
 
     # def registerAccount(self, *args, **kwargs):
     #     print("registerAccount()")

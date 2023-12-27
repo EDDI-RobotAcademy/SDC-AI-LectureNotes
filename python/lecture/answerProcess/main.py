@@ -11,6 +11,8 @@ from account.service.AccountServiceImpl import AccountServiceImpl
 from custom_protocol.entity.CustomProtocol import CustomProtocol
 from custom_protocol.service.CustomProtocolServiceImpl import CustomProtocolServiceImpl
 from mysql.MySQLDatabase import MySQLDatabase
+from product.repository.ProductRepositoryImpl import ProductRepositoryImpl
+from product.service.ProductServiceImpl import ProductServiceImpl
 from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
 from server_socket.service.ServerSocketServiceImpl import ServerSocketServiceImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
@@ -58,7 +60,7 @@ def initTaskManageDomain():
 def initCustomProtocol():
     customProtocolService = CustomProtocolServiceImpl.getInstance()
     accountService = AccountServiceImpl.getInstance()
-    # productService = ProductServiceImpl.getInstance()
+    productService = ProductServiceImpl.getInstance()
 
     print(f"enum value test: {CustomProtocol.ACCOUNT_REGISTER.value}")
     customProtocolService.registerCustomProtocol(
@@ -81,10 +83,10 @@ def initCustomProtocol():
         accountService.deleteAccount
     )
 
-    # customProtocolService.registerCustomProtocol(
-    #     CustomProtocol.PRODUCT_LIST.value,
-    #     productService.listProduct
-    # )
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PRODUCT_LIST.value,
+        productService.listProduct
+    )
 
 
 def initAccountDomain():
@@ -94,11 +96,18 @@ def initAccountDomain():
     AccountServiceImpl(accountRepository, sessionRepository)
 
 
+def initProductDomain():
+    accountRepository = AccountRepositoryImpl.getInstance()
+    productRepository = ProductRepositoryImpl()
+    ProductServiceImpl(accountRepository, productRepository)
+
+
 def initEachDomain():
     # initMysqlInstance()
     initMysqlInstanceAlternatives()
 
-    initAccountDomain();
+    initAccountDomain()
+    initProductDomain()
 
     initServerSocketDomain()
     initTaskManageDomain()
