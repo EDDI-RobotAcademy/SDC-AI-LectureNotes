@@ -24,6 +24,9 @@ from sqlalchemy import create_engine
 # pip3 install mysql-connector-python
 from decouple import config
 
+# from account.entity.Account import Account
+# from product.entity.Product import Product
+
 MYHOST = IPAddressBindSupporter.getIpAddressFromGoogle()
 
 

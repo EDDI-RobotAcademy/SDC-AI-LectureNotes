@@ -3,6 +3,9 @@ import atexit
 import sqlalchemy
 from decouple import config
 from sqlalchemy import create_engine
+# from sqlalchemy.ext.declarative import declarative_base
+#
+# Base = declarative_base()
 
 
 class MySQLDatabase:
