@@ -49,6 +49,12 @@ class SessionRepositoryImpl(SessionRepository):
 
         return session.query(Session).filter_by(_Session__id=id).first()
 
+    def findBySessionId(self, sessionId):
+        dbSession = sessionmaker(bind=self.__instance.engine)
+        session = dbSession()
+
+        return session.query(Session).filter_by(_Session__sessionId=sessionId).first()
+
     def deleteBySessionId(self, sessionId):
         dbSession = sessionmaker(bind=self.__instance.engine)
         session = dbSession()

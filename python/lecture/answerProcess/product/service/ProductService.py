@@ -11,5 +11,13 @@ class ProductService(abc.ABC):
     def registerProduct(self):
         pass
 
+    @abc.abstractmethod
+    def readProduct(self):
+        pass
+
+    @abc.abstractmethod
+    def updateProduct(self):
+        pass
+
 
 

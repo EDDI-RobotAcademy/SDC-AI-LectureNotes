@@ -35,9 +35,9 @@ class TransmitterRepositoryImpl(TransmitterRepository):
         while True:
             with lock:
                 try:
-                    protocolAndSessionId = transmitQueue.get(block=True)
-                    sendProtocol = protocolAndSessionId['protocolNumber']
-                    sessionId = protocolAndSessionId['sessionId']
+                    transmitData = transmitQueue.get(block=True)
+                    sendProtocol = transmitData['protocolNumber']
+                    sessionId = transmitData['sessionId']
                     print(f"Transmitter typeof(sendProtocol) = {type(sendProtocol)}")
                     print(f"Transmitter sendProtocol = {sendProtocol}")
                     print(f"Transmitter sessionId = {sessionId}")
@@ -51,7 +51,13 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     print("\033[91mTransmitter Request Generator:\033[0m\033[92m", requestGenerator)
 
                     # TODO: 이 부분을 별도의 Domain으로 빼놓는 것이 더 깔끔함
-                    if sendProtocol == 7:
+                    if sendProtocol == 9:
+                        productReadNo = transmitData["productReadNo"]
+                        sendingRequest = requestGenerator(sessionId, productReadNo)
+                    elif sendProtocol == 8:
+                        productReadNo = transmitData["productReadNo"]
+                        sendingRequest = requestGenerator(request, sessionId, productReadNo)
+                    elif sendProtocol == 7:
                         sendingRequest = requestGenerator(request, sessionId)
                     elif sendProtocol == 6:
                         sendingRequest = requestGenerator(request, sessionId)

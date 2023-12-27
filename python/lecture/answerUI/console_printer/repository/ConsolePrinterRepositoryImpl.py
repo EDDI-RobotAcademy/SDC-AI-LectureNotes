@@ -59,6 +59,9 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
                 print("회원 가입에 실패하였습니다: (중복된 사용자)")
                 return
 
+            consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+            consoleUiRepository.setConsoleUiStateCurrentReadNumber(-1)
+
         if class_name == "AccountLoginResponse":
             print("Detect Login Response")
 
@@ -68,6 +71,7 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
 
             consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
             consoleUiRepository.setUserSession(response.getSessionAccountId())
+            consoleUiRepository.setConsoleUiStateCurrentReadNumber(-1)
 
         if class_name == "AccountLogoutResponse":
             print("Detect Logout Response")
@@ -77,6 +81,7 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
 
             consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
             consoleUiRepository.clearUserSession()
+            consoleUiRepository.setConsoleUiStateCurrentReadNumber(-1)
 
         if class_name == "AccountDeleteResponse":
             print("Detect Delete Response")
@@ -86,8 +91,9 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
 
             print("회원 탈퇴가 완료되었습니다")
 
-            # consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
-            # consoleUiRepository.clearUserSession()
+            consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+            consoleUiRepository.clearUserSession()
+            consoleUiRepository.setConsoleUiStateCurrentReadNumber(-1)
 
         if class_name == "ProductListResponse":
             print("Detect Product List Response")
@@ -102,6 +108,9 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
                 print(
                     f"{product['productId']:<20} {product['name']:<20} {product['price']:<20} {product['registeredAccountId']}")
 
+            consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+            consoleUiRepository.setConsoleUiStateCurrentReadNumber(-1)
+
         if class_name == "ProductRegisterResponse":
             print("Detect Product Register Response")
 
@@ -114,6 +123,41 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
             print("\033[92m상품 가격:\033[93m {} 원\033[0m".format(f"{response.getPrice():,}"))
             print("\033[92m상품 상세 정보:\033[93m {}\033[0m".format(response.getDetails()))
             print("\033[92m상품 등록자 계정:\033[93m {}\033[0m\033[92m".format(response.getAccountId()))
+
+            consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+            consoleUiRepository.setConsoleUiStateCurrentReadNumber(response.getId())
+
+        if class_name == "ProductReadResponse":
+            print("Detect Product Read Response")
+
+            if response.getId() == -1:
+                print("상품 상세 정보 조회 중 문제가 발생하였습니다")
+                return
+
+            print("\033[92m\n상품 정보:\033[0m")
+            print("\033[92m상품명:\033[93m {}\033[0m".format(response.getName()))
+            print("\033[92m상품 가격:\033[93m {} 원\033[0m".format(f"{response.getPrice():,}"))
+            print("\033[92m상품 상세 정보:\033[93m {}\033[0m".format(response.getDetails()))
+            print("\033[92m상품 등록자 계정:\033[93m {}\033[0m\033[92m".format(response.getAccountId()))
+
+            consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+            consoleUiRepository.setConsoleUiStateCurrentReadNumber(response.getId())
+
+        if class_name == "ProductUpdateResponse":
+            print("Detect Product Update Response")
+
+            if response.getId() == -1:
+                print("상품 상세 정보 조회 중 문제가 발생하였습니다")
+                return
+
+            print("\033[92m\n상품 정보:\033[0m")
+            print("\033[92m상품명:\033[93m {}\033[0m".format(response.getName()))
+            print("\033[92m상품 가격:\033[93m {} 원\033[0m".format(f"{response.getPrice():,}"))
+            print("\033[92m상품 상세 정보:\033[93m {}\033[0m".format(response.getDetails()))
+            print("\033[92m상품 등록자 계정:\033[93m {}\033[0m\033[92m".format(response.getAccountId()))
+
+            consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+            consoleUiRepository.setConsoleUiStateCurrentReadNumber(response.getId())
 
 
 def __checkUserSession(self):
