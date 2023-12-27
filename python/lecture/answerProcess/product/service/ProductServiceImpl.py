@@ -12,7 +12,9 @@ from account.service.response.AccountLoginResponse import AccountLoginResponse
 from account.service.response.AccountLogoutResponse import AccountLogoutResponse
 from account.service.response.AccountRegisterResponse import AccountRegisterResponse
 from product.service.ProductService import ProductService
+from product.service.request.ProductRegisterRequest import ProductRegisterRequest
 from product.service.response.ProductListResponse import ProductListResponse
+from product.service.response.ProductRegisterResponse import ProductRegisterResponse
 
 
 class ProductServiceImpl(ProductService):
@@ -52,28 +54,29 @@ class ProductServiceImpl(ProductService):
 
         return productListResponse
 
-    # def registerAccount(self, *args, **kwargs):
-    #     print("registerAccount()")
-    #     print(f"args: {args}")
-    #
-    #     cleanedElements = args[0]
-    #     print(f"cleanedElements: {cleanedElements}")
-    #
-    #     # for i, element in enumerate(cleanedElements):
-    #     #     print(f"각각의 요소 {i + 1}: {element}")
-    #
-    #     accountRegisterRequest = AccountRegisterRequest(*cleanedElements)
-    #     accountId = accountRegisterRequest.getAccountId()
-    #     foundAccount = self.__accountRepository.findByAccountId(accountId)
-    #     if foundAccount is not None:
-    #         return AccountRegisterResponse(False)
-    #
-    #     storedAccount = self.__accountRepository.save(accountRegisterRequest.toAccount())
-    #
-    #     if storedAccount.getId() is not None:
-    #         return AccountRegisterResponse(True)
-    #
-    #     return AccountRegisterResponse(False)
+    def registerProduct(self, *args, **kwargs):
+        print("registerProduct()")
+
+        cleanedElements = args[0]
+        print(f"cleanedElements: {cleanedElements}")
+
+        productRegisterRequest = ProductRegisterRequest(*cleanedElements)
+
+
+        storedProduct = self.__productRepository.save(productRegisterRequest.toProduct())
+
+        if storedProduct.getId() is not None:
+            foundAccount = self.__accountRepository.findById(storedProduct.getRegisteredBy())
+
+            return ProductRegisterResponse(
+                storedProduct.getId(),
+                storedProduct.getName(),
+                storedProduct.getPrice(),
+                storedProduct.getDetails(),
+                foundAccount.getAccountId()
+            )
+
+        return ProductRegisterResponse(-1, None, 0, None, None)
     #
     # def loginAccount(self, *args, **kwargs):
     #     print("loginAccount()")

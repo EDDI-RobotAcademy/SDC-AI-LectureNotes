@@ -20,7 +20,7 @@ class TestProductRepository(unittest.TestCase):
     def testSave(self):
         account = self.accountRepository.findByAccountId('test')
         print(f"account: {account}")
-        product = Product(name='item1', price=10, details='details1', registeredBy=account)
+        product = Product(name='item1', price=10, details='details1', registeredBy=account.getId())
         print(f"product: {product}")
 
         savedProduct = self.productRepository.save(product)
@@ -32,8 +32,8 @@ class TestProductRepository(unittest.TestCase):
 
     def testFindByName(self):
         account = self.accountRepository.findByAccountId('test')
-        product1 = Product(name='item1', price=10, details='details1', registeredBy=account)
-        product2 = Product(name='item2', price=20, details='details2', registeredBy=account)
+        product1 = Product(name='item1', price=10, details='details1', registeredBy=account.getId())
+        product2 = Product(name='item2', price=20, details='details2', registeredBy=account.getId())
 
         self.productRepository.save(product1)
         self.productRepository.save(product2)
@@ -47,7 +47,7 @@ class TestProductRepository(unittest.TestCase):
 
     def testDeleteById(self):
         account = self.accountRepository.findByAccountId('test')
-        product = Product(name='item1', price=10, details='details1', registeredBy=account)
+        product = Product(name='item1', price=10, details='details1', registeredBy=account.getId())
         self.productRepository.save(product)
 
         productId = product.getId()

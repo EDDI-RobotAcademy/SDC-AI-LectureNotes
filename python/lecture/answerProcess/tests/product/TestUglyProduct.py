@@ -21,7 +21,7 @@ class TestUglyProduct(unittest.TestCase):
     def testProductCreation(self):
         account = self.accountRepository.findByAccountId('test')
         print(f"account: {account}")
-        product = Product(name='item1', price=10, details='details1', registeredBy=account)
+        product = Product(name='item1', price=10, details='details1', registeredBy=account.getId())
         print(f"product: {product}")
 
     def testProductList(self):
