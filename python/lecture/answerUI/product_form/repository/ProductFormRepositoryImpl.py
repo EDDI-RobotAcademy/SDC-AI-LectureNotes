@@ -6,7 +6,6 @@ class ProductFormRepositoryImpl(ProductFormRepository):
     __instance = None
 
     def __new__(cls):
-        print("뭐가 문제인가 ?")
         if cls.__instance is None:
             cls.__instance = super().__new__(cls)
         return cls.__instance
@@ -27,7 +26,7 @@ class ProductFormRepositoryImpl(ProductFormRepository):
     def createProductRegisterForm(self):
         print("신규 상품을 등록합니다")
         userInputProductName = KeyboardInput.getKeyboardInput("상품명을 입력하세요:")
-        userInputProductPrice = KeyboardInput.getKeyboardInput("상품 가격을 입력하세요:")
+        userInputProductPrice = KeyboardInput.getKeyboardIntegerInput("상품 가격을 입력하세요:")
         userInputProductDetails = KeyboardInput.getKeyboardInput("상품 상세 정보를 입력하세요:")
         return userInputProductName, userInputProductPrice, userInputProductDetails
 

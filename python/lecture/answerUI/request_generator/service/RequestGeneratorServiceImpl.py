@@ -99,7 +99,7 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         print("RequestGeneratorService - generateProductListRequest()")
         return
 
-    def generateProductRegisterRequest(self, arguments):
+    def generateProductRegisterRequest(self, arguments, sessionId):
         print(f"RequestGeneratorService - generateProductRegisterRequest() arguments: {arguments}")
 
         if not isinstance(arguments, tuple) or len(arguments) != 3:
@@ -109,8 +109,9 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
 
         productRequestData = {
             '__name': arguments[0].decode().strip(),
-            '__price': arguments[1].decode().strip(),
+            '__price': arguments[1],
             '__details': arguments[2].decode().strip(),
+            '__sessionId': sessionId,
         }
 
         return productRequestData
