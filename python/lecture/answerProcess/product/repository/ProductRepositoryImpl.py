@@ -52,7 +52,16 @@ class ProductRepositoryImpl(ProductRepository):
         dbSession = sessionmaker(bind=self.__instance.engine)
         session = dbSession()
 
-        return session.query(Product).filter_by(_Product__id=id).first()
+        try:
+            return session.query(Product).filter_by(_Product__id=id).first()
+        finally:
+            session.close()
+
+    def findByRegisteredId(self, sessionId):
+        dbSession = sessionmaker(bind=self.__instance.engine)
+        session = dbSession()
+
+        return session.query(Product).filter_by(_Product__registeredBy=sessionId).first()
 
     def findByName(self, name):
         dbSession = sessionmaker(bind=self.__instance.engine)

@@ -28,6 +28,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.PRODUCT_REGISTER.value] = cls.__instance.generateProductRegisterRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.PRODUCT_READ.value] = cls.__instance.generateProductReadRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PRODUCT_UPDATE.value] = cls.__instance.generateProductUpdateRequest
 
 
         return cls.__instance
@@ -123,6 +125,22 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         productRequestData = {
             '__id': arguments,
             '__sessionId': sessionId,
+        }
+
+        return productRequestData
+
+    def generateProductUpdateRequest(self, arguments, sessionId, productReadNo):
+        print(f"RequestGeneratorService - generateProductUpdateRequest() arguments: {arguments}")
+
+        if not isinstance(arguments, tuple) or len(arguments) != 3:
+            raise ValueError("Invalid request format")
+
+        productRequestData = {
+            '__name': arguments[0].decode().strip(),
+            '__price': arguments[1],
+            '__details': arguments[2].decode().strip(),
+            '__sessionId': sessionId,
+            '__id': productReadNo,
         }
 
         return productRequestData

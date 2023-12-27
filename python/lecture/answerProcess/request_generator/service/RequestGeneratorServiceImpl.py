@@ -6,7 +6,9 @@ from account.service.request.AccountLogoutRequest import AccountLogoutRequest
 from account.service.request.AccountRegisterRequest import AccountRegisterRequest
 
 from custom_protocol.entity.CustomProtocol import CustomProtocol
+from product.service.request.ProductReadRequest import ProductReadRequest
 from product.service.request.ProductRegisterRequest import ProductRegisterRequest
+from product.service.request.ProductUpdateRequest import ProductUpdateRequest
 from request_generator.service.RequestGeneratorService import RequestGeneratorService
 
 
@@ -29,6 +31,11 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
 
             cls.__requestFormGenerationTable[
                 CustomProtocol.PRODUCT_REGISTER.value] = cls.__instance.generateProductRegisterRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PRODUCT_READ.value] = cls.__instance.generateProductReadRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PRODUCT_UPDATE.value] = cls.__instance.generateProductUpdateRequest
+
 
         return cls.__instance
 
@@ -80,4 +87,20 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
             __details=arguments["__details"],
             __sessionId=arguments["__sessionId"]
         )
+
+    def generateProductReadRequest(self, arguments):
+        return ProductReadRequest(
+            __id=arguments["__id"],
+            __sessionId=arguments["__sessionId"]
+        )
+
+    def generateProductUpdateRequest(self, arguments):
+        return ProductUpdateRequest(
+            __id=arguments["__id"],
+            __name=arguments["__name"],
+            __price=arguments["__price"],
+            __details=arguments["__details"],
+            __sessionId=arguments["__sessionId"]
+        )
+
 
