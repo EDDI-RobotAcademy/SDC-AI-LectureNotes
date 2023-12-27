@@ -47,6 +47,26 @@ def registerProtocol():
         accountFormRepository.createAccountRegisterForm
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_LOGIN.value,
+        accountFormRepository.createAccountLoginForm
+    )
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_LOGOUT.value,
+        accountFormRepository.createAccountLogoutForm
+    )
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ACCOUNT_DELETE.value,
+        accountFormRepository.createAccountDeleteForm
+    )
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PRODUCT_LIST.value,
+        accountFormRepository.createProductListForm
+    )
+
 
 if __name__ == '__main__':
     initEachDomain()

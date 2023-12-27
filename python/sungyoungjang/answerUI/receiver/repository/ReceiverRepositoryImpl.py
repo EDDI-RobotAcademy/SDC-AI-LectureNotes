@@ -3,6 +3,12 @@ from socket import socket
 from time import sleep
 
 from receiver.repository.ReceiverRepository import ReceiverRepository
+from account.service.response.AccountRegisterResponse import AccountRegisterResponse
+from account.service.response.AccountLoginResponse import AccountLoginResponse
+from account.service.response.AccountLogoutResponse import AccountLogoutResponse
+from account.service.response.AccountDeleteResponse import AccountDeleteResponse
+
+from product.service.response.ProductListResponse import ProductListResponse
 
 
 class ReceiverRepositoryImpl(ReceiverRepository):
@@ -36,9 +42,11 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                     clientSocket.closeSocket()
                     break
 
-                print(f'수신된 정보: {data.decode()}')
+                decodedData = data.decode()
+                print(f'수신된 정보: {decodedData}')
+                responseObject = eval(decodedData)
 
-                receiveQueue.put(data.decode())
+                receiveQueue.put(responseObject)
 
             except socket.error as exception:
                 if exception.errno == errno.EWOULDBLOCK:
