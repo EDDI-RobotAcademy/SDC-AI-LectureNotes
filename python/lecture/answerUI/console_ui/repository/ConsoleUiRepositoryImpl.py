@@ -26,6 +26,8 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
             cls.__instance.__readSessionInfoFromFile()
 
             cls.__instance.__uiMenuTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__printDefaultMenu
+            cls.__instance.__uiMenuTable[ConsoleUiRoutingState.PRODUCT_LIST.value] = cls.__instance.__printProductListMenu
+
             cls.__instance.__uiSelectDecisionTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__selectDecisionFromUserChoice
             cls.__instance.__uiProperCommandConvertTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__routingStateNothingConverter
         return cls.__instance
@@ -103,6 +105,20 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         print("3. 주문 내역 조회")
         print("4. 종료")
         print("5. 회원 탈퇴")
+
+    def __printProductListMenu(self):
+        if self.__session is None:
+            print("로그인 이후 상품 게시판을 활용 할 수 있습니다")
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.NOTHING)
+            return
+
+        print("1. 상품 리스트 보기")
+        print("2. 상품 등록")
+        print("3. 상품 상세 보기")
+        print("4. 등록된 상품 수정")
+        print("5. 등록된 상품 삭제")
+        print("6. 상품 검색")
+        print("7. 종료")
 
     def convertUserChoiceToProperRouting(self, userChoice):
         currentRoutingState = self.__consoleUiState.getCurrentRoutingState()
@@ -182,5 +198,20 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         except Exception as e:
             print(f"An error occurred while deleting the session information file: {e}")
 
+    def decisionRoutingState(self, convertedUserChoice):
+        if convertedUserChoice == CustomProtocol.ACCOUNT_REGISTER.value:
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.NOTHING)
+
+        elif convertedUserChoice == CustomProtocol.ACCOUNT_LOGIN.value:
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.NOTHING)
+
+        elif convertedUserChoice == CustomProtocol.ACCOUNT_LOGOUT.value:
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.NOTHING)
+
+        elif convertedUserChoice == CustomProtocol.ACCOUNT_DELETE:
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.NOTHING)
+
+        elif convertedUserChoice == CustomProtocol.PRODUCT_LIST.value:
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_LIST)
 
 
