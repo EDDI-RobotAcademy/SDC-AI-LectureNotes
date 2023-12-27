@@ -30,6 +30,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.PRODUCT_READ.value] = cls.__instance.generateProductReadRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.PRODUCT_UPDATE.value] = cls.__instance.generateProductUpdateRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PRODUCT_DELETE.value] = cls.__instance.generateProductDeleteRequest
 
 
         return cls.__instance
@@ -145,3 +147,12 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
 
         return productRequestData
 
+    def generateProductDeleteRequest(self, sessionId, productReadNo):
+        print(f"RequestGeneratorService - generateProductDeleteRequest()")
+
+        productRequestData = {
+            '__sessionId': sessionId,
+            '__id': productReadNo,
+        }
+
+        return productRequestData
