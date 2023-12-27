@@ -3,6 +3,7 @@ from socket import socket
 from time import sleep
 
 from receiver.repository.ReceiverRepository import ReceiverRepository
+from transmitter.repository.TransmitterRepositoryImpl import TransmitterRepositoryImpl
 
 
 class ReceiverRepositoryImpl(ReceiverRepository):
@@ -22,9 +23,9 @@ class ReceiverRepositoryImpl(ReceiverRepository):
             cls.__instance = cls()
         return cls.__instance
 
-    def receiveCommand(self, clientSocketListObject):
-        clientSocketObject = clientSocketListObject[0]
-        clientSocket = clientSocketObject.getClientSocket()
+    def receiveCommand(self, clientSocket):
+        transmitterRepository = TransmitterRepositoryImpl.getInstance()
+        transmitQueue = transmitterRepository.getTransmitQueue()
 
         while True:
             try:
@@ -35,6 +36,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                     break
 
                 print(f'수신된 정보: {data.decode()}')
+                transmitQueue.put('안 쉽죠 !')
 
             except socket.error as exception:
                 if exception.errno == errno.EWOULDBLOCK:
