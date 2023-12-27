@@ -23,7 +23,9 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.ACCOUNT_DELETE.value] = cls.__instance.generateAccountDeleteRequest
 
             cls.__requestFormGenerationTable[
-                CustomProtocol.PRODUCT_LIST.value] = cls.__instance.generateAccountDeleteRequest
+                CustomProtocol.PRODUCT_LIST.value] = cls.__instance.generateProductListRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PRODUCT_REGISTER.value] = cls.__instance.generateProductRegisterRequest
 
         return cls.__instance
 
@@ -96,3 +98,20 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
     def generateProductListRequest(self, arguments):
         print("RequestGeneratorService - generateProductListRequest()")
         return
+
+    def generateProductRegisterRequest(self, arguments):
+        print(f"RequestGeneratorService - generateProductRegisterRequest() arguments: {arguments}")
+
+        if not isinstance(arguments, tuple) or len(arguments) != 3:
+            raise ValueError("Invalid request format")
+
+        # and need sessionId
+
+        productRequestData = {
+            '__name': arguments[0].decode().strip(),
+            '__price': arguments[1].decode().strip(),
+            '__details': arguments[2].decode().strip(),
+        }
+
+        return productRequestData
+
