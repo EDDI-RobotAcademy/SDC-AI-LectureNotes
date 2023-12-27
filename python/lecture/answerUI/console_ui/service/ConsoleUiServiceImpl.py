@@ -47,6 +47,7 @@ class ConsoleUiServiceImpl(ConsoleUiService):
             self.__repository.clearUserSession()
 
         transmitData = {'protocolNumber': convertedUserChoice, 'sessionId': sessionId}
+        self.__repository.decisionRoutingState(convertedUserChoice)
 
         transmitQueue.put(transmitData)
 
