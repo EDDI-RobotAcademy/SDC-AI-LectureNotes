@@ -40,7 +40,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                 receivedRequest = clientSocket.recv(1024)
 
                 if not receivedRequest:
-                    clientSocket.closeSocket()
+                    clientSocket.close()
                     break
 
                 receivedForm = json.loads(receivedRequest)
@@ -62,7 +62,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                 else:
                     response = customProtocolRepository.execute(int(protocolNumber))
 
-                print(f"Receiver - response: {response}")
+                print("\033[91mReceiver - response:", response)
 
                 transmitQueue.put(response)
 

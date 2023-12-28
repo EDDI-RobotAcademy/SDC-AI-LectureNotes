@@ -7,3 +7,8 @@ class ConsoleUiRoutingState(Enum):
     PRODUCT_LIST = 1
     PRODUCT_REGISTER = 2
     PRODUCT_READ = 3
+
+    ORDER_REGISTER = 11
+
+    PROGRAM_EXIT = 333
+

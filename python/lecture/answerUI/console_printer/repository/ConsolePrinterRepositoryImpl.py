@@ -5,6 +5,7 @@ from time import sleep
 
 from account.service.response import AccountLoginResponse
 from console_printer.repository.ConsolePrinterRepository import ConsolePrinterRepository
+from console_ui.entity.ConsoleUiRoutingState import ConsoleUiRoutingState
 from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImpl
 from console_ui.service.ConsoleUiServiceImpl import ConsoleUiServiceImpl
 
@@ -41,13 +42,19 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
                 response = receiveQueue.get()
                 print(f"ConsolePrinterRepository Received response: {response}")
 
+                class_name = response.__class__.__name__
+
+                if class_name == "ProgramExitResponse":
+                    break
+
                 self.__responseProcessor(response)
-                # sessionAccountId = self.__checkUserSession()
                 consoleUiService.printMenu()
 
                 consoleUiService.processUserInput(transmitQueue)
             else:
                 sleep(0.5)
+
+        print("\033[91mUI Printer Finished!\033[92m")
 
     def __responseProcessor(self, response):
         print(f"ConsolePrinterRepository - response: {response}")
@@ -130,8 +137,12 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
         if class_name == "ProductReadResponse":
             print("Detect Product Read Response")
 
+            consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
+
             if response.getId() == -1:
                 print("상품 상세 정보 조회 중 문제가 발생하였습니다")
+                consoleUiRepository.setConsoleUiStateCurrentReadNumber(-1)
+                consoleUiRepository.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_LIST)
                 return
 
             print("\033[92m\n상품 정보:\033[0m")
@@ -140,7 +151,6 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
             print("\033[92m상품 상세 정보:\033[93m {}\033[0m".format(response.getDetails()))
             print("\033[92m상품 등록자 계정:\033[93m {}\033[0m\033[92m".format(response.getAccountId()))
 
-            consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
             consoleUiRepository.setConsoleUiStateCurrentReadNumber(response.getId())
 
         if class_name == "ProductUpdateResponse":
@@ -158,6 +168,14 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
 
             consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
             consoleUiRepository.setConsoleUiStateCurrentReadNumber(response.getId())
+
+        if class_name == "OrderRegisterResponse":
+            print("Detect Product Update Response")
+
+            if response.getIsSuccess() is False:
+                return
+
+            print("선택한 상품 주문이 완료되었습니다")
 
 
 def __checkUserSession(self):

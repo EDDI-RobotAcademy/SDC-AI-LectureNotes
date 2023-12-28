@@ -12,6 +12,12 @@ from product.service.response.ProductListResponse import ProductListResponse
 from product.service.response.ProductRegisterResponse import ProductRegisterResponse
 from product.service.response.ProductReadResponse import ProductReadResponse
 from product.service.response.ProductUpdateResponse import ProductUpdateResponse
+from product.service.response.ProductDeleteResponse import ProductDeleteResponse
+
+from order.service.response.OrderRegisterResponse import OrderRegisterResponse
+
+
+from program.service.response.ProgramExitResponse import ProgramExitResponse
 
 
 class ReceiverRepositoryImpl(ReceiverRepository):
@@ -32,7 +38,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
         return cls.__instance
 
     # 클라이언트 소켓에 수신
-    def receiveCommand(self, clientSocketObject, lock, receiveQueue):
+    def receiveCommand(self, clientSocketObject, lock, receiveQueue, finishQueue):
         clientSocket = clientSocketObject.getSocket()
         print(f"receiver: is it exist -> {clientSocket}")
 
@@ -42,7 +48,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                 data = clientSocket.recv(1024)
 
                 if not data:
-                    clientSocket.closeSocket()
+                    clientSocket.close()
                     break
 
                 decodedData = data.decode()
@@ -51,6 +57,11 @@ class ReceiverRepositoryImpl(ReceiverRepository):
 
                 receiveQueue.put(responseObject)
 
+                class_name = responseObject.__class__.__name__
+
+                if class_name == "ProgramExitResponse":
+                    break
+
             except socket.error as exception:
                 if exception.errno == errno.EWOULDBLOCK:
                     pass
@@ -58,4 +69,6 @@ class ReceiverRepositoryImpl(ReceiverRepository):
             finally:
                 sleep(0.5)
 
+        print("\033[91mReceiver Finished!\033[92m")
 
+        finishQueue.put(True)

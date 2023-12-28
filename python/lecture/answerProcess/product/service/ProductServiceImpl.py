@@ -12,9 +12,12 @@ from account.service.response.AccountLoginResponse import AccountLoginResponse
 from account.service.response.AccountLogoutResponse import AccountLogoutResponse
 from account.service.response.AccountRegisterResponse import AccountRegisterResponse
 from product.service.ProductService import ProductService
+from product.service.request.ProductDeleteRequest import ProductDeleteRequest
 from product.service.request.ProductReadRequest import ProductReadRequest
 from product.service.request.ProductRegisterRequest import ProductRegisterRequest
+from product.service.request.ProductSearchRequest import ProductSearchRequest
 from product.service.request.ProductUpdateRequest import ProductUpdateRequest
+from product.service.response.ProductDeleteResponse import ProductDeleteResponse
 from product.service.response.ProductListResponse import ProductListResponse
 from product.service.response.ProductReadResponse import ProductReadResponse
 from product.service.response.ProductRegisterResponse import ProductRegisterResponse
@@ -90,21 +93,26 @@ class ProductServiceImpl(ProductService):
 
         productReadRequest = ProductReadRequest(*cleanedElements)
 
+        productId = productReadRequest.getId()
+
         sessionId = productReadRequest.getSessionId()
         accountSession = self.__sessionRepository.findBySessionId(sessionId)
-        if accountSession is not None:
-            foundAccount = self.__accountRepository.findById(sessionId)
-            foundProduct = self.__productRepository.findById(productReadRequest.getId())
+        if accountSession is None:
+            return ProductReadResponse(-1, None, 0, None, None)
 
-            return ProductReadResponse(
-                foundProduct.getId(),
-                foundProduct.getName(),
-                foundProduct.getPrice(),
-                foundProduct.getDetails(),
-                foundAccount.getAccountId()
-            )
+        foundProduct = self.__productRepository.findById(productId)
+        if foundProduct is None:
+            return ProductReadResponse(-1, None, 0, None, None)
 
-        return ProductReadResponse(-1, None, 0, None, None)
+        foundAccount = self.__accountRepository.findById(sessionId)
+
+        return ProductReadResponse(
+            foundProduct.getId(),
+            foundProduct.getName(),
+            foundProduct.getPrice(),
+            foundProduct.getDetails(),
+            foundAccount.getAccountId()
+        )
 
     def updateProduct(self, *args, **kwargs):
         print("updateProduct()")
@@ -139,21 +147,62 @@ class ProductServiceImpl(ProductService):
 
         return ProductUpdateResponse(-1, None, 0, None, None)
 
+    def deleteProduct(self, *args, **kwargs):
+        print("ProductService - deleteProduct()")
 
-    # def deleteAccount(self, *args, **kwargs):
-    #     print("AccountService - deleteAccount()")
-    #
-    #     cleanedElements = args[0]
-    #
-    #     accountLoginRequest = AccountDeleteRequest(*cleanedElements)
-    #     foundAccount = self.__accountRepository.findById(accountLoginRequest.getAccountSessionId())
-    #     print(f"foundAccount: {foundAccount}")
-    #     if foundAccount is None:
-    #         return AccountDeleteResponse(False)
-    #
-    #     self.__sessionRepository.deleteBySessionId(foundAccount.getId())
-    #     self.__accountRepository.deleteById(foundAccount.getId())
-    #
-    #     return AccountDeleteResponse(True)
+        cleanedElements = args[0]
+        print(f"cleanedElements: {cleanedElements}")
+
+        productDeleteRequest = ProductDeleteRequest(*cleanedElements)
+
+        sessionAccountId = productDeleteRequest.getSessionId()
+        foundAccount = self.__accountRepository.findById(sessionAccountId)
+
+        # TODO: 여기서도 사실 각 실패 상태를 관리해서 어떤 문제인지 파악 할 수 있으면 더 좋음
+        if foundAccount is None:
+            print("현재 세션의 사용자를 찾을 수 없습니다")
+            return ProductDeleteResponse(False)
+
+        productId = productDeleteRequest.getId()
+        foundProduct = self.__productRepository.findById(productId)
+        if foundProduct is None:
+            print("삭제를 요청한 상품을 찾을 수 없습니다")
+            return ProductDeleteResponse(False)
+
+        registeredAccountId = foundProduct.getRegisteredBy()
+        print("\033[91mregisteredAccountId:", registeredAccountId, ", sessionId:", sessionAccountId)
+        if registeredAccountId == sessionAccountId:
+            print("게시글 삭제 완료\033[92m")
+            self.__productRepository.deleteById(foundProduct.getId())
+            return ProductDeleteResponse(True)
+
+        print("게시글 작성자가 아니므로 삭제 할 수 없습니다")
+        return ProductDeleteResponse(False)
+
+    def searchProduct(self, *args, **kwargs):
+        print("ProductService - searchProduct()")
+
+        cleanedElements = args[0]
+        print(f"cleanedElements: {cleanedElements}")
+
+        productSearchRequest = ProductSearchRequest(*cleanedElements)
+
+        searchedProductList = self.__productRepository.findByUserInputKeyword(
+            productSearchRequest.getUserInputKeyword())
+
+        searchedProductConvertedList = []
+
+        for product in searchedProductList:
+            searchedProductConvertedList.append({
+                'productId': product.getId(),
+                'name': product.getName(),
+                'price': product.getPrice(),
+                'registeredAccountId': self.__accountRepository.findById(product.getRegisteredBy()).getAccountId()
+            })
+
+        productListResponse = ProductListResponse(searchedProductConvertedList)
+        print(f"Listing products: {productListResponse.getProductList()}")
+
+        return productListResponse
 
 

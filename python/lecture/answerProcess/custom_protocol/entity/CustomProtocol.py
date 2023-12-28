@@ -11,5 +11,12 @@ class CustomProtocol(Enum):
     PRODUCT_REGISTER = 6
     PRODUCT_READ = 7
     PRODUCT_UPDATE = 8
+    PRODUCT_DELETE = 9
+    PRODUCT_SEARCH = 10
+
+    ORDER_LIST = 11
+    ORDER_REGISTER = 12
+
+    PROGRAM_EXIT = 333
 
 

@@ -19,5 +19,13 @@ class ProductService(abc.ABC):
     def updateProduct(self):
         pass
 
+    @abc.abstractmethod
+    def deleteProduct(self):
+        pass
+
+    @abc.abstractmethod
+    def searchProduct(self):
+        pass
+
 
 

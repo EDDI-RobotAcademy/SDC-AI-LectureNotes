@@ -1,6 +1,7 @@
 import atexit
 import multiprocessing
 import socket
+from dataclasses import dataclass
 from time import sleep
 
 import sqlalchemy
@@ -8,13 +9,21 @@ import sqlalchemy
 from account.repository.AccountRepositoryImpl import AccountRepositoryImpl
 from account.repository.SessionRepositoryImpl import SessionRepositoryImpl
 from account.service.AccountServiceImpl import AccountServiceImpl
+
 from custom_protocol.entity.CustomProtocol import CustomProtocol
 from custom_protocol.service.CustomProtocolServiceImpl import CustomProtocolServiceImpl
+
 from mysql.MySQLDatabase import MySQLDatabase
+
+from order.repository.OrderRepositoryImpl import OrderRepositoryImpl
+from order.service.OrderServiceImpl import OrderServiceImpl
+
 from product.repository.ProductRepositoryImpl import ProductRepositoryImpl
 from product.service.ProductServiceImpl import ProductServiceImpl
+
 from server_socket.repository.ServerSocketRepositoryImpl import ServerSocketRepositoryImpl
 from server_socket.service.ServerSocketServiceImpl import ServerSocketServiceImpl
+
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
 from task_manage.service.TaskManageServiceImpl import TaskManageServiceImpl
 from utility.IPAddressBindSupporter import IPAddressBindSupporter
@@ -57,10 +66,22 @@ def initTaskManageDomain():
     TaskManageServiceImpl(taskManageRepository)
 
 
+@dataclass
+class ProgramExitResponse:
+    __isSuccess: bool
+
+
+def clientExitProgram():
+    print("\033[91m접속한 사용자가 프로그램을 종료했습니다\033[92m")
+
+    return ProgramExitResponse(True)
+
+
 def initCustomProtocol():
     customProtocolService = CustomProtocolServiceImpl.getInstance()
     accountService = AccountServiceImpl.getInstance()
     productService = ProductServiceImpl.getInstance()
+    orderService = OrderServiceImpl.getInstance()
 
     print(f"enum value test: {CustomProtocol.ACCOUNT_REGISTER.value}")
     customProtocolService.registerCustomProtocol(
@@ -103,6 +124,33 @@ def initCustomProtocol():
         productService.updateProduct
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PRODUCT_DELETE.value,
+        productService.deleteProduct
+    )
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PRODUCT_SEARCH.value,
+        productService.searchProduct
+    )
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ORDER_LIST.value,
+        orderService.orderList
+    )
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ORDER_REGISTER.value,
+        orderService.orderRegister
+    )
+
+
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PROGRAM_EXIT.value,
+        clientExitProgram
+    )
+
 
 def initAccountDomain():
     accountRepository = AccountRepositoryImpl()
@@ -118,12 +166,21 @@ def initProductDomain():
     ProductServiceImpl(accountRepository, sessionRepository, productRepository)
 
 
+def initOrderDomain():
+    accountRepository = AccountRepositoryImpl.getInstance()
+    sessionRepository = SessionRepositoryImpl.getInstance()
+    productRepository = ProductRepositoryImpl.getInstance()
+    orderRepository = OrderRepositoryImpl.getInstance()
+    OrderServiceImpl(accountRepository, sessionRepository, productRepository, orderRepository)
+
+
 def initEachDomain():
     # initMysqlInstance()
     initMysqlInstanceAlternatives()
 
     initAccountDomain()
     initProductDomain()
+    initOrderDomain()
 
     initServerSocketDomain()
     initTaskManageDomain()
@@ -156,11 +213,6 @@ if __name__ == '__main__':
     while True:
         try:
             serverSocketService.acceptClientSocket(queue)
-
-            # if not queue.empty():
-            #     print("main: 사용자가 접속했습니다!")
-            #     taskManageService.createReceiveTask()
-            #     taskManageService.createTransmitTask()
 
         except socket.error:
             sleep(1.0)

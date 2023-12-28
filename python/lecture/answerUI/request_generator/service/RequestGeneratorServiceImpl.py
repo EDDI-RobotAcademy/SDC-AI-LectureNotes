@@ -1,4 +1,5 @@
 import ast
+from base64 import b64encode
 
 from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImpl
 from custom_protocol.entity.CustomProtocol import CustomProtocol
@@ -32,6 +33,16 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.PRODUCT_UPDATE.value] = cls.__instance.generateProductUpdateRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.PRODUCT_DELETE.value] = cls.__instance.generateProductDeleteRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PRODUCT_SEARCH.value] = cls.__instance.generateProductSearchRequest
+
+            cls.__requestFormGenerationTable[
+                CustomProtocol.ORDER_LIST.value] = cls.__instance.generateOrderListRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.ORDER_REGISTER.value] = cls.__instance.generateOrderRegisterRequest
+
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PROGRAM_EXIT.value] = cls.__instance.generateProgramExitRequest
 
 
         return cls.__instance
@@ -156,3 +167,37 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         }
 
         return productRequestData
+
+    def generateProductSearchRequest(self, userInputKeyword):
+        print(f"RequestGeneratorService - generateProductDeleteRequest()")
+
+        productRequestData = {
+            '__userInputKeyword': userInputKeyword,
+        }
+
+        return b64encode(productRequestData['__userInputKeyword']).decode()
+
+    def generateOrderListRequest(self, sessionId):
+        print(f"RequestGeneratorService - generateOrderRegisterRequest()")
+
+        productRequestData = {
+            '__sessionId': sessionId
+        }
+
+        return productRequestData
+
+    def generateOrderRegisterRequest(self, sessionId, productId):
+        print(f"RequestGeneratorService - generateOrderRegisterRequest()")
+
+        productRequestData = {
+            '__sessionId': sessionId,
+            '__productId': productId,
+        }
+
+        return productRequestData
+
+    def generateProgramExitRequest(self, arguments):
+        print("RequestGeneratorService - generateProgramExitRequest()")
+        return
+
+
