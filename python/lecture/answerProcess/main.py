@@ -103,6 +103,11 @@ def initCustomProtocol():
         productService.updateProduct
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PRODUCT_DELETE.value,
+        productService.deleteProduct
+    )
+
 
 def initAccountDomain():
     accountRepository = AccountRepositoryImpl()

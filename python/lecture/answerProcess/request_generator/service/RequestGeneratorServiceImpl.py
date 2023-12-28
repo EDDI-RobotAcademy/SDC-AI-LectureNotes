@@ -6,6 +6,7 @@ from account.service.request.AccountLogoutRequest import AccountLogoutRequest
 from account.service.request.AccountRegisterRequest import AccountRegisterRequest
 
 from custom_protocol.entity.CustomProtocol import CustomProtocol
+from product.service.request.ProductDeleteRequest import ProductDeleteRequest
 from product.service.request.ProductReadRequest import ProductReadRequest
 from product.service.request.ProductRegisterRequest import ProductRegisterRequest
 from product.service.request.ProductUpdateRequest import ProductUpdateRequest
@@ -35,6 +36,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.PRODUCT_READ.value] = cls.__instance.generateProductReadRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.PRODUCT_UPDATE.value] = cls.__instance.generateProductUpdateRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PRODUCT_DELETE.value] = cls.__instance.generateProductDeleteRequest
 
 
         return cls.__instance
@@ -100,6 +103,12 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
             __name=arguments["__name"],
             __price=arguments["__price"],
             __details=arguments["__details"],
+            __sessionId=arguments["__sessionId"]
+        )
+
+    def generateProductDeleteRequest(self, arguments):
+        return ProductDeleteRequest(
+            __id=arguments["__id"],
             __sessionId=arguments["__sessionId"]
         )
 
