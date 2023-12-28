@@ -7,6 +7,8 @@ from account.service.request.AccountLogoutRequest import AccountLogoutRequest
 from account.service.request.AccountRegisterRequest import AccountRegisterRequest
 
 from custom_protocol.entity.CustomProtocol import CustomProtocol
+from order.service.request.OrderListRequest import OrderListRequest
+from order.service.request.OrderRegisterRequest import OrderRegisterRequest
 from product.service.request.ProductDeleteRequest import ProductDeleteRequest
 from product.service.request.ProductReadRequest import ProductReadRequest
 from product.service.request.ProductRegisterRequest import ProductRegisterRequest
@@ -43,6 +45,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
             cls.__requestFormGenerationTable[
                 CustomProtocol.PRODUCT_SEARCH.value] = cls.__instance.generateProductSearchRequest
 
+            cls.__requestFormGenerationTable[
+                CustomProtocol.ORDER_LIST.value] = cls.__instance.generateOrderListRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.ORDER_REGISTER.value] = cls.__instance.generateOrderRegisterRequest
 
@@ -134,12 +138,16 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
             __userInputKeyword=decodedString.strip()
         )
 
-    def generateOrderRegisterRequest(self, arguments):
-        return ProductDeleteRequest(
-            __productId=arguments["__productId"],
+    def generateOrderListRequest(self, arguments):
+        return OrderListRequest(
             __sessionId=arguments["__sessionId"]
         )
 
+    def generateOrderRegisterRequest(self, arguments):
+        return OrderRegisterRequest(
+            __productId=arguments["__productId"],
+            __sessionId=arguments["__sessionId"]
+        )
 
     def generateProgramExitRequest(self, arguments):
         print("\033[91m접속한 사용자가 프로그램을 종료했습니다!\033[92m")

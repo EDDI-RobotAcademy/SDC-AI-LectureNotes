@@ -144,8 +144,6 @@ def initCustomProtocol():
         orderService.orderRegister
     )
 
-
-
     customProtocolService.registerCustomProtocol(
         CustomProtocol.PROGRAM_EXIT.value,
         clientExitProgram
