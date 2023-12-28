@@ -91,6 +91,11 @@ def registerProtocol():
         productFormRepository.createProductDeleteForm
     )
 
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PRODUCT_SEARCH.value,
+        productFormRepository.createProductSearchForm
+    )
+
 
 if __name__ == '__main__':
     print("\033[92m화면 출력 UI 서버가 구동되었습니다.")

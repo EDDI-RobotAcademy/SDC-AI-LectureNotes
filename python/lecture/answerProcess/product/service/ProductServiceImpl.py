@@ -15,6 +15,7 @@ from product.service.ProductService import ProductService
 from product.service.request.ProductDeleteRequest import ProductDeleteRequest
 from product.service.request.ProductReadRequest import ProductReadRequest
 from product.service.request.ProductRegisterRequest import ProductRegisterRequest
+from product.service.request.ProductSearchRequest import ProductSearchRequest
 from product.service.request.ProductUpdateRequest import ProductUpdateRequest
 from product.service.response.ProductDeleteResponse import ProductDeleteResponse
 from product.service.response.ProductListResponse import ProductListResponse
@@ -178,22 +179,30 @@ class ProductServiceImpl(ProductService):
         print("게시글 작성자가 아니므로 삭제 할 수 없습니다")
         return ProductDeleteResponse(False)
 
+    def searchProduct(self, *args, **kwargs):
+        print("ProductService - searchProduct()")
 
+        cleanedElements = args[0]
+        print(f"cleanedElements: {cleanedElements}")
 
-    # def deleteAccount(self, *args, **kwargs):
-    #     print("AccountService - deleteAccount()")
-    #
-    #     cleanedElements = args[0]
-    #
-    #     accountLoginRequest = AccountDeleteRequest(*cleanedElements)
-    #     foundAccount = self.__accountRepository.findById(accountLoginRequest.getAccountSessionId())
-    #     print(f"foundAccount: {foundAccount}")
-    #     if foundAccount is None:
-    #         return AccountDeleteResponse(False)
-    #
-    #     self.__sessionRepository.deleteBySessionId(foundAccount.getId())
-    #     self.__accountRepository.deleteById(foundAccount.getId())
-    #
-    #     return AccountDeleteResponse(True)
+        productSearchRequest = ProductSearchRequest(*cleanedElements)
+
+        searchedProductList = self.__productRepository.findByUserInputKeyword(
+            productSearchRequest.getUserInputKeyword())
+
+        searchedProductConvertedList = []
+
+        for product in searchedProductList:
+            searchedProductConvertedList.append({
+                'productId': product.getId(),
+                'name': product.getName(),
+                'price': product.getPrice(),
+                'registeredAccountId': self.__accountRepository.findById(product.getRegisteredBy()).getAccountId()
+            })
+
+        productListResponse = ProductListResponse(searchedProductConvertedList)
+        print(f"Listing products: {productListResponse.getProductList()}")
+
+        return productListResponse
 
 

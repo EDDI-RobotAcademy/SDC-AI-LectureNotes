@@ -79,3 +79,11 @@ class ProductRepositoryImpl(ProductRepository):
         if product:
             session.delete(product)
             session.commit()
+
+    def findByUserInputKeyword(self, keyword):
+        dbSession = sessionmaker(bind=self.__instance.engine)
+        session = dbSession()
+
+        return session.query(Product).filter(Product._Product__name.ilike(f"%{keyword}%")).all()
+
+

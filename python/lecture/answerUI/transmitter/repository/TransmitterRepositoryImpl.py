@@ -51,7 +51,9 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     print("\033[91mTransmitter Request Generator:\033[0m\033[92m", requestGenerator)
 
                     # TODO: 이 부분을 별도의 Domain으로 빼놓는 것이 더 깔끔함
-                    if sendProtocol == 9:
+                    if sendProtocol == 10:
+                        sendingRequest = requestGenerator(request)
+                    elif sendProtocol == 9:
                         productReadNo = transmitData["productReadNo"]
                         sendingRequest = requestGenerator(sessionId, productReadNo)
                     elif sendProtocol == 8:

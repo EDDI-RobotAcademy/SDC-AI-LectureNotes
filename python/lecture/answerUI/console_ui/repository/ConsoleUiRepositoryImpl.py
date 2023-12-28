@@ -200,7 +200,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
         if userChoice == 4:
             print("PRODUCT_SEARCH")
-            return
+            return CustomProtocol.PRODUCT_SEARCH.value
 
         if userChoice == 5:
             print("PROGRAM_EXIT")
@@ -314,4 +314,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
             self.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_READ)
 
         elif convertedUserChoice == CustomProtocol.PRODUCT_DELETE.value:
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_LIST)
+
+        elif convertedUserChoice == CustomProtocol.PRODUCT_SEARCH.value:
             self.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_LIST)
