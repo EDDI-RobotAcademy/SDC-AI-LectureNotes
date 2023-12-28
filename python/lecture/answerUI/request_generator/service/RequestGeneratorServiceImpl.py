@@ -36,7 +36,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
             cls.__requestFormGenerationTable[
                 CustomProtocol.PRODUCT_SEARCH.value] = cls.__instance.generateProductSearchRequest
 
-
+            cls.__requestFormGenerationTable[
+                CustomProtocol.ORDER_REGISTER.value] = cls.__instance.generateOrderRegisterRequest
 
             cls.__requestFormGenerationTable[
                 CustomProtocol.PROGRAM_EXIT.value] = cls.__instance.generateProgramExitRequest
@@ -173,6 +174,16 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         }
 
         return b64encode(productRequestData['__userInputKeyword']).decode()
+
+    def generateOrderRegisterRequest(self, sessionId, productId):
+        print(f"RequestGeneratorService - generateOrderRegisterRequest()")
+
+        productRequestData = {
+            '__sessionId': sessionId,
+            '__productId': productId,
+        }
+
+        return productRequestData
 
     def generateProgramExitRequest(self, arguments):
         print("RequestGeneratorService - generateProgramExitRequest()")

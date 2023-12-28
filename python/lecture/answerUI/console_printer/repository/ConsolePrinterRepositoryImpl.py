@@ -169,6 +169,14 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
             consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
             consoleUiRepository.setConsoleUiStateCurrentReadNumber(response.getId())
 
+        if class_name == "OrderRegisterResponse":
+            print("Detect Product Update Response")
+
+            if response.getIsSuccess() is False:
+                return
+
+            print("선택한 상품 주문이 완료되었습니다")
+
 
 def __checkUserSession(self):
         consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()

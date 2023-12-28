@@ -55,6 +55,8 @@ class TransmitterRepositoryImpl(TransmitterRepository):
                     # 숫자 보다 enum 값을 사용하는 것이 가독성 측면에서 더 좋음
                     if sendProtocol == CustomProtocol.PROGRAM_EXIT.value:
                         sendingRequest = requestGenerator(None)
+                    elif sendProtocol == CustomProtocol.ORDER_REGISTER.value:
+                        sendingRequest = requestGenerator(sessionId, request)
                     elif sendProtocol == 10:
                         sendingRequest = requestGenerator(request)
                     elif sendProtocol == 9:
