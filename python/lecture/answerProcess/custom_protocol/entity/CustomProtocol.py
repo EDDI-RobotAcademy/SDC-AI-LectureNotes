@@ -15,3 +15,7 @@ class CustomProtocol(Enum):
     PRODUCT_SEARCH = 10
 
 
+
+    PROGRAM_EXIT = 333
+
+

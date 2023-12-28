@@ -44,6 +44,11 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.PRODUCT_SEARCH.value] = cls.__instance.generateProductSearchRequest
 
 
+
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PROGRAM_EXIT.value] = cls.__instance.generateProgramExitRequest
+
+
         return cls.__instance
 
     def __init__(self):
@@ -126,5 +131,12 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         return ProductSearchRequest(
             __userInputKeyword=decodedString.strip()
         )
+
+
+
+
+    def generateProgramExitRequest(self, arguments):
+        print("\033[91m접속한 사용자가 프로그램을 종료했습니다!\033[92m")
+        return None
 
 

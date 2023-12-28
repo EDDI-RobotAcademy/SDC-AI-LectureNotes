@@ -42,13 +42,19 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
                 response = receiveQueue.get()
                 print(f"ConsolePrinterRepository Received response: {response}")
 
+                class_name = response.__class__.__name__
+
+                if class_name == "ProgramExitResponse":
+                    break
+
                 self.__responseProcessor(response)
-                # sessionAccountId = self.__checkUserSession()
                 consoleUiService.printMenu()
 
                 consoleUiService.processUserInput(transmitQueue)
             else:
                 sleep(0.5)
+
+        print("\033[91mUI Printer Finished!\033[92m")
 
     def __responseProcessor(self, response):
         print(f"ConsolePrinterRepository - response: {response}")

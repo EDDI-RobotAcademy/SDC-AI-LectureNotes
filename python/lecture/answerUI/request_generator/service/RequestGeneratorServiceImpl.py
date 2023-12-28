@@ -37,6 +37,11 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.PRODUCT_SEARCH.value] = cls.__instance.generateProductSearchRequest
 
 
+
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PROGRAM_EXIT.value] = cls.__instance.generateProgramExitRequest
+
+
         return cls.__instance
 
     def __init__(self):
@@ -168,5 +173,9 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         }
 
         return b64encode(productRequestData['__userInputKeyword']).decode()
+
+    def generateProgramExitRequest(self, arguments):
+        print("RequestGeneratorService - generateProgramExitRequest()")
+        return
 
 

@@ -1,5 +1,6 @@
 import multiprocessing
 import socket
+import sys
 from time import sleep
 from decouple import config
 
@@ -14,8 +15,11 @@ from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImp
 from console_ui.service.ConsoleUiServiceImpl import ConsoleUiServiceImpl
 from custom_protocol.entity.CustomProtocol import CustomProtocol
 from custom_protocol.service.CustomProtocolServiceImpl import CustomProtocolServiceImpl
+from program.repository.ProgramRepositoryImpl import ProgramRepositoryImpl
 from task_manage.repository.TaskManageRepositoryImpl import TaskManageRepositoryImpl
 from task_manage.service.TaskManageServiceImpl import TaskManageServiceImpl
+
+taskManageService = TaskManageServiceImpl.getInstance()
 
 
 def initServerSocketDomain():
@@ -45,6 +49,7 @@ def registerProtocol():
     customProtocolService = CustomProtocolServiceImpl.getInstance()
     accountFormRepository = AccountFormRepositoryImpl.getInstance()
     productFormRepository = ProductFormRepositoryImpl.getInstance()
+    programRepository = ProgramRepositoryImpl.getInstance()
 
     customProtocolService.registerCustomProtocol(
         CustomProtocol.ACCOUNT_REGISTER.value,
@@ -97,6 +102,16 @@ def registerProtocol():
     )
 
 
+
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PROGRAM_EXIT.value,
+        programRepository.createProgramExitForm
+    )
+
+    # taskManageService.closeEveryTask()
+
+
 if __name__ == '__main__':
     print("\033[92m화면 출력 UI 서버가 구동되었습니다.")
 
@@ -108,20 +123,23 @@ if __name__ == '__main__':
     clientSocketService.createClientSocket(config('TARGET_HOST'), int(config('PORT')))
     clientSocketService.connectToTargetHost()
 
-    taskManageService = TaskManageServiceImpl.getInstance()
-
     lock = multiprocessing.Lock()
     transmitQueue = multiprocessing.Queue()
     receiveQueue = multiprocessing.Queue()
+    finishQueue = multiprocessing.Queue()
 
     taskManageService.createTransmitTask(lock, transmitQueue)
-    taskManageService.createReceiveTask(lock, receiveQueue)
+    taskManageService.createReceiveTask(lock, receiveQueue, finishQueue)
     taskManageService.createPrinterTask(transmitQueue, receiveQueue)
 
     while True:
         try:
-            sleep(5.0)
+            sleep(2.0)
+            status = finishQueue.get()
+            if status is True:
+                break
 
         except socket.error:
             sleep(0.5)
 
+    print("\033[91mEvery Task was finished!\033[92m")
