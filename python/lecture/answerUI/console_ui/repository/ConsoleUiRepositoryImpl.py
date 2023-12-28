@@ -32,6 +32,8 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
             cls.__instance.__uiMenuTable[
                 ConsoleUiRoutingState.PRODUCT_READ.value] = cls.__instance.__printProductReadMenu
 
+
+
             cls.__instance.__uiSelectDecisionTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__selectDecisionFromUserChoice
 
             cls.__instance.__uiProperCommandConvertTable[ConsoleUiRoutingState.NOTHING.value] = cls.__instance.__routingStateNothingConverter
@@ -335,6 +337,9 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
         elif convertedUserChoice == CustomProtocol.PRODUCT_SEARCH.value:
             self.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_LIST)
+
+        elif convertedUserChoice == CustomProtocol.ORDER_REGISTER.value:
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.ORDER_REGISTER)
 
         else:
             self.saveCurrentRoutingState(ConsoleUiRoutingState.PROGRAM_EXIT)

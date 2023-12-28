@@ -14,7 +14,7 @@ class CustomProtocol(Enum):
     PRODUCT_DELETE = 9
     PRODUCT_SEARCH = 10
 
-
+    ORDER_REGISTER = 12
 
     PROGRAM_EXIT = 333
 

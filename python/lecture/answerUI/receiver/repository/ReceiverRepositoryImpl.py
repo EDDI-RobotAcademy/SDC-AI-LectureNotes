@@ -14,6 +14,9 @@ from product.service.response.ProductReadResponse import ProductReadResponse
 from product.service.response.ProductUpdateResponse import ProductUpdateResponse
 from product.service.response.ProductDeleteResponse import ProductDeleteResponse
 
+from order.service.response.OrderRegisterResponse import OrderRegisterResponse
+
+
 from program.service.response.ProgramExitResponse import ProgramExitResponse
 
 
