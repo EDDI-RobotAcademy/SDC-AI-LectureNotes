@@ -135,6 +135,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         print("3. 상품 상세 보기")
         print("4. 상품 검색")
         print("5. 종료")
+        print("6. 상품 주문하기")
 
     def __printProductRegisterMenu(self):
         print("1. 상품 정보 수정")
@@ -217,6 +218,10 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         if userChoice == 5:
             print("PROGRAM_EXIT")
             return CustomProtocol.PROGRAM_EXIT.value
+
+        if userChoice == 6:
+            print("ORDER_REGISTER")
+            return CustomProtocol.ORDER_REGISTER.value
 
 
     def __routingStateProductRegisterConverter(self, userChoice):
