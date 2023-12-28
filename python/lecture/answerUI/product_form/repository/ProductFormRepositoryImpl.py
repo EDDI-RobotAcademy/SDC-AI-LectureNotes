@@ -49,5 +49,11 @@ class ProductFormRepositoryImpl(ProductFormRepository):
         print("등록된 상품을 삭제합니다")
         return
 
+    def createProductSearchForm(self):
+        print("상품을 검색합니다")
+
+        userInputProductSearch = KeyboardInput.getKeyboardInput("검색 키워드를 입력하세요:")
+        return userInputProductSearch
+
 
 

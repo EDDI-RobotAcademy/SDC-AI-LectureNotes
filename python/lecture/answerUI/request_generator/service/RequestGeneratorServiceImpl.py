@@ -1,4 +1,5 @@
 import ast
+from base64 import b64encode
 
 from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImpl
 from custom_protocol.entity.CustomProtocol import CustomProtocol
@@ -32,6 +33,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.PRODUCT_UPDATE.value] = cls.__instance.generateProductUpdateRequest
             cls.__requestFormGenerationTable[
                 CustomProtocol.PRODUCT_DELETE.value] = cls.__instance.generateProductDeleteRequest
+            cls.__requestFormGenerationTable[
+                CustomProtocol.PRODUCT_SEARCH.value] = cls.__instance.generateProductSearchRequest
 
 
         return cls.__instance
@@ -156,3 +159,14 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         }
 
         return productRequestData
+
+    def generateProductSearchRequest(self, userInputKeyword):
+        print(f"RequestGeneratorService - generateProductDeleteRequest()")
+
+        productRequestData = {
+            '__userInputKeyword': userInputKeyword,
+        }
+
+        return b64encode(productRequestData['__userInputKeyword']).decode()
+
+
