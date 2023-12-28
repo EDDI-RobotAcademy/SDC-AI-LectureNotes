@@ -27,7 +27,7 @@ class TransmitterRepositoryImpl(TransmitterRepository):
     def transmitCommand(self, clientSocket):
         while True:
             try:
-                print("transmitter: 응답 준비")
+                print("\033[92mtransmitter: 응답 준비")
                 response = self.__transmitQueue.get()
 
                 if response is not None:

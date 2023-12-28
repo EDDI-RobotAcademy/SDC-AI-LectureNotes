@@ -62,7 +62,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                 else:
                     response = customProtocolRepository.execute(int(protocolNumber))
 
-                print(f"Receiver - response: {response}")
+                print("\033[91mReceiver - response:", response)
 
                 transmitQueue.put(response)
 
