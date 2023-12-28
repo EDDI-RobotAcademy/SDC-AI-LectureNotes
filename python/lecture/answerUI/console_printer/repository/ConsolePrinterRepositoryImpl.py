@@ -1,3 +1,4 @@
+import json
 import socket
 import sys
 from datetime import datetime
@@ -8,6 +9,8 @@ from console_printer.repository.ConsolePrinterRepository import ConsolePrinterRe
 from console_ui.entity.ConsoleUiRoutingState import ConsoleUiRoutingState
 from console_ui.repository.ConsoleUiRepositoryImpl import ConsoleUiRepositoryImpl
 from console_ui.service.ConsoleUiServiceImpl import ConsoleUiServiceImpl
+
+from tabulate import tabulate
 
 
 class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
@@ -169,13 +172,26 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
             consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
             consoleUiRepository.setConsoleUiStateCurrentReadNumber(response.getId())
 
+        if 'OrderListResponse' in response:
+            print("Detect Order List Response")
+            orderList = response['OrderListResponse']
+
+            if orderList is None:
+                print("주문 내역이 존재하지 않습니다")
+                return
+
+            table = tabulate(orderList, headers='keys', showindex=False, tablefmt='fancy_grid')
+            print(table)
+
         if class_name == "OrderRegisterResponse":
-            print("Detect Product Update Response")
+            print("Detect Order Register Response")
 
             if response.getIsSuccess() is False:
                 return
 
             print("선택한 상품 주문이 완료되었습니다")
+
+
 
 
 def __checkUserSession(self):

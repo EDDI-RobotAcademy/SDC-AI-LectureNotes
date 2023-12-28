@@ -1,6 +1,10 @@
+import json
+
 from order.entity.Order import Order
 from order.service.OrderService import OrderService
+from order.service.request.OrderListRequest import OrderListRequest
 from order.service.request.OrderRegisterRequest import OrderRegisterRequest
+from order.service.response.OrderListResponse import OrderListResponse
 from order.service.response.OrderRegisterResponse import OrderRegisterResponse
 
 
@@ -21,6 +25,35 @@ class OrderServiceImpl(OrderService):
         if cls.__instance is None:
             cls.__instance = cls()
         return cls.__instance
+
+    def orderList(self, *args, **kwargs):
+        print("orderList()")
+
+        cleanedElements = args[0]
+        print(f"cleanedElements: {cleanedElements}")
+
+        orderListRequest = OrderListRequest(*cleanedElements)
+
+        sessionId = orderListRequest.getSessionId()
+        orderByAccountList = self.__orderRepository.findAllByAccountId(sessionId)
+
+        orderList = []
+
+        for order in orderByAccountList:
+            productId = order.getProductId()
+            foundProduct = self.__productRepository.findById(productId)
+
+            orderList.append({
+                'productName': foundProduct.getName(),
+                'price': foundProduct.getPrice(),
+            })
+
+        print(f"orderList: {orderList}")
+
+        orderListResponse = OrderListResponse(orderList)
+        print(f"orderListResponse: {orderListResponse}")
+
+        return json.dumps(orderListResponse.toDict())
 
     def orderRegister(self, *args, **kwargs):
         print("registerOrder()")
