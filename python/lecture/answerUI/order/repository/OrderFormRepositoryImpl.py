@@ -24,5 +24,9 @@ class OrderFormRepositoryImpl(OrderFormRepository):
         userInputProductId = KeyboardInput.getKeyboardIntegerInput("주문하고 싶은 상품 번호를 입력하세요:")
         return userInputProductId
 
+    def createOrderListForm(self):
+        print("주문 내역을 살펴봅니다")
+        return
+
 
 

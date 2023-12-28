@@ -103,7 +103,10 @@ def registerProtocol():
         productFormRepository.createProductSearchForm
     )
 
-
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.ORDER_LIST.value,
+        orderFormRepository.createOrderListForm
+    )
 
     customProtocolService.registerCustomProtocol(
         CustomProtocol.ORDER_REGISTER.value,
