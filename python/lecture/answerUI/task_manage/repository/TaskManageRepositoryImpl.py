@@ -36,3 +36,6 @@ class TaskManageRepositoryImpl(TaskManageRepository):
         taskEntity = TaskEntity(newTask.pid, target, args)
         self.__taskEntityList.append(taskEntity)
 
+    def getTaskEntityList(self):
+        return self.__taskEntityList
+

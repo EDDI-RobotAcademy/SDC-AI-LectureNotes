@@ -1,6 +1,7 @@
 import atexit
 import multiprocessing
 import socket
+from dataclasses import dataclass
 from time import sleep
 
 import sqlalchemy
@@ -55,6 +56,17 @@ def initServerSocketDomain():
 def initTaskManageDomain():
     taskManageRepository = TaskManageRepositoryImpl()
     TaskManageServiceImpl(taskManageRepository)
+
+
+@dataclass
+class ProgramExitResponse:
+    __isSuccess: bool
+
+
+def clientExitProgram():
+    print("\033[91m접속한 사용자가 프로그램을 종료했습니다\033[92m")
+
+    return ProgramExitResponse(True)
 
 
 def initCustomProtocol():
@@ -114,6 +126,13 @@ def initCustomProtocol():
     )
 
 
+
+    customProtocolService.registerCustomProtocol(
+        CustomProtocol.PROGRAM_EXIT.value,
+        clientExitProgram
+    )
+
+
 def initAccountDomain():
     accountRepository = AccountRepositoryImpl()
     sessionRepository = SessionRepositoryImpl()
@@ -166,11 +185,6 @@ if __name__ == '__main__':
     while True:
         try:
             serverSocketService.acceptClientSocket(queue)
-
-            # if not queue.empty():
-            #     print("main: 사용자가 접속했습니다!")
-            #     taskManageService.createReceiveTask()
-            #     taskManageService.createTransmitTask()
 
         except socket.error:
             sleep(1.0)

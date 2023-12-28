@@ -171,6 +171,10 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
                 print("PRODUCT_LIST")
                 return CustomProtocol.PRODUCT_LIST.value
 
+            if userChoice == 4:
+                print("PROGRAM_EXIT")
+                return CustomProtocol.PROGRAM_EXIT.value
+
         if userChoice == 1:
             print("ACCOUNT_LOGOUT")
             return CustomProtocol.ACCOUNT_LOGOUT.value
@@ -178,6 +182,14 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         if userChoice == 2:
             print("PRODUCT_LIST")
             return CustomProtocol.PRODUCT_LIST.value
+
+        if userChoice == 3:
+            print("ORDER_LIST")
+            return CustomProtocol.ORDER_LIST.value
+
+        if userChoice == 4:
+            print("PROGRAM_EXIT")
+            return CustomProtocol.PROGRAM_EXIT.value
 
         if userChoice == 5:
             print("ACCOUNT_DELETE")
@@ -204,7 +216,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
         if userChoice == 5:
             print("PROGRAM_EXIT")
-            return
+            return CustomProtocol.PROGRAM_EXIT.value
 
 
     def __routingStateProductRegisterConverter(self, userChoice):
@@ -224,7 +236,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
         if userChoice == 4:
             print("PROGRAM_EXIT")
-            return
+            return CustomProtocol.PROGRAM_EXIT.value
 
     def __routingStateProductReadConverter(self, userChoice):
         print(f"ConsoleUiRepository __routingStateProductReadConverter(): userChoice: {userChoice}")
@@ -243,7 +255,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
         if userChoice == 4:
             print("PROGRAM_EXIT")
-            return
+            return CustomProtocol.PROGRAM_EXIT.value
 
     def __readSessionInfoFromFile(self):
         print("ConsoleUiRepository: __readSessionInfoFromFile()")
@@ -318,3 +330,6 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
 
         elif convertedUserChoice == CustomProtocol.PRODUCT_SEARCH.value:
             self.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_LIST)
+
+        else:
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.PROGRAM_EXIT)

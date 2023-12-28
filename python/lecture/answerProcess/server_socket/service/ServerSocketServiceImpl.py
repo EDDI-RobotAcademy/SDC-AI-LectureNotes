@@ -41,27 +41,29 @@ class ServerSocketServiceImpl(ServerSocketService):
         self.__serverSocketRepository.setBlockingOperation()
 
     def acceptClientSocket(self, queue):
-        clientSocket, clientAddress = self.__serverSocketRepository.acceptClientSocket()
+        try:
+            clientSocket, clientAddress = self.__serverSocketRepository.acceptClientSocket()
 
-        if clientSocket is not None:
-            taskManageRepository = TaskManageRepositoryImpl.getInstance()
-            transmitterRepository = TransmitterRepositoryImpl.getInstance()
-            receiverRepository = ReceiverRepositoryImpl.getInstance()
+            if clientSocket is not None:
+                taskManageRepository = TaskManageRepositoryImpl.getInstance()
+                transmitterRepository = TransmitterRepositoryImpl.getInstance()
+                receiverRepository = ReceiverRepositoryImpl.getInstance()
 
-            taskManageRepository.createTask(
-                target=transmitterRepository.transmitCommand,
-                args=(clientSocket,)
-            )
+                taskManageRepository.createTask(
+                    target=transmitterRepository.transmitCommand,
+                    args=(clientSocket,)
+                )
 
-            taskManageRepository.createTask(
-                target=receiverRepository.receiveCommand,
-                args=(clientSocket,)
-            )
+                taskManageRepository.createTask(
+                    target=receiverRepository.receiveCommand,
+                    args=(clientSocket,)
+                )
 
-            print("clientSocket: {}, clientAddress: {}".format(clientSocket, clientAddress))
-            queue.put((clientSocket, clientAddress))
+                print("clientSocket: {}, clientAddress: {}".format(clientSocket, clientAddress))
+                queue.put((clientSocket, clientAddress))
 
-
+        except ConnectionResetError:
+            print("Client disconnected")
 
 
 

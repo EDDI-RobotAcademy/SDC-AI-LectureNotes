@@ -40,7 +40,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
                 receivedRequest = clientSocket.recv(1024)
 
                 if not receivedRequest:
-                    clientSocket.closeSocket()
+                    clientSocket.close()
                     break
 
                 receivedForm = json.loads(receivedRequest)

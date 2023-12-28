@@ -39,13 +39,13 @@ class TaskManageServiceImpl(TaskManageService):
             args=(clientSocketRepository.getClientSocket(), lock, transmitQueue)
         )
 
-    def createReceiveTask(self, lock, receiveQueue):
+    def createReceiveTask(self, lock, receiveQueue, finishQueue):
         receiverRepository = ReceiverRepositoryImpl.getInstance()
         clientSocketRepository = ClientSocketRepositoryImpl.getInstance()
 
         self.__taskManageRepository.createTask(
             target=receiverRepository.receiveCommand,
-            args=(clientSocketRepository.getClientSocket(), lock, receiveQueue)
+            args=(clientSocketRepository.getClientSocket(), lock, receiveQueue, finishQueue)
         )
 
     def createPrinterTask(self, transmitQueue, receiveQueue):
@@ -55,3 +55,10 @@ class TaskManageServiceImpl(TaskManageService):
             target=consolePrinterRepository.printConsoleUi,
             args=(transmitQueue, receiveQueue, )
         )
+
+    def closeEveryTask(self):
+        print("모든 태스크를 종료합니다")
+        # taskList = self.__taskManageRepository.getTaskEntityList()
+        # for task in taskList:
+        #     print(f"task.getTaskPid(): {task.getTaskPid()}")
+
