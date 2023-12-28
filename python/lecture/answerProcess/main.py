@@ -135,6 +135,11 @@ def initCustomProtocol():
     )
 
     customProtocolService.registerCustomProtocol(
+        CustomProtocol.ORDER_LIST.value,
+        orderService.orderList
+    )
+
+    customProtocolService.registerCustomProtocol(
         CustomProtocol.ORDER_REGISTER.value,
         orderService.orderRegister
     )

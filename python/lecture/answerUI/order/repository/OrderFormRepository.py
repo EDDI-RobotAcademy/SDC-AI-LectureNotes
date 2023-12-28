@@ -6,5 +6,8 @@ class OrderFormRepository(abc.ABC):
     def createOrderRegisterForm(self):
         pass
 
+    @abc.abstractmethod
+    def createOrderListForm(self):
+        pass
     
 

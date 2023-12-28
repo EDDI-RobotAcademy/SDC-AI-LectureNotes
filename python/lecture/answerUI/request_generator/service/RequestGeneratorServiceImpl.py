@@ -37,6 +37,8 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
                 CustomProtocol.PRODUCT_SEARCH.value] = cls.__instance.generateProductSearchRequest
 
             cls.__requestFormGenerationTable[
+                CustomProtocol.ORDER_LIST.value] = cls.__instance.generateOrderListRequest
+            cls.__requestFormGenerationTable[
                 CustomProtocol.ORDER_REGISTER.value] = cls.__instance.generateOrderRegisterRequest
 
             cls.__requestFormGenerationTable[
@@ -174,6 +176,15 @@ class RequestGeneratorServiceImpl(RequestGeneratorService):
         }
 
         return b64encode(productRequestData['__userInputKeyword']).decode()
+
+    def generateOrderListRequest(self, sessionId):
+        print(f"RequestGeneratorService - generateOrderRegisterRequest()")
+
+        productRequestData = {
+            '__sessionId': sessionId
+        }
+
+        return productRequestData
 
     def generateOrderRegisterRequest(self, sessionId, productId):
         print(f"RequestGeneratorService - generateOrderRegisterRequest()")

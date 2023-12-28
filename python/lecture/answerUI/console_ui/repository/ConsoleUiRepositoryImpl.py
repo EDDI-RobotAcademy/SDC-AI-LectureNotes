@@ -338,8 +338,11 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         elif convertedUserChoice == CustomProtocol.PRODUCT_SEARCH.value:
             self.saveCurrentRoutingState(ConsoleUiRoutingState.PRODUCT_LIST)
 
+        elif convertedUserChoice == CustomProtocol.ORDER_LIST.value:
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.NOTHING)
+
         elif convertedUserChoice == CustomProtocol.ORDER_REGISTER.value:
-            self.saveCurrentRoutingState(ConsoleUiRoutingState.ORDER_REGISTER)
+            self.saveCurrentRoutingState(ConsoleUiRoutingState.NOTHING)
 
         else:
             self.saveCurrentRoutingState(ConsoleUiRoutingState.PROGRAM_EXIT)
