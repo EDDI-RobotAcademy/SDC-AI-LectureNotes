@@ -8,7 +8,7 @@ Base = declarative_base()
 
 @dataclass
 class Order(Base):
-    __tablename__ = 'productOrder'
+    __tablename__ = 'product_order'
 
     __id = Column(Integer, primary_key=True, autoincrement=True, name="id")
     __accountId = Column(Integer, nullable=False, name="account_id")
