@@ -110,7 +110,7 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
 
             productList = response.getProductList()
 
-            if productList is None:
+            if len(productList) == 0:
                 print("현재 등록된 상품이 존재하지 않습니다")
                 return
 
@@ -172,7 +172,7 @@ class ConsolePrinterRepositoryImpl(ConsolePrinterRepository):
             consoleUiRepository = ConsoleUiRepositoryImpl.getInstance()
             consoleUiRepository.setConsoleUiStateCurrentReadNumber(response.getId())
 
-        if 'OrderListResponse' in response:
+        if isinstance(response, dict) and 'OrderListResponse' in response:
             print("Detect Order List Response")
             orderList = response['OrderListResponse']
 

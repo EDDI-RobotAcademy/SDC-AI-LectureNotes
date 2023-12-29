@@ -20,7 +20,7 @@ class ReceiverRepositoryImpl(ReceiverRepository):
         return cls.__instance
 
     def __init__(self):
-        print("ReceiverRepositoryImpl 생성자 호출")
+        print("ReceiverRepositoryImpl 초기화")
 
     @classmethod
     def getInstance(cls):

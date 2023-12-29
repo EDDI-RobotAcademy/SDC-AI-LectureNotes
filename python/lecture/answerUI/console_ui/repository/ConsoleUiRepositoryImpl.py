@@ -130,6 +130,7 @@ class ConsoleUiRepositoryImpl(ConsoleUiRepository):
         if self.__session is None:
             print("로그인 이후 상품 게시판을 활용 할 수 있습니다")
             self.saveCurrentRoutingState(ConsoleUiRoutingState.NOTHING)
+            self.__printDefaultMenu()
             return
 
         print("1. 상품 리스트 보기")
