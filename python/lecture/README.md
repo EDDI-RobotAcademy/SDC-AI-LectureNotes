@@ -29,3 +29,13 @@ export PATH="$PATH:/home/eddi/anaconda3/bin"
 ```make
 source ~/.bashrc
 ```
+
+# How to check installation
+```make
+conda list
+```
+
+# How to execute jupyter notebook
+```make
+jupyter notebook
+```
