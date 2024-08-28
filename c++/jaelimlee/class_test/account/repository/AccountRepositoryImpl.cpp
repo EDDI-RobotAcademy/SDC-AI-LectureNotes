@@ -45,7 +45,7 @@ bool AccountRepositoryImpl::getBoolWithFindByAccountId(std::string account_id)
     return dbInstance->findData(queryString);
 }
 
-#include <mysql/mysql.h>
+#include <mysql.h>
 #include <iostream>
 #include <chrono>
 #include <sstream>
