@@ -4,6 +4,7 @@
 
 #include "BoardRepositoryImpl.h"
 #include "../../mysql/DbProcess.h"
+#include <sstream>
 
 std::vector<Board> fetchResults(MYSQL* conn) {
     std::vector<Board> boardList;

@@ -5,7 +5,7 @@
 #ifndef CPP_TEST_DBPROCESS_H
 #define CPP_TEST_DBPROCESS_H
 
-#include <mysql/mysql.h>
+#include <mysql.h>
 #include <string>
 #include <optional>
 #include <memory>
